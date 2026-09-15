@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Integrated Dashboard — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — a steel blue distinct to this dashboard, used sparingly */
+.cs-tag{border-color:#0369A1;color:#0369A1}
+.cs-section-label{color:#0369A1}
+.cs-quote{border-left-color:#0369A1}
+.cs-h2{border-left-color:#0369A1}
+.stage-def{border-left-color:#0369A1}
+.stage-icon-badge{background:#E5F1F8}
+.stage-icon-badge svg{stroke:#0369A1}
+.roadmap circle{fill:#0369A1 !important}
+.cs-list li b{color:#0369A1}
+a{color:#0369A1}
+.cs-masthead{background:#E5F1F8}
+.stage{border-top-color:#0369A1}
+.stage-num{color:#0369A1;background:#E5F1F8}
+.metrics-table th{background:#E5F1F8}
+.ba-col.after{border-top-color:#0369A1}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Analytics</span>
+    <span class="cs-tag">Enterprise</span>
+    <span class="cs-tag">B2B</span>
+  </div>
+
+  <h1 class="cs-title">One Dashboard for M2P's Entire Partner Ecosystem</h1>
+  <p class="cs-subtitle">M2P's banks, fintechs, and corporates were emailing spreadsheets to understand their own transaction data. The full trace — including the one project here with real, scored usability results.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Designer, M2P Fintech</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <img src="case-studies/integrated-dashboard/overview-process.png" alt="Integrated Products Dashboard overview and design process"/>
+    <div class="figure-cap">Fig 01 — The dashboard, the problem statement, and the process that got there</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">M2P runs core banking infrastructure for banks and fintechs, who in turn serve corporates, who in turn serve end customers — a chain four layers deep. As M2P rolled out more future-ready, customer-relevant banking services, the gaps got harder to ignore: reduced visibility, delayed issue identification, limited transparency, and real difficulty tracking whether a partner's program was healthy.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Stakeholders</h4><p>M2P's Business Development, Product, Client Engagement, Operations, and API Analysis teams — plus external partners including Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit.</p></div>
+    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>Partners uploaded reports into tools like Power BI manually; M2P's own teams tracked client health over email threads.</p></div>
+    <div class="cs-grid-item"><h4>Constraints</h4><p>One interface had to genuinely serve three audiences with different jobs, not just different logins.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>UX Designer — research across both internal and external stakeholders, IA, and the shipped design.</p></div>
+  </div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHISE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">Two very different audiences, describing the same gap</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">Interviewing both ends of the same relationship</h3>
+      <p class="cs-p">The assumption to test: that "reduced visibility" meant the same thing to M2P's own teams and to the partners depending on M2P's infrastructure. I didn't assume it did — I interviewed both sides separately.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">Internal stakeholders and named external partners</h3>
+      <p class="cs-p">Internally, I spoke with people across Business Development, Products, Client Engagement & Delivery, Operations, and API Analysis. What came back wasn't a feature request — it was a description of information poverty:</p>
+      <blockquote class="cs-quote">Information is wealth. The biggest challenge today is I don't have information on what my client is doing.<span class="cs-quote-attr">— M2P stakeholder interview</span></blockquote>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/stakeholder-challenges.png" alt="M2P stakeholder challenges and business goals"/>
+        <div class="figure-cap">Fig 02 — What M2P's own teams were struggling with before this existed</div>
+      </div>
+      <p class="cs-p">Then real partners actually using M2P's rails — Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit. Their challenges were operationally specific: getting an MIS on a daily basis was difficult, tracking transaction reversals was hard, fetching customer statistics was a manual chore, and some partners had hired additional resources purely to fetch and process reports by hand.</p>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/partner-research.png" alt="Partner interview findings from Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit"/>
+        <div class="figure-cap">Fig 03 — What M2P's own partners were struggling with, in their own words</div>
+      </div>
+      <div class="gap-note"><b>Evidence gap</b><p>Exact interview counts and a formal interview guide weren't preserved beyond the themes shown. No survey instrument was run alongside these interviews.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 02 — DEFINE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">Three user groups, not one persona</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">Internal and external complaints, clustered</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster"><h4>Manual reporting</h4><div class="note">Email threads to get data; manual MIS generation</div></div>
+        <div class="affinity-cluster"><h4>No trend visibility</h4><div class="note">Numbers without "signs" of what's changing</div></div>
+        <div class="affinity-cluster"><h4>Resourcing cost</h4><div class="note">Partners hired staff just to process reports</div></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Reconstructed from the documented stakeholder themes</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell"><h4>Says (reconstructed)</h4><ul><li>"I don't have information on what my client is doing."</li><li>"People are getting lost on email threads."</li></ul></div>
+        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Believes the data exists somewhere, just not accessibly.</li><li>Assumes competitors' partners get better visibility.</li></ul></div>
+        <div class="empathy-cell"><h4>Does</h4><ul><li>Requests custom reports over email or calls.</li><li>Hires extra headcount to compile MIS manually.</li></ul></div>
+        <div class="empathy-cell"><h4>Feels</h4><ul><li>Reactive rather than in control of their own program.</li><li>Frustrated by the lag between a problem occurring and being seen.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Personas / User Groups</div>
+      <h3 class="substep-h3">Three real groups, not an invented persona</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No individual persona was created for this initiative — the ecosystem genuinely has three distinct groups, and collapsing them into one persona would have hidden the real design problem.</p></div>
+      <div class="cs-grid">
+        <div class="cs-grid-item"><h4>M2P BD &amp; Product</h4><p>Need to pitch new clients and support existing partners with tailored intelligence.</p></div>
+        <div class="cs-grid-item"><h4>M2P Operations</h4><p>Need to track partner program health and catch issues before escalation.</p></div>
+        <div class="cs-grid-item"><h4>M2P Partners (external)</h4><p>Need to run their own programs efficiently and prove them profitable.</p></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">Not documented as a formal journey map</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A stage-by-stage emotional journey map wasn't produced. The drill-down user flow in Stage 04 documents the equivalent task-level path.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">From email threads to a governance gap</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> partners and internal teams both compile data manually via email and spreadsheets.</li>
+        <li><b>Problem:</b> no shared, self-serve view of transaction data exists for any layer of the ecosystem.</li>
+        <li><b>Root cause:</b> as M2P's partner network grew, no single reporting layer was ever built to scale with it.</li>
+      </ul>
+      <div class="pov-box"><span class="pov-label">How might we</span><p>How might we give M2P's teams and partners a self-serve view of the same transaction data, without each side needing the other to compile it?</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">From insight to business goal</h3>
+      <p class="cs-p">Four concrete business goals came directly out of the research: support existing partners with tailored business intelligence, support M2P's BD team in pitching new clients, act as a combination of program management and reporting, and help partners set, track, and reach their own goals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 03 — IDEATE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">The same feature, ranked differently by who's asking</h2>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">Run twice — once per audience, on purpose</h3>
+      <p class="cs-p">Total load and decline reasons ranked high-value, high-frequency for partners watching their own program's health day to day. For M2P's internal users, tracking partner progress and decline improvement ranked highest instead — the same transaction data, prioritized around a different job to be done.</p>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/prioritization-ia.png" alt="Prioritization matrix for partners and M2P users, and the resulting information architecture"/>
+        <div class="figure-cap">Fig 04 — Two prioritization matrices, one information architecture built to serve both</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Hierarchy over dashboards-per-audience</h3>
+      <p class="cs-p"><b>Alternative considered:</b> building separate, simpler dashboards per audience. <b>Rejected because:</b> it would have re-created the exact silo problem the research identified — each group with its own view, no shared source of truth. The chosen direction was one hierarchy, entered from different directions by different users.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — PROTOTYPE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">Making a drill-down hierarchy feel like one screen, not five</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">Split by outcome, not by audience</h3>
+      <p class="cs-p">Transaction data split into Success and Decline views from the top, each breaking down by volume, channel, merchant, reason, and network — with a parallel structure for card data by status and activity. Customer Data and Card Data both needed a view-by-network and view-by-business path, because a partner and an M2P operator enter the same data from opposite directions.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">The drill-down task, entry to insight</h3>
+      <div class="flow-row">
+        <span class="flow-step">Open dashboard</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Select tenant/network/business filter</span><span class="flow-arrow">→</span>
+        <span class="flow-step">View success/decline breakdown</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Drill into reason/channel</span>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing</div>
+      <h3 class="substep-h3">Data-focused first, unstyled on purpose</h3>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/wireframes.png" alt="Low-fidelity wireframes for the dashboard's data views"/>
+        <div class="figure-cap">Fig 05 — Wireframes for the transaction, customer, and card data views</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Interaction Design</div>
+      <h3 class="substep-h3">Hierarchy, infographics, segmentation</h3>
+      <p class="cs-p">The finished dashboard leans on three ideas traceable directly to research: a hierarchical structure with filters visible at every level, infographics that let people stay at their preferred zoom level (trend line or raw number), and segmentation that lets the same dataset be read by network, business, or customer range.</p>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/hifi-dashboard.png" alt="High fidelity dashboard with hierarchical structure, infographics, and segmentation"/>
+        <div class="figure-cap">Fig 06 — The shipped dashboard, switchable by tenant, network, and business</div>
+      </div>
+      <div class="stage-reflect"><b>The takeaway</b>A four-layer hierarchy doesn't have to feel like navigating four layers, as long as every filter is visible from wherever you currently are.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — TEST -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">Zero task failures still isn't the same as done</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">A real, scored testing round — one of the few in this portfolio</h3>
+      <p class="cs-p"><b>Participants:</b> 22 real users drawn from both M2P's own teams and external partners. <b>Evaluated against:</b> ease of use, learnability, discoverability, efficiency, and how well they could perceive the interface's elements — not just task completion.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Usability Test Findings</div>
+      <h3 class="substep-h3">A four-point scale, not a pass/fail count</h3>
+      <table class="metrics-table">
+        <tr><th>Outcome band</th><th>Result</th></tr>
+        <tr><td>Completed with ease</td><td>60%</td></tr>
+        <tr><td>Completed, needed a little help</td><td>25%</td></tr>
+        <tr><td>More difficult, even after explanation</td><td>15%</td></tr>
+        <tr><td>Failed outright</td><td>0%</td></tr>
+      </table>
+      <div class="figure">
+        <img src="case-studies/integrated-dashboard/testing-results-roadmap.png" alt="User testing task performance breakdown and product roadmap"/>
+        <div class="figure-cap">Fig 07 — Task performance by difficulty band, and where the product goes from here</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Iteration</div>
+      <h3 class="substep-h3">Where the 25% and 15% point, specifically</h3>
+      <p class="cs-p"><b>Finding:</b> 40% of users needed help or struggled → <b>Problem:</b> likely terminology and layout, not core logic, since 0% failed outright → <b>Design change:</b> targeted terminology and layout review for the affected sections → <b>Expected outcome:</b> moving more of the 25%/15% into the "completed with ease" band on a re-test.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>A second, post-iteration testing round to confirm this shift wasn't documented — the iteration plan is real, its outcome isn't yet measured.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Design</div>
+      <h3 class="substep-h3">The dashboard, as tested</h3>
+      <p class="cs-p">The hierarchical, filter-first dashboard shown in Stage 04 is the exact version that produced the 60/25/15/0 result above — not a later, unvalidated iteration.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">What actually got measured</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Result</th></tr>
+        <tr><td>Task failure rate</td><td>0%</td></tr>
+        <tr><td>Completed with ease</td><td>60%</td></tr>
+        <tr><td>Time on task / SUS score</td><td class="na">Not measured</td></tr>
+      </table>
+      <p class="cs-p"><b>What improved:</b> a governed, self-serve view replacing manual reporting for three audiences at once. <b>What didn't fully resolve:</b> 40% of tested users still needed help or found parts difficult. <b>What surprised me:</b> nobody failed outright, which said more about the underlying logic being sound than about the interface being fully clear. <b>What's next:</b> real-time data refresh, ML-driven visuals, and a terminology pass targeting exactly the users who needed help.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
+  <ul class="cs-list">
+    <li>Real-time streaming and data refresh, replacing the periodic refresh cycle the first version shipped with.</li>
+    <li>Automated machine learning and AI-driven visuals, moving from descriptive reporting toward predictive insight.</li>
+    <li>Integration with the SharePoint ecosystem, plus advanced data modeling and an optimized mobile app experience.</li>
+  </ul>
+
+  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Interview both ends of the relationship</div>
+      <div class="learning-p">M2P's internal teams and its external partners named the same gap independently — that's what confirmed it was structural, not a one-off complaint.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">User groups beat a single persona for an ecosystem product</div>
+      <div class="learning-p">Three named groups kept every design trade-off honest about which audience it actually served.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Prioritize per audience, not once for everyone</div>
+      <div class="learning-p">The same transaction data ranked differently depending on whether a partner or an M2P operator was asking.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">A zero-failure result is a floor, not a finish line</div>
+      <div class="learning-p">The 40% who needed help or struggled are a more useful signal than the 60% who sailed through.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: a dashboard serving an entire ecosystem isn't one product with one user. It's several products wearing the same interface — and the only project in this portfolio where I can prove that with a real, scored number.</p>
+
+  <div class="cs-signoff">
+    <p>Integrated Dashboard — a UX Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

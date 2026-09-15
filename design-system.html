@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M2P Design System — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — M2P Design System's own teal, used sparingly */
+.cs-tag{border-color:#0F766E;color:#0F766E}
+.cs-section-label{color:#0F766E}
+.cs-quote{border-left-color:#0F766E}
+.cs-h2{border-left-color:#0F766E}
+.stage-def{border-left-color:#0F766E}
+.stage-icon-badge{background:#E6F5F3}
+.stage-icon-badge svg{stroke:#0F766E}
+.roadmap circle{fill:#0F766E !important}
+.cs-list li b{color:#0F766E}
+a{color:#0F766E}
+.cs-masthead{background:#E6F5F3}
+.stage{border-top-color:#0F766E}
+.stage-num{color:#0F766E;background:#E6F5F3}
+.metrics-table th{background:#E6F5F3}
+.ba-col.after{border-top-color:#0F766E}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Design Systems</span>
+    <span class="cs-tag">Fintech</span>
+    <span class="cs-tag">B2B</span>
+  </div>
+
+  <h1 class="cs-title">Building the M2P Design System</h1>
+  <p class="cs-subtitle">A full trace from the fragmentation I noticed to the system that replaced it — including the parts that were never formally tested, shown as what they are.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>Lead UX Designer, M2P Fintech</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Scattered mismatched shapes on the left resolving into an aligned grid on the right">
+      <g stroke="#141414" stroke-width="2" fill="none" stroke-linejoin="round">
+        <rect x="46" y="60" width="34" height="34" transform="rotate(-12 63 77)"/>
+        <rect x="120" y="130" width="46" height="30" transform="rotate(8 143 145)"/>
+        <rect x="70" y="150" width="26" height="26" transform="rotate(20 83 163)"/>
+        <circle cx="180" cy="70" r="20"/>
+        <rect x="30" y="140" width="20" height="20" transform="rotate(-25 40 150)"/>
+        <path d="M240 130 L300 130" stroke-width="2.5"/>
+        <path d="M292 122 L300 130 L292 138" stroke-width="2.5"/>
+        <g>
+          <rect x="360" y="70" width="44" height="44" rx="4"/>
+          <rect x="420" y="70" width="44" height="44" rx="4"/>
+          <rect x="480" y="70" width="44" height="44" rx="4"/>
+          <rect x="360" y="130" width="44" height="44" rx="4"/>
+          <rect x="420" y="130" width="44" height="44" rx="4"/>
+          <rect x="480" y="130" width="44" height="44" rx="4"/>
+        </g>
+      </g>
+    </svg>
+    <div class="figure-cap">Fig 01 — Where every M2P product started, and what I set out to build instead</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">M2P runs multiple fintech product teams in parallel — cards, lending, payouts, and more — each shipping fast, each with its own designer. Nobody planned for it, but every team ended up with its own slightly different button, its own slightly different card, its own slightly different spacing scale. As the number of products grew, that stopped being a cosmetic quirk and started being real design debt.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Stakeholders</h4><p>Designers, developers, and project managers across M2P's product teams — the people who would have to adopt and maintain whatever got built.</p></div>
+    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>No shared foundation. Each team maintained its own informal patterns, rebuilt from the last project rather than a governed source.</p></div>
+    <div class="cs-grid-item"><h4>Constraints</h4><p>No dedicated design-systems team or formal mandate — this had to fit around teams already shipping, not pause them.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>Lead UX Designer. I identified the problem myself and drove the initiative — it wasn't assigned to me.</p></div>
+  </div>
+  <div class="gap-note"><b>Evidence gap</b><p>Exact timeline and team size were not preserved in the available documentation. Where a figure isn't backed by a source, this case study says so rather than estimating one.</p></div>
+  <p class="cs-p"><b>Success criteria</b> (confirmed): higher visual and UX consistency across products, measured qualitatively via a before/after audit, and voluntary adoption by teams rather than a mandated rollout.</p>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════ STAGE 01 — EMPATHISE ══════════════ -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">Making sure this wasn't just my opinion</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">From a personal observation to a testable problem</h3>
+      <p class="cs-p">The initial problem was mine to notice, not one handed to me: working across several M2P teams, I kept seeing the same UI problems solved slightly differently each time. That's an assumption until it's checked — so I treated "teams experience this as a real problem" as a hypothesis, not a fact, going in.</p>
+      <ul class="cs-list">
+        <li><b>Known fact:</b> the same basic components (buttons, cards, spacing) were implemented differently across products — directly observable.</li>
+        <li><b>Assumption to test:</b> that other designers, developers, and PMs experienced this as a costly problem, not just a stylistic one I personally noticed.</li>
+        <li><b>Research objective:</b> validate the problem beyond my own pattern-matching, and understand what a shared system would need to include to actually get adopted.</li>
+        <li><b>Research plan:</b> interviews with designers, developers, and project managers; a competitive analysis of design systems at comparable scale; and a wider survey to check the friction wasn't limited to the people I'd already talked to.</li>
+      </ul>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">What the research actually returned</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>The original interview guide and verbatim participant quotes were not preserved in the available documentation. What follows is the documented substance of the findings, not reconstructed quotes.</p></div>
+      <ul class="cs-list">
+        <li><b>Pain points confirmed:</b> fragmented experiences between products, drift from brand guidelines, rising design debt, and slower cross-team collaboration as more products launched.</li>
+        <li><b>Behavioral pattern:</b> teams were re-deciding foundational UI choices on every new project rather than reusing a shared source.</li>
+        <li><b>Needs surfaced:</b> a shared vocabulary for components, and less time spent re-litigating decisions that should already be settled.</li>
+      </ul>
+      <div class="figure">
+        <img src="case-studies/design-system/research-analysis.png" alt="Research methods: interviews, competitive analysis, surveys"/>
+        <div class="figure-cap">Fig 02 — Interviews, competitive analysis, and surveys — how the problem got validated</div>
+      </div>
+      <div class="gap-note"><b>Evidence gap</b><p>Quantified survey results and a formal count of contradictory findings were not documented. Research limitations: this was designer-led research without a dedicated research function, and the sample was the teams available, not a randomized cross-section of M2P.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STAGE 02 — DEFINE ══════════════ -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">What fragmentation was actually costing us</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">Grouping the raw observations into themes</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster">
+          <h4>Inconsistency</h4>
+          <div class="note">Same component, different implementation per product</div>
+          <div class="note">Visual drift from brand guidelines</div>
+          <div class="support">Supporting evidence: direct observation across teams</div>
+        </div>
+        <div class="affinity-cluster">
+          <h4>Redundant effort</h4>
+          <div class="note">Basic UI decisions re-made on every new project</div>
+          <div class="note">Rising design debt each quarter</div>
+          <div class="support">Supporting evidence: interview + survey themes</div>
+        </div>
+        <div class="affinity-cluster">
+          <h4>Collaboration friction</h4>
+          <div class="note">Cross-team work slows as more products launch</div>
+          <div class="note">No shared vocabulary between squads</div>
+          <div class="support">Supporting evidence: stakeholder interviews</div>
+        </div>
+      </div>
+      <p class="cs-p"><b>Observation → Pattern → Insight → Design implication:</b> Teams kept rebuilding the same basic components → the pattern was independent re-solving of already-solved problems → the insight was that no shared foundation existed for basic decisions → the implication was a governed, reusable component and token system, not a style guide nobody enforces.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>The number of individual participants supporting each cluster was not tracked at the time.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Reconstructed from documented themes, not verbatim quotes</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell">
+          <h4>Says (reconstructed)</h4>
+          <ul><li>"We keep rebuilding the same button."</li><li>"There's demand for more shared products / patterns."</li></ul>
+        </div>
+        <div class="empathy-cell">
+          <h4>Thinks</h4>
+          <ul><li>Products feel disjointed to customers moving between them.</li><li>Skeptical that another top-down initiative will actually stick.</li></ul>
+        </div>
+        <div class="empathy-cell">
+          <h4>Does</h4>
+          <ul><li>Rebuilds components per project, often starting from the last one.</li><li>Makes local styling decisions without a shared reference.</li></ul>
+        </div>
+        <div class="empathy-cell">
+          <h4>Feels</h4>
+          <ul><li>Frustrated by repeated, avoidable effort.</li><li>Cautious about adopting something that adds process without removing pain.</li></ul>
+        </div>
+      </div>
+      <p class="cs-p">That skepticism about top-down mandates directly shaped a later decision: the rollout shipped core assets first and iterated from real team feedback, instead of mandating adoption all at once.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Personas / User Segments</div>
+      <h3 class="substep-h3">Segments, not an invented persona</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No individual persona was developed for this initiative, and I'm not fabricating one to fit the template. The real research supports three segments, described honestly below.</p></div>
+      <div class="cs-grid">
+        <div class="cs-grid-item"><h4>Designers</h4><p>Need consistent, reusable components instead of rebuilding from scratch each project.</p></div>
+        <div class="cs-grid-item"><h4>Developers</h4><p>Need clear specs and predictable handoff instead of re-interpreting slightly different patterns per team.</p></div>
+        <div class="cs-grid-item"><h4>Project managers</h4><p>Need cross-product consistency that doesn't cost extra design/dev cycles to maintain.</p></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">The adoption journey, proposed from the known rollout sequence</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A formal journey map with tracked emotions per touchpoint was not produced at the time. What follows is reconstructed from the documented rollout sequence, not from moment-by-moment observation.</p></div>
+      <div class="flow-row">
+        <span class="flow-step">Awareness</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Evaluation</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Adoption</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Advocacy</span>
+      </div>
+      <p class="cs-p">A team learns the system exists → reviews the documented components and tokens against their own product's needs → implements it in a live project → and, where something was missing, requests it be added rather than building around the system. The critical moment for design intervention sits at Evaluation: if the system doesn't clearly solve a team's actual friction at that point, adoption stalls before it starts.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">Symptom, problem, and root cause are not the same thing</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> buttons, cards, and spacing look slightly different across M2P products.</li>
+        <li><b>Problem:</b> no reusable, trusted design foundation exists for teams to build on.</li>
+        <li><b>Root cause:</b> as M2P scaled from one product to many, no ownership or governance mechanism was ever established for shared UI decisions.</li>
+      </ul>
+      <div class="pov-box">
+        <span class="pov-label">Point of view</span>
+        <p>M2P designers and developers need a shared, governed component and token system, because without one, every new product silently re-fragments the experience customers have across M2P.</p>
+      </div>
+      <div class="pov-box">
+        <span class="pov-label">How might we</span>
+        <p>How might we give every M2P product team a consistent design foundation without slowing down the teams already shipping?</p>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">From insight to solution, ranked honestly</h3>
+      <ul class="cs-list">
+        <li><b>Teams rebuild the same components repeatedly</b> → need reusable, trusted components → opportunity: shared component library → solution: an Atomic-Design-based system. <i>Ranked: high impact, high frequency, high feasibility.</i></li>
+        <li><b>Products need light/dark and multi-brand support</b> → need theming without duplicated work → opportunity: a token layer → solution: core/semantic/theme token architecture. <i>Ranked: highest impact, highest severity, lower feasibility — the hardest problem.</i></li>
+        <li><b>Teams are wary of top-down mandates</b> → need low-friction adoption → opportunity: phased rollout → solution: ship core assets first, iterate on real feedback. <i>Ranked: medium impact, high confidence, high feasibility.</i></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STAGE 03 — IDEATE ══════════════ -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">Why Atomic Design — and why I didn't debate it long</h2>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">Impact versus effort, reconstructed from the actual sequencing decisions</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A literal impact/effort matrix wasn't drawn at the time. This reconstructs the reasoning behind the real sequencing choices that were made.</p></div>
+      <div class="matrix">
+        <div class="matrix-cell"><h5>High impact · Low effort — Quick wins</h5><ul><li>Ship existing basic components (buttons, forms, cards) first</li></ul></div>
+        <div class="matrix-cell"><h5>High impact · High effort — Strategic bet</h5><ul><li>Token-based theming across light/dark and multi-brand contexts</li></ul></div>
+        <div class="matrix-cell"><h5>Low impact · Low effort</h5><ul><li>Icon set visual polish</li></ul></div>
+        <div class="matrix-cell"><h5>Low impact · High effort — Deprioritized</h5><ul><li>Custom internal tooling/plugin ecosystem beyond immediate need</li></ul></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Three real alternatives, two rejected quickly and for stated reasons</h3>
+      <ul class="cs-list">
+        <li><b>A — Adopt an existing open-source system</b> (e.g. Material) and skin it. <i>Rejected:</i> didn't fit fintech-specific needs or multi-brand theming tightly enough, and reduced M2P's ability to differentiate.</li>
+        <li><b>B — Build a custom Atomic-Design-based system.</b> <i>Chosen:</i> tailored to the actual constraint — many teams needing to share and scale one foundation without stepping on each other.</li>
+        <li><b>C — Publish guidelines only, no component library.</b> <i>Rejected:</i> wouldn't stop the redundant rebuilding, since guidelines without reusable components have no enforcement mechanism.</li>
+      </ul>
+      <p class="cs-p">I didn't run an extended bake-off between B and the alternatives — the constraints made the answer clear quickly, and pretending otherwise would have just cost time. That's a deliberate call, not a gap in rigor: some decisions are that clear-cut once the constraints are named. The harder decision — theming — was still ahead.</p>
+      <div class="figure">
+        <img src="case-studies/design-system/atomic-design.png" alt="Atomic Design System structure"/>
+        <div class="figure-cap">Fig 03 — Atoms, molecules, and organisms, the structure Brad Frost originally described</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STAGE 04 — PROTOTYPE ══════════════ -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">Theming was where this got genuinely hard</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">From "one file per project" to a layered structure</h3>
+      <p class="cs-p">The user mental model driving this was simple: teams think in terms of "the same component, reused everywhere," not "my project's version of this component." That pushed the IA toward a layered structure — foundations (colour, type, tokens) → components → themes — rather than a flat, undifferentiated pattern list.</p>
+      <ul class="cs-list">
+        <li><b>Before:</b> no shared structure; each team's patterns lived in its own project file.</li>
+        <li><b>After:</b> Foundations → Components → Atomic structure → Themes, documented as one governed hierarchy.</li>
+      </ul>
+      <div class="gap-note"><b>Evidence gap</b><p>Formal card-sorting with teams was not conducted; this hierarchy was derived directly from the token-layering decision below, not a separate IA exercise.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">The task that mattered: adopting a component into a live product</h3>
+      <div class="flow-row">
+        <span class="flow-step">Team needs a screen</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Checks system docs</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Reuses token/component</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Ships consistent screen</span>
+      </div>
+      <p class="cs-p"><b>Edge case handled by design, not by error states:</b> when a team needed a component that didn't exist yet, the answer wasn't a dead end — it was a contribution path back into the system, part of why the rollout was phased rather than fixed at launch.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>This is internal design tooling, not an end-user product — traditional auth/empty/error states weren't the relevant edge cases here, so they aren't fabricated to fit the template. The one documented edge case (missing component) is shown above.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing</div>
+      <h3 class="substep-h3">What's preserved is the high-fidelity documentation, not the exploration</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>Low- and mid-fidelity exploration stages were not preserved in the available files — only the final, high-fidelity system documentation exists to show.</p></div>
+      <p class="cs-p">On the theming screen specifically: the problem it solves is letting any product switch between light, dark, or a brand variant without a rebuild; the interaction decision was a token-swap rather than per-component overrides; the alternative considered and rejected was per-team override files, which is exactly the fragmentation this project existed to remove.</p>
+      <div class="figure">
+        <img src="case-studies/design-system/themes.png" alt="Light and dark theming system"/>
+        <div class="figure-cap">Fig 04 — Light and dark themes, built on the same token layer</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Interaction Design</div>
+      <h3 class="substep-h3">The one interaction decision that mattered most</h3>
+      <blockquote class="cs-quote">The real fight wasn't naming atoms and molecules. It was making one set of tokens hold up across light mode, dark mode, and multiple brand contexts without every team maintaining their own copy.</blockquote>
+      <p class="cs-p">The fix separated the system into layers: core brand primitives that never change, semantic tokens that describe intent (surface, border, accent) rather than a literal value, and theme-level overrides that swap the semantic layer without touching a single component. Switching themes became a configuration change, not a rebuild.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>Component-level interaction detail (form validation, loading, micro-interactions) wasn't documented individually for this system-level initiative. The one confirmed, real interaction/accessibility commitment: the colour system was explicitly built to meet sufficient contrast ratios, not just to look correct.</p></div>
+      <div class="figure">
+        <img src="case-studies/design-system/colors.png" alt="Color and typography system"/>
+      </div>
+      <div class="figure-row">
+        <div class="figure"><img src="case-studies/design-system/components-1.png" alt="Reusable component library"/></div>
+        <div class="figure"><img src="case-studies/design-system/components-2.png" alt="Component library detail"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STAGE 05 — TEST ══════════════ -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">Rolling it out, then proving it worked — honestly</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">What actually validated this wasn't a lab test</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No formal usability-testing framework — hypothesis, recruited participants, task-based sessions, SUS scoring — was run for this initiative. I'm stating that plainly rather than presenting invented sessions or scores. What validated the system instead: real team adoption, tracked qualitatively, and a direct before/after consistency audit.</p></div>
+      <div class="figure">
+        <img src="case-studies/design-system/roadmap.png" alt="Design system rollout roadmap"/>
+        <div class="figure-cap">Fig 05 — The phased rollout that substituted for a single big-bang launch</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Iteration</div>
+      <h3 class="substep-h3">The feedback loop that replaced formal usability rounds</h3>
+      <p class="cs-p">Core assets and documentation shipped first; iterative enhancement followed, driven by real feedback from the teams actually using the system — not a fixed scope decided up front. That sequencing is the direct design change that came out of the empathy-mapping finding that teams were skeptical of top-down mandates.</p>
+      <ul class="cs-list">
+        <li><b>Feedback:</b> teams needed specific missing components → <b>Change:</b> contribution path added to the rollout plan → <b>Expected outcome:</b> the system grows with real usage instead of stalling when it's incomplete.</li>
+      </ul>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Design</div>
+      <h3 class="substep-h3">The system, as shipped</h3>
+      <div class="figure">
+        <img src="case-studies/design-system/core-assets.png" alt="Core assets: typography, color, icons, and components together"/>
+        <div class="figure-cap">Fig 06 — Core assets — the foundation every product now builds on</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">Before/after, stated at the level it was actually measured</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+        <tr><td>Consistency across products</td><td>Fragmented (audited)</td><td>Shared foundation in use</td><td>Improved — qualitative</td></tr>
+        <tr><td>Task completion / time on task</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">No formal test run</td></tr>
+        <tr><td>SUS / satisfaction score</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">No formal test run</td></tr>
+      </table>
+      <div class="ba-row">
+        <div class="ba-col before">
+          <span class="ba-label">Before</span>
+          <p>Inconsistent components, drifting styles, and duplicated effort across product teams — no shared source of truth.</p>
+        </div>
+        <div class="ba-col after">
+          <span class="ba-label">After</span>
+          <p>A shared foundation every team builds on — visibly fewer brand and UI deviations across M2P's products.</p>
+        </div>
+      </div>
+      <div class="figure">
+        <img src="case-studies/design-system/audit-and-stock.png" alt="Audit of inconsistent components across M2P products"/>
+        <div class="figure-cap">Fig 07 — The audit that started this project, and the standard it was measured against afterward</div>
+      </div>
+      <p class="cs-p"><b>What improved:</b> visible consistency and a shared foundation teams actually reference. <b>What didn't improve, or remains unmeasured:</b> there's no tracked compliance metric across every team, and adoption depth varies by product. <b>What surprised me:</b> the structural decision (Atomic Design) was the easy 20% — theming was where the real design problem lived. <b>What's next:</b> extend the token system to new product lines as they launch, grow coverage of complex composite patterns, and formalize contribution guidelines so teams add back to the system, not just consume it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Outcome</h2>
+  <p class="cs-p" style="font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:19px;color:#3d3d3d">Research → Insight → Problem → Opportunity → Priority → IA → Flow → Design → Iterate → Validate. Not every link in that chain was backed by a formal test — and this case study says exactly where that's true, rather than implying otherwise.</p>
+
+  <h2 class="cs-h2" style="margin-top:32px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Validate before you build</div>
+      <div class="learning-p">Checking my own assumptions against designers and developers across teams mattered more than I expected — it changed which problems I prioritized.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Name the specific cost, not the symptom</div>
+      <div class="learning-p">"Inconsistent" isn't actionable. Fragmented experiences, brand drift, and design debt are.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Not every decision needs to be hard-won</div>
+      <div class="learning-p">Atomic Design was the obvious right fit given the constraints, and it was fine to just say so.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">The hardest problem hides in the infrastructure</div>
+      <div class="learning-p">Theming, not the component library, was where this project was actually won or lost.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Say plainly what wasn't tested</div>
+      <div class="learning-p">No formal usability testing ran here. Saying so is more credible than presenting adoption as if it were validated the same way a tested product would be.</div>
+    </div>
+  </div>
+
+  <div class="cs-signoff">
+    <p>M2P Design System — a UX Case Study by Ayyappan Rajendiran</p>
+    <p><a href="https://www.figma.com/design/zm7VV5zntCySRQGGa5nDzg/Portfolio?node-id=938-4733" target="_blank">View Figma File →</a> &nbsp;·&nbsp; <a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>
