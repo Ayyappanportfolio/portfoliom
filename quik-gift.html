@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QuikGift — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — a festive rose distinct to this gifting product, used sparingly */
+.cs-tag{border-color:#C2185B;color:#C2185B}
+.cs-section-label{color:#C2185B}
+.cs-quote{border-left-color:#C2185B}
+.cs-h2{border-left-color:#C2185B}
+.stage-def{border-left-color:#C2185B}
+.stage-icon-badge{background:#FBE4EC}
+.stage-icon-badge svg{stroke:#C2185B}
+.roadmap circle{fill:#C2185B !important}
+.cs-list li b{color:#C2185B}
+a{color:#C2185B}
+.cs-masthead{background:#FBE4EC}
+.stage{border-top-color:#C2185B}
+.stage-num{color:#C2185B;background:#FBE4EC}
+.metrics-table th{background:#FBE4EC}
+.ba-col.after{border-top-color:#C2185B}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Enterprise</span>
+    <span class="cs-tag">HR Tech</span>
+    <span class="cs-tag">B2B</span>
+  </div>
+
+  <h1 class="cs-title">Designing QuikGift</h1>
+  <p class="cs-subtitle">A peer-to-peer recognition platform built to live inside Microsoft Teams — the full trace, including exactly where the process stopped before a formal user test.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Designer</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <img src="case-studies/quik-gift/cover-about.png" alt="QuikGift dashboard and product overview"/>
+    <div class="figure-cap">Fig 01 — QuikGift: a Microsoft Azure-based B2C corporate rewards application</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">QuikGift is a corporate rewards platform for sending and receiving recognition between colleagues — integrated directly into Microsoft Teams so it lives inside the tool people already use all day, rather than becoming one more app nobody opens.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Business context</h4><p>Employee recognition fails quietly when it happens outside daily workflow — especially in remote/hybrid teams. That absence compounds into lower motivation and productivity.</p></div>
+    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>No unified recognition tool — appreciation happened ad hoc, outside any system that could track or reinforce it.</p></div>
+    <div class="cs-grid-item"><h4>Constraints</h4><p>Had to work as a Microsoft Teams-embedded experience, not a standalone app competing for attention.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>UX Designer — stakeholder research, persona development, competitive analysis, and the shipped design.</p></div>
+  </div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHISE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">Four business goals that all point at the same friction</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">Testing whether "add a rewards app" was even the right frame</h3>
+      <p class="cs-p">The assumption to check: that recognition was failing for lack of a good enough rewards app. Stakeholder input suggested something narrower and more specific — recognition was failing because it required leaving the tools people already worked in.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">Four goals, three real constraints, three user groups</h3>
+      <ul class="cs-list">
+        <li><b>Workplace Engagement Catalyst</b> — foster a culture of appreciation, empowering colleagues to recognize each other seamlessly.</li>
+        <li><b>Integrated Recognition Hub</b> — a fully embedded solution within Microsoft Teams, frictionless without leaving daily workflow.</li>
+        <li><b>Holistic Rewards Ecosystem</b> — peer-to-peer recognition plus real analytics and reporting for HR and management.</li>
+        <li><b>Recognition Experience Expert</b> — tailored, personalized reward options that understand workplace dynamics.</li>
+      </ul>
+      <p class="cs-p">Three real challenges sat underneath those goals: a workplace culture that doesn't already prioritize recognition is hard to shift by adding software alone; employee data and reward distribution raise real compliance and privacy questions; and a reliable payment processing system means genuine technical complexity.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/challenges-usergroups.png" alt="Business challenges and the three user groups for QuikGift"/>
+        <div class="figure-cap">Fig 02 — The real constraints: culture, compliance, and technical complexity</div>
+      </div>
+      <p class="cs-p">Three distinct groups needed this to work for different reasons: <b>employees</b> sending and receiving recognition day to day, <b>managers</b> recognizing their teams and tracking engagement, and <b>HR</b> overseeing the program and needing to prove it was working.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>The original stakeholder interview guide and count of participants weren't preserved beyond the goals and challenges documented above.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 02 — DEFINE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">A manager and an HR lead want the same feature for different reasons</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">Clustering the goals and challenges</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster"><h4>Friction to recognize</h4><div class="note">Recognition requires leaving daily workflow</div></div>
+        <div class="affinity-cluster"><h4>Proof of impact</h4><div class="note">No way to measure whether recognition works</div></div>
+        <div class="affinity-cluster"><h4>Trust &amp; compliance</h4><div class="note">Employee data and reward distribution raise privacy questions</div></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Two personas, two very different emotional registers</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell"><h4>Says (persona-documented)</h4><ul><li>Jenita: "I want to recognize my team more."</li><li>Ram: "I can't prove this program is working."</li></ul></div>
+        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Jenita worries recognition feels like an extra task, not a habit.</li><li>Ram worries leadership will cut the program without data.</li></ul></div>
+        <div class="empathy-cell"><h4>Does</h4><ul><li>Jenita recognizes inconsistently, when she remembers to.</li><li>Ram manually compiles whatever data he can find.</li></ul></div>
+        <div class="empathy-cell"><h4>Feels</h4><ul><li>Jenita: guilty about not recognizing her team enough.</li><li>Ram: exposed, defending a program he can't fully measure.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Personas</div>
+      <h3 class="substep-h3">Jenita Mary and Ram Prasath — real, documented, not invented</h3>
+      <p class="cs-p"><b>Jenita Mary</b>, a manager in Chennai running a team of ten, wants to recognize achievements regularly but struggles to find time for personalized recognition amid a busy schedule, and has no clear way to see whether her recognition is actually landing.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/persona-jenita.png" alt="Jenita Mary persona, manager in Chennai"/>
+        <div class="figure-cap">Fig 03 — Jenita needs recognition to be fast enough to actually fit into her day</div>
+      </div>
+      <p class="cs-p"><b>Ram Prasath</b>, Lead HR in Bangalore, owns the program at a different altitude: managing volumes of recognition data with no clear way to analyze trends, and struggling to quantify the ROI of the recognition program to leadership.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/persona-ram-competitors.png" alt="Ram Prasath persona, Lead HR in Bangalore"/>
+        <div class="figure-cap">Fig 04 — Ram needs the same data Jenita generates, but rolled up and defensible to leadership</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">Not documented as a formal journey map</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>Individual journey maps for Jenita and Ram weren't produced. Their needs are captured as goals/pain points above rather than a stage-by-stage emotional path.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">"Better visibility" is two different features</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> both a manager and an HR lead ask for "better visibility" into recognition.</li>
+        <li><b>Problem:</b> that phrase means a fast personal view for one and a defensible analytics rollup for the other.</li>
+        <li><b>Root cause:</b> no existing tool served both altitudes from the same underlying data.</li>
+      </ul>
+      <div class="pov-box"><span class="pov-label">How might we</span><p>How might we make recognition fast enough for a manager's daily habit, while giving HR the aggregated proof they need to defend the program?</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">One data model, named as the opportunity early</h3>
+      <p class="cs-p">"Visibility" meaning two different things → need for both a fast personal view and a rolled-up analytical one → opportunity: one shared data model → solution: a personal recognition hub and a separate HR dashboard, detailed in Stage 04.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 03 — IDEATE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">None of the closest competitors were actually competitors</h2>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">Three real strengths, none of them complete</h3>
+      <p class="cs-p">Peer Fives does social recognition well but offers little beyond it. Viva Insights (Microsoft's own product) has strong data insight but isn't engaging day to day. Starbucks has neither social recognition nor productivity insight, but nobody does gamification and repeat engagement better.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/competitor-comparison-table.png" alt="Feature comparison table: Peer Fives, Viva Insights, and Starbucks"/>
+        <div class="figure-cap">Fig 05 — No single competitor covered social recognition, data insight, and gamification at once</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Borrowing deliberately from outside the category</h3>
+      <p class="cs-p">That comparison directly shaped the brief: build the social recognition layer Peer Fives does well, back it with the analytics rigor Viva Insights users expect from Microsoft's own ecosystem, and borrow enough of Starbucks' gamification instinct to make recognition something people want to keep doing.</p>
+      <p class="cs-p"><b>Alternative considered and rejected:</b> building only the HR analytics layer first, treating the personal recognition experience as a later phase. Rejected because the research showed recognition dies without a fast, frictionless entry point — building the dashboard first would have had nothing to report on.</p>
+      <div class="stage-reflect"><b>The takeaway</b>The right competitive set isn't always your direct competitors. Starbucks taught this project more about repeat engagement than any HR tech product did.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — PROTOTYPE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">A dashboard for Ram, a landing page for Jenita — one product</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">Split by altitude, not by feature</h3>
+      <p class="cs-p">One underlying data model, two entry points: a personal hub for fast, individual recognition, and an HR dashboard for the aggregated, exportable view.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">Send recognition, and pull a report</h3>
+      <div class="flow-row">
+        <span class="flow-step">Open Teams hub</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Pick colleague + reward</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Send</span><span class="flow-arrow">→</span>
+        <span class="flow-step">HR views rollup on dashboard</span>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing</div>
+      <h3 class="substep-h3">Low-fidelity first, to test the split before styling it</h3>
+      <p class="cs-p">Wireframes stayed low-fidelity first specifically to test whether one information architecture could genuinely serve both the fast, personal act of sending recognition and the aggregated, analytical view HR needed.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/swot-wireframes.png" alt="Competitor SWOT analysis and early wireframes"/>
+        <div class="figure-cap">Fig 06 — SWOT analysis on the competitive set, and the wireframes it informed</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Interaction Design</div>
+      <h3 class="substep-h3">Two interfaces, one visual system</h3>
+      <p class="cs-p">The shipped design split cleanly: a personal app landing page — "The Peer-to-Peer Gifting Hub" — as the fast, human entry point, and a separate analytics dashboard giving HR and managers the aggregated, exportable view Ram Prasath needed to defend the program's ROI.</p>
+      <div class="figure">
+        <img src="case-studies/quik-gift/visual-design-final.png" alt="Final visual design: personal landing page, dashboard, and sending gift flow"/>
+        <div class="figure-cap">Fig 07 — The personal landing page and the HR dashboard, sharing one visual system</div>
+      </div>
+      <div class="stage-reflect"><b>The takeaway</b>Serving two very different jobs-to-be-done didn't mean building two products — it meant designing two entry points into the same underlying data.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — TEST -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">User testing was scoped into the process — the honest scorecard</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">Named as the final stage — not run within this documented scope</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>The design process for QuikGift explicitly named user testing as its final stage, alongside empathy, define, ideate, and design. No session — participants, tasks, scores — was documented within the material available for this case study, and I'm not backfilling results I can't verify.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">What Would Make Testing Meaningful</div>
+      <h3 class="substep-h3">The structure that was actually built for it</h3>
+      <p class="cs-p">Two personas with genuinely different success criteria, a competitive analysis that named specific, testable feature gaps, and two distinct interfaces — the personal hub and the HR dashboard — that could each be evaluated against the persona they were built for. That's the scaffolding a real test would have been run against.</p>
+      <div class="stage-reflect"><b>The takeaway</b>A test is only as good as the personas and criteria it's run against. Getting Jenita's and Ram's actual needs right up front is what would have made that final testing stage worth running.</div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">Stated at the level it was actually reached</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Result</th></tr>
+        <tr><td>Personas with distinct success criteria</td><td>2 (Jenita, Ram)</td></tr>
+        <tr><td>Competitor capability gaps identified</td><td>3 (Peer Fives, Viva Insights, Starbucks)</td></tr>
+        <tr><td>Task completion / satisfaction score</td><td class="na">Not measured — usability round not documented as run</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Recognition fails at the point of friction, not intent</div>
+      <div class="learning-p">Nobody in this research lacked the desire to recognize colleagues. They lacked a fast enough way to do it inside their actual workflow.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">The same word can hide two different features</div>
+      <div class="learning-p">"Visibility" meant a quick personal view for Jenita and a defensible analytics rollup for Ram — conflating them would have underserved both.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Borrow from outside your category on purpose</div>
+      <div class="learning-p">Starbucks isn't an HR platform, but its rewards program is a masterclass in repeat engagement.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Naming a test stage isn't the same as running one</div>
+      <div class="learning-p">The process document said "test." This case study only claims what that stage actually produced.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: QuikGift's real competition was never another rewards app. It was the extra ten seconds of effort that decides whether recognition happens at all.</p>
+
+  <div class="cs-signoff">
+    <p>QuikGift — a UX Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

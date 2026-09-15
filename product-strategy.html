@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M2P UX Strategy — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — M2P red, used sparingly */
+.cs-tag{border-color:#D02127;color:#D02127}
+.cs-section-label{color:#D02127}
+.cs-quote{border-left-color:#D02127}
+.cs-h2{border-left-color:#D02127}
+.stage-def{border-left-color:#D02127}
+.stage-icon-badge{background:#FCEBEC}
+.stage-icon-badge svg{stroke:#D02127}
+.roadmap circle{fill:#D02127 !important}
+.cs-list li b{color:#D02127}
+a{color:#D02127}
+.cs-masthead{background:#FCEBEC}
+.stage{border-top-color:#D02127}
+.stage-num{color:#D02127;background:#FCEBEC}
+.metrics-table th{background:#FCEBEC}
+.ba-col.after{border-top-color:#D02127}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Strategy</span>
+    <span class="cs-tag">UX Maturity</span>
+    <span class="cs-tag">Fintech</span>
+  </div>
+
+  <h1 class="cs-title">An Honest UX Audit of M2P</h1>
+  <p class="cs-subtitle">Not a product case study — a strategy one. After two days actually sitting with the product and design teams, the real finding wasn't a broken screen. It was a design function with no seat at the table.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Strategy, M2P Fintech</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <img src="case-studies/product-strategy/cover-canvas.png" alt="M2P Business Model Canvas"/>
+    <div class="figure-cap">Fig 01 — Starting from the business model, not the interface</div>
+  </div>
+
+  <p class="cs-p lede">M2P sits at the intersection of finance and technology — banking-as-a-service infrastructure for banks, NBFCs, lending startups, gold loan providers, forex houses, and eCommerce merchants. Before proposing anything about design, I mapped the actual business: who M2P's partners are, what it sells, who pays for it, and where the money and risk actually sit.</p>
+
+  <h2 class="cs-h2">The Project</h2>
+  <p class="cs-p">This wasn't commissioned as a product redesign. It started as two days of quick findings from sitting with the product team and the design team, and it grew into a fuller strategic assessment: where is UX actually positioned at M2P today, what is that costing the business, and what's a realistic first move rather than a five-year transformation plan nobody will fund?</p>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five steps: The Business, The Case for UX, Honest Assessment, The Plan, Principles">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="13" fill="#141414" font-weight="700">The Business</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="13" fill="#141414" font-weight="700">Case for UX</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="13" fill="#141414" font-weight="700">Assessment</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="13" fill="#141414" font-weight="700">The Plan</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="13" fill="#141414" font-weight="700">Principles</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STEP 01 -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Step 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><rect x="6" y="8" width="28" height="24" rx="2"/><line x1="6" y1="16" x2="34" y2="16"/><line x1="16" y1="16" x2="16" y2="32"/></svg></span>
+    <span class="cs-section-label">The Business</span>
+    <h2 class="cs-h2">Reading M2P as a business before touching a single screen</h2>
+    <p class="stage-def">A Business Model Canvas isn't a design artifact. It's the fastest way to find out whether a UX problem is actually a UX problem, or a business-model problem wearing a UI complaint.</p>
+    <p class="cs-p">Key partners span investors, banks, corporates, and eCommerce or third-party merchants. Core activities are security, platform R&D and maintenance, data analytics, algorithm development, and sales and support. The value proposition is squarely infrastructural: helping businesses accept digital payments efficiently through powerful Banking-as-a-Service APIs, with an emphasis on speed and reduced payment friction.</p>
+    <p class="cs-p">Customer segments told the real story: banks wanting to go digital-first, microfinance companies, gold loan providers, lending startups, forex houses, insurance companies, eCommerce merchants, and travellers — a genuinely wide B2B and B2B2C base, each with different stakes in whether M2P's products feel trustworthy and easy to integrate.</p>
+    <div class="stage-reflect"><b>The takeaway</b>A platform selling trust and infrastructure to banks has a much lower tolerance for "confusing but functional" UI than a consumer app does. That's a business fact, not a design opinion.</div>
+  </div>
+</section>
+
+<!-- STEP 02 -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Step 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">The Case for UX</span>
+    <h2 class="cs-h2">"UX cannot happen without users" — across three very different product lines</h2>
+    <p class="stage-def">M2P's product suite spans Payments, Lending, and Banking — each with genuinely different users, contexts, and risk profiles. A generic design team without a unifying vision was always going to produce three inconsistent products.</p>
+    <ul class="cs-list">
+      <li><b>Payments</b> — wallets and cards, just-in-time funding, cross-border, gift, fleet, UPI, and acceptance.</li>
+      <li><b>Lending</b> — consumer, corporate, SME, and credit card products.</li>
+      <li><b>Banking</b> — accounts, deposits, and investments.</li>
+    </ul>
+    <div class="figure">
+      <img src="case-studies/product-strategy/product-suite-goals.png" alt="M2P product suite and UX goals"/>
+      <div class="figure-cap">Fig 02 — Three product lines, one design function, and the goals it needed to serve</div>
+    </div>
+    <p class="cs-p">The case for investing in UX leadership rested on making that vision concrete: a unified customer experience across products that depend on each other, clear brand values, and scalability — not a slogan about "world-class design," but a specific, arguable position on what a UX head would actually be responsible for building and defending.</p>
+    <div class="stage-reflect"><b>The takeaway</b>"We need better UX" is not a business case. "Three product lines are shipping inconsistent experiences to the same bank customer" is.</div>
+  </div>
+</section>
+
+<!-- STEP 03 -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Step 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Honest Assessment</span>
+    <h2 class="cs-h2">Placing M2P honestly on the UX maturity curve — stage 2 of 6</h2>
+    <p class="stage-def">Rather than asserting "our UX needs work," I benchmarked M2P against the Nielsen Norman Group's UX maturity model — six stages from Absent to User-driven — and placed it honestly, not flatteringly.</p>
+    <div class="figure">
+      <img src="case-studies/product-strategy/maturity-model.png" alt="Nielsen Norman Group UX maturity model, with M2P assessed at stage 2: Limited"/>
+      <div class="figure-cap">Fig 03 — M2P assessed at "Limited": uneven, haphazard, aspirational</div>
+    </div>
+    <p class="cs-p">That assessment was backed by specifics, not vibes. Reviewing M2P's own live web portals directly — including its forex and default web-app portals — surfaced a consistent pattern: a unified visual experience in places, but standards that were plain, dated, and inconsistently applied; a lack of holistic and business context in the design process; and real gaps in what the team actually knew about its users' needs, goals, and pain points. Ongoing redesign work at the time (PRDs, a branding style guide) showed effort already underway — the gap was coordination, not motivation.</p>
+    <div class="figure">
+      <img src="case-studies/product-strategy/web-portal-findings.png" alt="Findings from reviewing M2P's live web portals"/>
+      <div class="figure-cap">Fig 04 — What reviewing the actual live portals surfaced, threats included</div>
+    </div>
+    <div class="gap-note"><b>Evidence gap</b><p>This assessment came from a two-day review and direct portal inspection, not a formal audit with scored criteria or a documented sample size. It's presented as what it was — a fast, honest first read — not a statistically rigorous study.</p></div>
+    <div class="stage-reflect"><b>The takeaway</b>Naming the maturity stage honestly — "Limited," not "developing" or some softer euphemism — is what makes a UX investment case credible to people who've heard vague design pitches before.</div>
+  </div>
+</section>
+
+<!-- STEP 04 -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Step 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">The Plan</span>
+    <h2 class="cs-h2">Redesign just one product — not the whole portfolio at once</h2>
+    <p class="stage-def">The honest threats identified — disagreements among stakeholders, unclear goals, an ineffective action plan — pointed away from a big-bang transformation and toward a scoped, provable first step.</p>
+    <p class="cs-p">The plan started with specific people, not abstractions: learning directly from stakeholders like Vijay Subramanian and Ellappa Shanmugasundaram why a redesign was needed, who the users actually are and how they differ, how frequently they'd use the product, and — critically — what metrics would actually define success.</p>
+    <div class="matrix">
+      <div class="matrix-cell"><h5>High impact · Low effort — the actual pick</h5><ul><li>Redesign one scoped product, with named stakeholders and metrics</li></ul></div>
+      <div class="matrix-cell"><h5>High impact · High effort — rejected for now</h5><ul><li>Redesign the full three-product portfolio simultaneously</li></ul></div>
+      <div class="matrix-cell"><h5>Low impact · Low effort</h5><ul><li>A cosmetic style-guide refresh with no process change</li></ul></div>
+      <div class="matrix-cell"><h5>Low impact · High effort — rejected</h5><ul><li>A multi-year UX transformation program with no near-term proof point</li></ul></div>
+    </div>
+    <div class="figure">
+      <img src="case-studies/product-strategy/plan-principles.png" alt="The action plan: learn from stakeholders, understand user goals, prepare the team"/>
+      <div class="figure-cap">Fig 05 — A plan built around specific people and specific questions, not a generic framework</div>
+    </div>
+    <p class="cs-p">From there: understand user goals through properly sampled research (novice and expert users, a real mix of demographics, not just whoever was easiest to reach), and prepare the team with a concrete UX checklist — identify the vital few tasks using an 80/20 lens, do a structured review, report and discuss issues, and build toward standardized, close-knit design and engineering integration rather than one-off fixes.</p>
+    <div class="stage-reflect"><b>The takeaway</b>"Redesign everything" is a plan nobody can be held accountable to. "Redesign one product, with named stakeholders and named metrics" is a plan that can actually succeed or fail visibly.</div>
+  </div>
+</section>
+
+<!-- STEP 05 -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Step 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4L20 4c-8 0-14 5-16 12 3-2 6-3 9-3-2 3-3 6-3 10 4-3 7-5 10-5-1 3-1 6 0 9 3-4 5-8 6-13 4 1 7 3 9 6 1-8-5-14-15-16z"/></svg></span>
+    <span class="cs-section-label">Principles</span>
+    <h2 class="cs-h2">"Don't make me think" doesn't stop applying just because the user is a bank</h2>
+    <p class="stage-def">B2B UX in fintech gets treated as exempt from consumer design rigor more often than it should. The principles guiding this plan explicitly rejected that.</p>
+    <ul class="cs-list">
+      <li>Steve Krug's core rule — let people accomplish their intended tasks as easily and directly as possible — applied to bank operators and compliance officers just as much as to end consumers.</li>
+      <li>Persuasion has an ethical line: seek consent, respect users' time and attention, and stay alert to the difference between straightforward recommendation and manipulation.</li>
+      <li>Deceptive patterns are a named risk, not a hypothetical one — dark patterns that trick users into auto-renewals, hidden subscriptions, or confusing settings erode exactly the trust a banking infrastructure company depends on.</li>
+    </ul>
+    <div class="figure">
+      <img src="case-studies/product-strategy/ux-checklist-fintech.png" alt="Cloud of UX objects checklist, and why good design matters specifically in fintech"/>
+      <div class="figure-cap">Fig 06 — Why the stakes for good — and honest — design are specifically higher in fintech</div>
+    </div>
+    <p class="cs-p">Fintech sits at the intersection of finance and technology, competing with banks while depending on their trust and their rules. Good design earns loyalty and repeat use; bad design costs more than it saves, because a bad reputation in this industry is expensive to reverse. That's the case, in the end, for treating UX as a strategic differentiator rather than a cosmetic layer applied at the end.</p>
+    <div class="stage-reflect"><b>The takeaway</b>In an industry where the customer is a bank and the end user is that bank's customer, deceptive design doesn't just risk a bad review — it risks the B2B relationship the entire business depends on.</div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Start with the business model, not the backlog</div>
+      <div class="learning-p">Understanding M2P's actual partners, segments, and revenue model is what kept the UX recommendations grounded in the business, not just design taste.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Name the maturity stage honestly</div>
+      <div class="learning-p">Calling M2P's UX maturity "Limited" against a real external model carried more weight than any internal opinion could.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Scope down to one provable win</div>
+      <div class="learning-p">A plan to redesign one product, with named stakeholders and named metrics, is achievable. A plan to fix everything at once usually isn't.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">B2B doesn't lower the ethical bar</div>
+      <div class="learning-p">Deceptive patterns cost a fintech infrastructure company more than most, because its entire business is built on institutional trust.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: this document didn't ship a screen. It made the case, with real evidence and real names, for why design needed a seat at the table before the next screen got shipped.</p>
+
+  <div class="cs-signoff">
+    <p>M2P UX Strategy — a Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

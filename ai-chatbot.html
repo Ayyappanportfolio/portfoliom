@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Verizon ChatBot UX Audit — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — a warm amber distinct to this audit, used sparingly */
+.cs-tag{border-color:#B7791F;color:#B7791F}
+.cs-section-label{color:#B7791F}
+.cs-quote{border-left-color:#B7791F}
+.cs-h2{border-left-color:#B7791F}
+.stage-def{border-left-color:#B7791F}
+.stage-icon-badge{background:#FAF0DC}
+.stage-icon-badge svg{stroke:#B7791F}
+.roadmap circle{fill:#B7791F !important}
+.cs-list li b{color:#B7791F}
+a{color:#B7791F}
+.cs-masthead{background:#FAF0DC}
+.stage{border-top-color:#B7791F}
+.stage-num{color:#B7791F;background:#FAF0DC}
+.metrics-table th{background:#FAF0DC}
+.ba-col.after{border-top-color:#B7791F}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">AI/ML</span>
+    <span class="cs-tag">Enterprise</span>
+    <span class="cs-tag">B2B</span>
+  </div>
+
+  <h1 class="cs-title">Auditing Verizon's Business ChatBot</h1>
+  <p class="cs-subtitle">A 65% success rate looked fine on a dashboard. The full trace of the audit that showed why the business team still didn't trust it — and where the process genuinely stopped.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Designer, Innova Solutions — for Verizon</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <img src="case-studies/ai-chatbot/verizon-overview-challenges.png" alt="Verizon Business Support ChatBot overview and business challenges"/>
+    <div class="figure-cap">Fig 01 — The existing Verizon Business Support chatbot, and what it was actually failing at</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">Innova Solutions was engaged to evaluate Verizon's existing Business Support chatbot and hand back a structured case for what to fix and why. This isn't a redesign-and-ship story — it's an audit story, and I'd rather show it as exactly that than dress it up as something it wasn't.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Business context</h4><p>The chatbot handles registration, account management, billing, and payments for business customers, independent of a live agent.</p></div>
+    <div class="cs-grid-item"><h4>Existing metric</h4><p>A 65% average success rate — technically healthy, still generating business-team complaints.</p></div>
+    <div class="cs-grid-item"><h4>Success criteria</h4><p>Improve usability and engagement, reduce reliance on live agents, increase the customer stickiness good self-service earns.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>UX audit lead — framework design, evaluation, competitive research, and recommendation mockups.</p></div>
+  </div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHISE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">A success-rate number that didn't match how it felt to use</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">The metric said one thing, the business team said another</h3>
+      <p class="cs-p">65% success is a number a dashboard is happy with and a business team still complains about. I treated that gap itself as the research question, rather than assuming the chatbot was simply "fine" because the topline number looked acceptable.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">Three pain points from the team using it day to day</h3>
+      <ul class="cs-list">
+        <li><b>Limited visibility</b> into what the chatbot could actually do.</li>
+        <li><b>An experience gap on the business side</b> — the internal team itself wasn't trained or onboarded on the product.</li>
+        <li><b>Usability friction</b> that made even simple interactions feel harder than they should.</li>
+      </ul>
+      <div class="gap-note"><b>Evidence gap</b><p>This audit's research base was internal business-team input and direct product evaluation, not moderated interviews with external Verizon business customers. No customer-facing interview transcripts or survey data were part of this engagement's scope.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 02 — DEFINE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">Building a lens before forming an opinion</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">Three complaints, one root pattern</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster"><h4>Visibility</h4><div class="note">Users can't tell what the bot can do</div></div>
+        <div class="affinity-cluster"><h4>Internal readiness</h4><div class="note">Business team not trained on the product they support</div></div>
+        <div class="affinity-cluster"><h4>Usability friction</h4><div class="note">Simple interactions harder than they should be</div></div>
+      </div>
+      <p class="cs-p"><b>Pattern → Insight:</b> all three complaints point at the same root — the chatbot was evaluated on task completion, never on comprehension or confidence.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Reconstructed from internal team feedback, not customer quotes</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell"><h4>Says (reconstructed, internal team)</h4><ul><li>"Customers don't know what this bot can actually help with."</li></ul></div>
+        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Assumes the 65% number means the product is basically working.</li></ul></div>
+        <div class="empathy-cell"><h4>Does</h4><ul><li>Fields escalations from customers who gave up on the bot.</li></ul></div>
+        <div class="empathy-cell"><h4>Feels</h4><ul><li>Defensive about a metric that doesn't match daily experience.</li></ul></div>
+      </div>
+      <div class="gap-note"><b>Evidence gap</b><p>This reflects the internal business team's perspective, documented in the engagement. No direct empathy mapping of Verizon's external business customers was conducted in this phase.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Personas</div>
+      <h3 class="substep-h3">Not developed at this stage</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No individual customer persona was built. The audit evaluated the product against a defined user group — Verizon business customers using self-service — rather than a named individual, which is consistent with an audit's scope versus a full product redesign.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">Not produced in this phase</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A journey map wasn't part of this audit's deliverables. The bill-pay flow in Stage 04 documents the one task sequence that was mapped in detail.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">From a defensible metric to an indefensible experience</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> business-team complaints despite a 65% success rate.</li>
+        <li><b>Problem:</b> the chatbot is evaluated on task completion, not on whether users understand what happened or what to do next.</li>
+        <li><b>Root cause:</b> no structured UX evaluation had ever been run against the product — only the completion metric existed.</li>
+      </ul>
+      <div class="pov-box"><span class="pov-label">Point of view</span><p>"A good user experience doesn't typically happen by accident. It's the result of careful planning, deep-dive research, analysis, investment of time and money, and continuous improvement."</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">The direct answer: build the missing lens</h3>
+      <p class="cs-p">No structured evaluation existed → need a lens broader than task completion → opportunity: a named, criteria-based framework → solution: Direct, Orient &amp; Guide, Engage, Inform, Connect.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/review-framework.png" alt="The five-dimension review framework: Direct, Orient and Guide, Engage, Inform, Connect"/>
+        <div class="figure-cap">Fig 02 — Direct, Orient &amp; Guide, Engage, Inform, Connect — the framework built to evaluate before recommending anything</div>
+      </div>
+      <ul class="cs-list">
+        <li><b>Direct</b> — are users routed effectively to and within the right channel?</li>
+        <li><b>Orient &amp; Guide</b> — do the key pages orient and guide users effectively?</li>
+        <li><b>Engage</b> — are users effectively engaged to drive conversion?</li>
+        <li><b>Inform</b> — are users sufficiently informed to perform tasks?</li>
+        <li><b>Connect</b> — are users successfully able to accomplish tasks without challenges?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 03 — IDEATE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">Learning the category before recommending anything in it</h2>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Mapping the solution space before naming a fix</h3>
+      <p class="cs-p">Before proposing what Verizon's chatbot should become, I mapped what a chatbot even is across the spectrum — rule-based versus conversational AI. A rule-based chatbot operates on predefined rules with static responses; conversational AI simulates genuine understanding via NLP, NLU, NLG, and deep learning. That distinction set the ceiling on what "Inform" and "Connect" could realistically achieve without a platform-level change, not just a UI one.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/chatbot-mechanisms.png" alt="Rule-based versus conversational AI chatbot mechanisms"/>
+        <div class="figure-cap">Fig 03 — Rule-based versus conversational AI — the ceiling on what a redesign alone could fix</div>
+      </div>
+      <p class="cs-p">Industry best practices were brought in as design principles, not decoration: omni-channel and cross-channel continuity, automatic fallback so a misunderstood query never dead-ends, a multimodal interface, and a deliberate greeting/mascot design.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/best-practices.png" alt="Best practices: omni-channel, cross-channel, automatic fallback, multimodal interface"/>
+        <div class="figure-cap">Fig 04 — The best practices used as design principles, not just inspiration</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">A sourced competitive gap analysis, in place of a formal matrix</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No formal impact/effort matrix was produced for this audit. In its place, the competitive teardown below functioned as the de facto prioritization — capabilities every competitor had that Verizon's bot didn't.</p></div>
+      <p class="cs-p">Verizon's own VirtualAssistant was benchmarked directly against AT&T, T-Mobile, and Vodafone across eleven concrete capabilities — from contextual user history to predictive issue resolution to IoT device integration — sourced and cited rather than asserted from memory.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/competitor-analysis.png" alt="Competitor analysis comparing Verizon, AT&T, T-Mobile, and Vodafone chatbot capabilities"/>
+        <div class="figure-cap">Fig 05 — Verizon against AT&T, T-Mobile, and Vodafone, feature by feature, sourced and cited</div>
+      </div>
+      <div class="stage-reflect"><b>The takeaway</b>Every competitor had features Verizon's bot didn't. Knowing exactly which ones, and why they mattered, is what turns "we should be more like the competition" into a prioritized list.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — PROTOTYPE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">Making "Inform" and "Connect" concrete, not theoretical</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">Popular topics first, not an empty prompt</h3>
+      <p class="cs-p">The entry point leads with a popular-topics grid — upgrade order, latest deals, check status, billing and payments, manage plan, manage account — instead of an empty text box asking the user to guess what the bot can help with. A visible settings panel and an upfront, honest disclosure that the user is talking to a digital assistant address the "Direct" and "Inform" gaps directly.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/mockups-entry-settings.png" alt="VZ Bot mockups: welcome greeting, privacy disclosure, settings, and popular topics"/>
+        <div class="figure-cap">Fig 06 — The VZ Bot entry experience: popular topics first, settings visible, no guessing what it can do</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">Bill-pay, mapped step by step</h3>
+      <div class="flow-row">
+        <span class="flow-step">Select bill</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Review amount</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Choose/add payment method</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Confirm</span>
+      </div>
+      <p class="cs-p">Billing and payments — one of the highest-stakes tasks — got mapped as a full conversational flow: select a bill from pending or overdue, see it broken out with amounts, choose a saved payment method or add a new one, and confirm. Every step keeps the user informed of exactly where they are, which is precisely what "Connect" was measuring for.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/mockups-billpay-flow.png" alt="Bill pay conversational flow mockups"/>
+        <div class="figure-cap">Fig 07 — The bill-pay flow, mocked step by step: select, review, pay, confirm</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing &amp; Interaction Design</div>
+      <h3 class="substep-h3">Recommendation mockups, not a full fidelity progression</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>These mockups are the audit's recommendation artifacts — there wasn't a separate low-to-high fidelity exploration phase, since visual design hadn't formally started at the point this engagement concluded.</p></div>
+      <div class="stage-reflect"><b>The takeaway</b>An audit finding like "users aren't sufficiently informed" is easy to nod along to and hard to act on. A mocked-up bill-pay flow makes it unambiguous what "informed" should actually look like on screen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — TEST -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">Testing the existing product against the framework, honestly</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">Not a user session — a scored evaluation against the framework</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No moderated usability session with recruited participants was run. The "test" here was applying the Direct/Orient &amp; Guide/Engage/Inform/Connect framework to the current chatbot directly — a structured expert evaluation, not a user test. I'm naming that distinction rather than letting the word "test" imply something it wasn't.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Findings</div>
+      <h3 class="substep-h3">The 65% reframed</h3>
+      <p class="cs-p">Scored against the framework, the 65% success rate stopped looking like a passing grade. It looked like a product that could technically resolve two out of three interactions while still leaving users unsure what it could do, unclear on next steps, and unable to self-serve with confidence — exactly the gap the business team had been describing anecdotally, now backed by a structured evaluation instead of a feeling.</p>
+      <div class="figure">
+        <img src="case-studies/ai-chatbot/framework-dimensions-whatsnext.png" alt="Engage, Inform, and Connect framework details, plus what's next"/>
+        <div class="figure-cap">Fig 08 — The rest of the framework applied, and the real next steps handed back to the team</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Iteration</div>
+      <h3 class="substep-h3">Not yet — this is where the engagement stopped</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>No iteration cycle happened within this engagement. The next steps were explicit and sequential, not assumed: finalize and hand off the audit report, review findings with the wider team, begin visual design only once approved, then share an interactive prototype after that. The mockups in Stage 04 are the input to that next phase, not a finished, iterated product.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">What's real, stated plainly</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Result</th></tr>
+        <tr><td>Baseline success rate (existing product)</td><td>65%</td></tr>
+        <tr><td>Competitor capability gaps identified</td><td>Sourced, cited comparison across 11 capabilities</td></tr>
+        <tr><td>Post-redesign success rate / CSAT</td><td class="na">Not applicable — redesign not yet built or tested</td></tr>
+      </table>
+      <p class="cs-p">I don't have a post-launch number to report here, and I'd rather say that plainly than invent one. What I can stand behind is the framework and the findings — they're what the next phase of design actually got built on.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
+  <ul class="cs-list">
+    <li>Finalize and hand off the UX audit report, then review findings jointly with the Verizon research team before committing to visual design.</li>
+    <li>Move the popular-topics and bill-pay mockups from recommendation into full visual design once scope is approved.</li>
+    <li>Build and test an interactive prototype — the step this engagement was explicitly building toward, not one it had reached yet.</li>
+  </ul>
+
+  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">A healthy metric can hide an unhealthy experience</div>
+      <div class="learning-p">65% success rate and "users don't trust this" were both true at the same time. The framework is what reconciled them.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Define the rubric before forming the opinion</div>
+      <div class="learning-p">Five named dimensions turned subjective critique into findings someone else could independently verify.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Cite the competition, don't just gesture at it</div>
+      <div class="learning-p">A sourced, feature-by-feature comparison against AT&T, T-Mobile, and Vodafone carries weight that "competitors are better" never will.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">An audit is a legitimate case study, told honestly</div>
+      <div class="learning-p">Not every project ends in a shipped metric. Saying so, and showing what the work actually produced, is more credible than inventing an ending.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: the most useful thing I delivered wasn't a mockup. It was a framework Verizon's team could reuse on the next feature, long after this specific audit was filed away.</p>
+
+  <div class="cs-signoff">
+    <p>Verizon ChatBot UX Audit — a Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

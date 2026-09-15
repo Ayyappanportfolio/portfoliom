@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LuLu Money — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — LuLu Group's own brand green, used sparingly */
+.cs-tag{border-color:#0F9D58;color:#0F9D58}
+.cs-section-label{color:#0F9D58}
+.cs-quote{border-left-color:#0F9D58}
+.cs-h2{border-left-color:#0F9D58}
+.stage-def{border-left-color:#0F9D58}
+.stage-icon-badge{background:#E7F6ED}
+.stage-icon-badge svg{stroke:#0F9D58}
+.roadmap circle{fill:#0F9D58 !important}
+.cs-list li b{color:#0F9D58}
+a{color:#0F9D58}
+.cs-masthead{background:#E7F6ED}
+.stage{border-top-color:#0F9D58}
+.stage-num{color:#0F9D58;background:#E7F6ED}
+.metrics-table th{background:#E7F6ED}
+.ba-col.after{border-top-color:#0F9D58}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Fintech</span>
+    <span class="cs-tag">Remittance</span>
+    <span class="cs-tag">B2C</span>
+  </div>
+
+  <h1 class="cs-title">Rebuilding LuLu Money</h1>
+  <p class="cs-subtitle">Turning a 2018 remittance app for migrant workers into the foundation of a digital bank — the full trace, including where formal usability testing never happened.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Designer, LuLu Financial</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <img src="case-studies/lulu-money/cover-old-app.png" alt="The old LuLu Money app interface"/>
+    <div class="figure-cap">Fig 01 — What I inherited: a remittance app that worked, built in 2018, showing every year of it</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">LuLu Money is powered by LuLu Exchange — a real financial services company with over 200 branches worldwide, moving money to more than 170 countries. This wasn't a concept redesign. It was a live product, with real customers depending on it to get money to their families, that had to keep working while I rebuilt it underneath them.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Business context</h4><p>The 2018 hybrid app covered one product — account-to-account transfer. The business goal was a digital bank: forex, bill payments, wallets, wallet transfers.</p></div>
+    <div class="cs-grid-item"><h4>Constraints</h4><p>Six countries at once (UAE, Kuwait, Oman, Qatar, Bahrain, APAC), each with its own regulations and language expectations.</p></div>
+    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>Users ranged from blue-collar workers on shared Android devices to white-collar professionals managing investments — one app, very different comfort levels.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>UX Designer driving research, definition, ideation, and the redesigned flows across the rebuild.</p></div>
+  </div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHISE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">Starting with stakeholders, not users — deliberately</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">Business-alignment risk comes before interface risk</h3>
+      <p class="cs-p">The assumption I refused to start with was "the UI needs modernizing." A rebuild this size fails first at the business-alignment layer, so the research plan opened with stakeholders across six markets before a single end-user session.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">Stakeholders, personas, and 321 real reviews</h3>
+      <p class="cs-p">Roughly eight hours across three sessions with stakeholders in UAE, Kuwait, Oman, Qatar, Bahrain, and the wider APAC business surfaced the real constraint immediately: <b>"It's not customer centric — only account transfer, no western-money-like services. There's demand for more products."</b> Stakeholders were also clear on who actually uses this app: migrant workers, blue and white collar, sending money home regularly to support families, education, and investments — many of them Android users with limited technical proficiency, most comfortable in WhatsApp, Facebook, and YouTube rather than banking apps.</p>
+      <div class="figure">
+        <img src="case-studies/lulu-money/stakeholder-research.png" alt="Sprint timeline and stakeholder interview findings"/>
+        <div class="figure-cap">Fig 02 — The sprint plan and what stakeholders told me before I spoke to a single end user</div>
+      </div>
+      <p class="cs-p">Two personas carried the rest of the research: <b>Md Shahid Alam</b>, a construction worker sending cash home on a tight schedule with low tolerance for friction, and <b>Amit Sharma</b>, a white-collar professional more comfortable with digital tools but just as unforgiving of a broken experience.</p>
+      <div class="figure">
+        <img src="case-studies/lulu-money/personas.png" alt="Md Shahid Alam and Amit Sharma personas"/>
+        <div class="figure-cap">Fig 03 — Two personas, two very different relationships with the same app</div>
+      </div>
+      <p class="cs-p">Then the reviews — 321 of them, from the App Store and Play Store — let the actual complaints speak for themselves: <i>"Why is this app not support the Arabic language."</i> <i>"The worst app ever... im not even able to open this... its showing a white screen the entire time."</i> <i>"I am putting my phone number in Qatar but is taking ages and still not able to send me OTP."</i> Against Wise and Al Ansari Exchange, the pattern held: competitors had useful features but buried them in confusing hierarchies, or shipped sign-up flows that broke on login.</p>
+      <div class="figure">
+        <img src="case-studies/lulu-money/feedback-competitors.png" alt="Real app store reviews and competitive teardown of Wise and Al Ansari Exchange"/>
+        <div class="figure-cap">Fig 04 — What customers actually said, and where Wise and Al Ansari Exchange were also falling short</div>
+      </div>
+      <div class="gap-note"><b>Evidence gap</b><p>The original stakeholder interview guide and full session transcripts weren't preserved beyond the themes above. No formal quantitative survey was run alongside the qualitative interviews and review mining.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 02 — DEFINE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">Sorting real problems from loud ones</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">Clustering stakeholder input, persona pain points, and review complaints</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster"><h4>Product breadth</h4><div class="note">Only account transfer, no western-money-like services</div></div>
+        <div class="affinity-cluster"><h4>Trust &amp; transparency</h4><div class="note">No visible transaction status; unclear special rates</div></div>
+        <div class="affinity-cluster"><h4>Accessibility</h4><div class="note">Missing Arabic language; broken OTP flow</div><div class="support">Direct review evidence</div></div>
+        <div class="affinity-cluster"><h4>Reliability</h4><div class="note">App crashes / white screen</div><div class="support">Direct review evidence</div></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Reconstructed from stakeholder themes and review language</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell"><h4>Says (from reviews, reconstructed)</h4><ul><li>"Why is this app not support the Arabic language."</li><li>"Still not able to send me OTP."</li></ul></div>
+        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Assumes the app wasn't built with them specifically in mind.</li><li>Doubts money sent will arrive reliably.</li></ul></div>
+        <div class="empathy-cell"><h4>Does</h4><ul><li>Switches to Liv or Western Union after repeated friction.</li><li>Re-attempts failed actions rather than trusting a first try.</li></ul></div>
+        <div class="empathy-cell"><h4>Feels</h4><ul><li>Frustrated by language and reliability barriers.</li><li>Anxious sending money that supports their family.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Personas / Segments</div>
+      <h3 class="substep-h3">Two named personas, plus three customer segments</h3>
+      <p class="cs-p">I grouped the customer base honestly, because a rebuild aimed at everyone serves no one: <b>the lapsed</b> (people who now see LuLu Money as old-fashioned and moved to Liv or Western Union), <b>the current</b> (loyal and passively-engaged customers using it today), and <b>the future</b> (people who'd consider LuLu Money when the need arises).</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">Not documented as a formal journey map</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A stage-by-stage journey map with tracked emotions wasn't produced for this rebuild. The send-money flow (Stage 04) is where the equivalent critical moments were identified and designed for directly.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">"Not customer centric" is a headline, not a problem statement</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> negative reviews citing crashes, missing Arabic support, broken OTP.</li>
+        <li><b>Problem:</b> a single-product 2018 app trying to serve a multi-product, multi-market, multi-literacy user base.</li>
+        <li><b>Root cause:</b> the app was never re-architected as the business expanded from remittance-only to a broader digital-bank ambition.</li>
+      </ul>
+      <div class="pov-box"><span class="pov-label">How might we</span><p>How might we rebuild LuLu Money into a digital-bank foundation without breaking the trust migrant workers already place in it to get money home reliably?</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">Every crucial problem paired with one clear answer</h3>
+      <ul class="cs-list">
+        <li><b>No product breadth beyond account transfer</b> → introduce cash payout, mobile wallet, and bill payments as first-class flows, not add-ons.</li>
+        <li><b>Transaction status missing</b> → a track-transaction feature for non-login users, plus an activity view with live status for logged-in users.</li>
+        <li><b>No way to manage beneficiaries</b> → a dedicated navigation entry to add and manage recipients.</li>
+        <li><b>Multilingual support missing</b> → language selection surfaced at onboarding and in settings, directly answering the Arabic-language complaints.</li>
+      </ul>
+      <div class="figure">
+        <img src="case-studies/lulu-money/solution-flows.png" alt="Problem-to-solution mapping and the resulting information architecture and user flows"/>
+        <div class="figure-cap">Fig 05 — Every crucial problem paired with the specific flow it became</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 03 — IDEATE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">Crucial, important, and not-really — the real priority pass</h2>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">A genuine three-tier prioritization, not everything treated as urgent</h3>
+      <div class="figure">
+        <img src="case-studies/lulu-money/problem-valuation.png" alt="Problem valuation: crucial, important, and not-really buckets"/>
+        <div class="figure-cap">Fig 06 — Sorting every flagged problem into crucial, important, and not really</div>
+      </div>
+      <p class="cs-p">Missing product breadth, unclear special rates, and no way to manage beneficiaries landed as crucial. A missing onboarding tutorial and no multi-channel sign-in landed as important but not urgent. A missing referral option and in-house push notifications landed as nice-to-haves that could wait.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Direct problem-to-solution mapping, not open brainstorming</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>A divergent brainstorming session with alternative concepts and rejected ideas wasn't documented separately — the process went directly from prioritized problem to a single scoped solution per item, shown in Stage 02's opportunity map. That's a real discipline choice (see Key Learnings), not an omission I'm hiding.</p></div>
+      <p class="cs-p">The one strategic idea that ran through every solution: leverage LuLu's actual advantage over purely digital competitors — its massive agent network — bridging online payment initiation with offline cash pickup, rather than pretending to be a digital-only challenger.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — PROTOTYPE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">Designing for a construction worker and an office professional, in the same flow</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">Built directly from the solution map</h3>
+      <p class="cs-p">Navigation surfaced send-money, transaction tracking, and beneficiary management as top-level entries — a direct structural answer to what the priority matrix ranked as crucial.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">Send-money as the flow every segment actually meets</h3>
+      <div class="flow-row">
+        <span class="flow-step">Choose recipient</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Choose payment method</span><span class="flow-arrow">→</span>
+        <span class="flow-step">See fee + rate</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Confirm</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Track status</span>
+      </div>
+      <p class="cs-p">Fee and exchange-rate breakdowns were surfaced before the confirmation step, not after, directly answering the trust gap the reviews kept pointing at.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing</div>
+      <h3 class="substep-h3">Plain first, argued about before visual polish arrived</h3>
+      <div class="figure">
+        <img src="case-studies/lulu-money/wireframes.png" alt="Early wireframes for send money, currency selection, and recipient management"/>
+        <div class="figure-cap">Fig 07 — Early wireframes for send money, currency selection, and recipient management</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Interaction Design</div>
+      <h3 class="substep-h3">Fee transparency as the one interaction decision that mattered to everyone</h3>
+      <div class="figure">
+        <img src="case-studies/lulu-money/hifi-designs.png" alt="High fidelity send money, country selection, and confirmation screens"/>
+        <div class="figure-cap">Fig 08 — The rebuilt send-money flow, country selection, and confirmation screens</div>
+      </div>
+      <div class="stage-reflect"><b>The takeaway</b>Designing one flow for two very different personas doesn't mean averaging them — it means finding the one moment (fee transparency) that mattered to both, for the same reason.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — TEST -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">The real test was six markets, not a usability lab</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">No formal usability-testing round was run</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>There was no moderated usability-testing framework — recruited participants, task scenarios, SUS scoring — for this rebuild. Stating that directly rather than presenting the market rollout as if it were a lab test.</p></div>
+      <p class="cs-p">What actually happened instead: the design shipped across four sprints — discover, define, ideate, design — with development and testing running continuously alongside the later sprints, into six live regulatory markets at once. That's a harsher, less controlled validation than a lab session, but it isn't the same thing, and this case study doesn't conflate the two.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Findings &amp; Iteration</div>
+      <h3 class="substep-h3">Feedback arrived continuously, not in a single round</h3>
+      <p class="cs-p">The project's own framing going into rollout was the most honest thing to carry into this case study: design is never really done. From the first sprint onward, feedback kept arriving, and the product kept adapting to different languages and regulations across markets that don't share the same rules.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">Stated at the level it was actually measured</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+        <tr><td>App reliability complaints (reviews)</td><td>Present — crashes, white screen</td><td class="na">Not re-measured</td><td class="na">No post-launch review audit conducted</td></tr>
+        <tr><td>Language coverage</td><td>Missing Arabic, cited directly</td><td>Multilingual support added</td><td>Addressed by design, not re-verified with users</td></tr>
+        <tr><td>Task completion / SUS</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">No formal test run</td></tr>
+      </table>
+      <p class="cs-p"><b>What improved:</b> product breadth, transaction visibility, and language coverage were addressed by design. <b>What remains unresolved:</b> no formal usability round confirmed these changes actually reduced the complaints seen in reviews. <b>What's next:</b> a real post-launch review audit and, ideally, the moderated usability round this rebuild shipped without.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
+  <ul class="cs-list">
+    <li>Extend beyond money transfer into forex booking and bill payments as first-class products.</li>
+    <li>Build out the wallet and mobile wallet transfer experience the original goal called for.</li>
+    <li>Run the moderated usability round this rebuild shipped without, now that the core flows are live.</li>
+  </ul>
+
+  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Start with stakeholders when the risk is strategic</div>
+      <div class="learning-p">User interviews would have found UI problems. Stakeholder interviews found a business-model problem hiding behind them.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Segment before you personalize</div>
+      <div class="learning-p">The lapsed, the current, and the future customer needed different things from the same redesign.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">A shipped market rollout isn't a usability test</div>
+      <div class="learning-p">Six regulatory markets validated that the product worked. It didn't validate whether the design decisions themselves were the right ones — that gap is real and worth naming.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Regulation and language are UX constraints, not edge cases</div>
+      <div class="learning-p">Designing for six markets at once meant treating compliance and localization as core requirements from sprint one.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: rebuilding a live financial product isn't about designing the ideal version from scratch. It's about knowing exactly which parts of the legacy experience were trust, not just friction, and protecting those while you fix everything else.</p>
+
+  <div class="cs-signoff">
+    <p>LuLu Money — a UX Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

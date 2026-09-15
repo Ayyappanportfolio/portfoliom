@@ -1,0 +1,226 @@
+/* ── Shared editorial (black & white) theme for full case-study pages ──────
+   Used by every /public/<project>.html case study. Keep this the single
+   source of truth for the look — edit here, not per-page. */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#FFFFFF;color:#141414;
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:#141414;text-decoration:underline;text-underline-offset:2px}
+a:hover{color:#000}
+img{max-width:100%;display:block}
+strong{font-weight:600}
+
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+
+/* ── Top / bottom nav links (no fixed chrome) ── */
+.cs-nav{padding:28px 0;font-size:14px}
+.cs-nav a{color:#6B6B6B;text-decoration:none}
+.cs-nav a:hover{color:#141414}
+
+/* ── Masthead ── */
+.cs-masthead{
+  background:#F2F1ED;border-radius:24px;padding:40px 32px 44px;margin:8px 0 40px;
+}
+@media(max-width:640px){.cs-masthead{padding:28px 22px 32px;border-radius:18px}}
+.cs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cs-tag{
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 11px;border:1px solid #141414;border-radius:20px;color:#141414;
+}
+.cs-title{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:clamp(32px,6vw,50px);font-weight:700;line-height:1.15;
+  letter-spacing:-.01em;margin-bottom:18px;text-wrap:balance;
+}
+.cs-subtitle{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-style:italic;font-size:20px;color:#3d3d3d;line-height:1.55;
+  margin-bottom:28px;max-width:600px;
+}
+.cs-byline{
+  display:flex;align-items:center;gap:10px;color:#6B6B6B;font-size:14px;
+  padding:18px 0;border-top:1px solid #E5E5E5;border-bottom:1px solid #E5E5E5;
+  margin-bottom:8px;
+}
+.cs-byline b{color:#141414;font-weight:600}
+.cs-byline .dot{width:3px;height:3px;border-radius:50%;background:#B0B0B0}
+
+/* ── Prose ── */
+.cs-hero-figure{margin:36px 0}
+.cs-p{font-size:18px;line-height:1.8;color:#1a1a1a;margin-bottom:22px}
+.cs-p.lede{font-size:20px;color:#141414}
+.cs-quote{
+  font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:24px;line-height:1.5;color:#141414;
+  border-left:3px solid #141414;padding:4px 0 4px 24px;margin:36px 0;
+}
+.cs-quote-attr{
+  display:block;font-family:'DM Sans',sans-serif;font-style:normal;
+  font-size:13px;color:#6B6B6B;margin-top:10px;
+}
+.cs-h2{
+  font-family:'Source Serif 4',Georgia,serif;font-weight:700;
+  font-size:clamp(24px,4vw,32px);margin:8px 0 20px;letter-spacing:-.005em;
+}
+.cs-section-label{
+  display:block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:#6B6B6B;margin-bottom:14px;
+}
+
+/* ── Stage blocks ── */
+.stage{padding:64px 0;border-top:3px solid #141414}
+.stage-num{
+  display:inline-block;font-family:'DM Sans',sans-serif;font-style:normal;
+  font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:#141414;background:#F2F1ED;padding:6px 14px;border-radius:20px;margin-bottom:16px;
+}
+.stage-icon-badge{
+  width:76px;height:76px;border-radius:50%;background:#F2F1ED;
+  display:flex;align-items:center;justify-content:center;margin-bottom:26px;
+}
+.stage-icon-badge svg{width:38px;height:38px}
+.stage-def{
+  font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:19px;color:#3d3d3d;border-left:3px solid #141414;
+  padding-left:20px;margin:24px 0;line-height:1.6;
+}
+.stage-reflect{
+  background:#F7F7F5;border-radius:10px;padding:22px 24px;margin-top:28px;
+  font-size:16px;color:#2a2a2a;line-height:1.7;
+}
+.stage-reflect b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:8px;font-weight:700}
+
+/* ── Lists ── */
+.cs-list{margin:18px 0 22px;padding-left:0;list-style:none}
+.cs-list li{
+  padding:14px 0 14px 28px;border-top:1px solid #E5E5E5;position:relative;
+  font-size:17px;line-height:1.65;color:#1a1a1a;
+}
+.cs-list li:last-child{border-bottom:1px solid #E5E5E5}
+.cs-list li::before{content:'—';position:absolute;left:0;color:#9A9A9A}
+.cs-list li b{color:#141414}
+
+.cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.cs-grid-item{border:1px solid #E5E5E5;border-radius:10px;padding:18px 20px}
+.cs-grid-item h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.cs-grid-item p{font-size:14.5px;color:#5a5a5a;line-height:1.6}
+
+/* ── Figures ── */
+.figure{margin:32px 0}
+.figure img{width:100%;border-radius:8px;border:1px solid #E5E5E5}
+.figure-cap{
+  font-size:13px;font-style:italic;color:#8A8A8A;margin-top:10px;
+  text-align:center;
+}
+.figure-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0}
+.figure-row .figure{margin:0}
+
+/* ── Before / after ── */
+.ba-row{display:grid;grid-template-columns:1fr 1fr;border:1px solid #141414;border-radius:10px;overflow:hidden;margin:28px 0}
+.ba-col{padding:20px 22px}
+.ba-col.before{border-right:1px solid #E5E5E5}
+.ba-col.after{background:#141414;color:#fff;border-top:4px solid #141414}
+.ba-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:block}
+.ba-col.before .ba-label{color:#9A9A9A}
+.ba-col.after .ba-label{color:#B0B0B0}
+.ba-col p{font-size:14.5px;line-height:1.6}
+.ba-col.after p{color:#EDEDED}
+
+/* ── Roadmap strip ── */
+.roadmap{margin:36px 0}
+.roadmap svg{width:100%;height:auto}
+
+/* ── Learnings ── */
+.learning-grid{display:grid;grid-template-columns:1fr;gap:0;margin:22px 0}
+.learning{padding:18px 0;border-top:1px solid #E5E5E5}
+.learning:last-child{border-bottom:1px solid #E5E5E5}
+.learning-h{font-weight:700;font-size:16px;margin-bottom:6px}
+.learning-p{font-size:15px;color:#5a5a5a;line-height:1.65}
+
+/* ── Sign-off ── */
+.cs-signoff{padding:56px 0;text-align:center}
+.cs-signoff p{color:#6B6B6B;font-size:15px;margin-bottom:8px}
+
+/* ── Sub-sections (the 20-step breakdown nested inside each stage) ── */
+.substep{margin:44px 0}
+.substep-num{
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#9A9A9A;margin-bottom:8px;
+}
+.substep-h3{
+  font-family:'Source Serif 4',Georgia,serif;font-weight:700;
+  font-size:20px;margin-bottom:12px;color:#141414;
+}
+
+/* ── "Not documented / proposed" evidence-gap callout (hard rule: never invent) ── */
+.gap-note{
+  border:1.5px dashed #C9C4BA;border-radius:10px;padding:16px 20px;margin:18px 0;
+  background:#FBFAF7;
+}
+.gap-note b{
+  display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#A8792E;margin-bottom:6px;
+}
+.gap-note p{font-size:14.5px;line-height:1.6;color:#5a5a5a;font-style:italic}
+
+/* ── Point-of-view / HMW callout ── */
+.pov-box{
+  background:#141414;color:#fff;border-radius:12px;padding:26px 28px;margin:22px 0;
+}
+.pov-box .pov-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B0B0B0;margin-bottom:10px;display:block}
+.pov-box p{font-family:'Source Serif 4',Georgia,serif;font-size:19px;line-height:1.5;font-style:italic}
+
+/* ── Empathy map (Says / Thinks / Does / Feels) ── */
+.empathy-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#E5E5E5;border:1px solid #E5E5E5;border-radius:10px;overflow:hidden;margin:22px 0}
+.empathy-cell{background:#fff;padding:20px 22px}
+.empathy-cell h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A;margin-bottom:10px}
+.empathy-cell ul{list-style:none;padding:0}
+.empathy-cell li{font-size:14.5px;line-height:1.6;color:#2a2a2a;margin-bottom:8px}
+
+/* ── Affinity map board ── */
+.affinity-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:22px 0}
+.affinity-cluster{border:1px solid #E5E5E5;border-radius:10px;padding:16px 18px;background:#FBFAF7}
+.affinity-cluster h4{font-size:13px;font-weight:700;margin-bottom:10px;color:#141414}
+.affinity-cluster .note{
+  background:#fff;border:1px solid #E5E5E5;border-radius:6px;padding:8px 10px;
+  font-size:12.5px;color:#4a4a4a;margin-bottom:6px;line-height:1.5;
+}
+.affinity-cluster .support{font-size:11px;color:#9A9A9A;margin-top:8px;font-style:italic}
+
+/* ── Priority / Impact-Effort matrix ── */
+.matrix{
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;
+  background:#E5E5E5;border:1px solid #141414;border-radius:10px;overflow:hidden;
+  aspect-ratio:4/3;margin:22px 0;
+}
+.matrix-cell{background:#fff;padding:14px 16px;position:relative}
+.matrix-cell h5{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9A;margin-bottom:8px}
+.matrix-cell ul{list-style:none;padding:0}
+.matrix-cell li{font-size:12.5px;line-height:1.5;color:#2a2a2a;margin-bottom:5px}
+.matrix-axis-x, .matrix-axis-y{font-size:10px;color:#9A9A9A;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── Metrics table (usability testing before/after) ── */
+.metrics-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14.5px}
+.metrics-table th,.metrics-table td{border:1px solid #E5E5E5;padding:10px 14px;text-align:left}
+.metrics-table th{background:#F2F1ED;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#6B6B6B}
+.metrics-table td.na{color:#B0B0B0;font-style:italic}
+
+/* ── Process flow (journey stages, task flows) ── */
+.flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.flow-step{
+  border:1px solid #E5E5E5;border-radius:20px;padding:6px 14px;font-size:13px;
+  font-weight:600;color:#141414;background:#FBFAF7;
+}
+.flow-arrow{color:#B0B0B0;font-size:14px}
+
+@media(max-width:640px){
+  .cs-grid,.figure-row,.ba-row,.empathy-grid,.matrix{grid-template-columns:1fr}
+  .matrix{aspect-ratio:auto}
+  body{font-size:16px}
+  .cs-p{font-size:17px}
+}

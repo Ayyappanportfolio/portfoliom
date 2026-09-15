@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CryptoFarm — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+/* Limited accent — the indigo chosen as CryptoFarm's own brand colour, used sparingly */
+.cs-tag{border-color:#4F46E5;color:#4F46E5}
+.cs-section-label{color:#4F46E5}
+.cs-quote{border-left-color:#4F46E5}
+.cs-h2{border-left-color:#4F46E5}
+.stage-def{border-left-color:#4F46E5}
+.stage-icon-badge{background:#ECEBFC}
+.stage-icon-badge svg{stroke:#4F46E5}
+.roadmap circle{fill:#4F46E5 !important}
+.cs-list li b{color:#4F46E5}
+a{color:#4F46E5}
+.cs-masthead{background:#ECEBFC}
+.stage{border-top-color:#4F46E5}
+.stage-num{color:#4F46E5;background:#ECEBFC}
+.metrics-table th{background:#ECEBFC}
+.ba-col.after{border-top-color:#4F46E5}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Fintech</span>
+    <span class="cs-tag">Crypto</span>
+    <span class="cs-tag">B2C</span>
+  </div>
+
+  <h1 class="cs-title">Designing CryptoFarm</h1>
+  <p class="cs-subtitle">A self-directed cryptocurrency exchange project, traced fully — including the trust-testing protocol that was run, and the quantitative results that weren't measured.</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>UX Designer</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cs-hero-figure">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Cluttered chart lines and scattered coin symbols simplifying into one clear upward chart and a single coin">
+      <g stroke="#141414" stroke-width="1.4" fill="none">
+        <path d="M30 150 L50 130 L65 160 L85 110 L100 140 L120 95" opacity=".6"/>
+        <path d="M35 90 L55 100 L70 75 L90 105 L108 80" opacity=".35"/>
+        <circle cx="150" cy="70" r="12" opacity=".5"/>
+        <circle cx="170" cy="180" r="8" opacity=".4"/>
+        <circle cx="60" cy="60" r="6" opacity=".4"/>
+        <path d="M20 190 L45 175 L60 195 L95 165 L130 185" opacity=".3"/>
+      </g>
+      <path d="M232 128 L296 128" stroke="#141414" stroke-width="1.8" fill="none"/>
+      <path d="M288 120 L296 128 L288 136" stroke="#141414" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g stroke="#141414" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M350 175 L390 140 L425 155 L470 100 L510 120"/>
+        <circle cx="510" cy="120" r="6" fill="#141414"/>
+      </g>
+      <circle cx="560" cy="80" r="22" stroke="#141414" stroke-width="1.8" fill="none"/>
+      <path d="M560 70 v20 M552 80 h16" stroke="#141414" stroke-width="1.8"/>
+    </svg>
+    <div class="figure-cap">Fig 01 — From chart noise and scattered signals to one confident line</div>
+  </div>
+
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">This was a self-directed brief, not a client engagement: design a mobile app that lets people buy and sell cryptocurrency. I chose it because it sits at an uncomfortable intersection — real money, a market most people don't understand, and an industry with a well-earned trust deficit — which makes it a genuinely hard interface to get right.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Business context</h4><p>A hypothetical exchange ("CryptoFarm") entering a market where every competitor already lets users complete a trade.</p></div>
+    <div class="cs-grid-item"><h4>Constraints</h4><p>Solo project — one designer, no dedicated research or engineering team, no live user base to instrument.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>End-to-end: research, definition, ideation, UI, and the usability test protocol.</p></div>
+    <div class="cs-grid-item"><h4>Success criteria</h4><p>Not a business metric — the goal was a first-time trader trusting the app enough to complete and repeat a trade.</p></div>
+  </div>
+  <div class="gap-note"><b>Evidence gap</b><p>Exact timeline and any formal stakeholder sign-off don't apply here — this was self-initiated, not commissioned, so those fields are intentionally absent rather than invented.</p></div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
+      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
+        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
+        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
+        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
+        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHISE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
+    <span class="cs-section-label">Empathise</span>
+    <h2 class="cs-h2">Every competitor solved the wrong problem well</h2>
+
+    <div class="substep">
+      <div class="substep-num">Problem Discovery</div>
+      <h3 class="substep-h3">Separating "can they trade" from "do they trust it"</h3>
+      <p class="cs-p">The starting assumption was that a good crypto exchange app is mainly a charting and execution problem. I treated that as unproven. Research objective: find out whether existing apps were actually failing at the transaction, or failing at something upstream of it — trust.</p>
+      <ul class="cs-list">
+        <li><b>Research questions:</b> What do existing exchanges already do well? Where do first-time traders specifically hesitate? What behaviour patterns exist that people wouldn't state directly?</li>
+        <li><b>Methods and rationale:</b> a competitor teardown to establish the baseline "solved" problem, plus moderated interviews to surface behaviour a survey alone wouldn't catch.</li>
+      </ul>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Research</div>
+      <h3 class="substep-h3">Competitor teardown and real interviews</h3>
+      <ul class="cs-list">
+        <li><b>WazirX</b> — strong on automatic buy/sell scheduling and an easy UI, but no market buy/sell button and no price alerts.</li>
+        <li><b>CoinDCX</b> — wide coin range and a fast interface, but the portfolio view didn't show profit or loss at all.</li>
+        <li><b>CoinSwitch</b> — intuitive and fast, but no fixed trading fees and hidden charges eroded trust.</li>
+      </ul>
+      <p class="cs-p">Seven participants, ages 25–40, 30–40 minute sessions each — a mix of active traders and people who'd never bought crypto. <b>Behavioural pattern</b> (more telling than what people said directly): five of seven used WazirX day-to-day, six of seven treated crypto as a long-term hold rather than active trading, and six of seven funded their accounts through a bank transfer rather than UPI or card — the opposite of what I'd assumed going in.</p>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/research-competition-users.png" alt="Ecosystem map, competitor teardown of WazirX/CoinDCX/CoinSwitch, and user research findings"/>
+        <div class="figure-cap">Fig 02 — The ecosystem, the competitor teardown, and the research behind the persona</div>
+      </div>
+      <p class="cs-p"><b>Pain points:</b> no visibility into the buy rate before selling, no price alerts, vague feedback after every action. <b>Needs:</b> clarity on rate and status without hunting for it. <b>Frictions:</b> uneven basic trading literacy across participants.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>The original interview question guide and verbatim transcripts were not preserved. Findings above reflect documented themes, not word-for-word quotes. No contradictory findings were recorded; research limitations include a solo-researcher setup with no independent second coder.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 02 — DEFINE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Define</span>
+    <h2 class="cs-h2">Reframing "buy and sell crypto" as a trust problem</h2>
+
+    <div class="substep">
+      <div class="substep-num">Affinity Mapping</div>
+      <h3 class="substep-h3">The same handful of concerns, independent of trading experience</h3>
+      <div class="affinity-board">
+        <div class="affinity-cluster"><h4>Missing information</h4><div class="note">Current rate, buy rate, and profit/loss not visible</div><div class="support">Most repeated concern</div></div>
+        <div class="affinity-cluster"><h4>Literacy gaps</h4><div class="note">Unclear on how an order actually works</div><div class="support">Several participants</div></div>
+        <div class="affinity-cluster"><h4>No guidance</h4><div class="note">No explanation when policy/price/rules change</div></div>
+        <div class="affinity-cluster"><h4>Fee opacity</h4><div class="note">No transparency on fees per transaction</div><div class="support">Echoed the competitor teardown</div></div>
+      </div>
+      <p class="cs-p"><b>Observation → Pattern → Insight → Implication:</b> Participants checked rates constantly → the pattern was compulsive re-checking, not casual monitoring → the insight was an absence of trust between actions → the implication was to surface state and confirmation immediately, not just correctly.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Empathy Mapping</div>
+      <h3 class="substep-h3">Reconstructed from documented themes, not verbatim quotes</h3>
+      <div class="empathy-grid">
+        <div class="empathy-cell"><h4>Says (reconstructed)</h4><ul><li>"I check the rate constantly."</li><li>"I wish it told me what changed."</li></ul></div>
+        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Worries a mistake here costs real money, unlike most apps.</li><li>Assumes hidden fees exist until proven otherwise.</li></ul></div>
+        <div class="empathy-cell"><h4>Does</h4><ul><li>Re-checks the app after every action to confirm it worked.</li><li>Sticks to one exchange rather than comparing rates live.</li></ul></div>
+        <div class="empathy-cell"><h4>Feels</h4><ul><li>Anxious in the seconds after tapping buy or sell.</li><li>Reassured only by explicit, immediate confirmation.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Persona</div>
+      <h3 class="substep-h3">Ganesh — grounded in the interviews, not invented</h3>
+      <p class="cs-p"><b>Ganesh</b>, a senior UX designer who trades occasionally, wants every payment digital, and checks coin values obsessively — not because he enjoys it, but because the app gives him no reason to trust it between checks.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Journey Mapping</div>
+      <h3 class="substep-h3">Where trust actually gets won or lost</h3>
+      <div class="flow-row">
+        <span class="flow-step">Install</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Onboard</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Fund account</span><span class="flow-arrow">→</span>
+        <span class="flow-step">First trade</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Comfortable enough to recommend</span>
+      </div>
+      <p class="cs-p">The critical moments for design intervention weren't at sign-up — they were in the seconds right after every buy, sell, and deposit, exactly where the emotional progression shifts from anxious to (hopefully) reassured.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Problem Definition</div>
+      <h3 class="substep-h3">From symptom to root cause</h3>
+      <ul class="cs-list">
+        <li><b>Symptom:</b> users re-check the app compulsively after every action.</li>
+        <li><b>Problem:</b> the app never confirms clearly enough that an action succeeded or what changed.</li>
+        <li><b>Root cause:</b> existing exchanges optimized for transaction capability, not for the confidence that the transaction was understood and safe.</li>
+      </ul>
+      <div class="pov-box"><span class="pov-label">Point of view</span><p>A first-time trader needs to feel informed after every action, because the crypto industry's reputation means silence reads as something going wrong, not as nothing happening.</p></div>
+      <div class="pov-box"><span class="pov-label">How might we</span><p>How do we help users trade securely and efficiently, while keeping them informed of every action related to their trade?</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Opportunity Mapping</div>
+      <h3 class="substep-h3">From insight to solution</h3>
+      <ul class="cs-list">
+        <li>Missing rate/profit visibility → need for upfront data → opportunity: surface key data by default → solution: rate and P/L visible without navigation.</li>
+        <li>Compulsive re-checking after actions → need for confirmation → opportunity: explicit post-action feedback → solution: clear confirmation states on every buy/sell/deposit.</li>
+        <li>Fee opacity → need for transparency → opportunity: upfront fee disclosure → solution: fees shown before confirming, not after.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 03 — IDEATE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
+    <span class="cs-section-label">Ideate</span>
+    <h2 class="cs-h2">Prioritizing for anxiety reduction, not feature count</h2>
+
+    <div class="substep">
+      <div class="substep-num">Priority Matrix</div>
+      <h3 class="substep-h3">A real value-versus-frequency pass, not a guess</h3>
+      <p class="cs-p">Every candidate feature — from price alerts to a portfolio dashboard to social trading — was run through a value-versus-frequency matrix rather than built on instinct.</p>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/journey-ia-userflow.png" alt="Feature prioritization matrix, Ganesh's user journey, information architecture, and user flow"/>
+        <div class="figure-cap">Fig 03 — The actual prioritization matrix, journey, IA, and resulting user flow</div>
+      </div>
+      <p class="cs-p">Trade chart and the buy/sell flow scored both high-value and high-frequency, so they earned the most design attention. Manually altering an on-chain rate scored low on both axes and was deliberately kept out of the primary flow.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Ideation</div>
+      <h3 class="substep-h3">Design principles, and what got rejected</h3>
+      <ul class="cs-list">
+        <li><b>Surface key data upfront</b> — rate, profit/loss, and order status visible without hunting.</li>
+        <li><b>Reduce visual and memory load</b> — don't make users hold information in their head between screens.</li>
+        <li><b>Frictionless, transparent buying and selling</b> — build confidence through clarity, not hand-holding copy.</li>
+        <li><b>Reward joining and referring</b> — a small trust signal that compounds with word of mouth.</li>
+      </ul>
+      <p class="cs-p"><b>Alternative considered and rejected:</b> a heavier onboarding tutorial walking through every feature. Rejected because the research showed the anxiety was situational (after specific actions), not general unfamiliarity — a tutorial would have front-loaded friction without addressing the actual moment of doubt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — PROTOTYPE -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
+    <span class="cs-section-label">Prototype</span>
+    <h2 class="cs-h2">The buy/sell screen got more design attention than any other</h2>
+
+    <div class="substep">
+      <div class="substep-num">Information Architecture</div>
+      <h3 class="substep-h3">Built around the prioritization matrix, not a generic template</h3>
+      <p class="cs-p">Navigation put the trade chart and buy/sell flow one tap from home, matching their prioritization score. Lower-frequency actions (settings, manual rate adjustment) were pushed deeper rather than competing for primary navigation space.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">User Flows</div>
+      <h3 class="substep-h3">Entry to completion, including where it could go wrong</h3>
+      <div class="flow-row">
+        <span class="flow-step">Open app</span><span class="flow-arrow">→</span>
+        <span class="flow-step">View live rate</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Choose buy/sell + amount</span><span class="flow-arrow">→</span>
+        <span class="flow-step">See fee + confirm</span><span class="flow-arrow">→</span>
+        <span class="flow-step">Explicit success state</span>
+      </div>
+      <div class="gap-note"><b>Evidence gap</b><p>Documented error/empty/auth states for this flow weren't preserved individually. The one confirmed design intent: every action needed an explicit, unambiguous confirmation — the opposite of a silent success.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Wireframing</div>
+      <h3 class="substep-h3">Plain first, so the IA could be argued about before visual polish arrived</h3>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/wireframes.png" alt="Low-fidelity wireframes for the core flows"/>
+        <div class="figure-cap">Fig 04 — Wireframes for the core flows, before any visual design was applied</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Interaction Design</div>
+      <h3 class="substep-h3">Colour, type, and the confirmation moment</h3>
+      <p class="cs-p">Electric Indigo was chosen deliberately, not decoratively — colour-emotion association research points to indigo carrying security, clarity, and optimism, exactly the register a first-time trader needs. Prompt was chosen for legibility at small sizes, and a dark theme reduces eye strain for a screen people said they checked more often than they wanted to.</p>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/typography-illustrations-flows.png" alt="Typography, illustration style, and the Create Account / Deposit flows with real UI"/>
+        <div class="figure-cap">Fig 05 — Typography, illustration style, and the onboarding and deposit flows</div>
+      </div>
+      <p class="cs-p">The buy/sell flow is where it all had to come together: live rate, order type, confirmation, and result, without making a mistake feel costly. Every extra tap was a tap where trust could break, so it got the most iteration of anything in the app.</p>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/buy-sell-trading-flow.png" alt="Buy and sell crypto flow with real UI screens"/>
+        <div class="figure-cap">Fig 06 — The buy/sell trading flow — the highest-stakes screens in the app</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — TEST -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
+    <span class="cs-section-label">Test</span>
+    <h2 class="cs-h2">Testing for hesitation, not just task completion</h2>
+
+    <div class="substep">
+      <div class="substep-num">Usability Testing</div>
+      <h3 class="substep-h3">A real protocol, aimed at hesitation rather than pass/fail</h3>
+      <p class="cs-p"><b>Objective:</b> whether labels and flow were easy to understand, where users hesitated or got confused, and how the experience compared to apps they already used. <b>Hypothesis:</b> explicit confirmation states would reduce compulsive re-checking behaviour observed in research.</p>
+      <ul class="cs-list">
+        <li><b>Buy / sell task</b> — could they use this app to trade, without prompts, narrating hesitation and expectations out loud as they went.</li>
+        <li><b>Deposit / withdraw task</b> — a paired scenario asking them to imagine walking a friend through their first crypto trade using only this app, surfacing exactly where the explanation would break down.</li>
+      </ul>
+      <div class="figure">
+        <img src="case-studies/cryptocurrency/test-color-iconography.png" alt="Usability test objectives and key tasks, alongside the final color and iconography system"/>
+        <div class="figure-cap">Fig 07 — The test protocol, designed around hesitation points rather than pass/fail alone</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Usability Test Findings</div>
+      <h3 class="substep-h3">What's real, and what wasn't captured</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>The test protocol and tasks are documented; scored results (task completion rate, time on task, severity-ranked issues) were not captured in the available materials. I'm stating that directly rather than inventing a findings table to fit the template.</p></div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Iteration</div>
+      <h3 class="substep-h3">What would change, based on the one qualitative signal that is real</h3>
+      <p class="cs-p">The strongest signal from the test protocol was qualitative, not scored: explaining the app to a friend forced participants to notice exactly where their own confidence ran out — a better trust test than task completion alone. Without scored data, the honest next step is to run this protocol with a larger sample and capture completion and confidence ratings, not to claim an iteration that didn't happen.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Design</div>
+      <h3 class="substep-h3">The interface that shipped</h3>
+      <p class="cs-p">Live rate, order type, fee, and confirmation held together in one uninterrupted flow — the highest-stakes screens in the app, and the ones that received the most design iteration for exactly that reason.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-num">Final Result</div>
+      <h3 class="substep-h3">Stated at the level it was actually measured</h3>
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+        <tr><td>Task completion rate</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">Protocol run, not scored</td></tr>
+        <tr><td>Confidence rating</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">Qualitative only</td></tr>
+        <tr><td>Hesitation points observed</td><td class="na">—</td><td>Buy/sell confirmation moment</td><td>Identified qualitatively</td></tr>
+      </table>
+      <p class="cs-p"><b>What improved:</b> a clear, testable protocol for evaluating trust, not just usability. <b>What remains unresolved:</b> no quantitative baseline exists to prove the redesign reduced hesitation. <b>What surprised me:</b> the "explain it to a friend" task surfaced more honest friction than the direct task did. <b>What's next:</b> run the same protocol with scored completion and confidence metrics across a larger sample.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:12px">Outcome</h2>
+  <p class="cs-p" style="font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:19px;color:#3d3d3d">Research → Insight → Problem → Opportunity → Priority → IA → Flow → Design → Test. The chain holds up to the point of scored validation — which didn't happen here, and isn't presented as if it did.</p>
+
+  <h2 class="cs-h2" style="margin-top:32px">Key Learnings</h2>
+  <div class="learning-grid">
+    <div class="learning">
+      <div class="learning-h">Trust is a UX problem, not just a security one</div>
+      <div class="learning-p">Every competitor already handled transactions correctly. None of them made a first-time trader feel safe. That gap was the entire opportunity.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Watch behaviour, not just stated preference</div>
+      <div class="learning-p">Payment method and investment horizon both came out differently in practice than participants described themselves in conversation.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">Prioritize by anxiety reduction, not feature count</div>
+      <div class="learning-p">The highest-value, highest-frequency features were also the ones causing the most hesitation — that's not a coincidence worth ignoring.</div>
+    </div>
+    <div class="learning">
+      <div class="learning-h">A protocol without scored results is still worth showing</div>
+      <div class="learning-p">The test design was real and defensible. Saying the results weren't captured is more useful to a reviewer than a fabricated number.</div>
+    </div>
+  </div>
+  <p class="cs-p" style="margin-top:8px">The through-line: you can't design your way out of a trust problem with better charts. You design your way out of it by removing every moment where the user has to just hope it worked.</p>
+
+  <div class="cs-signoff">
+    <p>CryptoFarm — a UX Case Study by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

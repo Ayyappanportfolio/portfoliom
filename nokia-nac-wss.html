@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nokia NAC · WSS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:      #080C18;
+  --bg2:     #0E1525;
+  --bg3:     #151E30;
+  --panel:   #1A2540;
+  --border:  rgba(255,255,255,.07);
+  --border2: rgba(0,90,255,.25);
+  --t:       #E2E8F0;
+  --t2:      #94A3B8;
+  --t3:      #4B5D7A;
+  --blue:    #005AFF;
+  --blue2:   #2F7AFF;
+  --blue-s:  rgba(0,90,255,.12);
+  --green:   #10B981;
+  --amber:   #F59E0B;
+  --red:     #EF4444;
+  --shadow:  0 4px 24px rgba(0,0,0,.4);
+  --r:       8px;
+  --r2:      12px;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:      #F0F4FF;
+    --bg2:     #FFFFFF;
+    --bg3:     #EBF0FB;
+    --panel:   #DDE5F7;
+    --border:  rgba(0,0,0,.08);
+    --border2: rgba(0,90,255,.3);
+    --t:       #0A1020;
+    --t2:      #3D4F72;
+    --t3:      #8FA3C8;
+    --blue-s:  rgba(0,90,255,.08);
+    --shadow:  0 4px 24px rgba(0,50,180,.1);
+  }
+}
+:root[data-theme="light"] {
+  --bg:#F0F4FF;--bg2:#FFFFFF;--bg3:#EBF0FB;--panel:#DDE5F7;
+  --border:rgba(0,0,0,.08);--border2:rgba(0,90,255,.3);
+  --t:#0A1020;--t2:#3D4F72;--t3:#8FA3C8;
+  --blue-s:rgba(0,90,255,.08);--shadow:0 4px 24px rgba(0,50,180,.1);
+}
+:root[data-theme="dark"] {
+  --bg:#080C18;--bg2:#0E1525;--bg3:#151E30;--panel:#1A2540;
+  --border:rgba(255,255,255,.07);--border2:rgba(0,90,255,.25);
+  --t:#E2E8F0;--t2:#94A3B8;--t3:#4B5D7A;
+  --blue-s:rgba(0,90,255,.12);--shadow:0 4px 24px rgba(0,0,0,.4);
+}
+
+/* ── RESET ───────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--t);
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%}
+
+/* ── SCROLL PROGRESS ─────────────────────────────────── */
+#progress-bar{
+  position:fixed;top:0;left:0;right:0;height:2px;
+  background:var(--blue);transform-origin:left;transform:scaleX(0);
+  z-index:100;transition:transform .1s linear;
+}
+
+/* ── FIXED HEADER ────────────────────────────────────── */
+.site-header{
+  position:fixed;top:2px;left:0;right:0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;height:56px;
+  background:rgba(8,12,24,.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.header-nokia{
+  font-family:'Sora',sans-serif;font-size:14px;font-weight:700;
+  color:var(--blue);letter-spacing:.06em;
+}
+.header-title{
+  font-size:13px;color:var(--t2);font-weight:400;
+}
+.header-right{display:flex;align-items:center;gap:20px}
+.header-tag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--blue);background:var(--blue-s);
+  padding:3px 10px;border-radius:20px;
+}
+.header-theme-btn{
+  background:none;border:1px solid var(--border);
+  color:var(--t2);font-size:11px;padding:4px 10px;
+  border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;
+}
+.header-theme-btn:hover{border-color:var(--blue2);color:var(--t)}
+
+/* ── LAYOUT ──────────────────────────────────────────── */
+.layout{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  max-width:1280px;margin:0 auto;
+  padding-top:56px;
+  min-height:100vh;
+}
+
+/* ── LEFT NAV ────────────────────────────────────────── */
+.side-nav{
+  position:sticky;top:56px;height:calc(100vh - 56px);
+  overflow-y:auto;padding:36px 24px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;
+}
+.side-nav-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--t3);
+  margin-bottom:8px;margin-top:20px;
+}
+.side-nav-label:first-child{margin-top:0}
+.nav-link{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--t2);padding:6px 8px;border-radius:6px;
+  cursor:pointer;transition:color .15s,background .15s;
+  font-weight:400;
+}
+.nav-link::before{
+  content:'';width:3px;height:12px;border-radius:2px;
+  background:transparent;transition:background .15s;flex-shrink:0;
+}
+.nav-link:hover,.nav-link.active{color:var(--t);background:var(--blue-s)}
+.nav-link.active::before{background:var(--blue)}
+
+/* ── MAIN CONTENT ────────────────────────────────────── */
+.main{padding:0 48px 80px;max-width:900px}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  padding:72px 0 60px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--blue);
+  margin-bottom:20px;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:24px;height:1px;background:var(--blue);
+}
+.hero-h1{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(32px,5vw,52px);
+  font-weight:800;line-height:1.12;
+  color:var(--t);text-wrap:balance;
+  margin-bottom:20px;
+}
+.hero-h1 span{color:var(--blue)}
+.hero-sub{
+  font-size:16px;color:var(--t2);line-height:1.7;
+  max-width:600px;margin-bottom:40px;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:0;
+  border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;
+}
+.hero-meta-item{
+  padding:16px 24px;border-right:1px solid var(--border);
+  flex:1 1 120px;
+}
+.hero-meta-item:last-child{border-right:none}
+.hero-meta-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--t3);
+  margin-bottom:6px;
+}
+.hero-meta-val{
+  font-family:'Sora',sans-serif;font-size:15px;
+  font-weight:600;color:var(--t);
+}
+
+/* ── SECTION ─────────────────────────────────────────── */
+.section{
+  padding:64px 0;border-bottom:1px solid var(--border);
+}
+.section:last-child{border-bottom:none}
+.section-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  text-transform:uppercase;letter-spacing:.14em;
+  color:var(--blue);margin-bottom:12px;display:block;
+}
+.section-h2{
+  font-family:'Sora',sans-serif;font-size:clamp(20px,3vw,28px);
+  font-weight:700;color:var(--t);text-wrap:balance;
+  margin-bottom:16px;
+  padding-left:16px;
+  border-left:3px solid var(--blue);
+}
+.section-lead{
+  font-size:15px;color:var(--t2);line-height:1.75;
+  margin-bottom:32px;max-width:640px;
+}
+
+/* ── CARDS ───────────────────────────────────────────── */
+.card-grid{display:grid;gap:12px}
+.card-grid.col2{grid-template-columns:1fr 1fr}
+.card-grid.col3{grid-template-columns:1fr 1fr 1fr}
+.card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px;
+}
+.card-h{font-size:13px;font-weight:600;color:var(--t);margin-bottom:6px}
+.card-p{font-size:12px;color:var(--t2);line-height:1.6}
+.card-stat{
+  font-family:'Sora',sans-serif;font-size:28px;
+  font-weight:800;color:var(--blue);margin-bottom:4px;
+  font-variant-numeric:tabular-nums;
+}
+.card-stat-label{font-size:11px;color:var(--t2)}
+
+/* ── TAGS ────────────────────────────────────────────── */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  padding:4px 12px;border-radius:20px;font-weight:500;
+}
+.tag-blue{color:var(--blue);background:var(--blue-s);border:1px solid var(--border2)}
+.tag-green{color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.tag-amber{color:var(--amber);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2)}
+.tag-red{color:var(--red);background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+
+/* ── PROCESS TIMELINE ────────────────────────────────── */
+.process-list{display:flex;flex-direction:column;gap:0}
+.process-item{
+  display:grid;grid-template-columns:100px 1fr;
+  gap:0;position:relative;
+}
+.process-item::after{
+  content:'';position:absolute;left:84px;top:28px;bottom:-1px;
+  width:1px;background:var(--border);
+}
+.process-item:last-child::after{display:none}
+.process-step{
+  padding:24px 24px 24px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t3);
+  display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+}
+.process-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--blue);border:2px solid var(--bg);
+  outline:1px solid var(--blue);
+  position:relative;z-index:1;
+}
+.process-body{
+  padding:20px 0 32px 24px;
+  border-left:1px solid var(--border);
+}
+.process-h{
+  font-family:'Sora',sans-serif;font-size:15px;font-weight:600;
+  color:var(--t);margin-bottom:8px;
+}
+.process-p{font-size:13px;color:var(--t2);line-height:1.65;margin-bottom:12px}
+.process-callout{
+  background:var(--bg3);border:1px solid var(--border);
+  border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0;
+  padding:10px 14px;font-size:12px;color:var(--t2);
+  font-style:italic;margin-top:8px;
+}
+
+/* ── PERSONA CARDS ───────────────────────────────────── */
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.persona{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px;
+}
+.persona-avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--blue-s);border:2px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:12px;font-size:18px;
+}
+.persona-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--t);margin-bottom:2px}
+.persona-role{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue);margin-bottom:10px}
+.persona-need{font-size:12px;color:var(--t2);line-height:1.55}
+.persona-pain{
+  margin-top:10px;font-size:11px;color:var(--red);
+  background:rgba(239,68,68,.06);padding:8px 10px;
+  border-radius:6px;border:1px solid rgba(239,68,68,.15);
+}
+
+/* ── SCREEN MOCKUPS ──────────────────────────────────── */
+.screen-wrap{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin:32px 0;
+}
+.screen-bar{
+  display:flex;align-items:center;gap:6px;
+  padding:10px 16px;background:var(--bg2);border-bottom:1px solid var(--border);
+}
+.screen-dot{width:8px;height:8px;border-radius:50%}
+.screen-title-bar{
+  margin-left:8px;font-size:11px;color:var(--t3);
+  font-family:'JetBrains Mono',monospace;flex:1;
+}
+.screen-body{padding:0;min-height:340px;display:flex}
+
+/* NAC Dashboard Screen */
+.dash-sidebar{
+  width:160px;background:var(--bg2);border-right:1px solid var(--border);
+  padding:12px 0;flex-shrink:0;
+}
+.dash-logo{
+  padding:8px 14px 16px;
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:var(--blue);
+  border-bottom:1px solid var(--border);margin-bottom:8px;display:flex;align-items:center;gap:6px;
+}
+.dash-nav-item{
+  padding:7px 14px;font-size:10px;color:var(--t2);
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+}
+.dash-nav-item.active{color:var(--t);background:var(--blue-s)}
+.dash-nav-icon{width:12px;height:12px;background:currentColor;border-radius:2px;opacity:.5;flex-shrink:0}
+.dash-main{flex:1;padding:16px;overflow:hidden}
+.dash-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;
+}
+.dash-topbar-h{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:var(--t)}
+.dash-badge{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  background:var(--blue);color:#fff;padding:2px 8px;border-radius:10px;
+}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.dash-stat{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:8px;
+}
+.dash-stat-v{
+  font-family:'Sora',sans-serif;font-size:18px;font-weight:800;
+  color:var(--t);font-variant-numeric:tabular-nums;
+}
+.dash-stat-l{font-size:8px;color:var(--t2);margin-top:1px}
+.dash-stat-d{font-size:9px;font-weight:600;margin-top:2px}
+.dash-stat-d.green{color:var(--green)}
+.dash-stat-d.amber{color:var(--amber)}
+.dash-stat-d.red{color:var(--red)}
+.dash-row{display:grid;grid-template-columns:1.4fr 1fr;gap:8px}
+.dash-chart{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:10px;
+}
+.dash-chart-h{font-size:9px;color:var(--t2);margin-bottom:8px;font-weight:600}
+.dash-events{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:10px;
+}
+.dash-event{
+  display:flex;align-items:center;gap:8px;padding:5px 0;
+  border-bottom:1px solid var(--border);font-size:9px;color:var(--t2);
+}
+.dash-event:last-child{border-bottom:none}
+.dash-event-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* Device Check-In Wizard */
+.wizard-layout{display:flex;flex:1}
+.wizard-sidebar{
+  width:180px;background:var(--bg2);border-right:1px solid var(--border);
+  padding:16px;
+}
+.wizard-step{
+  display:flex;align-items:center;gap:10px;padding:8px 0;
+  font-size:10px;color:var(--t3);position:relative;
+}
+.wizard-step::after{
+  content:'';position:absolute;left:10px;top:24px;width:1px;height:16px;
+  background:var(--border);
+}
+.wizard-step:last-child::after{display:none}
+.wizard-step-num{
+  width:20px;height:20px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:8px;flex-shrink:0;
+}
+.wizard-step.done .wizard-step-num{background:var(--green);border-color:var(--green);color:#fff}
+.wizard-step.active .wizard-step-num{background:var(--blue);border-color:var(--blue);color:#fff}
+.wizard-step.active{color:var(--t)}
+.wizard-step.done{color:var(--t2)}
+.wizard-main{flex:1;padding:16px}
+.wizard-h{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:var(--t);margin-bottom:12px}
+.wizard-field{margin-bottom:10px}
+.wizard-label{font-size:9px;color:var(--t3);margin-bottom:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.wizard-input{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:5px;padding:7px 10px;font-size:10px;color:var(--t);
+  width:100%;
+}
+.wizard-input.focused{border-color:var(--blue)}
+.wizard-device-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.wizard-device-chip{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:5px;padding:8px 4px;text-align:center;
+  font-size:9px;color:var(--t2);cursor:pointer;
+}
+.wizard-device-chip.selected{border-color:var(--blue);color:var(--blue);background:var(--blue-s)}
+.wizard-device-icon{font-size:14px;margin-bottom:4px}
+.wizard-btn-row{display:flex;justify-content:flex-end;gap:6px;margin-top:14px}
+.wizard-btn{
+  padding:6px 14px;border-radius:5px;font-size:10px;cursor:pointer;
+  font-weight:600;border:none;
+}
+.wizard-btn.primary{background:var(--blue);color:#fff}
+.wizard-btn.ghost{background:var(--bg3);color:var(--t2);border:1px solid var(--border)}
+
+/* Policy Manager Screen */
+.policy-layout{display:flex;flex:1}
+.policy-list-panel{
+  width:220px;background:var(--bg2);border-right:1px solid var(--border);
+  padding:10px;
+}
+.policy-list-h{
+  font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding:0 4px;
+}
+.policy-rule{
+  padding:8px;border-radius:5px;cursor:pointer;margin-bottom:4px;
+  border:1px solid transparent;
+}
+.policy-rule.active{background:var(--blue-s);border-color:var(--border2)}
+.policy-rule-name{font-size:10px;color:var(--t);font-weight:600;margin-bottom:2px}
+.policy-rule-sub{font-size:9px;color:var(--t2)}
+.policy-rule-status{
+  display:inline-block;font-size:8px;padding:1px 6px;
+  border-radius:10px;margin-top:4px;font-weight:600;
+}
+.policy-rule-status.on{background:rgba(16,185,129,.15);color:var(--green)}
+.policy-rule-status.off{background:var(--bg3);color:var(--t3)}
+.policy-editor{flex:1;padding:14px}
+.policy-editor-h{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:var(--t);margin-bottom:12px}
+.policy-condition{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:5px;padding:10px;margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.policy-cond-label{font-size:10px;color:var(--t2);min-width:80px}
+.policy-cond-val{
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:4px;padding:4px 10px;font-size:10px;color:var(--blue);
+  font-family:'JetBrains Mono',monospace;
+}
+.policy-add-btn{
+  display:flex;align-items:center;gap:6px;font-size:10px;
+  color:var(--blue);cursor:pointer;padding:6px 0;
+}
+.policy-actions{
+  margin-top:12px;padding-top:12px;border-top:1px solid var(--border);
+  display:flex;gap:8px;
+}
+
+/* Events Timeline Screen */
+.events-layout{flex:1;display:flex;flex-direction:column;padding:12px 14px}
+.events-filter-bar{
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.events-filter-chip{
+  font-size:9px;padding:3px 10px;border-radius:20px;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;
+}
+.events-filter-chip.all{background:var(--blue);color:#fff}
+.events-filter-chip.crit{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.events-filter-chip.high{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.2)}
+.events-filter-chip.med{background:var(--blue-s);color:var(--blue);border:1px solid var(--border2)}
+.events-list{display:flex;flex-direction:column;gap:6px}
+.event-row{
+  display:grid;grid-template-columns:56px 1fr auto;gap:10px;
+  align-items:center;background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:8px 10px;
+}
+.event-sev{
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;
+  padding:2px 6px;border-radius:10px;text-align:center;
+}
+.event-sev.crit{background:rgba(239,68,68,.15);color:var(--red)}
+.event-sev.high{background:rgba(245,158,11,.12);color:var(--amber)}
+.event-sev.med{background:var(--blue-s);color:var(--blue)}
+.event-body .event-h{font-size:10px;color:var(--t);font-weight:600;margin-bottom:1px}
+.event-body .event-p{font-size:9px;color:var(--t2)}
+.event-action{
+  font-size:9px;color:var(--blue);background:var(--blue-s);
+  padding:4px 8px;border-radius:4px;cursor:pointer;white-space:nowrap;
+  border:1px solid var(--border2);
+}
+.event-ts{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--t3)}
+
+/* ── ANNOTATION ──────────────────────────────────────── */
+.annotation-list{
+  display:flex;flex-direction:column;gap:8px;margin-top:16px;
+}
+.annotation{
+  display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;
+}
+.annotation-num{
+  width:20px;height:20px;border-radius:50%;background:var(--blue);
+  color:#fff;font-family:'JetBrains Mono',monospace;font-size:9px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.annotation-text{font-size:12px;color:var(--t2);line-height:1.55}
+.annotation-text strong{color:var(--t);font-weight:600}
+
+/* ── RESEARCH METHODS ────────────────────────────────── */
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.method-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:18px;
+}
+.method-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--blue-s);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+}
+.method-h{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--t);margin-bottom:4px}
+.method-p{font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px}
+.method-stat{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--blue);background:var(--blue-s);padding:3px 10px;
+  border-radius:20px;display:inline-block;
+}
+
+/* ── INSIGHT QUOTES ──────────────────────────────────── */
+.quote-stack{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.quote{
+  background:var(--bg2);border:1px solid var(--border);
+  border-left:3px solid var(--blue);border-radius:0 var(--r2) var(--r2) 0;
+  padding:14px 16px;
+}
+.quote-text{font-size:13px;color:var(--t);line-height:1.6;font-style:italic;margin-bottom:6px}
+.quote-attr{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t3)}
+
+/* ── IA DIAGRAM ──────────────────────────────────────── */
+.ia-diagram{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:24px;margin:24px 0;overflow-x:auto;
+}
+.ia-row{display:flex;gap:8px;align-items:flex-start;justify-content:center}
+.ia-node{
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:6px;padding:8px 12px;text-align:center;
+  font-size:10px;color:var(--t);font-weight:600;
+  min-width:80px;flex-shrink:0;
+}
+.ia-node.root{
+  background:var(--blue);color:#fff;border-color:var(--blue);
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:700;
+}
+.ia-col{display:flex;flex-direction:column;gap:6px;align-items:center}
+.ia-connector{
+  width:1px;height:16px;background:var(--border2);
+  margin:0 auto;
+}
+.ia-children{display:flex;gap:6px;align-items:flex-start}
+.ia-sub-node{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:5px;padding:5px 8px;text-align:center;
+  font-size:9px;color:var(--t2);min-width:70px;
+}
+
+/* ── TESTING RESULTS ─────────────────────────────────── */
+.sus-bar{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px;margin:16px 0;
+}
+.sus-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sus-label{font-size:11px;color:var(--t2);width:100px;flex-shrink:0}
+.sus-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.sus-fill{height:100%;border-radius:3px;transition:width .6s}
+.sus-fill.before{background:var(--t3)}
+.sus-fill.after{background:var(--green)}
+.sus-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t);width:36px;text-align:right}
+
+/* ── IMPACT ──────────────────────────────────────────── */
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.impact-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:24px;text-align:center;
+}
+.impact-num{
+  font-family:'Sora',sans-serif;font-size:36px;font-weight:800;
+  color:var(--blue);line-height:1;margin-bottom:8px;
+  font-variant-numeric:tabular-nums;
+}
+.impact-label{font-size:12px;color:var(--t2);line-height:1.5}
+
+/* ── BEFORE/AFTER ────────────────────────────────────── */
+.ba-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;
+  margin:20px 0;
+}
+.ba-col{padding:18px 20px}
+.ba-col.before{background:var(--bg2);border-right:1px solid var(--border)}
+.ba-col.after{background:var(--bg3)}
+.ba-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:10px;
+}
+.ba-col.before .ba-label{color:var(--t3)}
+.ba-col.after .ba-label{color:var(--green)}
+.ba-item{
+  display:flex;align-items:center;gap:8px;font-size:12px;
+  color:var(--t2);padding:5px 0;
+}
+.ba-item::before{
+  content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;
+}
+.ba-col.before .ba-item::before{background:var(--t3)}
+.ba-col.after .ba-item::before{background:var(--green)}
+
+/* ── LEARNINGS ───────────────────────────────────────── */
+.learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.learning{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:18px;
+}
+.learning-h{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--t);margin-bottom:6px}
+.learning-p{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.case-footer{
+  padding:48px 0 32px;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+.case-footer p{font-size:13px;color:var(--t2)}
+.case-footer a{color:var(--blue)}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:800px){
+  .layout{grid-template-columns:1fr}
+  .side-nav{display:none}
+  .main{padding:0 20px 60px}
+  .card-grid.col3,.card-grid.col2,
+  .persona-grid,.impact-grid,.learning-grid,
+  .method-grid,.ba-row,.dash-stats{grid-template-columns:1fr}
+  .dash-row{grid-template-columns:1fr}
+  .hero-h1{font-size:28px}
+}
+
+/* ── SCROLL ANIMATION ────────────────────────────────── */
+@media(prefers-reduced-motion:no-preference){
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+  .fade-in.visible{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div style="display:flex;align-items:center;gap:16px">
+    <span class="header-nokia">NOKIA</span>
+    <span class="header-title">NAC · WSS — Case Study</span>
+  </div>
+  <div class="header-right">
+    <span class="header-tag">IoT · Enterprise</span>
+    <button class="header-theme-btn" onclick="toggleTheme()">Toggle theme</button>
+    <a href="/" style="font-size:12px;color:var(--t2);">← Portfolio</a>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- LEFT NAV -->
+  <nav class="side-nav" id="side-nav">
+    <span class="side-nav-label">Project</span>
+    <a class="nav-link active" onclick="scrollTo('hero')">Overview</a>
+    <a class="nav-link" onclick="scrollTo('context')">Context</a>
+
+    <span class="side-nav-label">Discovery</span>
+    <a class="nav-link" onclick="scrollTo('problem')">Problem</a>
+    <a class="nav-link" onclick="scrollTo('research')">Research</a>
+
+    <span class="side-nav-label">Define</span>
+    <a class="nav-link" onclick="scrollTo('personas')">Personas</a>
+    <a class="nav-link" onclick="scrollTo('ia')">IA & Flows</a>
+
+    <span class="side-nav-label">Design</span>
+    <a class="nav-link" onclick="scrollTo('wireframes')">Wireframes</a>
+    <a class="nav-link" onclick="scrollTo('screens')">Key Screens</a>
+
+    <span class="side-nav-label">Validate</span>
+    <a class="nav-link" onclick="scrollTo('testing')">Testing</a>
+    <a class="nav-link" onclick="scrollTo('impact')">Impact</a>
+    <a class="nav-link" onclick="scrollTo('learnings')">Learnings</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-eyebrow">Case Study · UX Design · IoT Enterprise</div>
+      <h1 class="hero-h1">Nokia <span>NAC · WSS</span><br>Network Access Control &amp;<br>Wireless Security Suite</h1>
+      <p class="hero-sub">Redesigning the enterprise IoT onboarding and network security experience for Nokia's global enterprise customers — from fragmented CLI consoles to a unified glass-pane platform.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-val">Lead UX Designer</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Duration</div>
+          <div class="hero-meta-val">14 months</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Team</div>
+          <div class="hero-meta-val">2 UX · 3 Dev · 1 PM</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Platform</div>
+          <div class="hero-meta-val">Web App</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Industry</div>
+          <div class="hero-meta-val">Telecom · IoT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section class="section fade-in" id="context">
+      <span class="section-eyebrow">Product Context</span>
+      <h2 class="section-h2">What is Nokia NAC · WSS?</h2>
+      <p class="section-lead">Nokia NAC (Network Admission Control) and WSS (Wireless Security Suite) are enterprise-grade products that control which devices can join a corporate network and enforce wireless security policies across thousands of IoT endpoints.</p>
+      <div class="card-grid col3">
+        <div class="card">
+          <svg style="margin-bottom:10px" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div class="card-h">Network Admission Control</div>
+          <div class="card-p">Authenticates and authorises every device before it joins the network. Enforces certificate-based identity, posture checks, and policy assignments automatically.</div>
+        </div>
+        <div class="card">
+          <svg style="margin-bottom:10px" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><path d="M1 6l5 5 5-5M1 12l5 5 5-5"/><rect x="13" y="4" width="10" height="16" rx="2"/></svg>
+          <div class="card-h">Wireless Security Suite</div>
+          <div class="card-p">Manages SSID-level security rules, rogue AP detection, encryption policies, and scheduled enforcement windows for enterprise wireless networks.</div>
+        </div>
+        <div class="card">
+          <svg style="margin-bottom:10px" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          <div class="card-h">IoT Device Management</div>
+          <div class="card-p">Unified inventory, health monitoring, and lifecycle management for thousands of heterogeneous IoT endpoints — cameras, sensors, access points, and industrial devices.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section fade-in" id="problem">
+      <span class="section-eyebrow">Problem Discovery</span>
+      <h2 class="section-h2">What was breaking for users</h2>
+      <p class="section-lead">Initial stakeholder interviews and field observations with Nokia enterprise clients revealed three compounding pain areas that were costing teams hours each week.</p>
+      <div class="card-grid col3">
+        <div class="card">
+          <div class="tag-row"><span class="tag tag-red">Critical</span></div>
+          <div class="card-h">Fragmented onboarding</div>
+          <div class="card-p">Admins navigated 4+ separate consoles to enrol a single IoT device — no unified flow, no progress state. Average time: <strong style="color:var(--t)">35 minutes per device</strong>.</div>
+        </div>
+        <div class="card">
+          <div class="tag-row"><span class="tag tag-amber">High</span></div>
+          <div class="card-h">Invisible security posture</div>
+          <div class="card-p">No real-time consolidated view of wireless endpoint health. Policy violations went undetected for <strong style="color:var(--t)">2–6 hours</strong>, discovered only during scheduled audits.</div>
+        </div>
+        <div class="card">
+          <div class="tag-row"><span class="tag tag-amber">High</span></div>
+          <div class="card-h">CLI-only policy authoring</div>
+          <div class="card-p">Security rules required raw CLI configuration. A misconfigured rule during a shift handover caused <strong style="color:var(--t)">62% of access-failure tickets</strong>.</div>
+        </div>
+      </div>
+      <div class="quote-stack">
+        <div class="quote">
+          <div class="quote-text">"I know something went wrong when I get a Slack message, not when I see it in the dashboard. By then it's already a problem."</div>
+          <div class="quote-attr">— Network Security Analyst, Nokia Enterprise Client (Site A)</div>
+        </div>
+        <div class="quote">
+          <div class="quote-text">"The check-in process is a 6-tab ordeal. I wrote a cheat-sheet because even I forget the steps sometimes."</div>
+          <div class="quote-attr">— IT Admin, Nokia Enterprise Client (Site B)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section fade-in" id="research">
+      <span class="section-eyebrow">Research</span>
+      <h2 class="section-h2">Understanding the domain</h2>
+      <p class="section-lead">We ran a mixed-methods research sprint over 6 weeks, combining contextual inquiry with quantitative surveys to triangulate the problem space.</p>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="method-h">Contextual Inquiry</div>
+          <div class="method-p">Observed admins and security officers in their real workspace during live device onboarding and incident response. Captured workflow, tools used, and workarounds.</div>
+          <span class="method-stat">20 sessions · 3 enterprise sites</span>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="method-h">Stakeholder Interviews</div>
+          <div class="method-p">Semi-structured 60-min interviews with IT directors, security analysts, and field technicians. Explored mental models, priorities, and pain thresholds.</div>
+          <span class="method-stat">28 interviews · 5 roles</span>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="method-h">Card Sort (Open)</div>
+          <div class="method-p">Remote card-sort with 18 participants to understand how users mentally categorise NAC features. Results drove the final IA — collapsed navigation from 7 items to 4.</div>
+          <span class="method-stat">18 participants · 42 cards</span>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="method-h">Task Analysis &amp; Time Study</div>
+          <div class="method-p">Timed key workflows (device check-in, policy creation, incident triage) with baseline measurements. Identified the 8 steps causing the most friction and drop-off.</div>
+          <span class="method-stat">12 participants · 6 task flows</span>
+        </div>
+      </div>
+      <div style="margin-top:24px">
+        <div class="card-grid col3">
+          <div class="card" style="text-align:center">
+            <div class="card-stat">35 min</div>
+            <div class="card-stat-label">Avg. device check-in time (baseline)</div>
+          </div>
+          <div class="card" style="text-align:center">
+            <div class="card-stat">4.2 h</div>
+            <div class="card-stat-label">Avg. time to detect policy violation</div>
+          </div>
+          <div class="card" style="text-align:center">
+            <div class="card-stat">62%</div>
+            <div class="card-stat-label">Helpdesk tickets caused by CLI misconfigs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAS -->
+    <section class="section fade-in" id="personas">
+      <span class="section-eyebrow">Define</span>
+      <h2 class="section-h2">Who we designed for</h2>
+      <p class="section-lead">From 340+ affinity-mapped observations we defined three distinct personas with fundamentally different mental models, goals, and tolerance for complexity.</p>
+      <div class="persona-grid">
+        <div class="persona">
+          <div class="persona-avatar">👨‍💼</div>
+          <div class="persona-name">Rajan K.</div>
+          <div class="persona-role">Network Administrator</div>
+          <div class="persona-need">Manages day-to-day device onboarding and network health. Values speed and clarity — wants to onboard 20+ devices during a shift with no errors.</div>
+          <div class="persona-pain">Pain: Spends 3 hrs/day on manual check-in across legacy tools</div>
+        </div>
+        <div class="persona">
+          <div class="persona-avatar">👩‍💻</div>
+          <div class="persona-name">Priya S.</div>
+          <div class="persona-role">Security Analyst</div>
+          <div class="persona-need">Monitors wireless endpoints for threats and policy violations. Needs real-time visibility and one-click remediation — "I can't afford to dig through logs."</div>
+          <div class="persona-pain">Pain: No consolidated alert view — uses 3 separate dashboards simultaneously</div>
+        </div>
+        <div class="persona">
+          <div class="persona-avatar">🔧</div>
+          <div class="persona-name">Marcus T.</div>
+          <div class="persona-role">Field Technician</div>
+          <div class="persona-need">Physically installs IoT devices on-site and triggers the check-in process. Works from a tablet, needs a simplified flow that doesn't require deep networking knowledge.</div>
+          <div class="persona-pain">Pain: Frequently calls the NOC for help because the check-in steps are non-intuitive</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA -->
+    <section class="section fade-in" id="ia">
+      <span class="section-eyebrow">Information Architecture</span>
+      <h2 class="section-h2">Navigation rethought</h2>
+      <p class="section-lead">Card sort results revealed that users think in terms of tasks, not system modules. We reorganised the IA around four primary job-to-be-done clusters.</p>
+      <div class="ia-diagram">
+        <div style="text-align:center;margin-bottom:16px">
+          <div class="ia-node root" style="display:inline-block">NAC · WSS Platform</div>
+        </div>
+        <div class="ia-connector" style="width:1px;height:20px;background:var(--border2);margin:0 auto"></div>
+        <div class="ia-row" style="margin-top:0">
+          <div class="ia-col">
+            <div class="ia-node" style="background:rgba(0,90,255,.15);border-color:var(--border2);color:var(--blue)">Dashboard</div>
+            <div class="ia-connector"></div>
+            <div class="ia-children">
+              <div class="ia-sub-node">Device Map</div>
+              <div class="ia-sub-node">Health Tiles</div>
+              <div class="ia-sub-node">Events Feed</div>
+            </div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-node" style="background:rgba(0,90,255,.15);border-color:var(--border2);color:var(--blue)">Devices</div>
+            <div class="ia-connector"></div>
+            <div class="ia-children">
+              <div class="ia-sub-node">Inventory</div>
+              <div class="ia-sub-node">Check-In</div>
+              <div class="ia-sub-node">Groups</div>
+            </div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-node" style="background:rgba(0,90,255,.15);border-color:var(--border2);color:var(--blue)">Policies</div>
+            <div class="ia-connector"></div>
+            <div class="ia-children">
+              <div class="ia-sub-node">NAC Rules</div>
+              <div class="ia-sub-node">WSS Rules</div>
+              <div class="ia-sub-node">Schedule</div>
+            </div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-node" style="background:rgba(0,90,255,.15);border-color:var(--border2);color:var(--blue)">Security</div>
+            <div class="ia-connector"></div>
+            <div class="ia-children">
+              <div class="ia-sub-node">Incidents</div>
+              <div class="ia-sub-node">Audit Log</div>
+              <div class="ia-sub-node">Reports</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--t2);font-style:italic">Previous IA had 7 top-level nav items (NAC, WSS, Devices, Profiles, Rules, Reports, Admin) with no clear task grouping. Card sort showed users expected Dashboard and Security to be distinct entry points.</p>
+    </section>
+
+    <!-- WIREFRAMES -->
+    <section class="section fade-in" id="wireframes">
+      <span class="section-eyebrow">Wireframes</span>
+      <h2 class="section-h2">Three rounds of iteration</h2>
+      <p class="section-lead">We ran three lo-fi wireframe rounds, each tested with 8 participants. Key iterations addressed mental model mismatches uncovered in testing.</p>
+      <div class="ba-row">
+        <div class="ba-col before">
+          <div class="ba-label">Round 1 → Issues found</div>
+          <div class="ba-item">Check-in flow had 12 steps — users lost context mid-wizard</div>
+          <div class="ba-item">Dashboard showed raw numbers without trend or status colour</div>
+          <div class="ba-item">Policy editor required knowing SSID names beforehand</div>
+          <div class="ba-item">Incident list had no clear severity hierarchy</div>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Round 3 → Resolved</div>
+          <div class="ba-item">Wizard reduced to 5 focused steps with persistent progress state</div>
+          <div class="ba-item">Dashboard now leads with compliance % + colour-coded health ring</div>
+          <div class="ba-item">SSID picker replaced text input with dropdown populated from inventory</div>
+          <div class="ba-item">Events list uses severity chips + visual weight to guide attention</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY SCREENS -->
+    <section class="section fade-in" id="screens">
+      <span class="section-eyebrow">Visual Design</span>
+      <h2 class="section-h2">Key screens</h2>
+      <p class="section-lead">Four primary screens anchoring the product experience — each designed to collapse complexity into a clear, actionable interface.</p>
+
+      <!-- Screen 1: NAC Dashboard -->
+      <div style="margin-bottom:12px;font-size:13px;font-weight:600;color:var(--t)">1 — NAC Dashboard</div>
+      <div class="screen-wrap">
+        <div class="screen-bar">
+          <div class="screen-dot" style="background:#ff5f56"></div>
+          <div class="screen-dot" style="background:#ffbd2e"></div>
+          <div class="screen-dot" style="background:#27c93f"></div>
+          <div class="screen-title-bar">Nokia NAC · Dashboard · Production</div>
+          <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace">Rajan K. — Network Admin</div>
+        </div>
+        <div class="screen-body">
+          <div class="dash-sidebar">
+            <div class="dash-logo">
+              <svg width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" rx="2" fill="#005AFF"/></svg>
+              NOKIA NAC
+            </div>
+            <div class="dash-nav-item active">
+              <div class="dash-nav-icon" style="background:var(--blue);opacity:1;border-radius:3px"></div>Dashboard
+            </div>
+            <div class="dash-nav-item">
+              <div class="dash-nav-icon"></div>Devices
+            </div>
+            <div class="dash-nav-item">
+              <div class="dash-nav-icon"></div>Policies
+            </div>
+            <div class="dash-nav-item">
+              <div class="dash-nav-icon"></div>Security
+            </div>
+            <div class="dash-nav-item">
+              <div class="dash-nav-icon"></div>Reports
+            </div>
+          </div>
+          <div class="dash-main">
+            <div class="dash-topbar">
+              <div class="dash-topbar-h">Network Overview</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace">Last sync: 2 min ago</div>
+                <div class="dash-badge">LIVE</div>
+              </div>
+            </div>
+            <div class="dash-stats">
+              <div class="dash-stat">
+                <div class="dash-stat-v">2,847</div>
+                <div class="dash-stat-l">Total Devices</div>
+                <div class="dash-stat-d" style="color:var(--t3)">↑ 12 today</div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat-v" style="color:var(--green)">2,612</div>
+                <div class="dash-stat-l">Compliant</div>
+                <div class="dash-stat-d green">91.8%</div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat-v" style="color:var(--amber)">189</div>
+                <div class="dash-stat-l">Non-Compliant</div>
+                <div class="dash-stat-d amber">6.6%</div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat-v" style="color:var(--red)">46</div>
+                <div class="dash-stat-l">Quarantined</div>
+                <div class="dash-stat-d red">1.6%</div>
+              </div>
+            </div>
+            <div class="dash-row">
+              <div class="dash-chart">
+                <div class="dash-chart-h">Compliance trend — 7 days</div>
+                <svg viewBox="0 0 200 60" style="width:100%;height:60px">
+                  <defs>
+                    <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#005AFF" stop-opacity=".3"/>
+                      <stop offset="100%" stop-color="#005AFF" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 45 L28 38 L56 42 L84 30 L112 25 L140 18 L168 12 L200 8 L200 60 L0 60 Z" fill="url(#cg)"/>
+                  <path d="M0 45 L28 38 L56 42 L84 30 L112 25 L140 18 L168 12 L200 8" fill="none" stroke="#005AFF" stroke-width="1.5"/>
+                  <circle cx="200" cy="8" r="3" fill="#005AFF"/>
+                </svg>
+              </div>
+              <div class="dash-events">
+                <div class="dash-chart-h">Recent events</div>
+                <div class="dash-event">
+                  <div class="dash-event-dot" style="background:var(--red)"></div>
+                  <div>CAM-04 quarantined — cert expired</div>
+                </div>
+                <div class="dash-event">
+                  <div class="dash-event-dot" style="background:var(--amber)"></div>
+                  <div>Policy WSS-14 violation on AP-7</div>
+                </div>
+                <div class="dash-event">
+                  <div class="dash-event-dot" style="background:var(--green)"></div>
+                  <div>12 devices checked in successfully</div>
+                </div>
+                <div class="dash-event">
+                  <div class="dash-event-dot" style="background:var(--blue)"></div>
+                  <div>SSID "IoT-Secure" cert renewed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="annotation-list">
+        <div class="annotation">
+          <div class="annotation-num">1</div>
+          <div class="annotation-text"><strong>Compliance ring + stat tiles</strong> surface the single most important number (91.8%) before anything else — previously this required running a separate report.</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">2</div>
+          <div class="annotation-text"><strong>7-day trend sparkline</strong> replaced a static table, giving admins immediate directional context without a click.</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">3</div>
+          <div class="annotation-text"><strong>Live events feed</strong> consolidates the four separate alert streams into one ranked, colour-coded list with one-click actions.</div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Device Check-In -->
+      <div style="margin:36px 0 12px;font-size:13px;font-weight:600;color:var(--t)">2 — Device Check-In Application</div>
+      <div class="screen-wrap">
+        <div class="screen-bar">
+          <div class="screen-dot" style="background:#ff5f56"></div>
+          <div class="screen-dot" style="background:#ffbd2e"></div>
+          <div class="screen-dot" style="background:#27c93f"></div>
+          <div class="screen-title-bar">Nokia NAC · Device Check-In · Step 2 of 5</div>
+          <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace">Marcus T. — Field Technician</div>
+        </div>
+        <div class="screen-body">
+          <div class="wizard-layout">
+            <div class="wizard-sidebar">
+              <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Check-In Steps</div>
+              <div class="wizard-step done">
+                <div class="wizard-step-num">✓</div>
+                <span>Scan Device</span>
+              </div>
+              <div class="wizard-step active">
+                <div class="wizard-step-num">2</div>
+                <span>Classify Type</span>
+              </div>
+              <div class="wizard-step">
+                <div class="wizard-step-num">3</div>
+                <span>Assign Policy</span>
+              </div>
+              <div class="wizard-step">
+                <div class="wizard-step-num">4</div>
+                <span>Set Credentials</span>
+              </div>
+              <div class="wizard-step">
+                <div class="wizard-step-num">5</div>
+                <span>Confirm &amp; Activate</span>
+              </div>
+            </div>
+            <div class="wizard-main">
+              <div class="wizard-h">Select device type</div>
+              <div class="wizard-device-grid">
+                <div class="wizard-device-chip selected">
+                  <div class="wizard-device-icon">📷</div>
+                  <div>IP Camera</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">📡</div>
+                  <div>Access Point</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">🌡️</div>
+                  <div>Sensor</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">🖨️</div>
+                  <div>Printer</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">💡</div>
+                  <div>Smart Light</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">🔒</div>
+                  <div>Access Ctrl</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">📟</div>
+                  <div>Badge Reader</div>
+                </div>
+                <div class="wizard-device-chip">
+                  <div class="wizard-device-icon">⚙️</div>
+                  <div>Custom</div>
+                </div>
+              </div>
+              <div style="margin-top:10px;background:var(--blue-s);border:1px solid var(--border2);border-radius:6px;padding:8px 10px;font-size:10px;color:var(--blue)">
+                ✓ IP Camera selected — Nokia NAC-IP-CAM policy group will be auto-assigned in step 3
+              </div>
+              <div class="wizard-btn-row">
+                <button class="wizard-btn ghost">← Back</button>
+                <button class="wizard-btn primary">Next: Assign Policy →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="annotation-list">
+        <div class="annotation">
+          <div class="annotation-num">1</div>
+          <div class="annotation-text"><strong>Persistent step sidebar</strong> maintains orientation through the wizard — field techs no longer lose their place or restart accidentally.</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">2</div>
+          <div class="annotation-text"><strong>Device-type visual grid</strong> replaces a free-text field; auto-suggests policy group so the technician doesn't need networking knowledge to proceed.</div>
+        </div>
+      </div>
+
+      <!-- Screen 3: WSS Policy Manager -->
+      <div style="margin:36px 0 12px;font-size:13px;font-weight:600;color:var(--t)">3 — WSS Policy Rule Builder</div>
+      <div class="screen-wrap">
+        <div class="screen-bar">
+          <div class="screen-dot" style="background:#ff5f56"></div>
+          <div class="screen-dot" style="background:#ffbd2e"></div>
+          <div class="screen-dot" style="background:#27c93f"></div>
+          <div class="screen-title-bar">Nokia WSS · Policy Manager · IoT-Secure SSID</div>
+        </div>
+        <div class="screen-body">
+          <div class="policy-layout">
+            <div class="policy-list-panel">
+              <div class="policy-list-h">Active Rules</div>
+              <div class="policy-rule active">
+                <div class="policy-rule-name">IoT-Secure-WPA3</div>
+                <div class="policy-rule-sub">SSID: IoT-Secure</div>
+                <div class="policy-rule-status on">ACTIVE</div>
+              </div>
+              <div class="policy-rule">
+                <div class="policy-rule-name">Guest-Rate-Limit</div>
+                <div class="policy-rule-sub">SSID: Corp-Guest</div>
+                <div class="policy-rule-status on">ACTIVE</div>
+              </div>
+              <div class="policy-rule">
+                <div class="policy-rule-name">Cameras-VLAN40</div>
+                <div class="policy-rule-sub">Device Group: Cameras</div>
+                <div class="policy-rule-status off">INACTIVE</div>
+              </div>
+            </div>
+            <div class="policy-editor">
+              <div class="policy-editor-h">Edit: IoT-Secure-WPA3</div>
+              <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">Conditions</div>
+              <div class="policy-condition">
+                <div class="policy-cond-label">SSID</div>
+                <div class="policy-cond-val">IoT-Secure</div>
+              </div>
+              <div class="policy-condition">
+                <div class="policy-cond-label">Auth Method</div>
+                <div class="policy-cond-val">WPA3-Enterprise</div>
+              </div>
+              <div class="policy-condition">
+                <div class="policy-cond-label">Device Group</div>
+                <div class="policy-cond-val">iot-endpoints</div>
+              </div>
+              <div class="policy-condition">
+                <div class="policy-cond-label">Schedule</div>
+                <div class="policy-cond-val">Always on</div>
+              </div>
+              <div class="policy-add-btn">+ Add condition</div>
+              <div class="policy-actions">
+                <button class="wizard-btn primary" style="font-size:9px;padding:5px 12px">Save Rule</button>
+                <button class="wizard-btn ghost" style="font-size:9px;padding:5px 12px">Test Rule</button>
+                <button class="wizard-btn ghost" style="font-size:9px;padding:5px 12px;color:var(--red)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 4: Security Events -->
+      <div style="margin:36px 0 12px;font-size:13px;font-weight:600;color:var(--t)">4 — Security Event Timeline</div>
+      <div class="screen-wrap">
+        <div class="screen-bar">
+          <div class="screen-dot" style="background:#ff5f56"></div>
+          <div class="screen-dot" style="background:#ffbd2e"></div>
+          <div class="screen-dot" style="background:#27c93f"></div>
+          <div class="screen-title-bar">Nokia NAC · Security · Event Timeline</div>
+          <div style="font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace">Priya S. — Security Analyst</div>
+        </div>
+        <div class="screen-body">
+          <div class="events-layout">
+            <div class="events-filter-bar">
+              <span class="events-filter-chip all">All (47)</span>
+              <span class="events-filter-chip crit">Critical (3)</span>
+              <span class="events-filter-chip high">High (11)</span>
+              <span class="events-filter-chip med">Medium (33)</span>
+            </div>
+            <div class="events-list">
+              <div class="event-row">
+                <div class="event-sev crit">CRITICAL</div>
+                <div class="event-body">
+                  <div class="event-h">Unauthorised device joined IoT-Secure SSID</div>
+                  <div class="event-p">MAC: B8:27:EB:C4:12:9A — No matching NAC profile. Quarantined automatically.</div>
+                  <div class="event-ts" style="margin-top:2px">Today 14:23:07</div>
+                </div>
+                <div class="event-action">Investigate →</div>
+              </div>
+              <div class="event-row">
+                <div class="event-sev high">HIGH</div>
+                <div class="event-body">
+                  <div class="event-h">Certificate expiry in 48 hrs — CAM-07, CAM-12</div>
+                  <div class="event-p">2 cameras at Site B will lose network access. Renew via Devices &gt; Certificates.</div>
+                  <div class="event-ts" style="margin-top:2px">Today 12:01:44</div>
+                </div>
+                <div class="event-action">Renew →</div>
+              </div>
+              <div class="event-row">
+                <div class="event-sev high">HIGH</div>
+                <div class="event-body">
+                  <div class="event-h">Policy WSS-14 violated — AP-Floor3</div>
+                  <div class="event-p">WPA2 connection attempt detected on WPA3-only SSID. Device: SENSOR-042.</div>
+                  <div class="event-ts" style="margin-top:2px">Today 09:55:12</div>
+                </div>
+                <div class="event-action">Block →</div>
+              </div>
+              <div class="event-row" style="opacity:.7">
+                <div class="event-sev med">MEDIUM</div>
+                <div class="event-body">
+                  <div class="event-h">Auth failure — 5 retries from PRINTER-03</div>
+                  <div class="event-p">Possible credential rotation needed. Device last seen: 2 hrs ago.</div>
+                  <div class="event-ts" style="margin-top:2px">Today 08:30:19</div>
+                </div>
+                <div class="event-action">View →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="annotation-list">
+        <div class="annotation">
+          <div class="annotation-num">1</div>
+          <div class="annotation-text"><strong>Severity chips with counts</strong> give analysts instant triage — "3 Critical" reads faster than scanning a list of 47 items.</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">2</div>
+          <div class="annotation-text"><strong>Contextual action buttons</strong> ("Investigate →", "Renew →", "Block →") replace the 4-screen workflow that analysts previously used to respond to incidents.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTING -->
+    <section class="section fade-in" id="testing">
+      <span class="section-eyebrow">Validate</span>
+      <h2 class="section-h2">Usability testing results</h2>
+      <p class="section-lead">Three rounds of moderated usability testing with 12 target users (4 admins, 4 security analysts, 4 field technicians). SUS measured after each round.</p>
+      <div class="sus-bar">
+        <div style="font-size:11px;font-weight:600;color:var(--t);margin-bottom:14px">System Usability Scale (SUS) — progression across rounds</div>
+        <div class="sus-row">
+          <div class="sus-label">Baseline (pre)</div>
+          <div class="sus-track"><div class="sus-fill before" style="width:52%"></div></div>
+          <div class="sus-val">52</div>
+        </div>
+        <div class="sus-row">
+          <div class="sus-label">Round 1</div>
+          <div class="sus-track"><div class="sus-fill before" style="width:63%;background:var(--amber)"></div></div>
+          <div class="sus-val">63</div>
+        </div>
+        <div class="sus-row">
+          <div class="sus-label">Round 2</div>
+          <div class="sus-track"><div class="sus-fill before" style="width:74%;background:var(--blue2)"></div></div>
+          <div class="sus-val">74</div>
+        </div>
+        <div class="sus-row">
+          <div class="sus-label">Round 3</div>
+          <div class="sus-track"><div class="sus-fill after" style="width:84%"></div></div>
+          <div class="sus-val" style="color:var(--green)">84</div>
+        </div>
+      </div>
+      <div class="card-grid col3" style="margin-top:16px">
+        <div class="card">
+          <div class="card-h">Task success rate</div>
+          <div class="card-stat" style="font-size:24px;margin:8px 0">96%</div>
+          <div class="card-p">Device check-in completed without assistance (up from 58% baseline)</div>
+        </div>
+        <div class="card">
+          <div class="card-h">Error recovery</div>
+          <div class="card-stat" style="font-size:24px;margin:8px 0">89%</div>
+          <div class="card-p">Users recovered from errors without help (up from 34% baseline)</div>
+        </div>
+        <div class="card">
+          <div class="card-h">Time-on-task</div>
+          <div class="card-stat" style="font-size:24px;margin:8px 0">8 min</div>
+          <div class="card-p">Average check-in completion (down from 35 min baseline)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section fade-in" id="impact">
+      <span class="section-eyebrow">Impact</span>
+      <h2 class="section-h2">Outcomes after launch</h2>
+      <p class="section-lead">Measured 90 days post-launch across Nokia's pilot enterprise clients (3 sites, approx. 6,000 managed endpoints).</p>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-num">77%</div>
+          <div class="impact-label">Faster device onboarding<br>35 min → 8 min average</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">SUS 84</div>
+          <div class="impact-label">Usability score<br>up from 52 pre-redesign</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">60%</div>
+          <div class="impact-label">Fewer access-related<br>helpdesk tickets</div>
+        </div>
+      </div>
+      <div class="card-grid col2" style="margin-top:12px">
+        <div class="card">
+          <div class="card-h">Mean time to detect (MTTD)</div>
+          <div class="card-stat" style="font-size:24px;margin:8px 0">18 min</div>
+          <div class="card-p">Policy violations detected in 18 min vs 4.2 hrs previously — a <strong style="color:var(--t)">93% reduction</strong> driven by the live events feed.</div>
+        </div>
+        <div class="card">
+          <div class="card-h">Adoption</div>
+          <div class="card-stat" style="font-size:24px;margin:8px 0">94%</div>
+          <div class="card-p">Of field technicians completed check-in unaided within 2 weeks of rollout — previously 100% required NOC assistance.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARNINGS -->
+    <section class="section fade-in" id="learnings">
+      <span class="section-eyebrow">Reflection</span>
+      <h2 class="section-h2">What I learned</h2>
+      <div class="learning-grid">
+        <div class="learning">
+          <div class="learning-h">Enterprise ≠ tolerant of complexity</div>
+          <div class="learning-p">A common assumption is that power-users accept dense, complex UIs. Our research showed the opposite — admins wanted simplicity precisely because their environment was already complex. Every step we removed was compounding relief.</div>
+        </div>
+        <div class="learning">
+          <div class="learning-h">Card sort changed the architecture significantly</div>
+          <div class="learning-p">Our first IA was product-logic-driven (matching the backend modules). Card sort showed users think in terms of tasks. Shipping the second IA was the single biggest usability lever in this project.</div>
+        </div>
+        <div class="learning">
+          <div class="learning-h">The field technician persona was underserved</div>
+          <div class="learning-p">Initial scope focused on admin and security users. Shadowing field technicians revealed they were the entry point for most device onboarding — and the most poorly served. Adding their perspective reshaped the Check-In wizard entirely.</div>
+        </div>
+        <div class="learning">
+          <div class="learning-h">Auto-suggestions reduce errors more than validation</div>
+          <div class="learning-p">We added input validation everywhere in Round 1. What actually reduced errors was surfacing smart defaults — like auto-assigning policy groups based on device type. Preventing mistakes is more effective than catching them.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="case-footer">
+      <p>Nokia NAC · WSS — UX Case Study &nbsp;·&nbsp; Lead UX Designer: Ayyappan Rajendiran</p>
+      <p style="margin-top:8px"><a href="https://www.figma.com/design/zRkZK0nOxpluzJva699jzF/Nokia-NAC---WSS---UI-Design?m=dev" target="_blank">View Figma File →</a> &nbsp;·&nbsp; <a href="/">← Back to Portfolio</a></p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', function(){
+  var el = document.getElementById('progress-bar');
+  var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  el.style.transform = 'scaleX('+Math.min(pct,1)+')';
+});
+
+// Theme toggle
+function toggleTheme(){
+  var r = document.documentElement;
+  var cur = r.getAttribute('data-theme');
+  r.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+}
+
+// Nav active state on scroll
+var sections = document.querySelectorAll('.section, .hero');
+var navLinks = document.querySelectorAll('.nav-link');
+function updateNav(){
+  var top = window.scrollY + 100;
+  var active = null;
+  sections.forEach(function(s){
+    if(s.offsetTop <= top) active = s.id;
+  });
+  navLinks.forEach(function(l){
+    var id = l.getAttribute('onclick');
+    if(id) id = id.replace("scrollTo('","").replace("')","");
+    l.classList.toggle('active', id === active);
+  });
+}
+window.addEventListener('scroll', updateNav);
+
+// Smooth scroll
+window.scrollTo = function(x,y){ window.scrollToSection ? null : null; };
+function scrollTo(id){
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Fade-in observer
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el)});
+</script>
+</body>
+</html>
