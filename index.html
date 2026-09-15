@@ -939,6 +939,76 @@ body[data-page="contact"] .footer{display:none;}
 .pm-cs-launch-btn:hover{opacity:.85;}
 .pm-cs-divider{border:none;border-top:1px solid var(--border);margin:0 0 24px;}
 @media(max-width:600px){.pm-cs-stats{grid-template-columns:repeat(2,1fr);}.pm-cs-pain-grid,.pm-cs-stages{grid-template-columns:1fr;}}
+
+/* Nokia NAC case study */
+.nk-cs { padding:28px 32px 40px; font-family:var(--sans); color:var(--t); }
+.nk-hero { display:flex; align-items:center; gap:16px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+.nk-logo-pill { background:#005AFF; color:#fff; font-size:15px; font-weight:800; letter-spacing:1px; padding:6px 14px; border-radius:8px; }
+.nk-badge { font-size:11px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; background:rgba(201,150,58,.12); padding:4px 10px; border-radius:20px; }
+.nk-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:28px; }
+.nk-stat { background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+.nk-stat-v { font-size:20px; font-weight:800; color:var(--t); }
+.nk-stat-l { font-size:11px; color:var(--t2); margin-top:2px; }
+.nk-section { margin-bottom:28px; }
+.nk-section-h { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:12px; }
+.nk-pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.nk-pain { background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:14px; }
+.nk-pain-icon { font-size:18px; margin-bottom:6px; }
+.nk-pain-h { font-size:12px; font-weight:700; color:var(--t); margin-bottom:4px; }
+.nk-pain-p { font-size:11px; color:var(--t2); line-height:1.5; }
+.nk-process { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px; }
+.nk-phase { background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:14px; position:relative; overflow:hidden; }
+.nk-phase::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--phase-clr,#005AFF); }
+.nk-phase-num { font-size:10px; font-weight:800; color:var(--t2); margin-bottom:4px; text-transform:uppercase; letter-spacing:.08em; }
+.nk-phase-h { font-size:13px; font-weight:700; color:var(--t); margin-bottom:6px; }
+.nk-phase-p { font-size:11px; color:var(--t2); line-height:1.55; }
+.nk-screens { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.nk-screen { background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:16px; }
+.nk-screen-tag { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#005AFF; background:rgba(0,90,255,.1); padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+.nk-screen-h { font-size:13px; font-weight:700; color:var(--t); margin-bottom:4px; }
+.nk-screen-p { font-size:11px; color:var(--t2); line-height:1.55; }
+.nk-impact { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.nk-impact-card { background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+.nk-impact-v { font-size:28px; font-weight:800; color:#005AFF; }
+.nk-impact-l { font-size:11px; color:var(--t2); margin-top:4px; line-height:1.4; }
+.nk-figma-btn { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:10px 20px; background:#005AFF; color:#fff; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; transition:opacity .2s; }
+.nk-figma-btn:hover { opacity:.85; }
+
+/* === ALL WORKS PAGE === */
+#page-works { overflow-y:auto; }
+.works-hero { padding:72px 0 32px; }
+.works-hero .section-eyebrow { font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;display:block; }
+.works-hero h1 { font-family:var(--serif); font-size:clamp(28px,4vw,46px); font-weight:700; color:var(--t); line-height:1.2; }
+.works-hero h1 em { color:var(--accent); font-style:italic; }
+.works-hero p { font-size:14px; color:var(--t2); margin-top:10px; }
+.works-list { display:flex; flex-direction:column; gap:14px; padding-bottom:100px; }
+
+.work-entry { background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:24px 28px; transition:border-color .25s; }
+.work-entry:hover { border-color:var(--accent); }
+.work-entry-head { display:grid; grid-template-columns:44px 1fr auto; gap:14px; align-items:flex-start; margin-bottom:14px; }
+.we-icon { width:44px; height:44px; border-radius:10px; background:var(--bg3); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.we-title { font-family:var(--serif); font-size:17px; font-weight:700; color:var(--t); }
+.we-byline { font-size:11px; color:var(--t2); margin-top:3px; }
+.we-tag-row { display:flex; gap:5px; flex-wrap:wrap; margin-top:5px; }
+.we-tag { font-size:9px; font-weight:700; color:var(--accent); background:rgba(201,150,58,.1); border:1px solid rgba(201,150,58,.2); padding:2px 9px; border-radius:20px; letter-spacing:.04em; }
+.we-cta { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:var(--accent); background:rgba(201,150,58,.08); border:1px solid rgba(201,150,58,.22); padding:7px 14px; border-radius:7px; text-decoration:none; white-space:nowrap; transition:background .2s; }
+.we-cta:hover { background:rgba(201,150,58,.18); }
+.we-brief { font-size:12px; color:var(--t2); line-height:1.7; padding-bottom:18px; border-bottom:1px solid var(--border); margin-bottom:18px; }
+
+.we-process { display:flex; align-items:flex-start; gap:0; margin-bottom:18px; overflow-x:auto; }
+.we-phase { flex:1; min-width:110px; position:relative; }
+.we-phase:not(:last-child)::after { content:''; position:absolute; top:10px; left:60%; right:-40%; height:1px; background:var(--border); z-index:0; }
+.we-phase-dot-wrap { display:flex; justify-content:center; margin-bottom:7px; position:relative; z-index:1; }
+.we-phase-dot { width:20px; height:20px; border-radius:50%; background:var(--accent); border:2px solid var(--bg2); display:flex; align-items:center; justify-content:center; }
+.we-phase-dot svg { width:9px; height:9px; fill:none; stroke:var(--bg); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.we-phase-name { font-size:10px; font-weight:700; color:var(--t); text-align:center; margin-bottom:4px; letter-spacing:.04em; }
+.we-phase-methods { font-size:9px; color:var(--t2); text-align:center; line-height:1.45; padding:0 4px; }
+
+.we-outcomes { display:flex; gap:0; border-top:1px solid var(--border); padding-top:14px; }
+.we-outcome { flex:1; text-align:center; padding:0 8px; border-right:1px solid var(--border); }
+.we-outcome:last-child { border-right:none; }
+.we-outcome-v { font-family:var(--serif); font-size:18px; font-weight:700; color:var(--accent); }
+.we-outcome-l { font-size:10px; color:var(--t2); margin-top:2px; line-height:1.35; }
 </style>
 </head>
 <body>
@@ -947,6 +1017,7 @@ body[data-page="contact"] .footer{display:none;}
 <div class="mob-menu" id="mobMenu">
   <span class="mob-link" onclick="nav('home');cM()">Home</span>
   <span class="mob-link" onclick="nav('portfolio');cM()">Portfolio</span>
+  <span class="mob-link" onclick="nav('works');cM()">Works</span>
   <span class="mob-link" onclick="nav('contact');cM()">Contact</span>
 </div>
 
@@ -959,6 +1030,7 @@ body[data-page="contact"] .footer{display:none;}
   <div class="nav-links">
     <span class="nav-link active" id="nl-home" onclick="nav('home')">Home</span>
     <span class="nav-link" id="nl-portfolio" onclick="nav('portfolio')">Portfolio</span>
+    <span class="nav-link" id="nl-works" onclick="nav('works')">Works</span>
     <span class="nav-link" id="nl-contact" onclick="nav('contact')">Contact</span>
     <a class="nav-resume" href="resume.pdf" download="Ayyappan_Rajendiran_Resume.pdf">Resume ↓</a>
   </div>
@@ -1236,6 +1308,10 @@ body[data-page="contact"] .footer{display:none;}
           <div class="port-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/><path d="M4.5 15.5A7 7 0 0 0 12 21a7 7 0 0 0 7.5-5.5"/><path d="M4.5 8.5A7 7 0 0 1 12 3a7 7 0 0 1 7.5 5.5"/></svg></div>
           <span class="port-card-title">Agentic AI SDLC</span>
         </button>
+        <button class="port-card" data-pm-img="" data-pm-figma="https://www.figma.com/design/zRkZK0nOxpluzJva699jzF/Nokia-NAC---WSS---UI-Design?m=dev" data-pm-title="Nokia NAC · WSS" data-pm-icon="" data-pm-type="nokia">
+          <div class="port-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <span class="port-card-title">Nokia NAC · WSS</span>
+        </button>
 
       </div>
     </div>
@@ -1243,7 +1319,34 @@ body[data-page="contact"] .footer{display:none;}
 </div><!-- #page-portfolio -->
 
   <!-- CTA -->
-  <div class="cta-band">
+  
+<!-- ALL WORKS PAGE -->
+    <!-- ALL WORKS PAGE -->
+    <section id="page-works" class="page">
+      <div class="wrap">
+        <div class="works-hero">
+          <span class="section-eyebrow">All Works</span>
+          <h1>Design <em>process</em> &amp; outcomes</h1>
+          <p>12 products &nbsp;&middot;&nbsp; Discovery through delivery &nbsp;&middot;&nbsp; Fintech &nbsp;&middot;&nbsp; IoT &nbsp;&middot;&nbsp; Enterprise &nbsp;&middot;&nbsp; eCommerce</p>
+        </div>
+        <div class="works-list">
+          <article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div><div class="we-title">Nokia NAC · WSS</div><div class="we-byline">Nokia &nbsp;&middot;&nbsp; Lead UX Designer &nbsp;&middot;&nbsp; 14 months</div><div class="we-tag-row"><span class="we-tag">IoT</span><span class="we-tag">Enterprise</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/nokia-nac-wss.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Redesigning enterprise IoT device onboarding and wireless security management — replacing 4 fragmented CLI consoles with a unified glass-pane platform for network admins, security analysts, and field technicians across global enterprise sites.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Contextual inquiry · 20 sessions · 3 enterprise sites · Field shadowing</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">3 personas · Affinity mapping · 340 observations · HMW statements</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">IA card sort · 3 lo-fi rounds · Nokia enterprise design language</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Interactive prototypes · Annotated specs · 48 new component patterns</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">SUS testing · 12 participants · 3 rounds · Task success analysis</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">77%</div><div class="we-outcome-l">Faster device onboarding</div></div><div class="we-outcome"><div class="we-outcome-v">SUS 84</div><div class="we-outcome-l">Up from 52 baseline</div></div><div class="we-outcome"><div class="we-outcome-v">60%</div><div class="we-outcome-l">Fewer helpdesk tickets</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M5 12h2M17 12h2M12 5v2M12 17v2"/></svg></div><div><div class="we-title">Agentic AI SDLC</div><div class="we-byline">Acceleron &nbsp;&middot;&nbsp; Lead Product Designer &nbsp;&middot;&nbsp; 12 months</div><div class="we-tag-row"><span class="we-tag">AI/ML</span><span class="we-tag">Enterprise</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/sdlc.html" target="_blank">Interactive Prototype →</a></div></div><p class="we-brief">Designing AgentFlow — an AI-powered software delivery lifecycle platform that automates PLAN, BUILD, and OPERATE phases through autonomous agents, giving engineering leaders real-time pipeline health visibility.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">15 engineering leader interviews · Sprint retrospective observation · Tool audit</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">2 personas · SDLC pain mapping · AI agent mental model research</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Pipeline visualisation system · Agent status patterns · Phase indicators</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">React interactive prototype · Animated SDLC stages · Live data simulation</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Internal beta 4 engineering teams · NPS tracking · Feature adoption analysis</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">40%</div><div class="we-outcome-l">Faster delivery cycles</div></div><div class="we-outcome"><div class="we-outcome-v">NPS 28→67</div><div class="we-outcome-l">Post-launch score</div></div><div class="we-outcome"><div class="we-outcome-v">80%</div><div class="we-outcome-l">Pipeline visibility</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div><div><div class="we-title">Design System</div><div class="we-byline">M2P Fintech &nbsp;&middot;&nbsp; Lead UX Designer</div><div class="we-tag-row"><span class="we-tag">Design System</span><span class="we-tag">Fintech</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/design-system.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Building M2P's design system after noticing fragmented UI across product teams myself — an Atomic Design foundation with a token architecture that holds up across light/dark and multi-brand theming, bringing visual consistency across M2P's digital products.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Noticed inconsistency firsthand across M2P teams · Interviews with designers, developers &amp; PMs</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">Competitive analysis &amp; surveys · Atomic Design chosen as the structural foundation</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Token architecture for light/dark &amp; multi-brand theming · Color, type, icon &amp; component foundations</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Reusable component library · Documentation &amp; phased rollout roadmap</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Iterative rollout based on team feedback · Before/after consistency audit</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">Atomic</div><div class="we-outcome-l">Design foundation</div></div><div class="we-outcome"><div class="we-outcome-v">Light + Dark</div><div class="we-outcome-l">Theming system</div></div><div class="we-outcome"><div class="we-outcome-v">Fewer</div><div class="we-outcome-l">Brand deviations</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><div><div class="we-title">Integrated Dashboard</div><div class="we-byline">M2P Fintech &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">Analytics</span><span class="we-tag">Enterprise</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/integrated-dashboard.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Building one analytics dashboard for M2P's entire partner ecosystem — banks, fintechs, and corporates who were emailing spreadsheets to understand their own transaction data — designed for three distinct user groups sharing one interface.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">M2P stakeholder interviews · Partner interviews (Transcorp, Walrus, YBL &amp; more)</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">3 user groups (BD/Product, Operations, Partners) · 4 business goals</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Dual prioritization matrix · Drill-down information architecture</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Hierarchical dashboard · Segmentation by network, business &amp; tenant</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">22 users tested across Partners &amp; M2P teams · Task performance banding</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">60%</div><div class="we-outcome-l">Completed tasks with ease</div></div><div class="we-outcome"><div class="we-outcome-v">0%</div><div class="we-outcome-l">Task failure rate</div></div><div class="we-outcome"><div class="we-outcome-v">22</div><div class="we-outcome-l">Users tested</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><div class="we-title">FasTag</div><div class="we-byline">M2P Fintech (design assignment for Kotak) &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">GovTech</span><span class="we-tag">Mobile</span><span class="we-tag">B2C</span></div></div><div><a class="we-cta" href="/fastag.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Designing GO FASTag, a time-boxed app-buying-and-managing-FASTag brief for Kotak — reframed from a transaction ("buy and manage a tag") into a trip-planning problem, built around a Toll Estimator no competitor offered.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Ecosystem mapping · Paytm/iMobile/Park+ teardown · 7 user interviews</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">Persona (Sunilkumar) · Reframed "trip &amp; vehicle" problem statement</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Toll Estimator concept · Value/frequency feature prioritization</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Buy, recharge &amp; transaction flows with real UI · Deliberate colour system</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Full test plan written; skipped due to project time constraints</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">7</div><div class="we-outcome-l">User interviews</div></div><div class="we-outcome"><div class="we-outcome-v">3</div><div class="we-outcome-l">Competitors torn down</div></div><div class="we-outcome"><div class="we-outcome-v">1</div><div class="we-outcome-l">Novel feature: Toll Estimator</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></div><div><div class="we-title">AI ChatBot</div><div class="we-byline">Innova Solutions (client: Verizon) &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">AI/ML</span><span class="we-tag">Enterprise</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/ai-chatbot.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Auditing Verizon's Business Support ChatBot against a 5-dimension framework I built (Direct, Orient &amp; Guide, Engage, Inform, Connect) — turning a healthy-looking 65% success rate into specific, citable findings and recommended mockups.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Business challenges &amp; objectives review · Existing chatbot walkthrough</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">5-dimension review framework: Direct, Orient &amp; Guide, Engage, Inform, Connect</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Rule-based vs. conversational AI research · Best practices · 4-way competitor teardown</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Popular-topics entry &amp; full bill-pay conversation flow, mocked up</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Existing product scored against the framework · Audit report handed off</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">5</div><div class="we-outcome-l">Evaluation dimensions</div></div><div class="we-outcome"><div class="we-outcome-v">4</div><div class="we-outcome-l">Competitors benchmarked</div></div><div class="we-outcome"><div class="we-outcome-v">65%</div><div class="we-outcome-l">Baseline success rate audited</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 8.5c-.83-.83-2-1-3-1-2 0-3.5 1.12-3.5 3 0 1.5 1 2.5 3 3l1 .33c1.5.5 2.5 1.17 2.5 2.67 0 2-1.67 3-3.5 3-1.17 0-2.33-.33-3.17-1M12 6v1.5M12 17v1.5"/></svg></div><div><div class="we-title">LuLu Money</div><div class="we-byline">LuLu Financial &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">Fintech</span><span class="we-tag">Remittance</span><span class="we-tag">B2C</span></div></div><div><a class="we-cta" href="/lulu-money.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Rebuilding LuLu Money's 2018 remittance app into the foundation of a digital bank, across six countries — starting with 25+ stakeholder interviews before a single user session, because this was a business-strategy problem wearing a UI problem's clothes.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">25+ stakeholders, 6 countries · 2 personas · 321 reviews analysed</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">Lapsed/current/future segmentation · Crucial/important/not-really prioritization</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Problem-to-solution mapping · Information architecture · User flows</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Send money, country selection &amp; confirmation flows, fee transparency upfront</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">4 sprints, continuous dev/testing · Shipped across 6 regulatory markets</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">25+</div><div class="we-outcome-l">Stakeholders interviewed</div></div><div class="we-outcome"><div class="we-outcome-v">6</div><div class="we-outcome-l">Countries shipped</div></div><div class="we-outcome"><div class="we-outcome-v">321</div><div class="we-outcome-l">Reviews analysed</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><div><div class="we-title">Name Hunting Research</div><div class="we-byline">LivQuik &nbsp;&middot;&nbsp; UX Researcher</div><div class="we-tag-row"><span class="we-tag">Research</span><span class="we-tag">Naming</span><span class="we-tag">Fintech</span></div></div><div><a class="we-cta" href="/name-hunting-research.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Renaming LivQuik's QuikWallet app — 85 names generated by 22 people, tested on 96 real users across 4 cities, twice each (with and without product context), producing an honest two-choice recommendation instead of one forced winner.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Stakeholders</div><div class="we-phase-methods">Separated business goal (trust) from research goal (resonance)</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Competitors</div><div class="we-phase-methods">7 payment apps analysed · 5 of 7 name themselves "Pay" explicitly</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Workshop</div><div class="we-phase-methods">22 designers · 65 logical + 20 quirky names · shortlisted to 8</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Field Validation</div><div class="we-phase-methods">96 users, 4 cities, tested with &amp; without product context</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Recommendation</div><div class="we-phase-methods">Two honest choices presented, with trade-offs, not one forced winner</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">96</div><div class="we-outcome-l">Users field-tested</div></div><div class="we-outcome"><div class="we-outcome-v">85</div><div class="we-outcome-l">Names generated</div></div><div class="we-outcome"><div class="we-outcome-v">4</div><div class="we-outcome-l">Cities researched</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><div><div class="we-title">Quik Gift</div><div class="we-byline">Microsoft Azure B2C Corporate App &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">Enterprise</span><span class="we-tag">HR Tech</span><span class="we-tag">B2B</span></div></div><div><a class="we-cta" href="/quik-gift.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Designing QuikGift, a peer-to-peer recognition platform embedded in Microsoft Teams — two personas (a manager, an HR lead) needing the same data at completely different altitudes, served through one data model with two distinct front doors.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Stakeholder alignment · Business goals &amp; challenges mapping</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">3 user groups · 2 personas (Manager &amp; HR Lead) with different needs</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Competitor teardown: Peer Fives, Viva Insights, Starbucks · SWOT analysis</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Personal recognition hub + separate HR analytics dashboard</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">User testing scoped as final process stage</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">3</div><div class="we-outcome-l">Competitors benchmarked</div></div><div class="we-outcome"><div class="we-outcome-v">2</div><div class="we-outcome-l">Personas, 2 distinct interfaces</div></div><div class="we-outcome"><div class="we-outcome-v">1</div><div class="we-outcome-l">Shared data model</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="we-title">Research Case Studies</div><div class="we-byline">Multiple Clients &nbsp;&middot;&nbsp; Lead UX Researcher &nbsp;&middot;&nbsp; Ongoing</div><div class="we-tag-row"><span class="we-tag">Research</span><span class="we-tag">UX Methods</span><span class="we-tag">Mixed</span></div></div><div></div></div><p class="we-brief">A compendium of applied UX research spanning contextual inquiry, diary studies, tree testing, and usability testing — translating field observations into design decisions across fintech, enterprise, and consumer domains.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Ethnographic research · Contextual inquiry · Diary studies across domains</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">Affinity mapping · Thematic analysis · Insight synthesis</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Research protocol design · Screener writing · Stimulus design</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Discussion guide iteration · Remote testing setup · Moderation</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Finding triangulation · Stakeholder readouts · Recommendation tracking</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">40+</div><div class="we-outcome-l">Research studies conducted</div></div><div class="we-outcome"><div class="we-outcome-v">8 domains</div><div class="we-outcome-l">Industry coverage</div></div><div class="we-outcome"><div class="we-outcome-v">Research-led</div><div class="we-outcome-l">Roadmap pivots</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="we-title">Product Strategy</div><div class="we-byline">M2P Fintech &nbsp;&middot;&nbsp; UX Strategy</div><div class="we-tag-row"><span class="we-tag">Strategy</span><span class="we-tag">UX Maturity</span><span class="we-tag">Fintech</span></div></div><div><a class="we-cta" href="/product-strategy.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">An honest UX maturity audit of M2P — starting from the Business Model Canvas, benchmarked against Nielsen Norman Group's maturity model (assessed at "Limited"), ending in a scoped plan to redesign one product first with named stakeholders and metrics.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">The Business</div><div class="we-phase-methods">Business Model Canvas · Partners, segments, value proposition mapped</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Case for UX</div><div class="we-phase-methods">3 product lines (Payments, Lending, Banking) needing one unified vision</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Assessment</div><div class="we-phase-methods">NN/g UX maturity model applied honestly · Real portal findings reviewed</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">The Plan</div><div class="we-phase-methods">Named stakeholders, one scoped product, real success metrics</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Principles</div><div class="we-phase-methods">Krug's usability principles &amp; dark-pattern ethics applied to B2B fintech</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">Stage 2/6</div><div class="we-outcome-l">Honest maturity assessment</div></div><div class="we-outcome"><div class="we-outcome-v">3</div><div class="we-outcome-l">Product lines mapped</div></div><div class="we-outcome"><div class="we-outcome-v">1</div><div class="we-outcome-l">Scoped pilot product</div></div></div></article>
+<article class="work-entry"><div class="work-entry-head"><div class="we-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg></div><div><div class="we-title">Cryptocurrency</div><div class="we-byline">Self-directed &nbsp;&middot;&nbsp; UX Designer</div><div class="we-tag-row"><span class="we-tag">Fintech</span><span class="we-tag">Crypto</span><span class="we-tag">B2C</span></div></div><div><a class="we-cta" href="/cryptocurrency.html" target="_blank">Full Case Study →</a></div></div><p class="we-brief">Designing CryptoFarm, a cryptocurrency exchange concept for first-time traders — every competitor already solved "can I trade," so the real design problem was earning enough trust that people would.</p><div class="we-process"><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Discover</div><div class="we-phase-methods">Ecosystem mapping · 3-competitor teardown · 7 user interviews</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Define</div><div class="we-phase-methods">Affinity mapping · Persona (Ganesh) · Reframed problem statement</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Design</div><div class="we-phase-methods">Value/frequency feature matrix · Information architecture · Wireframes</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Prototype</div><div class="we-phase-methods">Full hi-fi UI across 10 flows · Buy/sell trading flow · Colour &amp; type system</div></div><div class="we-phase"><div class="we-phase-dot-wrap"><div class="we-phase-dot"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg></div></div><div class="we-phase-name">Validate</div><div class="we-phase-methods">Usability test protocol built around hesitation, not just task success</div></div></div><div class="we-outcomes"><div class="we-outcome"><div class="we-outcome-v">10 Flows</div><div class="we-outcome-l">Designed end-to-end</div></div><div class="we-outcome"><div class="we-outcome-v">3</div><div class="we-outcome-l">Competitors torn down</div></div><div class="we-outcome"><div class="we-outcome-v">7</div><div class="we-outcome-l">User interviews</div></div></div></article>
+        </div>
+      </div>
+    </section>
+
+<div class="cta-band">
     <h2>Ready to elevate your<br>product experience?</h2>
     <p>Let's discuss how my UX leadership can help drive innovation for your organisation.</p>
     <span class="btn-white" onclick="nav('contact')">Let's Connect →</span>
@@ -1374,6 +1477,8 @@ body[data-page="contact"] .footer{display:none;}
     <div class="footer-bottom"><div class="footer-copy">© 2025 Ayyappan Rajendiran.</div><div class="footer-copy">Bangalore · Chennai · Hyderabad, India</div></div>
   </footer>
 </div>
+
+
 
 <!-- ════════════════════════════════════
   PAGE: CONTACT
@@ -2349,7 +2454,7 @@ body[data-page="contact"] .footer{display:none;}
 
 <script>
 // ── Page Router ──
-const PAGES = ['home','portfolio','contact'];
+const PAGES = ['home','portfolio','works','contact'];
 
 function nav(page) {
   PAGES.forEach(p => {
@@ -2505,6 +2610,145 @@ window.addEventListener('scroll', () => {
     + '</div>'
     + '</div>';
 
+  
+  var NOKIA_CS = `
+  <div class="nk-cs">
+    <div class="nk-hero">
+      <div class="nk-logo-pill">NOKIA</div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:var(--t);">NAC · WSS — Enterprise IoT Security Suite</div>
+        <div style="font-size:12px;color:var(--t2);margin-top:2px;">Network Admission Control · Wireless Security System · IoT Device Management</div>
+      </div>
+      <div class="nk-badge" style="margin-left:auto;">IoT · Enterprise</div>
+    </div>
+    <div class="nk-stats">
+      <div class="nk-stat"><div class="nk-stat-v">14 mo</div><div class="nk-stat-l">Project Duration</div></div>
+      <div class="nk-stat"><div class="nk-stat-v">Lead UX</div><div class="nk-stat-l">My Role</div></div>
+      <div class="nk-stat"><div class="nk-stat-v">2+3+1</div><div class="nk-stat-l">UX · Dev · PM</div></div>
+      <div class="nk-stat"><div class="nk-stat-v">Web App</div><div class="nk-stat-l">Platform</div></div>
+    </div>
+
+    <div class="nk-section">
+      <div class="nk-section-h">Problem Space</div>
+      <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:14px;">Enterprise networks running Nokia NAC and WSS faced growing IoT device sprawl — thousands of heterogeneous endpoints requiring granular access policies, check-in workflows, and real-time security visibility. Admins operated across disconnected consoles, leading to slow response times and policy drift.</p>
+      <div class="nk-pain-grid">
+        <div class="nk-pain">
+          <div class="nk-pain-icon">🔌</div>
+          <div class="nk-pain-h">Fragmented Device Onboarding</div>
+          <div class="nk-pain-p">IT teams averaged 35 min per device check-in across 4 separate tools with no unified flow.</div>
+        </div>
+        <div class="nk-pain">
+          <div class="nk-pain-icon">🔒</div>
+          <div class="nk-pain-h">Blind Security Posture</div>
+          <div class="nk-pain-p">Security teams had no real-time view of wireless endpoint health, leaving policy violations undetected for hours.</div>
+        </div>
+        <div class="nk-pain">
+          <div class="nk-pain-icon">📋</div>
+          <div class="nk-pain-h">Policy Inconsistency</div>
+          <div class="nk-pain-p">Manual NAC rule configuration caused 62% of helpdesk tickets from access failures during shift handovers.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nk-section">
+      <div class="nk-section-h">UCD Process</div>
+      <div class="nk-process">
+        <div class="nk-phase" style="--phase-clr:#005AFF;">
+          <div class="nk-phase-num">01 · Discover</div>
+          <div class="nk-phase-h">Field Research</div>
+          <div class="nk-phase-p">20 contextual inquiry sessions with network admins and security officers across 3 enterprise sites. Shadowed live incident response workflows.</div>
+        </div>
+        <div class="nk-phase" style="--phase-clr:#0074D9;">
+          <div class="nk-phase-num">02 · Define</div>
+          <div class="nk-phase-h">Synthesis & Personas</div>
+          <div class="nk-phase-p">Affinity mapping of 340 observations. Defined 3 primary personas: Network Admin, Security Analyst, and Field Technician with distinct mental models.</div>
+        </div>
+        <div class="nk-phase" style="--phase-clr:#2ECC40;">
+          <div class="nk-phase-num">03 · Ideate</div>
+          <div class="nk-phase-h">Design Sprints</div>
+          <div class="nk-phase-p">2-week sprint with Nokia product team. Ran co-creation workshops to prioritise the Device Check-In flow and unified security dashboard.</div>
+        </div>
+        <div class="nk-phase" style="--phase-clr:#FF851B;">
+          <div class="nk-phase-num">04 · Prototype</div>
+          <div class="nk-phase-h">Iterative Wireframes</div>
+          <div class="nk-phase-p">3 rounds of lo-fi wireframes tested with 8 users per round. IA reworked based on card-sort results — collapsed 7 nav items to 4.</div>
+        </div>
+        <div class="nk-phase" style="--phase-clr:#B10DC9;">
+          <div class="nk-phase-num">05 · Validate</div>
+          <div class="nk-phase-h">Usability Testing</div>
+          <div class="nk-phase-p">Moderated sessions with 12 target users. SUS score improved from 52 → 84 across three design iterations. Cognitive walkthrough with Nokia's internal UX team.</div>
+        </div>
+        <div class="nk-phase" style="--phase-clr:#3D9970;">
+          <div class="nk-phase-num">06 · Deliver</div>
+          <div class="nk-phase-h">Hi-Fi & Handoff</div>
+          <div class="nk-phase-p">Final visual design in Nokia's enterprise design language. Component library of 48 new patterns. Dev-paired annotation and QA support over 8-week build cycle.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nk-section">
+      <div class="nk-section-h">Key Screens Designed</div>
+      <div class="nk-screens">
+        <div class="nk-screen">
+          <div class="nk-screen-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            Device Check-In Application
+          </div>
+          <div class="nk-screen-h">Guided Device Enrollment Flow</div>
+          <div class="nk-screen-p">Step-by-step wizard for IoT device registration with automatic classification, certificate provisioning, and policy assignment — reduced onboarding from 35 min to 8 min.</div>
+        </div>
+        <div class="nk-screen">
+          <div class="nk-screen-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+            NAC Dashboard
+          </div>
+          <div class="nk-screen-h">Unified Network Access Overview</div>
+          <div class="nk-screen-p">Real-time endpoint health map, access policy compliance heat-map, and one-click quarantine — all replacing 4 separate consoles in a single glass-pane view.</div>
+        </div>
+        <div class="nk-screen">
+          <div class="nk-screen-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            WSS Policy Manager
+          </div>
+          <div class="nk-screen-h">Wireless Security Rule Builder</div>
+          <div class="nk-screen-p">Visual drag-and-drop policy builder for SSID-level rules, device group conditions, and scheduled enforcement windows — replacing raw CLI configuration.</div>
+        </div>
+        <div class="nk-screen">
+          <div class="nk-screen-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Incident Triage View
+          </div>
+          <div class="nk-screen-h">Security Event Timeline</div>
+          <div class="nk-screen-p">Chronological event stream with severity-coded filters, one-click remediation actions, and auto-suggested policy patches based on recurring violation patterns.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nk-section">
+      <div class="nk-section-h">Business Impact</div>
+      <div class="nk-impact">
+        <div class="nk-impact-card">
+          <div class="nk-impact-v">77%</div>
+          <div class="nk-impact-l">Faster device onboarding (35 min → 8 min)</div>
+        </div>
+        <div class="nk-impact-card">
+          <div class="nk-impact-v">SUS 84</div>
+          <div class="nk-impact-l">Usability score (up from 52 pre-redesign)</div>
+        </div>
+        <div class="nk-impact-card">
+          <div class="nk-impact-v">60%</div>
+          <div class="nk-impact-l">Drop in access-related helpdesk tickets</div>
+        </div>
+      </div>
+    </div>
+
+    <a class="nk-figma-btn" href="/nokia-nac-wss.html" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      View Figma File
+    </a>
+  </div>
+  `;
+
   function openPortModal(imgPath, figmaUrl, title, iconUrl, pmType){
     titleEl.textContent = title;
     body.innerHTML = '';
@@ -2518,6 +2762,14 @@ window.addEventListener('scroll', () => {
       body.innerHTML = SDLC_CS;
       return;
     }
+    if(pmType === 'nokia'){
+      figmaLn.querySelector('.figma-btn-label').textContent = 'View in Figma';
+      figmaLn.href = 'https://www.figma.com/design/zRkZK0nOxpluzJva699jzF/Nokia-NAC---WSS---UI-Design?m=dev';
+      figmaLn.style.display = 'none';
+      body.innerHTML = NOKIA_CS;
+      return;
+    }
+
 
     figmaLn.querySelector('.figma-btn-label').textContent = 'Open in Figma';
     figmaLn.style.display = '';
@@ -2840,3 +3092,5 @@ if(typer){
 
 </body>
 </html>
+
+    >
