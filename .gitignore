@@ -1,2 +1,16 @@
 .DS_Store
 **/.DS_Store
+
+# Local Vite dev tooling — not part of the deployed static site
+node_modules/
+package.json
+package-lock.json
+vite.config.ts
+public/
+src/
+
+# Other local-only files not part of the deployed site
+.claude/
+images/
+Logo/
+portfolio.html
