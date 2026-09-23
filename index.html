@@ -5974,6 +5974,23 @@ window.addEventListener('scroll', () => {
     <h2 class="cs-h2">The quiet gap between offer and Day 1</h2>
     <p class="cs-p">A new hire usually goes quiet for a stretch after signing an offer — no product to open, no team to see, just an HR email thread and a start date circled on a calendar. Preboarding treats that gap as a real design surface: not a form to fill out, but the first place a new hire can go to feel like they already belong somewhere.</p>
     <p class="cs-p">The constraint was deliberately narrow: one screen, no login, no HR paperwork — just enough content to make the wait feel less blank.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 900 200" role="img" aria-label="Timeline diagram: offer accepted, a silent gap, then Day 1, with Preboarding placed inside the gap">
+        <line x1="60" y1="90" x2="840" y2="90" stroke="#D8D8D8" stroke-width="2"/>
+        <circle cx="60" cy="90" r="8" fill="#141414"/>
+        <text x="60" y="60" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#141414">Offer accepted</text>
+        <circle cx="840" cy="90" r="8" fill="#141414"/>
+        <text x="840" y="60" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#141414">Day 1</text>
+        <rect x="160" y="60" width="580" height="60" rx="12" fill="#FDECDD"/>
+        <text x="450" y="85" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="13" letter-spacing="0.04em" fill="#EA580C">THE QUIET GAP — WEEKS OF SILENCE</text>
+        <text x="450" y="106" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="#8a5a3a">No product to open. No team to see. Just an email thread.</text>
+        <path d="M450 120 L450 145" stroke="#EA580C" stroke-width="2" stroke-dasharray="3 4"/>
+        <rect x="360" y="148" width="180" height="34" rx="17" fill="#141414"/>
+        <text x="450" y="170" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="600" font-size="12.5" fill="#fff">Preboarding opens here</text>
+      </svg>
+      <div class="figure-cap">Fig 02 — Illustrative diagram: where this screen sits in the hiring timeline (not a real screen)</div>
+    </div>
   </div>
 </section>
 
@@ -6013,7 +6030,7 @@ window.addEventListener('scroll', () => {
           <circle cx="596" cy="368" r="4" fill="#E5E5E5"/>
           <circle cx="614" cy="368" r="4" fill="#E5E5E5"/>
         </svg>
-        <div class="figure-cap">Fig 02 — "Why 'Brand Name'?" panel, recreated from the live prototype's real copy and layout</div>
+        <div class="figure-cap">Fig 03 — "Why 'Brand Name'?" panel, recreated from the live prototype's real copy and layout</div>
       </div>
       <div class="figure">
         <svg viewBox="0 0 640 400" role="img" aria-label="Recreated panel: Diversity and Inclusion">
@@ -6032,7 +6049,7 @@ window.addEventListener('scroll', () => {
           <circle cx="596" cy="368" r="4" fill="#E5E5E5"/>
           <circle cx="614" cy="368" r="4" fill="#E5E5E5"/>
         </svg>
-        <div class="figure-cap">Fig 03 — "Diversity &amp; Inclusion" panel, recreated from the live prototype's real copy and layout</div>
+        <div class="figure-cap">Fig 04 — "Diversity &amp; Inclusion" panel, recreated from the live prototype's real copy and layout</div>
       </div>
     </div>
     <div class="gap-note"><b>Evidence gap</b><p>These two figures are recreations, not screenshots — the source prototype renders through Figma's canvas with no exportable static image, so the layout and copy were reproduced by hand from what's visible in the live file. The headline text, body copy, and structure are real; exact colours, spacing, and typography are approximated, not pixel-accurate.</p></div>
@@ -6073,6 +6090,18 @@ window.addEventListener('scroll', () => {
     <span class="cs-section-label">Judgment</span>
     <h2 class="cs-h2">Choosing less, on purpose</h2>
     <p class="cs-p">The clearest judgment call here is what the screen leaves out. No account creation, no document uploads, no multi-step wizard — just two content panels and a single soft CTA. For a moment when a new hire has no obligation to be there yet, asking for less was the design decision, not a placeholder for more that never got built.</p>
+
+    <div class="ba-row">
+      <div class="ba-col before">
+        <span class="ba-label">A typical HR onboarding portal</span>
+        <p>Account creation and a password to remember. Document uploads for ID and forms. A multi-step wizard with a progress bar. Policy PDFs to scroll through and acknowledge.</p>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-label">This screen</span>
+        <p>Two content panels. One soft "Learn more" CTA. Nothing to fill in, nothing to remember, nothing to get wrong before Day 1 has even started.</p>
+      </div>
+    </div>
+    <div class="gap-note"><b>Evidence gap</b><p>The "typical portal" column is illustrative — a composite of common onboarding-tool patterns, not a real predecessor product this screen was benchmarked against or replaced.</p></div>
   </div>
 </section>
 
