@@ -127,6 +127,14 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
 .comp-tags{display:flex;flex-wrap:wrap;gap:9px}
 .comp-tag{font-size:13px;font-weight:500;padding:8px 15px;border-radius:100px;background:var(--paper-alt);border:1px solid var(--line);color:var(--ink-soft)}
 
+/* ===== COMPANIES ===== */
+.company-grid{margin-top:56px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:820px){.company-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.company-grid{grid-template-columns:1fr}}
+.company-cell{background:#fff;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;min-height:150px}
+.company-cell img{max-width:100%;max-height:40px;width:auto;object-fit:contain}
+.company-cell span{font-size:12px;font-weight:600;color:var(--ink-soft);line-height:1.4}
+
 /* ===== LEADERSHIP ===== */
 .lead-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 @media(max-width:820px){.lead-grid{grid-template-columns:1fr}}
@@ -134,6 +142,8 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
 .lead-card-top{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
 .lead-co{font-family:'Fraunces',serif;font-weight:600;font-size:19px}
 .lead-role{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.lead-stat{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:40px;color:var(--accent);line-height:1}
+.lead-stat-label{margin-top:8px;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:14px}
 .lead-body{font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
 .lead-beyond{margin-top:56px;border-top:1px solid var(--line);padding-top:40px}
 .lead-beyond-h{font-family:'Fraunces',serif;font-weight:600;font-size:19px;margin-bottom:22px}
@@ -369,21 +379,31 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
 <section class="section" id="leadership">
   <div class="wrap">
     <div class="sec-eyebrow reveal">Leadership</div>
-    <h2 class="sec-h2 reveal">Leading design, not just doing it.</h2>
-    <p class="sec-sub reveal">Three of the projects above carried a Lead title. Here's what that actually meant on each one.</p>
+    <h2 class="sec-h2 reveal">Leading people, not just projects.</h2>
+    <p class="sec-sub reveal">The team-facing side of 13 years in design — sized honestly, in real numbers.</p>
 
     <div class="lead-grid reveal">
       <div class="lead-card">
-        <div class="lead-card-top"><span class="lead-co">Acceleron</span><span class="lead-role">Lead Product Designer · 12 months</span></div>
-        <p class="lead-body">Owned the vision for AgentFlow from a blank canvas — the interaction language, the agent-status system, and the roadmap engineering leaders ran their sprints against.</p>
+        <div class="lead-stat">5–12+</div>
+        <div class="lead-stat-label">Designers led at once</div>
+        <p class="lead-body">Across multiple enterprise verticals — IoT, FinTech, Healthcare, and Data platforms.</p>
       </div>
       <div class="lead-card">
-        <div class="lead-card-top"><span class="lead-co">M2P Fintech</span><span class="lead-role">Lead UX Designer</span></div>
-        <p class="lead-body">Identified the design-system problem myself and drove the initiative — it wasn't assigned to me. Built the foundation other product teams at M2P now build on.</p>
+        <div class="lead-stat">12</div>
+        <div class="lead-stat-label">Designers managed directly</div>
+        <p class="lead-body">Across enterprise design teams spanning fintech, IoT, and AI-driven products.</p>
       </div>
       <div class="lead-card">
-        <div class="lead-card-top"><span class="lead-co">Nokia</span><span class="lead-role">Lead UX Designer · 14 months</span></div>
-        <p class="lead-body">Led a 14-month platform rebuild across global enterprise sites, replacing four fragmented consoles admins, analysts, and field technicians all had to context-switch between.</p>
+        <div class="lead-stat">20+</div>
+        <div class="lead-stat-label">Designers mentored</div>
+        <p class="lead-body">From junior to mid-level roles, through critique rituals and a culture built on continuous learning, not sink-or-swim.</p>
+      </div>
+    </div>
+
+    <div class="lead-beyond reveal">
+      <div class="lead-beyond-h">Leadership &amp; Team Development</div>
+      <div class="comp-tags">
+        <span class="comp-tag">Team Leadership</span><span class="comp-tag">Design Culture &amp; Mentorship</span><span class="comp-tag">Cross-Functional Collaboration</span><span class="comp-tag">Stakeholder Communication</span><span class="comp-tag">Design Excellence Standards</span><span class="comp-tag">Scaling Design Operations</span>
       </div>
     </div>
 
@@ -399,6 +419,20 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
           <li>Tutor — D for Doubts (Online Edu)</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="companies">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal">Companies</div>
+    <h2 class="sec-h2 reveal">Where I've worked.</h2>
+    <div class="company-grid reveal">
+      <div class="company-cell"><img src="images/innova-logo.svg" alt="Innova Solutions logo"/><span>Innova Solutions<br/>(for Verizon)</span></div>
+      <div class="company-cell"><img src="Logo-m2p.png" alt="M2P Fintech logo"/><span>M2P Fintech</span></div>
+      <div class="company-cell"><img src="images/aquaconnect-logo.svg" alt="Aquaconnect logo"/><span>Aquaconnect</span></div>
+      <div class="company-cell"><img src="Logo-acl.webp" alt="Alten Calsoft Labs logo"/><span>Alten Calsoft Labs</span></div>
+      <div class="company-cell"><img src="Logo-born.png" alt="Born Commerce logo"/><span>Born Commerce</span></div>
     </div>
   </div>
 </section>
