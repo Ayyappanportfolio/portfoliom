@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enterprise Care Center — Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,500;0,600;0,700;1,400&display=swap"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+.cs-tag{border-color:#7C3AED;color:#7C3AED}
+.cs-section-label{color:#7C3AED}
+.cs-quote{border-left-color:#7C3AED}
+.cs-h2{border-left-color:#7C3AED}
+.stage-def{border-left-color:#7C3AED}
+.stage-icon-badge{background:#F1EBFE}
+.stage-icon-badge svg{stroke:#7C3AED}
+.roadmap circle{fill:#7C3AED !important}
+.cs-list li b{color:#7C3AED}
+a{color:#7C3AED}
+.cs-masthead{background:#F1EBFE}
+.stage{border-top-color:#7C3AED}
+.stage-num{color:#7C3AED;background:#F1EBFE}
+.metrics-table th{background:#F1EBFE}
+.ba-col.after{border-top-color:#7C3AED}
+.matrix{aspect-ratio:auto}
+.confidential-note{border:1.5px dashed #C9C4BA;border-radius:10px;padding:16px 20px;margin:18px 0;background:#FBFAF7}
+.confidential-note b{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7C3AED;margin-bottom:6px}
+.confidential-note p{font-size:14.5px;line-height:1.6;color:#5a5a5a}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+
+  <div class="cs-masthead">
+<div class="cs-tags">
+    <span class="cs-tag">Telecom</span>
+    <span class="cs-tag">Enterprise SaaS</span>
+    <span class="cs-tag">Conversational AI</span>
+  </div>
+
+  <h1 class="cs-title">Redesigning the Enterprise Care Center</h1>
+  <p class="cs-subtitle">A Tier-1 U.S. telecom carrier's enterprise self-service portal, rebuilt around one question: what if the AI workspace were the product, and the forms-and-tables UI were the fallback?</p>
+  </div>
+
+  <div class="cs-byline">
+    <b>Ayyappan Rajendiran</b>
+    <span class="dot"></span>
+    <span>Lead Experience Designer</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
+  <p class="cs-p">The Enterprise Care Center (ECC) is a real, currently-in-flight engagement — a self-service portal where enterprise and SMB Wireline and Wireless customers manage orders, service inventory, repair tickets, billing, and their own users. It's paired with an internal Agent Console used by care, help-desk, and sales teams to act on a customer's behalf when self-service can't finish the job — the two share one design system because they enforce the same entitlement rules.</p>
+  <div class="cs-grid">
+    <div class="cs-grid-item"><h4>Product</h4><p>Enterprise Care Center — 8 core modules, 50+ self-service actions, 3 primary user types.</p></div>
+    <div class="cs-grid-item"><h4>Client</h4><p>A Tier-1 U.S. telecom enterprise carrier (anonymized here at the client's confidentiality requirement).</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>Lead Experience Designer — discovery, synthesis, and the AI-first redesign direction.</p></div>
+    <div class="cs-grid-item"><h4>Scope</h4><p>Business + user discovery, an 8-module UX audit, and a phased AI-first redesign roadmap.</p></div>
+  </div>
+  <div class="confidential-note"><b>Client confidentiality</b><p>The source documentation for this project is marked confidential and proprietary by the client. Every fact below is real, but the client name, product name, internal system names, and exact dollar figures have been anonymized or generalized at that requirement. Nothing here is fabricated — where the source material doesn't cover something, that's marked explicitly rather than invented.</p></div>
+
+  <div class="roadmap">
+    <svg viewBox="0 0 900 130" role="img" aria-label="Nine sections: Empathize Business, Empathize Users, UX Audit, Affinity Map, Empathy Map, Prioritization Matrix, User Flow, IA, Visual Design">
+      <line x1="40" y1="55" x2="860" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+      <g font-family="DM Sans, sans-serif">
+        <g><circle cx="40" cy="55" r="10" fill="#141414"/><text x="40" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Business</text></g>
+        <g><circle cx="142" cy="55" r="10" fill="#141414"/><text x="142" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Users</text></g>
+        <g><circle cx="245" cy="55" r="10" fill="#141414"/><text x="245" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Audit</text></g>
+        <g><circle cx="347" cy="55" r="10" fill="#141414"/><text x="347" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Affinity</text></g>
+        <g><circle cx="450" cy="55" r="10" fill="#141414"/><text x="450" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Empathy</text></g>
+        <g><circle cx="552" cy="55" r="10" fill="#141414"/><text x="552" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Priority</text></g>
+        <g><circle cx="655" cy="55" r="10" fill="#141414"/><text x="655" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">User Flow</text></g>
+        <g><circle cx="757" cy="55" r="10" fill="#141414"/><text x="757" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">IA</text></g>
+        <g><circle cx="860" cy="55" r="10" fill="#141414"/><text x="860" y="90" text-anchor="middle" font-size="10" fill="#141414" font-weight="700">Visual Design</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- STAGE 01 — EMPATHIZE BUSINESS -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 01</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="6" y="10" width="28" height="20" rx="2"/><path d="M6 16h28M13 24h6"/></svg></span>
+    <span class="cs-section-label">Empathize — Business</span>
+    <h2 class="cs-h2">What the redesign had to be accountable for</h2>
+    <p class="cs-p">Before any screen work started, discovery ran across the roles that actually own this product's outcomes — the business analyst tracking completion metrics, the project manager owning the delivery roadmap, the tech lead who has to build whatever gets designed, and the associate director accountable for the P&amp;L this portal sits inside. That alignment converged on five goals the redesign is measured against.</p>
+    <ul class="cs-list">
+      <li><b>Raise self-service completion</b> — more tasks finished in the portal without an agent, measured per journey rather than per visit.</li>
+      <li><b>Deflect assisted volume</b> — fewer calls, chats, and Agent Console transactions for tasks the portal already supports.</li>
+      <li><b>Shorten time to order</b> — one-pass intake and visible pricing remove the rework loop between submit and provisioning.</li>
+      <li><b>Grow digital revenue</b> — catalog, quotes, and upgrade paths become discoverable inside the workspace, not only through sales.</li>
+      <li><b>Lower cost to change</b> — one design system across every module and both portals cuts duplicated build and QA effort.</li>
+    </ul>
+    <div class="pov-box">
+      <span class="pov-label">Constraint, stated up front</span>
+      <p>Numeric targets were deliberately left open at this stage — the team needed the client's current baselines for completion rate, assisted volume, and order cycle time before committing to specific numbers.</p>
+    </div>
+    <div class="confidential-note"><b>Evidence gap</b><p>These five goals are the real, documented output of stakeholder alignment. The specific interview transcripts and who-said-what quotes from the BA, PM, tech lead, and associate director aren't part of the material I have — so rather than invent quotes to dramatize this stage, I'm reporting the synthesized goals those conversations actually produced.</p></div>
+  </div>
+</section>
+
+<!-- STAGE 02 — EMPATHIZE USERS -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 02</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="14" cy="14" r="6"/><circle cx="27" cy="16" r="5"/><path d="M5 33c0-6 4-10 9-10s9 4 9 10M22 33c0-5 3-8 7-8s7 3 7 8"/></svg></span>
+    <span class="cs-section-label">Empathize — Users</span>
+    <h2 class="cs-h2">729 pieces of real customer feedback, across two segments</h2>
+    <p class="cs-p">Discovery pulled directly from customer voice channels and product analytics for both Wireline and Wireless enterprise customers — not a sample, the full logged set. It clustered into five pain points by volume:</p>
+    <table class="metrics-table">
+      <tr><th>Pain point</th><th>Feedback volume</th><th>Root cause</th></tr>
+      <tr><td>Payment processing &amp; invoice access</td><td>263</td><td>Invoices post 8+ days late; guest payment tool crashes on multi-invoice sessions</td></tr>
+      <tr><td>Session instability &amp; login loops</td><td>178</td><td>≤30 min forced timeout purges unsaved forms; 2FA email delivery is slow</td></tr>
+      <tr><td>Manual disconnect / move-add-change friction</td><td>160</td><td>27 manual steps per line disconnected; no bulk CSV upload</td></tr>
+      <tr><td>Support ticket wizard freezes &amp; silent closures</td><td>85</td><td>Fault-selection dropdown freezes; agents close tickets without customer confirmation</td></tr>
+      <tr><td>Inventory search &amp; navigation</td><td>43</td><td>No wildcard search; Wireline and Wireless assets live in isolated views</td></tr>
+    </table>
+    <blockquote class="cs-quote">"Why are these payments failing to go through? The system should provide a reason for failure."<span class="cs-quote-attr">— real customer feedback, payment processing</span></blockquote>
+    <blockquote class="cs-quote">"Having to go through 27 steps when I copied data to all steps is redundant. Need an option to disconnect multiple lines at once."<span class="cs-quote-attr">— real customer feedback, disconnect flow</span></blockquote>
+    <p class="cs-p">One user quote made the login problem concrete on its own: <em>"I tried to login using my credentials but I can't login so I paid without login."</em> — a customer routing around the portal's own authentication to get a task done.</p>
+  </div>
+</section>
+
+<!-- STAGE 03 — UX AUDIT -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 03</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="17" cy="17" r="10"/><path d="M24.5 24.5 32 32"/></svg></span>
+    <span class="cs-section-label">UX Audit</span>
+    <h2 class="cs-h2">Turning five pain points into five audited root causes</h2>
+    <p class="cs-p">VOC volume said where to look; the audit said why it was happening. Every pain point was walked screen-by-screen against the same two questions — what's actually causing this, and what's the smallest fix that resolves the cause rather than the symptom — before any redesign direction was proposed.</p>
+    <div class="cs-grid">
+      <div class="cs-grid-item"><h4>Session &amp; Login</h4><p><b>Audited cause:</b> a ≤30-min inactivity timeout purges in-progress forms, and 2FA email delivery lags long enough to break the login attempt.<br/><b>Fix direction:</b> extend session duration, add local state caching so network drops don't lose form progress, and cut 2FA delivery to under 5 seconds.</p></div>
+      <div class="cs-grid-item"><h4>Payment &amp; Invoice</h4><p><b>Audited cause:</b> invoices post 8+ days late and only arrive via an async email link; the guest payment tool crashes on multi-invoice sessions with no explanatory error.<br/><b>Fix direction:</b> instant in-portal PDF download, a refactored multi-bill payment handler, and specific, actionable error messages on failure.</p></div>
+      <div class="cs-grid-item"><h4>Support Tickets</h4><p><b>Audited cause:</b> the fault-selection dropdown freezes the ticket wizard, tickets don't sync to the dashboard in real time, and agents can close a ticket with no customer confirmation.<br/><b>Fix direction:</b> fix the dropdown state bug, real-time API sync to the dashboard, and a mandatory customer sign-off step before any ticket is marked resolved.</p></div>
+      <div class="cs-grid-item"><h4>Inventory Search</h4><p><b>Audited cause:</b> search fields don't support wildcards, and Wireline and Wireless assets are managed in isolated views that force repeated account switching.<br/><b>Fix direction:</b> wildcard search across every inventory table, plus a unified toggle header spanning both account types.</p></div>
+      <div class="cs-grid-item"><h4>Manual Disconnect</h4><p><b>Audited cause:</b> disconnecting multiple lines requires 27 repeated manual steps per line, with no bulk upload path and validation rules that block legitimate closures.<br/><b>Fix direction:</b> a bulk CSV/Excel disconnect tool, "copy to all lines" form controls, and updated validation logic for central admins.</p></div>
+      <div class="cs-grid-item"><h4>Across all five</h4><p>The same three failure modes repeat: <b>state gets lost</b> (sessions, forms, sync), <b>errors go unexplained</b> (payments, tickets), and <b>the interface assumes one record at a time</b> in a product built for enterprise-scale, multi-line accounts.</p></div>
+    </div>
+    <div class="confidential-note"><b>Evidence gap</b><p>The audit itself was documented as a large annotated screen-by-screen review — the source file runs to dozens of individual annotated screens. Rather than reproduce those (client-confidential, and not useful to a reader without the underlying UI), this section synthesizes the real cause-and-fix pairing the audit produced for each pain point.</p></div>
+  </div>
+</section>
+
+<!-- STAGE 04 — AFFINITY MAP -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 04</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="5" width="12" height="9" rx="1"/><rect x="23" y="5" width="12" height="9" rx="1"/><rect x="5" y="26" width="12" height="9" rx="1"/><rect x="23" y="26" width="12" height="9" rx="1"/></svg></span>
+    <span class="cs-section-label">Affinity Map</span>
+    <h2 class="cs-h2">729 raw notes, five real clusters</h2>
+    <p class="cs-p">The five pain points above are the actual output of affinity clustering on the raw feedback set — not a category scheme designed after the fact. Grouping surfaced that "login" and "navigation between Wireline and Wireless" kept appearing together, which is why session handling and account-switching became one design problem rather than two.</p>
+    <div class="affinity-board">
+      <div class="affinity-cluster">
+        <h4>Access &amp; Identity</h4>
+        <div class="note">Constant login issues</div>
+        <div class="note">2FA email delivery is extremely slow</div>
+        <div class="note">Confusing navigation between Business &amp; Wireless</div>
+        <div class="support">178 feedback items</div>
+      </div>
+      <div class="affinity-cluster">
+        <h4>Money Movement</h4>
+        <div class="note">Payments fail with no reason given</div>
+        <div class="note">Invoice PDF only arrives by email, days late</div>
+        <div class="note">Paid without logging in, out of frustration</div>
+        <div class="support">263 feedback items</div>
+      </div>
+      <div class="affinity-cluster">
+        <h4>Support Follow-Through</h4>
+        <div class="note">Ticket wizard freezes on fault selection</div>
+        <div class="note">Tickets closed without customer confirmation</div>
+        <div class="support">85 feedback items</div>
+      </div>
+      <div class="affinity-cluster">
+        <h4>Finding Things</h4>
+        <div class="note">Search has no wildcard support</div>
+        <div class="note">Wireline and Wireless assets live in separate views</div>
+        <div class="support">43 feedback items</div>
+      </div>
+      <div class="affinity-cluster">
+        <h4>Bulk Operations</h4>
+        <div class="note">27 repetitive steps to disconnect one line</div>
+        <div class="note">No CSV/Excel bulk upload option</div>
+        <div class="support">160 feedback items</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 04 — EMPATHY MAP -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 05</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="17" r="12"/><path d="M13 34c0-5 3-9 7-9s7 4 7 9"/></svg></span>
+    <span class="cs-section-label">Empathy Map</span>
+    <h2 class="cs-h2">The enterprise admin behind the tickets</h2>
+    <p class="cs-p">Synthesized from the same real feedback and behavior evidence above — a composite of the enterprise Wireline/Wireless admin who files these tickets, not a fictional persona invented separately from the data.</p>
+    <div class="empathy-grid">
+      <div class="empathy-cell">
+        <h4>Says</h4>
+        <ul>
+          <li>"The system should provide a reason for failure."</li>
+          <li>"Without our confirmation ticket is closed."</li>
+        </ul>
+      </div>
+      <div class="empathy-cell">
+        <h4>Thinks</h4>
+        <ul>
+          <li>Is my payment actually going to post, or do I need to call and check?</li>
+          <li>Why does this look different depending on whether I'm in Wireline or Wireless?</li>
+        </ul>
+      </div>
+      <div class="empathy-cell">
+        <h4>Does</h4>
+        <ul>
+          <li>Re-enters the same data 27 times to disconnect multiple lines.</li>
+          <li>Pays without logging in when authentication fails, just to get the task done.</li>
+        </ul>
+      </div>
+      <div class="empathy-cell">
+        <h4>Feels</h4>
+        <ul>
+          <li>Distrustful of silent failures — errors with no explanation.</li>
+          <li>Penalized for doing bulk, enterprise-scale work in a single-record interface.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 05 — PRIORITIZATION MATRIX -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 06</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="5" width="30" height="30" rx="2"/><path d="M20 5v30M5 20h30"/></svg></span>
+    <span class="cs-section-label">Prioritization Matrix</span>
+    <h2 class="cs-h2">Four technical directions, scored on the same axes</h2>
+    <p class="cs-p">The redesign could have gone four different technical routes to fix the "consistent experience" problem. Each was scored on effort to ship versus how strategically it set up the AI-first direction — not picked by preference.</p>
+    <div class="matrix">
+      <div class="matrix-cell"><h5>Low effort / Low strategic value</h5><ul><li>Embedded Wrapper — iframe container, zero changes needed from tool teams</li></ul></div>
+      <div class="matrix-cell"><h5>High effort / Low strategic value</h5><ul><li>(No candidate scored here — every option had a strategic angle)</li></ul></div>
+      <div class="matrix-cell"><h5>Low effort / High strategic value</h5><ul><li><b>Design System SDK</b> — shared token library, tools feel native — chosen for Phase 1–2</li></ul></div>
+      <div class="matrix-cell"><h5>High effort / High strategic value</h5><ul><li>AI Abstraction Layer — AI queries tool APIs directly, no UI inconsistency possible</li><li>Micro-Frontend Shell — full Module Federation rebuild, fully consistent UX and shared state</li></ul></div>
+    </div>
+    <p class="cs-p">The chosen path takes the low-effort, high-value option first (the shared design system) while keeping the two higher-effort, higher-value options — the AI abstraction layer and the micro-frontend shell — as the Phase 2–3 direction once the foundation is in place. The broader rollout uses the same logic at portfolio scale: a five-phase plan (Unify → Optimize → Modernize → AI-Enable → Future-Ready) that opens with a formal complexity/priority assessment across every application before committing engineering effort.</p>
+  </div>
+</section>
+
+<!-- STAGE 06 — USER FLOW -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 07</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="8" cy="20" r="4"/><circle cx="32" cy="20" r="4"/><path d="M12 20h16"/><path d="M24 14l4 6-4 6"/></svg></span>
+    <span class="cs-section-label">User Flow</span>
+    <h2 class="cs-h2">From a routing bot to a workspace that acts</h2>
+    <p class="cs-p">The clearest before/after in the whole redesign is how a support conversation actually resolves.</p>
+    <div class="ba-row">
+      <div class="ba-col before">
+        <span class="ba-label">Today (BAU)</span>
+        <p>A scripted bot asks which module the issue belongs to, deflects simple cases with FAQ content, and routes everything else to a queue. It routes conversations — it does not complete tasks, and it appears twice on the same screen.</p>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-label">Proposed (Conversational AI)</span>
+        <p>The AI workspace becomes the primary surface, with the structured portal UI kept as a full fallback and a live context panel alongside it. The assistant acts, not just routes.</p>
+      </div>
+    </div>
+    <div class="flow-row">
+      <span class="flow-step">Ask in plain language</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Act, with guardrails</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Explain and cite</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Hand off with context</span>
+    </div>
+    <p class="cs-p">Each step is a real constraint from the redesign: requests like "why is this circuit down?" or "pay the overdue invoice" replace learning eight module menus; every action stays inside the same entitlement rules as the structured UI, with confirmation before it commits; every answer links back to the record it came from — invoice, ticket, order — so trust is verifiable, not assumed; and when a case does need a human agent, the Agent Console receives the full transcript and state, so the customer never repeats themselves.</p>
+    <p class="cs-p">The interactive prototype spells out exactly which flows moved where. Eight BAU flows were mapped screen-by-screen — Dashboard, Order Creation, Bill Payment (both logged-in and guest), Service Change Request, a dedicated flow for the do-not-move exception case, the Session Issue flow, Support Ticket Closure (including the sub-flow for a carrier-closed ticket and a customer request for more information), and the manual disconnect flow. The Conversational AI track covers the five highest-value flows first — Dashboard, Order Creation, Upgrade/Change/Order Status, Product Tools, and Bill Payments — deliberately narrower than BAU's eight, since the AI-first surface ships in phases rather than replacing everything on day one.</p>
+  </div>
+</section>
+
+<!-- STAGE 07 — IA -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 08</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="16" y="4" width="8" height="8" rx="1"/><rect x="4" y="28" width="8" height="8" rx="1"/><rect x="28" y="28" width="8" height="8" rx="1"/><path d="M20 12v8M20 20H8v8M20 20h12v8"/></svg></span>
+    <span class="cs-section-label">Information Architecture</span>
+    <h2 class="cs-h2">One shell, eight modules, one shared design system</h2>
+    <p class="cs-p">The IA problem wasn't module count — eight modules is reasonable for what this product does. It was that each module had drifted into its own visual language, its own navigation pattern, and in places its own separate mobile treatment. The architecture direction rebuilds the portal as a Module Federation host: a shared shell (navigation, entitlement, the AI assistant) with each module registering into it as an independent, isolated unit sharing one design system.</p>
+    <ul class="cs-list">
+      <li><b>Shared shell</b> — top nav, breadcrumb, entitlement context, and the AI assistant stay visible above every module.</li>
+      <li><b>Eight modules as federated units</b> — Dashboard, Orders, Services, Repairs, Product Tools, Billing, Users, and Support, each built and shipped independently.</li>
+      <li><b>One token library</b> — a shared design-system package maps components and primitives so every module — and the internal Agent Console — renders from the same source of truth.</li>
+      <li><b>Two portals, one architecture</b> — the customer-facing Care Center and the internal Agent Console differ only in entitlement scope, not in structure.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- STAGE 08 — VISUAL DESIGN -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 09</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="7" width="30" height="26" rx="2"/><path d="M5 15h30"/><circle cx="11" cy="11" r="1.3"/></svg></span>
+    <span class="cs-section-label">Visual Design</span>
+    <h2 class="cs-h2">Three panels, one screen</h2>
+    <p class="cs-p">The target layout puts three things on screen at once, in a fixed hierarchy: the AI workspace as the primary conversational surface, the structured UI (forms, tables, maps) as a fallback that never disappears, and a live context panel of ambient metrics — so a customer working with the assistant never loses the option to drop into a table and verify it themselves.</p>
+    <div class="figure">
+      <svg viewBox="0 0 900 460" role="img" aria-label="Illustrative recreation of the three-panel layout: AI workspace, structured UI fallback, and live context panel">
+        <rect width="900" height="460" fill="#FAFAF8" rx="10"/>
+        <rect x="24" y="24" width="852" height="46" rx="8" fill="#F1EBFE"/>
+        <text x="44" y="53" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#141414">Enterprise Care Center — shared shell (nav · entitlement · AI entry point)</text>
+        <rect x="24" y="86" width="380" height="350" rx="10" fill="#141414"/>
+        <text x="46" y="118" font-family="DM Sans, sans-serif" font-weight="700" font-size="13" letter-spacing="0.05em" fill="#fff">AI WORKSPACE — PRIMARY</text>
+        <text x="46" y="150" font-family="DM Sans, sans-serif" font-size="13" fill="#D9D2FF">"Why is circuit ACME-ATL down?"</text>
+        <rect x="46" y="168" width="320" height="70" rx="8" fill="#241E38"/>
+        <text x="60" y="192" font-family="DM Sans, sans-serif" font-size="12" fill="#fff">SLA penalty is active on that circuit.</text>
+        <text x="60" y="210" font-family="DM Sans, sans-serif" font-size="12" fill="#fff">I can draft a compensation request —</text>
+        <text x="60" y="228" font-family="DM Sans, sans-serif" font-size="12" fill="#fff">source: Ticket #48213.</text>
+        <rect x="46" y="252" width="180" height="34" rx="17" fill="#7C3AED"/>
+        <text x="66" y="274" font-family="DM Sans, sans-serif" font-weight="600" font-size="12" fill="#fff">Draft the request →</text>
+        <rect x="418" y="86" width="230" height="350" rx="10" fill="#fff" stroke="#E5E5E5"/>
+        <text x="438" y="118" font-family="DM Sans, sans-serif" font-weight="700" font-size="12" letter-spacing="0.05em" fill="#6B6B6B">STRUCTURED UI — FALLBACK</text>
+        <rect x="438" y="136" width="190" height="24" rx="4" fill="#F2F1ED"/>
+        <rect x="438" y="168" width="190" height="24" rx="4" fill="#F2F1ED"/>
+        <rect x="438" y="200" width="190" height="24" rx="4" fill="#F2F1ED"/>
+        <text x="438" y="250" font-family="DM Sans, sans-serif" font-size="11" fill="#9A9A9A">Forms, tables, and maps —</text>
+        <text x="438" y="266" font-family="DM Sans, sans-serif" font-size="11" fill="#9A9A9A">always one click away, never removed.</text>
+        <rect x="672" y="86" width="204" height="350" rx="10" fill="#fff" stroke="#E5E5E5"/>
+        <text x="692" y="118" font-family="DM Sans, sans-serif" font-weight="700" font-size="12" letter-spacing="0.05em" fill="#6B6B6B">CONTEXT PANEL</text>
+        <text x="692" y="150" font-family="DM Sans, sans-serif" font-size="22" font-weight="700" fill="#7C3AED">7</text>
+        <text x="692" y="168" font-family="DM Sans, sans-serif" font-size="11" fill="#6B6B6B">open P1 tickets</text>
+        <text x="692" y="202" font-family="DM Sans, sans-serif" font-size="22" font-weight="700" fill="#141414">$12,450</text>
+        <text x="692" y="220" font-family="DM Sans, sans-serif" font-size="11" fill="#6B6B6B">overdue balance</text>
+        <text x="692" y="254" font-family="DM Sans, sans-serif" font-size="22" font-weight="700" fill="#141414">24</text>
+        <text x="692" y="272" font-family="DM Sans, sans-serif" font-size="11" fill="#6B6B6B">active services</text>
+      </svg>
+      <div class="figure-cap">Fig 01 — Illustrative recreation of the target layout and real interaction pattern. Not a captured screenshot — the client's actual UI is confidential and not reproduced here; company names, dollar figures, and ticket IDs shown are placeholders.</div>
+    </div>
+    <div class="confidential-note"><b>Evidence gap</b><p>The real Figma file contains actual high-fidelity screens for this layout. They aren't reproduced here because the source documentation is marked client-confidential — this figure recreates the real, documented layout structure and interaction pattern with placeholder data, not the client's actual interface.</p></div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="wrap">
+    <h2 class="cs-h2">Key Learnings</h2>
+    <div class="learning-grid">
+      <div class="learning"><div class="learning-h">The chatbot wasn't the problem — its ceiling was</div><div class="learning-p">The existing assistant already handled simple routing fine. The redesign wasn't "add AI," it was "let the AI actually finish the task instead of forwarding it."</div></div>
+      <div class="learning"><div class="learning-h">Affinity clusters and business goals should argue with each other</div><div class="learning-p">"Deflect assisted volume" as a business goal and "silent ticket closures" as a customer pain point are the same problem seen from two sides — the redesign had to satisfy both readings at once, not pick one.</div></div>
+      <div class="learning"><div class="learning-h">Confidentiality is a design constraint too</div><div class="learning-p">Writing this case study honestly — real numbers, anonymized names, recreated rather than copied screens — took the same discipline as the redesign itself: say exactly what's true, and mark plainly what isn't shown.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cs-signoff">
+    <p>Enterprise Care Center — a real client engagement, anonymized at the client's confidentiality requirement, by Ayyappan Rajendiran</p>
+    <p><a href="index.html">← Back to Portfolio</a></p>
+  </div>
+</div>
+
+</body>
+</html>

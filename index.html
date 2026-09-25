@@ -84,6 +84,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
 .work-title-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .work-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(22px,3vw,32px);letter-spacing:-.01em}
 .work-client{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.ai-badge{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#7C3AED;background:#F1EBFE;border-radius:100px;padding:4px 10px}
 .work-brief{margin-top:8px;font-size:14.5px;color:var(--ink-soft);max-width:56ch;line-height:1.55}
 .work-tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 .work-tag{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:4px 11px}
@@ -226,15 +227,25 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
     <div class="sec-head-row">
       <div>
         <div class="sec-eyebrow reveal">Selected Work</div>
-        <h2 class="sec-h2 reveal">Eight case studies. Eight different kinds of hard.</h2>
+        <h2 class="sec-h2 reveal">Nine case studies. Nine different kinds of hard.</h2>
       </div>
       <p class="sec-sub reveal" style="margin-top:0">Hover a row for a preview. Every number below is the one reported in the full case study — nothing rounded up for effect.</p>
     </div>
 
     <div class="work-list reveal" id="work-list">
 
-      <a class="work-row" href="sdlc.html" target="_blank" data-preview="icon" data-icon-color="#475569" data-icon="sdlc">
+      <a class="work-row" href="enterprise-care-center.html" target="_blank" data-preview="icon" data-icon-color="#7C3AED" data-icon="ecc">
         <span class="work-idx">01</span>
+        <div class="work-main">
+          <div class="work-title-row"><span class="work-title">Enterprise Care Center</span><span class="work-client">Tier-1 Telecom Carrier</span><span class="ai-badge">★ AI Highlight</span></div>
+          <p class="work-brief">A Tier-1 telecom carrier's enterprise self-service portal, redesigned around an AI workspace as the primary surface — full discovery through a phased, AI-first roadmap. Client-confidential; anonymized here at their requirement.</p>
+          <div class="work-tags"><span class="work-tag">Telecom</span><span class="work-tag">Enterprise SaaS</span><span class="work-tag">Conversational AI</span></div>
+        </div>
+        <span class="work-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+      </a>
+
+      <a class="work-row" href="sdlc.html" target="_blank" data-preview="icon" data-icon-color="#475569" data-icon="sdlc">
+        <span class="work-idx">02</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Agentic AI SDLC</span><span class="work-client">Acceleron</span></div>
           <p class="work-brief">An AI-powered software delivery platform that automates PLAN, BUILD, and OPERATE through autonomous agents — 40% faster delivery cycles, NPS 28→67.</p>
@@ -244,7 +255,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="design-system.html" target="_blank" data-preview="img" data-img="images/Design%20System.png">
-        <span class="work-idx">02</span>
+        <span class="work-idx">03</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Design System</span><span class="work-client">M2P Fintech</span></div>
           <p class="work-brief">An Atomic Design foundation with token architecture for light/dark and multi-brand theming — bringing visual consistency across M2P's digital products.</p>
@@ -255,7 +266,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="integrated-dashboard.html" target="_blank" data-preview="img" data-img="case-studies/integrated-dashboard/hifi-dashboard.png">
-        <span class="work-idx">03</span>
+        <span class="work-idx">04</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Integrated Dashboard</span><span class="work-client">M2P Fintech</span></div>
           <p class="work-brief">One analytics dashboard for M2P's entire partner ecosystem, replacing spreadsheet emails — 60% completed tasks with ease, 0% task failure across 22 users tested.</p>
@@ -266,7 +277,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="pockets.html" target="_blank" data-preview="img" data-img="case-studies/pockets/dashboard.png">
-        <span class="work-idx">04</span>
+        <span class="work-idx">05</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Redesigning Pockets</span><span class="work-client">ICICI Bank</span></div>
           <p class="work-brief">ICICI's Pockets team named legacy UI, brand inconsistency, and usability/accessibility failures as the problem — a UX audit and redesign followed across all nine flows.</p>
@@ -277,7 +288,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="nokia-nac-wss.html" target="_blank" data-preview="icon" data-icon-color="#0E7490" data-icon="nokia">
-        <span class="work-idx">05</span>
+        <span class="work-idx">06</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Nokia NAC · WSS</span><span class="work-client">Nokia</span></div>
           <p class="work-brief">Replacing four fragmented CLI consoles with one glass-pane platform for enterprise IoT device onboarding — 77% faster onboarding, SUS 84 up from a 52 baseline.</p>
@@ -287,7 +298,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="fastag.html" target="_blank" data-preview="img" data-img="case-studies/fastag/cover-context.png">
-        <span class="work-idx">06</span>
+        <span class="work-idx">07</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">FasTag</span><span class="work-client">M2P Fintech, for Kotak</span></div>
           <p class="work-brief">A time-boxed app-buying-and-managing brief for Kotak, reframed from a transaction into a trip-planning problem — built around a Toll Estimator no competitor offered.</p>
@@ -298,7 +309,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="sensy.html" target="_blank" data-preview="img" data-img="case-studies/sensy/cover.png">
-        <span class="work-idx">07</span>
+        <span class="work-idx">08</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Sensy</span><span class="work-client">Self-directed</span></div>
           <p class="work-brief">A conceptual self-harm prevention companion app, grounded in WHO suicide-prevention guidance — never built or user-tested, and presented exactly as that.</p>
@@ -309,7 +320,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
       </a>
 
       <a class="work-row" href="hr-portal.html" target="_blank" data-preview="img" data-img="case-studies/behance/preboarding.png">
-        <span class="work-idx">08</span>
+        <span class="work-idx">09</span>
         <div class="work-main">
           <div class="work-title-row"><span class="work-title">Preboarding — HR Portal</span><span class="work-client">M2P Fintech</span></div>
           <p class="work-brief">A single portal for the quiet gap between accepting an offer and Day 1 — its real copy names M2P directly, backed by published retention research, not invented metrics.</p>
@@ -322,7 +333,7 @@ em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ac
     </div>
 
     <div style="margin-top:44px;text-align:center">
-      <a class="btn btn-ghost" href="works.html#works">See all 15 projects →</a>
+      <a class="btn btn-ghost" href="works.html#works">See all 16 projects →</a>
     </div>
   </div>
 </section>
