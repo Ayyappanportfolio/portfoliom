@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Preboarding — Case Study</title>
+<title>HR Self-Service Portal — Case Study</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,500;0,600;0,700;1,400&display=swap"/>
 <link rel="stylesheet" href="assets/case-study.css"/>
 <style>
@@ -22,6 +22,15 @@ a{color:#EA580C}
 .stage-num{color:#EA580C;background:#FDECDD}
 .metrics-table th{background:#FDECDD}
 .ba-col.after{border-top-color:#EA580C}
+.persona-card{border:1px solid #E5E5E5;border-radius:10px;padding:20px 22px;background:#FBFAF7}
+.persona-card h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.persona-card .persona-role{font-size:12.5px;color:#9A9A9A;margin-bottom:12px;display:block}
+.persona-card ul{list-style:none;padding:0;margin:0}
+.persona-card li{font-size:13.5px;line-height:1.55;color:#3d3d3d;margin-bottom:6px}
+.persona-card li b{color:#141414}
+.persona-jtbd{font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:14px;color:#141414;margin-top:10px;border-top:1px solid #E5E5E5;padding-top:10px}
+.persona-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+@media(max-width:640px){.persona-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -30,48 +39,39 @@ a{color:#EA580C}
   <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
 
   <div class="cs-masthead">
-<div class="cs-tags">
-    <span class="cs-tag">HR Tech</span>
-    <span class="cs-tag">Onboarding</span>
-    <span class="cs-tag">Fintech</span>
-  </div>
+    <div class="cs-tags">
+      <span class="cs-tag">HR Tech</span>
+      <span class="cs-tag">Self-Service</span>
+      <span class="cs-tag">Enterprise UX</span>
+    </div>
 
-  <h1 class="cs-title">Designing Preboarding</h1>
-  <p class="cs-subtitle">A single portal for the quiet weeks between accepting an offer and walking in on Day 1 — built around M2P Fintech's real brand story, for the gap before Day 1.</p>
+    <h1 class="cs-title">Designing a Self-Service HR Portal</h1>
+    <p class="cs-subtitle">Employees didn't distrust the tools — they distrusted the silence after using them. A full research-to-validation UX process, built around one insight: self-service was treated as a first attempt, never a final answer.</p>
   </div>
 
   <div class="cs-byline">
     <b>Ayyappan Rajendiran</b>
     <span class="dot"></span>
-    <span>UX Designer &middot; M2P Fintech</span>
+    <span>Senior Product Designer</span>
   </div>
 </div>
 
 <div class="wrap">
-  <div class="cs-hero-figure">
-    <img src="case-studies/behance/preboarding.png" alt="Preboarding — portal cover" style="width:100%;border-radius:10px;border:1px solid #E5E5E5"/>
-    <div class="figure-cap">Fig 01 — Preboarding: a single landing screen, designed for the gap before Day 1</div>
-  </div>
-
-  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">The screen's own copy names the company: "M2P Solutions is one of the largest B2B Fintech/payments platform in India... expanding rapidly across Asia." That's the same M2P Fintech named as the client on the Design System case study elsewhere on this site — though the headline component above that paragraph still reads "Why 'Brand Name'?", an unswapped placeholder left in place. It asks a narrow question: between the moment someone accepts an offer and the moment they actually start, what's the one screen worth giving them?</p>
-  <div class="cs-grid">
-    <div class="cs-grid-item"><h4>Product</h4><p>Preboarding — a portal for new hires to open before their start date.</p></div>
-    <div class="cs-grid-item"><h4>Client</h4><p>M2P Fintech — confirmed by the real copy embedded in the design. Whether this was a commissioned HR deliverable or a self-driven design made with real M2P content isn't confirmed.</p></div>
-    <div class="cs-grid-item"><h4>My role</h4><p>UX Designer, M2P Fintech — content, hierarchy, and interaction for one core screen.</p></div>
-    <div class="cs-grid-item"><h4>Scope</h4><p>One landing screen carrying a short, interactive hero carousel.</p></div>
-  </div>
-  <div class="gap-note"><b>Evidence gap</b><p>The company is real and confirmed by the screen's own copy — but there's no research log, no usage data, and no confirmation of whether this shipped as an HR deliverable or stayed a design exploration. Everything below is read directly off the actual screen and its real copy, or cited from published secondary research, not reconstructed from a process that was never documented.</p></div>
+  <div class="gap-note"><b>About this case study</b><p>This is an illustrative, end-to-end practice case study — it demonstrates a full research-through-validation UX process, not a shipped client engagement. No company is named. Interview quotes, survey figures, usability-testing scores, and the final impact numbers are proposed placeholders written to be internally consistent, not real data from a live study — marked "illustrative" throughout rather than presented as fact.</p></div>
 
   <div class="roadmap">
-    <svg viewBox="0 0 900 130" role="img" aria-label="Five sections: Context, Why It Was Made, Ownership, Impact, Judgment">
-      <line x1="60" y1="55" x2="840" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+    <svg viewBox="0 0 900 130" role="img" aria-label="Nine sections: Context, Research, Synthesis, Problem and Opportunity, Ideation and IA, Flows and Wireframes, Ownership, Final Design, Testing and Validation">
+      <line x1="30" y1="55" x2="870" y2="55" stroke="#D8D8D8" stroke-width="2"/>
       <g font-family="DM Sans, sans-serif">
-        <g><circle cx="60" cy="55" r="11" fill="#141414"/><text x="60" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="60" y="90" text-anchor="middle" font-size="11.5" fill="#141414" font-weight="700">Context</text></g>
-        <g><circle cx="216" cy="55" r="11" fill="#141414"/><text x="216" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="216" y="90" text-anchor="middle" font-size="11.5" fill="#141414" font-weight="700">Why It Was Made</text></g>
-        <g><circle cx="372" cy="55" r="11" fill="#141414"/><text x="372" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="372" y="90" text-anchor="middle" font-size="11.5" fill="#141414" font-weight="700">Ownership</text></g>
-        <g><circle cx="528" cy="55" r="11" fill="#141414"/><text x="528" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="528" y="90" text-anchor="middle" font-size="11.5" fill="#141414" font-weight="700">Impact</text></g>
-        <g><circle cx="684" cy="55" r="11" fill="#141414"/><text x="684" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="684" y="90" text-anchor="middle" font-size="11.5" fill="#141414" font-weight="700">Judgment</text></g>
+        <g><circle cx="30" cy="55" r="9" fill="#141414"/><text x="30" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">01</text><text x="30" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Context</text></g>
+        <g><circle cx="135" cy="55" r="9" fill="#141414"/><text x="135" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">02</text><text x="135" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Research</text></g>
+        <g><circle cx="240" cy="55" r="9" fill="#141414"/><text x="240" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">03</text><text x="240" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Synthesis</text></g>
+        <g><circle cx="345" cy="55" r="9" fill="#141414"/><text x="345" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">04</text><text x="345" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Problem</text></g>
+        <g><circle cx="450" cy="55" r="9" fill="#141414"/><text x="450" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">05</text><text x="450" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Ideation &amp; IA</text></g>
+        <g><circle cx="555" cy="55" r="9" fill="#141414"/><text x="555" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">06</text><text x="555" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Flows</text></g>
+        <g><circle cx="660" cy="55" r="9" fill="#141414"/><text x="660" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">07</text><text x="660" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Ownership</text></g>
+        <g><circle cx="765" cy="55" r="9" fill="#141414"/><text x="765" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">08</text><text x="765" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Final Design</text></g>
+        <g><circle cx="870" cy="55" r="9" fill="#141414"/><text x="870" y="24" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">09</text><text x="870" y="86" text-anchor="middle" font-size="10.5" fill="#141414" font-weight="700">Validation</text></g>
       </g>
     </svg>
   </div>
@@ -83,137 +83,374 @@ a{color:#EA580C}
     <div class="stage-num">Stage 01</div>
     <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="6" y="10" width="28" height="20" rx="2"/><path d="M6 14l14 9 14-9"/></svg></span>
     <span class="cs-section-label">Context</span>
-    <h2 class="cs-h2">The quiet gap between offer and Day 1</h2>
-    <p class="cs-p">A new hire usually goes quiet for a stretch after signing an offer — no product to open, no team to see, just an HR email thread and a start date circled on a calendar. Preboarding treats that gap as a real design surface: not a form to fill out, but the first place a new hire can go to feel like they already belong somewhere.</p>
-    <p class="cs-p">The constraint was deliberately narrow: one screen, no login, no HR paperwork — just enough content to make the wait feel less blank.</p>
-
-    <div class="figure">
-      <svg viewBox="0 0 900 200" role="img" aria-label="Timeline diagram: offer accepted, a silent gap, then Day 1, with Preboarding placed inside the gap">
-        <line x1="60" y1="90" x2="840" y2="90" stroke="#D8D8D8" stroke-width="2"/>
-        <circle cx="60" cy="90" r="8" fill="#141414"/>
-        <text x="60" y="60" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#141414">Offer accepted</text>
-        <circle cx="840" cy="90" r="8" fill="#141414"/>
-        <text x="840" y="60" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#141414">Day 1</text>
-        <rect x="160" y="60" width="580" height="60" rx="12" fill="#FDECDD"/>
-        <text x="450" y="85" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="13" letter-spacing="0.04em" fill="#EA580C">THE QUIET GAP — WEEKS OF SILENCE</text>
-        <text x="450" y="106" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="#8a5a3a">No product to open. No team to see. Just an email thread.</text>
-        <path d="M450 120 L450 145" stroke="#EA580C" stroke-width="2" stroke-dasharray="3 4"/>
-        <rect x="360" y="148" width="180" height="34" rx="17" fill="#141414"/>
-        <text x="450" y="170" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="600" font-size="12.5" fill="#fff">Preboarding opens here</text>
-      </svg>
-      <div class="figure-cap">Fig 02 — Illustrative diagram: where this screen sits in the hiring timeline (not a real screen)</div>
+    <h2 class="cs-h2">An HR team drowning in questions the tools already answered</h2>
+    <p class="cs-p">An internal self-service app for a ~2,200-person company — leave requests, payslips, benefits enrollment, document access — already existed on paper. In practice, employees routed almost everything through email and shared inboxes instead: roughly 1,400 inbound HR requests a month, most of them repetitive lookups a tool was already built to answer. An HR team of six spent an estimated 60% of its time on request handling instead of policy work and onboarding design.</p>
+    <div class="cs-grid">
+      <div class="cs-grid-item"><h4>Stakeholders</h4><p>VP of People, HR operations lead, Total Rewards manager, Legal/Compliance, 3 engineers, 1 PM, and me as senior product designer.</p></div>
+      <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>A legacy payroll vendor with no employee UI, a separate benefits broker portal, and leave tracked in an HR-maintained spreadsheet.</p></div>
+      <div class="cs-grid-item"><h4>Constraints</h4><p>No write access to payroll's schema, a legal audit-trail requirement on every leave/benefits change, a 4-month timeline tied to open enrollment, and an immature design system.</p></div>
+      <div class="cs-grid-item"><h4>My role</h4><p>Owned UX end-to-end — research, IA, flows, wireframes, testing, and final UI.</p></div>
+      <div class="cs-grid-item"><h4>Timeline</h4><p>4 months: 3 weeks discovery, 5 weeks concepts/IA/flows, 5 weeks high-fidelity design in parallel with build, 3 weeks testing, 1 week launch prep.</p></div>
+      <div class="cs-grid-item"><h4>Success criteria</h4><p>Cut HR-request email volume 40%, get self-service completion above 90%, hold a launch SUS score above 80.</p></div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 02 — WHY IT WAS MADE -->
+<!-- STAGE 02 — RESEARCH -->
 <section class="stage">
   <div class="wrap">
     <div class="stage-num">Stage 02</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><path d="M20 6v6M20 28v6M6 20h6M28 20h6"/><circle cx="20" cy="20" r="8"/></svg></span>
-    <span class="cs-section-label">Why It Was Made</span>
-    <h2 class="cs-h2">What secondary research says about this gap</h2>
-    <p class="cs-p">No primary research exists for this specific screen — but the gap it targets is well documented in published HR research. None of the numbers below were produced for this project; they're cited here to explain why a preboarding screen is a reasonable thing to design in the first place, not to claim this particular design was validated against them.</p>
-    <div class="cs-grid">
-      <div class="cs-grid-item"><h4>65%</h4><p>of employees receive some form of preboarding before Day 1 — implying roughly a third get none. <a href="https://www.aihr.com/blog/employee-onboarding-statistics/" target="_blank" rel="noopener">Enboarder, via AIHR</a></p></div>
-      <div class="cs-grid-item"><h4>+80% / +60%</h4><p>more likely to show up on Day 1, and to stay beyond year one, for employees who go through preboarding. <a href="https://www.clickboarding.com/growth-retention/why-retention-before-day-one/" target="_blank" rel="noopener">Click Boarding</a></p></div>
-      <div class="cs-grid-item"><h4>22%</h4><p>of workers report leaving a job within their first 90 days. <a href="https://www.aihr.com/blog/employee-onboarding-statistics/" target="_blank" rel="noopener">Inside Global, via AIHR</a></p></div>
-      <div class="cs-grid-item"><h4>~50%</h4><p>of voluntary quits happen within an employee's first year. <a href="https://www.clickboarding.com/growth-retention/why-retention-before-day-one/" target="_blank" rel="noopener">SHRM</a></p></div>
-    </div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="17" cy="17" r="11"/><path d="M25 25l9 9"/></svg></span>
+    <span class="cs-section-label">Research &amp; Discovery</span>
+    <h2 class="cs-h2">Two competing hypotheses about why people still emailed</h2>
+    <p class="cs-p">HR leadership's starting theory was that employees simply didn't know the self-service tools existed. My working hypothesis was different: the deeper issue was trust — employees didn't believe an online form had actually updated payroll or their leave balance, so they emailed to be sure. The research plan was built to test both: 10 interviews across departments and tenure, 2 shadow sessions with HR ops processing inbound email, an employee survey, and a 90-day log analysis of the HR inbox.</p>
 
-    <h2 class="cs-h2" style="margin-top:40px">Brand story first, HR content second</h2>
-    <p class="cs-p">The screen is built around a short, interactive hero carousel rather than a static welcome document — the two verified panels are a brand-identity moment ("Why 'Brand Name'?", with real M2P copy underneath) and a culture moment (Diversity &amp; Inclusion). Both lead with a headline and a two-line description, followed by a single restrained "Learn more" — the screen states its point in one breath rather than front-loading a full handbook.</p>
+    <blockquote class="cs-quote">"I filled out the form, but I email anyway — I've been burned before when the balance was wrong."<span class="cs-quote-attr">— interview participant (illustrative)</span></blockquote>
+    <blockquote class="cs-quote">"I didn't know there was a portal until my manager told me. It isn't linked from anywhere I actually look."<span class="cs-quote-attr">— interview participant (illustrative)</span></blockquote>
 
-    <div class="figure-row">
-      <div class="figure">
-        <svg viewBox="0 0 640 400" role="img" aria-label="Recreated panel: Why Brand Name, with M2P Solutions copy">
-          <rect width="640" height="400" fill="#FAFAF8"/>
-          <path d="M0 0 H640 V130 Q420 210 200 130 Q80 90 0 130 Z" fill="#FDECDD"/>
-          <text x="48" y="185" font-family="DM Sans, sans-serif" font-weight="700" font-size="30" fill="#141414">Why "Brand Name"?</text>
-          <text font-family="DM Sans, sans-serif" font-size="15" fill="#5a5a5a">
-            <tspan x="48" y="230">M2P Solutions is one of the largest B2B Fintech/</tspan>
-            <tspan x="48" y="253">payments platforms in India, expanding rapidly</tspan>
-            <tspan x="48" y="276">across Asia with a focus on the GCC region.</tspan>
-          </text>
-          <rect x="48" y="308" width="146" height="42" rx="21" fill="#fff" stroke="#E5E5E5"/>
-          <text x="72" y="334" font-family="DM Sans, sans-serif" font-weight="600" font-size="14" fill="#141414">Learn more →</text>
-          <circle cx="560" cy="368" r="4" fill="#EA580C"/>
-          <circle cx="578" cy="368" r="4" fill="#E5E5E5"/>
-          <circle cx="596" cy="368" r="4" fill="#E5E5E5"/>
-          <circle cx="614" cy="368" r="4" fill="#E5E5E5"/>
-        </svg>
-        <div class="figure-cap">Fig 03 — "Why 'Brand Name'?" panel, recreated from the live prototype's real copy and layout</div>
-      </div>
-      <div class="figure">
-        <svg viewBox="0 0 640 400" role="img" aria-label="Recreated panel: Diversity and Inclusion">
-          <rect width="640" height="400" fill="#FAFAF8"/>
-          <path d="M0 0 H640 V130 Q420 210 200 130 Q80 90 0 130 Z" fill="#FDECDD"/>
-          <text x="48" y="185" font-family="DM Sans, sans-serif" font-weight="700" font-size="30" fill="#141414">Diversity &amp; Inclusion</text>
-          <text font-family="DM Sans, sans-serif" font-size="15" fill="#5a5a5a">
-            <tspan x="48" y="230">We're committed to a collaborative, inclusive</tspan>
-            <tspan x="48" y="253">environment that encourages authenticity and</tspan>
-            <tspan x="48" y="276">fosters a sense of belonging.</tspan>
-          </text>
-          <rect x="48" y="308" width="146" height="42" rx="21" fill="#fff" stroke="#E5E5E5"/>
-          <text x="72" y="334" font-family="DM Sans, sans-serif" font-weight="600" font-size="14" fill="#141414">Learn more →</text>
-          <circle cx="560" cy="368" r="4" fill="#E5E5E5"/>
-          <circle cx="578" cy="368" r="4" fill="#EA580C"/>
-          <circle cx="596" cy="368" r="4" fill="#E5E5E5"/>
-          <circle cx="614" cy="368" r="4" fill="#E5E5E5"/>
-        </svg>
-        <div class="figure-cap">Fig 04 — "Diversity &amp; Inclusion" panel, recreated from the live prototype's real copy and layout</div>
-      </div>
-    </div>
-    <div class="gap-note"><b>Evidence gap</b><p>These two figures are recreations, not screenshots — the source prototype renders through Figma's canvas with no exportable static image, so the layout and copy were reproduced by hand from what's visible in the live file. The headline text, body copy, and structure are real; exact colours, spacing, and typography are approximated, not pixel-accurate.</p></div>
+    <p class="cs-p">8 of 10 interview participants had used a self-service tool once, then reverted to email for the same task type later — consistently describing "not being sure it went through," not lack of awareness. A survey of 180 employees found 62% had emailed HR in the past 90 days; of those, 71% had already tried self-service for the same task at least once.</p>
 
-    <blockquote class="cs-quote">"We're committed to a collaborative, inclusive environment that encourages authenticity and fosters a sense of belonging."<span class="cs-quote-attr">— actual copy, Diversity &amp; Inclusion panel</span></blockquote>
-    <p class="cs-p">That's a trade-off: depth for approachability. A single scrollable screen can't carry a full employee handbook, and it isn't trying to — it's optimised for someone reading on a phone, in a few idle minutes, weeks before they've met anyone at the company.</p>
-    <div class="gap-note"><b>Evidence gap</b><p>No research or alternatives log exists for this specific concept — the priorities described above are read from the finished screen's own choices (carousel over document, two themes over a full handbook) and supported by the secondary research above, not from a documented internal process or usability testing on this design.</p></div>
+    <table class="metrics-table">
+      <tr><th>Why employees emailed instead of using self-service</th><th>Share of respondents</th></tr>
+      <tr><td>Wanted confirmation it went through</td><td>54%</td></tr>
+      <tr><td>Couldn't find where to do it</td><td>38%</td></tr>
+      <tr><td>The form didn't cover their case</td><td>29%</td></tr>
+    </table>
+    <table class="metrics-table">
+      <tr><th>90-day HR inbox log, by topic</th><th>Share of volume</th></tr>
+      <tr><td>Leave balance questions</td><td>41%</td></tr>
+      <tr><td>Payslip requests</td><td>27%</td></tr>
+      <tr><td>Benefits status / changes</td><td>19%</td></tr>
+      <tr><td>Everything else</td><td>13%</td></tr>
+    </table>
+
+    <ul class="cs-list">
+      <li><b>Pain points —</b> no confirmation state after submitting, often-stale leave balances, and no single discoverable entry point.</li>
+      <li><b>Needs —</b> a trustworthy, current source of truth; a visible confirmation on submission; one place to start.</li>
+      <li><b>Frictions —</b> separate logins across payroll, benefits, and leave, with no clear sense of which system owned what.</li>
+      <li><b>Workarounds —</b> some employees kept personal spreadsheets as a cross-check against HR's own numbers.</li>
+      <li><b>Contradictory finding —</b> 2 of 10 wanted a documented human reply for anything pay-related regardless of tooling — this kept an "Ask HR" escalation path visible everywhere, not just as a fallback.</li>
+    </ul>
+    <div class="gap-note"><b>Research limitations (illustrative)</b><p>The sample skewed toward employees who'd already emailed HR in the last 90 days, sourced via HR's own referral list — findings likely undercount employees who were already fully self-sufficient.</p></div>
   </div>
 </section>
 
-<!-- STAGE 03 — OWNERSHIP -->
+<!-- STAGE 03 — SYNTHESIS -->
 <section class="stage">
   <div class="wrap">
     <div class="stage-num">Stage 03</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="14" r="6"/><path d="M9 33c0-6 5-10 11-10s11 4 11 10"/></svg></span>
-    <span class="cs-section-label">Ownership</span>
-    <h2 class="cs-h2">One designer, one file, every decision</h2>
-    <p class="cs-p">Preboarding was designed solo in Figma during the same M2P tenure as the Design System project on this site — there's no record of a team splitting the work, so content, layout, hierarchy, and the carousel's interaction pattern read as one person's calls. That also means there's no collaboration story to tell here: the honest version is a single-designer piece, and there's no confirmation of whether it moved beyond this Figma file into an actual HR handoff.</p>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="6" y="6" width="11" height="11" rx="2"/><rect x="23" y="6" width="11" height="11" rx="2"/><rect x="6" y="23" width="11" height="11" rx="2"/><rect x="23" y="23" width="11" height="11" rx="2"/></svg></span>
+    <span class="cs-section-label">Synthesis</span>
+    <h2 class="cs-h2">Trust breaks at submission, not at task complexity</h2>
+    <p class="cs-p">Clustering the raw interview notes surfaced five patterns, ranked by how many of the ten participants supported each one:</p>
+
+    <div class="affinity-board">
+      <div class="affinity-cluster"><h4>No confirmation after submitting</h4><div class="note">"Wasn't sure it went through"</div><div class="note">"Never got anything back"</div><div class="support">7 of 10 participants</div></div>
+      <div class="affinity-cluster"><h4>Stale leave balance</h4><div class="note">"Balance was wrong last time"</div><div class="note">Keeps a personal spreadsheet cross-check</div><div class="support">5 of 10 participants</div></div>
+      <div class="affinity-cluster"><h4>Scattered entry points</h4><div class="note">"Didn't know there was a portal"</div><div class="note">"Found it via a Slack pin"</div><div class="support">6 of 10 participants</div></div>
+      <div class="affinity-cluster"><h4>Login fatigue</h4><div class="note">Separate logins per system</div><div class="note">"Gave up and emailed instead"</div><div class="support">4 of 10 participants</div></div>
+      <div class="affinity-cluster"><h4>Wants a human for pay issues</h4><div class="note">Wants a real reply on pay</div><div class="note">Wants a paper trail</div><div class="support">2 of 10 participants</div></div>
+    </div>
+    <p class="cs-p" style="font-size:15px;color:#5a5a5a"><b>Observation</b> — 7 of 10 described uncertainty right after submitting → <b>Pattern</b> — self-service actions produce no closing signal → <b>Insight</b> — trust breaks at the moment of submission, not at task complexity → <b>Design implication</b> — every write action needs a persistent, visible confirmation state.</p>
+
+    <h2 class="cs-h2" style="margin-top:40px">Empathy map</h2>
+    <div class="empathy-grid">
+      <div class="empathy-cell"><h4>Says</h4><ul><li>"I just want to make sure it went through."</li><li>"Isn't there a portal for this somewhere?"</li></ul></div>
+      <div class="empathy-cell"><h4>Thinks</h4><ul><li>"What if this doesn't actually update my file?"</li><li>"HR probably won't see this unless I email directly."</li></ul></div>
+      <div class="empathy-cell"><h4>Does</h4><ul><li>Submits a form, then emails HR anyway</li><li>Keeps a personal record as a cross-check</li></ul></div>
+      <div class="empathy-cell"><h4>Feels</h4><ul><li>Mildly anxious about pay/leave accuracy</li><li>Frustrated juggling several systems</li></ul></div>
+    </div>
+    <p class="cs-p">This is what shifted direction: HR's original ask was to simplify the forms. The empathy map showed the driver was anxiety about accuracy, not confusion about the interface — so priority moved from simplifying forms toward visible trust signals: confirmation states, timestamps, and status tracking throughout every flow.</p>
+
+    <h2 class="cs-h2" style="margin-top:40px">Personas</h2>
+    <div class="persona-row">
+      <div class="persona-card">
+        <h4>Priya</h4><span class="persona-role">Primary — individual contributor, matches the 8/10 majority pattern</span>
+        <ul>
+          <li><b>Goals —</b> get an accurate answer fast, avoid a payroll mistake</li>
+          <li><b>Behavior —</b> tries self-service first, emails HR as backup when unsure</li>
+          <li><b>Pain points —</b> no confirmation, stale balances, can't find the tool</li>
+          <li><b>Tech comfort —</b> moderate-to-high; the trust gap is specific to HR data</li>
+        </ul>
+        <p class="persona-jtbd">"When I check my leave balance, I want to trust the number immediately, so I don't have to double-check with HR."</p>
+      </div>
+      <div class="persona-card">
+        <h4>Marcus</h4><span class="persona-role">Secondary — escalation-preferring, matches the 2/10 minority pattern</span>
+        <ul>
+          <li><b>Goals —</b> a documented, human-confirmed answer for anything pay-related</li>
+          <li><b>Behavior —</b> skips self-service for sensitive topics, goes straight to email</li>
+          <li><b>Pain points —</b> doesn't trust automation with pay-related actions</li>
+          <li><b>Tech comfort —</b> high, but deliberately avoids self-service in this domain</li>
+        </ul>
+        <p class="persona-jtbd">"When something affects my pay, I want a human-reviewed record, so I have recourse if it's wrong."</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- STAGE 04 — IMPACT -->
+<!-- STAGE 04 — PROBLEM & OPPORTUNITY -->
 <section class="stage">
   <div class="wrap">
     <div class="stage-num">Stage 04</div>
     <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><path d="M6 30l8-10 7 6 13-16"/><path d="M28 10h6v6"/></svg></span>
-    <span class="cs-section-label">Impact</span>
-    <h2 class="cs-h2">No deployment, no metrics — and that's the honest answer</h2>
-    <p class="cs-p">There's no confirmation this screen was ever shipped to real M2P new hires, so there's no usage, retention, or satisfaction data to report — and inventing any would break the same rule every other case study on this site follows. What it does demonstrate is the pattern itself, backed by the retention research above: a single, content-led screen that a preboarding flow could realistically be built around, rather than a wireframe of an entire HR system.</p>
+    <span class="cs-section-label">Problem &amp; Opportunity</span>
+    <h2 class="cs-h2">The journey's worst moment is evaluation, not search</h2>
+    <p class="cs-p">Mapping the highest-volume task — checking a leave balance — showed trust dropping hardest right after the number appears on screen, not while searching for the tool or logging in.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 820 300" role="img" aria-label="Emotional journey chart: trust drops sharply at the Evaluate stage, then recovers through escalation to resolution">
+        <line x1="70" y1="240" x2="780" y2="240" stroke="#E5E5E5" stroke-width="1"/>
+        <text x="40" y="60" font-family="DM Sans, sans-serif" font-size="11" fill="#9A9A9A">Positive</text>
+        <text x="40" y="245" font-family="DM Sans, sans-serif" font-size="11" fill="#9A9A9A">Neutral</text>
+        <text x="40" y="215" font-family="DM Sans, sans-serif" font-size="11" fill="#9A9A9A">Anxious</text>
+        <polyline points="80,150 195,190 310,205 425,225 540,150 655,60" fill="none" stroke="#141414" stroke-width="2"/>
+        <g font-family="DM Sans, sans-serif" font-size="12" fill="#141414" text-anchor="middle">
+          <circle cx="80" cy="150" r="5" fill="#141414"/><text x="80" y="275">Need arises</text>
+          <circle cx="195" cy="190" r="5" fill="#141414"/><text x="195" y="275">Search</text>
+          <circle cx="310" cy="205" r="5" fill="#141414"/><text x="310" y="275">Attempt</text>
+          <circle cx="425" cy="225" r="5" fill="#EA580C"/><text x="425" y="275" font-weight="700" fill="#EA580C">Evaluate</text>
+          <circle cx="540" cy="150" r="5" fill="#141414"/><text x="540" y="275">Escalate</text>
+          <circle cx="655" cy="60" r="5" fill="#141414"/><text x="655" y="275">Resolution</text>
+        </g>
+        <text x="425" y="245" text-anchor="middle" font-family="DM Sans, sans-serif" font-style="italic" font-size="11.5" fill="#8A8A8A">Highest-leverage moment</text>
+      </svg>
+      <div class="figure-cap">Fig 01 — Illustrative emotional curve, the leave-balance check task, from the journey map</div>
+    </div>
+
+    <table class="metrics-table">
+      <tr><th></th><th></th></tr>
+      <tr><td>Symptom</td><td>HR ops is overwhelmed with repetitive email requests</td></tr>
+      <tr><td>Problem</td><td>Employees don't trust self-service enough to treat it as final</td></tr>
+      <tr><td>Root cause</td><td>The tools complete the transaction but never signal it's trustworthy or final — no confirmation, no freshness indicator, no single entry point</td></tr>
+    </table>
+
+    <div class="pov-box"><span class="pov-label">Point of view</span><p>Priya needs a visibly trustworthy, single-entry-point way to complete routine HR tasks, because the current tools complete the transaction without ever confirming it — leaving enough doubt that email feels safer.</p></div>
+
+    <ul class="cs-list">
+      <li>How might we make every self-service action feel definitively complete?</li>
+      <li>How might we make data freshness visible without the employee having to ask?</li>
+      <li>How might we give employees one place to start, regardless of which backend system holds the answer?</li>
+      <li>How might we preserve a human escalation path without it becoming the default?</li>
+    </ul>
+
+    <h2 class="cs-h2" style="margin-top:40px">Priority matrix — impact × effort</h2>
+    <div class="matrix">
+      <div class="matrix-cell"><h5>Quick wins</h5><ul><li>Confirmation state</li><li>Freshness signal</li><li>Persistent "Ask HR" link</li></ul></div>
+      <div class="matrix-cell"><h5>Strategic bets</h5><ul><li>Single entry point (IA rework)</li><li>Unified login / SSO</li></ul></div>
+      <div class="matrix-cell"><h5>Low priority</h5><ul><li>None scored low on both axes</li></ul></div>
+      <div class="matrix-cell"><h5>Intentionally rejected</h5><ul><li>FAQ chatbot</li><li>Form redesign first (down-ranked)</li></ul></div>
+    </div>
+    <div class="gap-note"><b>Why the chatbot was rejected</b><p>An HR FAQ chatbot was considered and dropped: the research pointed to a trust gap in an already-completed transaction, not to missing information. A chatbot added a new surface without closing the confirmation gap — and risked employees trusting a bot's answer on pay data even less than a static number.</p></div>
   </div>
 </section>
 
-<!-- STAGE 05 — JUDGMENT -->
+<!-- STAGE 05 — IDEATION & IA -->
 <section class="stage">
   <div class="wrap">
     <div class="stage-num">Stage 05</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><path d="M12 22l6 6 12-14"/><circle cx="20" cy="20" r="16"/></svg></span>
-    <span class="cs-section-label">Judgment</span>
-    <h2 class="cs-h2">Choosing less, on purpose</h2>
-    <p class="cs-p">The clearest judgment call here is what the screen leaves out. No account creation, no document uploads, no multi-step wizard — just two content panels and a single soft CTA. For a moment when a new hire has no obligation to be there yet, asking for less was the design decision, not a placeholder for more that never got built.</p>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><path d="M20 6v10M20 24v10M6 20h10M24 20h10"/><circle cx="20" cy="20" r="5"/></svg></span>
+    <span class="cs-section-label">Ideation &amp; Information Architecture</span>
+    <h2 class="cs-h2">Four principles, then a real IA — not a jump to the UI</h2>
+    <ul class="cs-list">
+      <li><b>Confirm, don't imply —</b> every write action gets an explicit, persistent confirmation.</li>
+      <li><b>Show your work —</b> every number carries a timestamp and a source.</li>
+      <li><b>One front door —</b> a single, memorable entry point regardless of the backend system behind it.</li>
+      <li><b>Escalation is a feature —</b> keep a human path visible without making it the default.</li>
+    </ul>
+
+    <p class="cs-p">For the confirmation pattern, three directions were sketched: a toast plus email receipt (simple, but easy to miss); a persistent "My Requests" status tracker (durable, reusable across every request type); and a chat-style confirmation thread engineering floated as reuse of an existing notifications component. The chat thread was rejected — it overlapped the email channel it was meant to replace, with no evidence anyone wanted more messaging. The shipped answer combined the first two: an immediate toast plus a persistent tracker.</p>
 
     <div class="ba-row">
-      <div class="ba-col before">
-        <span class="ba-label">A typical HR onboarding portal</span>
-        <p>Account creation and a password to remember. Document uploads for ID and forms. A multi-step wizard with a progress bar. Policy PDFs to scroll through and acknowledge.</p>
-      </div>
-      <div class="ba-col after">
-        <span class="ba-label">This screen</span>
-        <p>Two content panels. One soft "Learn more" CTA. Nothing to fill in, nothing to remember, nothing to get wrong before Day 1 has even started.</p>
-      </div>
+      <div class="ba-col before"><span class="ba-label">Before</span><p>Links scattered across three systems' own logins, no unifying navigation. A leave balance meant a link to a spreadsheet or a payroll site buried three clicks deep.</p></div>
+      <div class="ba-col after"><span class="ba-label">After</span><p>One entry point. Navigation grouped by task domain — Leave, Payslips, Benefits, My Requests, Ask HR, Profile — never by which backend system owns it.</p></div>
     </div>
-    <div class="gap-note"><b>Evidence gap</b><p>The "typical portal" column is illustrative — a composite of common onboarding-tool patterns, not a real predecessor product this screen was benchmarked against or replaced.</p></div>
+
+    <div class="figure">
+      <svg viewBox="0 0 820 220" role="img" aria-label="Sitemap: Home at the top, branching to Leave, Payslips, Benefits, My Requests, Ask HR, and Profile">
+        <line x1="410" y1="50" x2="410" y2="80" stroke="#D8D8D8" stroke-width="2"/>
+        <rect x="350" y="16" width="120" height="34" rx="8" fill="#141414"/>
+        <text x="410" y="38" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="13" fill="#fff">Home</text>
+        <line x1="70" y1="100" x2="750" y2="100" stroke="#D8D8D8" stroke-width="2"/>
+        <line x1="410" y1="80" x2="410" y2="100" stroke="#D8D8D8" stroke-width="2"/>
+        <g font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#141414">
+          <line x1="70" y1="100" x2="70" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="20" y="122" width="100" height="32" rx="16" fill="#FDECDD"/><text x="70" y="143" text-anchor="middle">Leave</text>
+          <line x1="205" y1="100" x2="205" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="155" y="122" width="100" height="32" rx="16" fill="#FDECDD"/><text x="205" y="143" text-anchor="middle">Payslips</text>
+          <line x1="340" y1="100" x2="340" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="290" y="122" width="100" height="32" rx="16" fill="#FDECDD"/><text x="340" y="143" text-anchor="middle">Benefits</text>
+          <line x1="475" y1="100" x2="475" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="418" y="122" width="114" height="32" rx="16" fill="#EA580C"/><text x="475" y="143" text-anchor="middle" fill="#fff">My Requests</text>
+          <line x1="610" y1="100" x2="610" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="560" y="122" width="100" height="32" rx="16" fill="#FDECDD"/><text x="610" y="143" text-anchor="middle">Ask HR</text>
+          <line x1="745" y1="100" x2="745" y2="122" stroke="#D8D8D8" stroke-width="2"/><rect x="695" y="122" width="100" height="32" rx="16" fill="#FDECDD"/><text x="745" y="143" text-anchor="middle">Profile</text>
+        </g>
+        <g font-family="DM Sans, sans-serif" font-size="10.5" fill="#8A8A8A">
+          <text x="70" y="178" text-anchor="middle">Balance · Request ·</text><text x="70" y="192" text-anchor="middle">History</text>
+          <text x="205" y="178" text-anchor="middle">Current · History</text>
+          <text x="340" y="178" text-anchor="middle">Elections ·</text><text x="340" y="192" text-anchor="middle">Enrollment · Docs</text>
+          <text x="475" y="178" text-anchor="middle">Status tracker,</text><text x="475" y="192" text-anchor="middle">all request types</text>
+        </g>
+      </svg>
+      <div class="figure-cap">Fig 02 — After: navigation grouped by task domain, not by backend system</div>
+    </div>
+    <p class="cs-p" style="font-size:15px;color:#5a5a5a">"My Requests" was chosen over "Activity" because employees described the need as "did my request go through" — never an abstract log. No formal card sort was run; the grouping follows the task-domain language ("my leave," "my payslip") used unprompted across the interviews.</p>
+  </div>
+</section>
+
+<!-- STAGE 06 — FLOWS & WIREFRAMES -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 06</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="14" width="12" height="12" rx="2"/><rect x="23" y="14" width="12" height="12" rx="2"/><path d="M17 20h6"/></svg></span>
+    <span class="cs-section-label">User Flows &amp; Wireframes</span>
+    <h2 class="cs-h2">Validate before submission, not after</h2>
+    <p class="cs-p">Research showed employees distrust systems that let them submit something invalid and find out later — so the critical "request time off" flow checks the balance and flags problems before the review step, not after.</p>
+    <div class="flow-row">
+      <span class="flow-step">Select leave type</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Select dates</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Balance check</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Review &amp; confirm</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Pending in My Requests</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Approved / Denied</span>
+    </div>
+    <ul class="cs-list">
+      <li><b>Error state —</b> insufficient balance blocks submission but suggests the maximum days actually available.</li>
+      <li><b>Empty state —</b> a first-time My Requests view explains itself instead of showing a blank table.</li>
+      <li><b>Edge case —</b> a public holiday inside the range is auto-excluded from the count before submit; a request beyond the remaining balance is flagged, not blocked, since policy allows manager-approved negative balances.</li>
+    </ul>
+
+    <h2 class="cs-h2" style="margin-top:40px">Wireframe progression — leave request form</h2>
+    <div class="figure">
+      <svg viewBox="0 0 900 280" role="img" aria-label="Three wireframes of the leave request form: low fidelity with plain fields, mid fidelity with a live balance and inline error, high fidelity with a source-labeled balance and a two-step review">
+        <g font-family="DM Sans, sans-serif">
+          <rect x="10" y="10" width="270" height="240" rx="10" fill="none" stroke="#D8D8D8" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="30" y="38" font-weight="700" font-size="13" fill="#141414">Request time off</text>
+          <rect x="30" y="54" width="230" height="26" rx="4" fill="none" stroke="#E5E5E5"/><text x="40" y="71" font-size="11" fill="#9A9A9A">Leave type</text>
+          <rect x="30" y="90" width="230" height="26" rx="4" fill="none" stroke="#E5E5E5"/><text x="40" y="107" font-size="11" fill="#9A9A9A">Date range</text>
+          <rect x="30" y="126" width="230" height="46" rx="4" fill="none" stroke="#E5E5E5"/><text x="40" y="143" font-size="11" fill="#9A9A9A">Note</text>
+          <rect x="30" y="200" width="230" height="30" rx="15" fill="none" stroke="#D8D8D8"/><text x="145" y="220" text-anchor="middle" font-size="12" fill="#141414">Submit</text>
+          <text x="30" y="264" font-size="11" font-style="italic" fill="#8A8A8A">Low-fi — structure only</text>
+
+          <rect x="315" y="10" width="270" height="240" rx="10" fill="none" stroke="#D8D8D8" stroke-width="1.5"/>
+          <text x="335" y="38" font-weight="700" font-size="13" fill="#141414">Request time off</text>
+          <rect x="335" y="52" width="230" height="30" rx="4" fill="#F2F1ED"/><text x="345" y="71" font-size="11" fill="#6B6B6B">Balance</text><text x="555" y="71" text-anchor="end" font-weight="700" font-size="12" fill="#141414">8 days</text>
+          <rect x="335" y="92" width="230" height="26" rx="4" fill="none" stroke="#E5E5E5"/><text x="345" y="109" font-size="11" fill="#9A9A9A">Leave type</text>
+          <rect x="335" y="128" width="230" height="26" rx="4" fill="none" stroke="#EA580C" stroke-width="1.5"/><text x="345" y="145" font-size="11" fill="#9A9A9A">Date range</text>
+          <text x="335" y="172" font-size="11" fill="#EA580C">Not enough balance.</text><text x="335" y="186" font-size="11" fill="#EA580C">Try a shorter range.</text>
+          <rect x="335" y="200" width="230" height="30" rx="15" fill="none" stroke="#D8D8D8"/><text x="450" y="220" text-anchor="middle" font-size="12" fill="#141414">Submit</text>
+          <text x="335" y="264" font-size="11" font-style="italic" fill="#8A8A8A">Mid-fi — live balance, inline error</text>
+
+          <rect x="620" y="10" width="270" height="240" rx="10" fill="none" stroke="#D8D8D8" stroke-width="1.5"/>
+          <text x="640" y="38" font-weight="700" font-size="13" fill="#141414">Request time off</text>
+          <text x="640" y="52" font-size="10" fill="#9A9A9A">Step 1 of 2 · Review next</text>
+          <rect x="640" y="58" width="230" height="46" rx="4" fill="#FDECDD"/><text x="650" y="76" font-weight="700" font-size="12" fill="#141414">8 days available</text><text x="650" y="92" font-size="9.5" fill="#8a5a3a">Synced from Payroll · 2h ago</text>
+          <rect x="640" y="114" width="230" height="26" rx="4" fill="none" stroke="#E5E5E5"/><text x="650" y="131" font-size="11" fill="#9A9A9A">Leave type</text>
+          <rect x="640" y="150" width="230" height="26" rx="4" fill="none" stroke="#E5E5E5"/><text x="650" y="167" font-size="11" fill="#9A9A9A">Date range</text>
+          <rect x="640" y="200" width="230" height="30" rx="15" fill="#EA580C"/><text x="755" y="220" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Review request</text>
+          <text x="640" y="264" font-size="11" font-style="italic" fill="#8A8A8A">High-fi — source, timestamp, review step</text>
+        </g>
+      </svg>
+      <div class="figure-cap">Fig 03 — Illustrative progression: low, mid, and high fidelity, leave request form</div>
+    </div>
+    <ul class="cs-list">
+      <li><b>Inline validation —</b> fires on blur, not on every keystroke, so a date range in progress isn't flagged mid-entry.</li>
+      <li><b>Loading —</b> skeleton screens for balance and My Requests, which depend on a 1–2 second payroll API lag — reduced perceived wait in testing.</li>
+      <li><b>Accessibility —</b> status is never color alone; 44px touch targets; form errors announced through ARIA live regions.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- STAGE 07 — OWNERSHIP -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 07</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="14" r="6"/><path d="M9 33c0-6 5-10 11-10s11 4 11 10"/></svg></span>
+    <span class="cs-section-label">Ownership &amp; Collaboration</span>
+    <h2 class="cs-h2">Reprioritizing the roadmap before a single wireframe existed</h2>
+    <p class="cs-p">HR leadership's original ask was a richer, more detailed request form. I brought the interview and log-analysis evidence to a working session and got agreement to reprioritize toward the confirmation and freshness work instead — the form redesign still happened, just after, not before. I also pushed back on engineering's proposal to reuse an existing chat-style notifications component for confirmations, with the pros/cons comparison from ideation; and I owned the IA restructuring from three siloed systems into one domain-based navigation, negotiating a single sign-on landing page with IT.</p>
+    <ul class="cs-list">
+      <li><b>With the PM —</b> the quick-wins-before-strategic-bets sequencing came from my priority matrix and was adopted directly as the sprint plan.</li>
+      <li><b>With engineering —</b> a joint SSO feasibility pass before final wireframes surfaced the identity-provider dependency early enough to rescope it into a later sprint instead of blocking launch.</li>
+      <li><b>With Legal —</b> the audit-trail requirement's UI implications — a visible, timestamped status history — became one design solution that satisfied compliance and closed the trust gap at once.</li>
+    </ul>
+    <p class="cs-p">Mid-project, the payroll vendor's API turned out to have a 1–2 second response lag unknown during ideation. Rather than ship a spinner — which testing later showed read as "is this broken?" — I adjusted to skeleton screens and worked with engineering to prefetch balance data on login where possible.</p>
+  </div>
+</section>
+
+<!-- STAGE 08 — FINAL DESIGN -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 08</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="6" y="8" width="28" height="24" rx="3"/><path d="M12 18h16M12 24h10"/></svg></span>
+    <span class="cs-section-label">Final Design &amp; Impact</span>
+    <h2 class="cs-h2">One entry point, one status trail, every number sourced</h2>
+    <p class="cs-p">The shipped portal has a single sign-on entry point, five domain-based sections, and an always-visible "Ask HR" action. Every write action surfaces an immediate toast, a status entry in My Requests, and a timestamped audit-trail entry that satisfies Legal's requirement. A status-badge component (color, icon, and text together) and a timestamp/source micro-pattern — "Synced from Payroll System · updated 2 hours ago" — were extended across every screen pulling from a backend system, and later became the template for the benefits-enrollment flow too.</p>
+    <ul class="cs-list">
+      <li>One entry point instead of three disconnected logins.</li>
+      <li>Every number carries a source and a freshness timestamp.</li>
+      <li>Every write action produces a persistent, checkable status, not just a momentary toast.</li>
+      <li>A visible escalation path preserved for the minority who want one.</li>
+    </ul>
+    <table class="metrics-table">
+      <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+      <tr><td>Self-service task completion</td><td>~55%</td><td>94%</td><td>+39 pts</td></tr>
+      <tr><td>Monthly HR-request emails</td><td>~1,400</td><td>~640</td><td>−54%</td></tr>
+      <tr><td>SUS score</td><td class="na">no benchmark</td><td>84</td><td>above 80 target</td></tr>
+      <tr><td>HR ops time on repetitive requests</td><td>~60% capacity</td><td>~25% (est.)</td><td>freed for policy work</td></tr>
+    </table>
+    <div class="gap-note"><b>Illustrative figures</b><p>All numbers on this page are proposed placeholders written to be internally consistent with the research above, not measurements from a live deployment.</p></div>
+  </div>
+</section>
+
+<!-- STAGE 09 — TESTING & VALIDATION -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 09</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><path d="M12 22l6 6 12-14"/><circle cx="20" cy="20" r="16"/></svg></span>
+    <span class="cs-section-label">Usability Testing &amp; Validation</span>
+    <h2 class="cs-h2">The trust gap survived into the first prototype</h2>
+    <p class="cs-p">Round 1 tested the mid-fidelity prototype with 6 employees against 3 tasks: check leave balance, submit a leave request, and find the status of a request submitted "yesterday." The most important finding: the confirmation toast auto-dismissed before 2 of 6 participants read it — the exact trust gap this project was meant to fix had survived into the interactive prototype.</p>
+
+    <table class="metrics-table">
+      <tr><th>Finding</th><th>Severity</th><th>Change made</th></tr>
+      <tr><td>Confirmation toast auto-dismissed before being read (2/6)</td><td>Critical</td><td>Persistent banner, requires explicit dismissal</td></tr>
+      <tr><td>Freshness timestamp sat below the fold on mobile (4/6)</td><td>Major</td><td>Moved timestamp inline beside the balance number</td></tr>
+      <tr><td>Negative-balance warning read as a hard block (1/6)</td><td>Major</td><td>Reworded into two explicit, non-blocking lines</td></tr>
+      <tr><td>Status of a past request found in one click (6/6)</td><td class="na">Positive</td><td class="na">No change</td></tr>
+    </table>
+
+    <div class="ba-row">
+      <div class="ba-col before"><span class="ba-label">Before</span><p>"⚠ Insufficient balance"</p></div>
+      <div class="ba-col after"><span class="ba-label">After</span><p>"You have 3 days left, but you're requesting 5. Your manager can still approve extra days — this won't block your request."</p></div>
+    </div>
+
+    <h2 class="cs-h2" style="margin-top:40px">Round 2 validated the fix</h2>
+    <table class="metrics-table">
+      <tr><th>Metric</th><th>Round 1</th><th>Round 2</th><th>Change</th></tr>
+      <tr><td>Task completion (submit request)</td><td>83%</td><td>100%</td><td>+17 pts</td></tr>
+      <tr><td>Time on task</td><td>2m 40s</td><td>1m 55s</td><td>−28%</td></tr>
+      <tr><td>Error rate</td><td>2 critical, 2 major</td><td>0 critical, 1 minor</td><td>both critical resolved</td></tr>
+      <tr><td>Confidence rating (1–5)</td><td>3.2</td><td>4.6</td><td>+1.4</td></tr>
+      <tr><td>Satisfaction (SUS)</td><td>71</td><td>84</td><td>+13 pts</td></tr>
+    </table>
+
+    <div class="learning-grid">
+      <div class="learning"><div class="learning-h">What improved</div><div class="learning-p">Confirmation persistence and the inline timestamp fully resolved both round 1 critical/major issues — no round 2 participant second-guessed a submission.</div></div>
+      <div class="learning"><div class="learning-h">What surprised us</div><div class="learning-p">Confidence rose more than completion did. Some round 1 participants completed tasks but still rated confidence low — which validated tracking confidence as its own metric, not just completion.</div></div>
+      <div class="learning"><div class="learning-h">What remains unresolved</div><div class="learning-p">A minor misread of the negative-balance copy persisted for one participant. Several also asked, unprompted, about seeing a teammate's coverage during leave — flagged for a future phase, not built here.</div></div>
+      <div class="learning"><div class="learning-h">What's next</div><div class="learning-p">A phase exploring team visibility during leave, and extending the timestamp/source pattern to benefits enrollment, which reused it but wasn't separately tested.</div></div>
+    </div>
+
+    <div class="flow-row" style="margin-top:32px">
+      <span class="flow-step">Research</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Insight</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Problem</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Opportunity</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Priority</span><span class="flow-arrow">→</span>
+      <span class="flow-step">IA</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Flow</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Design</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Test</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Iterate</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Validate</span>
+    </div>
+    <p class="cs-p" style="margin-top:16px">The project moved from a stated symptom — HR ops overwhelmed by repetitive email — to a validated root cause: a trust gap at the moment of submission and data display. The shipped design closed that gap: 94% self-service completion, a 54% drop in HR-request email volume, and a launch SUS score of 84.</p>
   </div>
 </section>
 
@@ -221,17 +458,17 @@ a{color:#EA580C}
   <div class="wrap">
     <h2 class="cs-h2">Key Learnings</h2>
     <div class="learning-grid">
-      <div class="learning"><div class="learning-h">A single screen can still carry a first impression</div><div class="learning-p">Preboarding never needed a full portal to make its point — one well-sequenced screen was enough to test whether the format works.</div></div>
-      <div class="learning"><div class="learning-h">Content order is the real hierarchy decision</div><div class="learning-p">Leading with brand story and belonging, ahead of anything transactional, is itself the design decision — there's no layout trick that substitutes for picking what goes first.</div></div>
-      <div class="learning"><div class="learning-h">Secondary research earns its place, if it's labelled</div><div class="learning-p">Citing real preboarding research explains why this screen is worth designing without pretending it was tested — the two are different claims, and conflating them would be the dishonest shortcut.</div></div>
-      <div class="learning"><div class="learning-h">A concept still deserves an honest scope</div><div class="learning-p">It would have been easy to write this up as a fully commissioned product with invented metrics. Naming the real company, the real copy, and the real gaps — including what's unconfirmed — is the more useful version.</div></div>
+      <div class="learning"><div class="learning-h">Trust is a design problem, not a copy problem</div><div class="learning-p">The fix wasn't better forms — it was making every action visibly, persistently confirmed. Simplifying the interface would have missed the actual failure point entirely.</div></div>
+      <div class="learning"><div class="learning-h">Evidence beats seniority in a prioritization fight</div><div class="learning-p">Leadership's original ask was reasonable on its face. Bringing interview and log data to the table, rather than asserting a different opinion, is what moved the roadmap.</div></div>
+      <div class="learning"><div class="learning-h">A metric can hide the real problem</div><div class="learning-p">Task completion alone would have called round 1 a success. Adding a confidence rating caught the trust gap that completion rate couldn't see.</div></div>
+      <div class="learning"><div class="learning-h">Illustrative work still deserves an honest label</div><div class="learning-p">This case study demonstrates process rigor — research through validation — without claiming to be a real client engagement. Marking that clearly is the more useful version.</div></div>
     </div>
   </div>
 </section>
 
 <div class="wrap">
   <div class="cs-signoff">
-    <p>Preboarding — a UX concept built with M2P Fintech's real brand content, by Ayyappan Rajendiran</p>
+    <p>HR Self-Service Portal — an illustrative UX process case study, by Ayyappan Rajendiran</p>
     <p><a href="index.html">← Back to Portfolio</a></p>
   </div>
 </div>
