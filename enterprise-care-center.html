@@ -132,6 +132,13 @@ a{color:var(--accent);}
 .vc-learn h4{font-size:15.5px;margin:0 0 7px;color:var(--ink);}
 .vc-learn p{font-size:13.5px;color:var(--sub);margin:0;line-height:1.55;}
 
+.vc-cta{
+  display:inline-flex;align-items:center;gap:9px;background:var(--sa, var(--accent));color:#0D0D14;
+  font-family:'Roboto Mono',monospace;font-weight:700;font-size:13.5px;letter-spacing:.02em;
+  padding:13px 22px;border-radius:6px;text-decoration:none;margin:8px 0 4px;
+}
+.vc-cta:hover{filter:brightness(1.1);}
+
 .vc-close{padding:50px 0 84px;}
 .vc-signoff{
   border-top:1px solid var(--line);padding-top:20px;margin-top:10px;
@@ -354,7 +361,7 @@ a{color:var(--accent);}
       <div class="vc-figcap">FIG. 01 — Illustrative recreation of the target layout and real interaction pattern. Not a captured screenshot — exact dollar figures and ticket IDs shown are placeholders.</div>
     </div>
     <div class="vc-disclose"><b>Evidence gap</b>The real Figma file contains actual high-fidelity screens for this layout. They aren't reproduced here since exact screens weren't cleared for reproduction — this figure recreates the real, documented layout structure and interaction pattern with placeholder data, not the actual interface.</div>
-    <p class="vc-p"><a href="https://most-olive-25872912.figma.site" target="_blank">View the interactive prototype (VEC Re-Imagined) →</a></p>
+    <a class="vc-cta" href="https://most-olive-25872912.figma.site" target="_blank">View the interactive prototype (VEC Re-Imagined) →</a>
   </div>
 </section>
 
