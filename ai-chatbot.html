@@ -4,330 +4,400 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Verizon ChatBot: Audit to Redesign — Case Study</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
-<link rel="stylesheet" href="assets/case-study.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"/>
 <style>
-/* Limited accent — a warm amber distinct to this audit, used sparingly */
-.cs-tag{border-color:#B7791F;color:#B7791F}
-.cs-section-label{color:#B7791F}
-.cs-quote{border-left-color:#B7791F}
-.cs-h2{border-left-color:#B7791F}
-.stage-def{border-left-color:#B7791F}
-.stage-icon-badge{background:#FAF0DC}
-.stage-icon-badge svg{stroke:#B7791F}
-.roadmap circle{fill:#B7791F !important}
-.cs-list li b{color:#B7791F}
-a{color:#B7791F}
-.cs-masthead{background:#FAF0DC}
-.stage{border-top-color:#B7791F}
-.stage-num{color:#B7791F;background:#FAF0DC}
-.metrics-table th{background:#FAF0DC}
-.ba-col.after{border-top-color:#B7791F}
+:root{
+  --paper:#F4F1E8; --ink:#1C1A14; --sub:#6B6248; --line:#C9C2A9;
+  --flag:#8A2E1E; --panel:#EAE4D2;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Newsreader',Georgia,serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:var(--flag);}
+.ar-wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+.ar-nav{padding:22px 0 0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;}
+.ar-nav a{color:var(--sub);text-decoration:none;}
+.ar-nav a:hover{color:var(--flag);}
+
+.ar-letterhead{
+  display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;
+  border-bottom:2px solid var(--ink);padding:34px 0 16px;margin-bottom:34px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.ar-ref{font-size:11.5px;color:var(--sub);letter-spacing:.03em;line-height:1.6;}
+.ar-ref b{color:var(--ink);}
+.ar-stamp{
+  font-size:10.5px;letter-spacing:.1em;font-weight:600;color:var(--flag);
+  border:1.5px solid var(--flag);padding:6px 11px;transform:rotate(1.5deg);white-space:nowrap;
+}
+
+.ar-title{font-size:clamp(28px,4.2vw,40px);font-weight:600;line-height:1.14;margin:0 0 14px;letter-spacing:-.005em;text-wrap:balance;}
+.ar-dek{font-size:17px;font-style:italic;color:var(--sub);margin:0 0 20px;max-width:64ch;}
+.ar-byline{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sub);margin-bottom:36px;letter-spacing:.02em;}
+.ar-byline b{color:var(--ink);}
+
+.ar-hero{margin-bottom:40px;}
+.ar-hero img{border:1px solid var(--line);}
+.ar-figcap{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--sub);margin-top:9px;letter-spacing:.01em;}
+
+.ar-fieldgrid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px 32px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:24px 0;margin-bottom:32px;
+}
+.ar-field-lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.ar-field-val{font-size:15.5px;line-height:1.5;}
+
+.ar-metricrow{
+  display:flex;gap:28px;flex-wrap:wrap;padding:22px 0;
+  border-bottom:1px solid var(--line);margin-bottom:36px;font-family:'IBM Plex Mono',monospace;
+}
+.ar-metric{flex:1;min-width:130px;}
+.ar-metric .m-val{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;}
+.ar-metric .m-lbl{font-size:10.5px;color:var(--sub);letter-spacing:.05em;text-transform:uppercase;margin-top:5px;}
+
+.ar-toc{margin-bottom:48px;}
+.ar-toc-h{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:12px;}
+.ar-toc ol{list-style:none;margin:0;padding:0;counter-reset:toc;}
+.ar-toc li{
+  counter-increment:toc;display:flex;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line);
+  font-size:15px;
+}
+.ar-toc li::before{content:"0" counter(toc);font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--flag);width:20px;flex-shrink:0;}
+.ar-toc a{color:var(--ink);text-decoration:none;}
+.ar-toc a:hover{color:var(--flag);}
+
+.ar-section{padding:44px 0;border-top:1px solid var(--line);}
+.ar-sec-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--flag);margin-bottom:10px;font-weight:600;}
+.ar-sec-title{font-size:clamp(22px,3.2vw,29px);font-weight:600;line-height:1.22;margin:0 0 28px;letter-spacing:-.005em;text-wrap:balance;}
+
+.ar-clause{margin-bottom:26px;}
+.ar-clause:last-child{margin-bottom:0;}
+.ar-clause-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin-bottom:6px;}
+.ar-clause-h{font-size:18px;font-weight:600;margin:0 0 9px;line-height:1.35;}
+.ar-clause p{margin:0 0 10px;}
+.ar-clause p:last-child{margin-bottom:0;}
+
+.ar-findings{list-style:none;margin:0 0 14px;padding:0;border-top:1px solid var(--line);}
+.ar-findings li{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5;}
+.ar-findings .fn-mark{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--flag);flex-shrink:0;width:24px;padding-top:1px;}
+
+.ar-list{margin:0 0 14px;padding-left:20px;}
+.ar-list li{margin-bottom:7px;font-size:16px;}
+.ar-list li:last-child{margin-bottom:0;}
+
+.ar-redaction{
+  background:var(--ink);color:var(--paper);padding:15px 18px;font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;line-height:1.7;margin:14px 0;
+}
+.ar-redaction b{color:#E8DDB8;letter-spacing:.04em;}
+
+.ar-note{
+  border-left:3px solid var(--flag);background:var(--panel);padding:14px 18px;margin:16px 0;
+  font-size:15px;line-height:1.55;
+}
+.ar-note .n-lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--flag);display:block;margin-bottom:6px;font-weight:600;}
+
+.ar-quote{
+  border-left:3px solid var(--ink);padding:6px 0 6px 20px;margin:18px 0;font-style:italic;font-size:16.5px;
+  color:#3A3627;
+}
+.ar-quote .q-lbl{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);display:block;margin-bottom:5px;}
+
+.ar-figure{margin:20px 0;}
+.ar-figure img{border:1px solid var(--line);}
+
+.ar-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;}
+.ar-flow span.step{border:1px solid var(--ink);padding:6px 11px;}
+.ar-flow span.arrow{color:var(--sub);}
+
+.ar-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:15px;}
+.ar-table th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);text-align:left;padding:10px 12px;background:var(--panel);}
+.ar-table td{padding:12px;border-bottom:1px solid var(--line);}
+.ar-table td.na{color:var(--sub);font-style:italic;}
+
+.ar-learnings{list-style:none;margin:0 0 20px;padding:0;counter-reset:kl;}
+.ar-learnings li{counter-increment:kl;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+.ar-learnings li:first-child{border-top:1px solid var(--line);}
+.ar-learnings li::before{content:"0" counter(kl);font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--flag);flex-shrink:0;width:22px;padding-top:2px;}
+.ar-kl-h{font-weight:600;font-size:16.5px;margin-bottom:4px;}
+.ar-kl-p{font-size:15px;color:var(--sub);line-height:1.55;}
+
+.ar-close{padding:44px 0 80px;}
+.ar-signoff{
+  border-top:2px solid var(--ink);padding-top:18px;margin-top:24px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sub);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+.ar-signoff a{color:var(--sub);}
+
+@media(max-width:600px){
+  .ar-fieldgrid{grid-template-columns:1fr;}
+  .ar-letterhead{flex-direction:column;}
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+<div class="ar-wrap ar-nav"><a href="index.html">← Back to Portfolio</a></div>
 
-  <div class="cs-masthead">
-<div class="cs-tags">
-    <span class="cs-tag">AI/ML</span>
-    <span class="cs-tag">Enterprise</span>
-    <span class="cs-tag">B2B</span>
+<div class="ar-wrap">
+  <div class="ar-letterhead">
+    <div class="ar-ref">FILE <b>VZ-CB-EVAL-01</b> · INNOVA SOLUTIONS<br>PREPARED FOR VERIZON BUSINESS SUPPORT</div>
+    <div class="ar-stamp">Audit → Shipped Redesign</div>
   </div>
 
-  <h1 class="cs-title">Auditing — Then Redesigning — Verizon's Business ChatBot</h1>
-  <p class="cs-subtitle">A 65% success rate looked fine on a dashboard. The full trace of the audit that showed why the business team still didn't trust it, and the redesign that followed it into production.</p>
-  </div>
+  <h1 class="ar-title">Auditing — Then Redesigning — Verizon's Business ChatBot</h1>
+  <p class="ar-dek">A 65% success rate looked fine on a dashboard. The full trace of the audit that showed why the business team still didn't trust it, and the redesign that followed it into production.</p>
+  <div class="ar-byline"><b>Ayyappan Rajendiran</b> · UX Designer, Innova Solutions — for Verizon</div>
 
-  <div class="cs-byline">
-    <b>Ayyappan Rajendiran</b>
-    <span class="dot"></span>
-    <span>UX Designer, Innova Solutions — for Verizon</span>
-  </div>
-</div>
-
-<div class="wrap">
-  <div class="cs-hero-figure">
+  <div class="ar-hero">
     <img src="case-studies/ai-chatbot/verizon-overview-challenges.png" alt="Verizon Business Support ChatBot overview and business challenges"/>
-    <div class="figure-cap">Fig 01 — The existing Verizon Business Support chatbot, and what it was actually failing at</div>
+    <div class="ar-figcap">FIG. 01 — The existing Verizon Business Support chatbot, and what it was actually failing at</div>
   </div>
 
-  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">Innova Solutions was engaged to evaluate Verizon's existing Business Support chatbot and hand back a structured case for what to fix and why. The audit didn't stop at a report — its findings became the brief for the redesign that followed, which was built and shipped.</p>
-  <div class="cs-grid">
-    <div class="cs-grid-item"><h4>Business context</h4><p>The chatbot handles registration, account management, billing, and payments for business customers, independent of a live agent.</p></div>
-    <div class="cs-grid-item"><h4>Existing metric</h4><p>A 65% average success rate — technically healthy, still generating business-team complaints.</p></div>
-    <div class="cs-grid-item"><h4>Success criteria</h4><p>Improve usability and engagement, reduce reliance on live agents, increase the customer stickiness good self-service earns.</p></div>
-    <div class="cs-grid-item"><h4>My role</h4><p>UX audit lead — framework design, evaluation, competitive research, and the redesign that shipped from it.</p></div>
+  <div class="ar-fieldgrid">
+    <div><div class="ar-field-lbl">Business context</div><div class="ar-field-val">The chatbot handles registration, account management, billing, and payments for business customers, independent of a live agent.</div></div>
+    <div><div class="ar-field-lbl">Existing metric</div><div class="ar-field-val">A 65% average success rate — technically healthy, still generating business-team complaints.</div></div>
+    <div><div class="ar-field-lbl">Success criteria</div><div class="ar-field-val">Improve usability and engagement, reduce reliance on live agents, increase the customer stickiness good self-service earns.</div></div>
+    <div><div class="ar-field-lbl">My role</div><div class="ar-field-val">UX audit lead — framework design, evaluation, competitive research, and the redesign that shipped from it.</div></div>
   </div>
 
-  <div class="roadmap">
-    <svg viewBox="0 0 900 130" role="img" aria-label="Six stage roadmap: Problem Framing, Audit Framework, Competitive Research, Scored Evaluation, Recommendations, Redesign and Launch">
-      <line x1="45" y1="55" x2="855" y2="55" stroke="#D8D8D8" stroke-width="2"/>
-      <g font-family="DM Sans, sans-serif">
-        <g><circle cx="45" cy="55" r="10" fill="#141414"/><text x="45" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">01</text><text x="45" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Problem Framing</text></g>
-        <g><circle cx="207" cy="55" r="10" fill="#141414"/><text x="207" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">02</text><text x="207" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Audit Framework</text></g>
-        <g><circle cx="369" cy="55" r="10" fill="#141414"/><text x="369" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">03</text><text x="369" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Competitive Research</text></g>
-        <g><circle cx="531" cy="55" r="10" fill="#141414"/><text x="531" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">04</text><text x="531" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Scored Evaluation</text></g>
-        <g><circle cx="693" cy="55" r="10" fill="#141414"/><text x="693" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">05</text><text x="693" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Recommendations</text></g>
-        <g><circle cx="855" cy="55" r="10" fill="#141414"/><text x="855" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">06</text><text x="855" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Redesign &amp; Launch</text></g>
-      </g>
-    </svg>
+  <div class="ar-metricrow">
+    <div class="ar-metric"><div class="m-val">65%</div><div class="m-lbl">Baseline success rate</div></div>
+    <div class="ar-metric"><div class="m-val">05</div><div class="m-lbl">Criteria applied</div></div>
+    <div class="ar-metric"><div class="m-val">11</div><div class="m-lbl">Capabilities benchmarked</div></div>
+    <div class="ar-metric"><div class="m-val">Shipped</div><div class="m-lbl">Redesign status</div></div>
+  </div>
+
+  <div class="ar-toc">
+    <div class="ar-toc-h">Contents</div>
+    <ol>
+      <li><a href="#sec-01">Problem Framing — a metric that didn't match the lived experience</a></li>
+      <li><a href="#sec-02">Audit Framework — building a lens before forming an opinion</a></li>
+      <li><a href="#sec-03">Competitive Research — learning the category before recommending in it</a></li>
+      <li><a href="#sec-04">Scored Evaluation — testing the product against the framework</a></li>
+      <li><a href="#sec-05">Recommendations — making the findings concrete</a></li>
+      <li><a href="#sec-06">Redesign &amp; Launch — the audit's findings became the build</a></li>
+    </ol>
   </div>
 </div>
 
-<!-- STAGE 01 — EMPATHISE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 01</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
-    <span class="cs-section-label">Problem Framing</span>
-    <h2 class="cs-h2">A success-rate number that didn't match how it felt to use</h2>
+<section class="ar-section" id="sec-01">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 01 — Problem Framing</div>
+    <h2 class="ar-sec-title">A success-rate number that didn't match how it felt to use</h2>
 
-    <div class="substep">
-      <div class="substep-num">The Signal Gap</div>
-      <h3 class="substep-h3">The metric said one thing, the business team said another</h3>
-      <p class="cs-p">65% success is a number a dashboard is happy with and a business team still complains about. I treated that gap itself as the research question, rather than assuming the chatbot was simply "fine" because the topline number looked acceptable.</p>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">The Signal Gap</div>
+      <h3 class="ar-clause-h">The metric said one thing, the business team said another</h3>
+      <p>65% success is a number a dashboard is happy with and a business team still complains about. I treated that gap itself as the research question, rather than assuming the chatbot was simply "fine" because the topline number looked acceptable.</p>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Internal Stakeholder Input</div>
-      <h3 class="substep-h3">Three pain points from the team using it day to day</h3>
-      <ul class="cs-list">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Internal Stakeholder Input</div>
+      <h3 class="ar-clause-h">Three pain points from the team using it day to day</h3>
+      <ul class="ar-list">
         <li><b>Limited visibility</b> into what the chatbot could actually do.</li>
         <li><b>An experience gap on the business side</b> — the internal team itself wasn't trained or onboarded on the product.</li>
         <li><b>Usability friction</b> that made even simple interactions feel harder than they should.</li>
       </ul>
-      <div class="gap-note"><b>Evidence gap</b><p>This audit's research base was internal business-team input and direct product evaluation, not moderated interviews with external Verizon business customers. No customer-facing interview transcripts or survey data were part of this engagement's scope.</p></div>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> this audit's research base was internal business-team input and direct product evaluation, not moderated interviews with external Verizon business customers. No customer-facing interview transcripts or survey data were part of this engagement's scope.</div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 02 — DEFINE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 02</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
-    <span class="cs-section-label">Audit Framework</span>
-    <h2 class="cs-h2">Building a lens before forming an opinion</h2>
+<section class="ar-section" id="sec-02">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 02 — Audit Framework</div>
+    <h2 class="ar-sec-title">Building a lens before forming an opinion</h2>
 
-    <div class="substep">
-      <div class="substep-num">Synthesizing the Internal Signal</div>
-      <h3 class="substep-h3">Three complaints, one root pattern</h3>
-      <div class="affinity-board">
-        <div class="affinity-cluster"><h4>Visibility</h4><div class="note">Users can't tell what the bot can do</div></div>
-        <div class="affinity-cluster"><h4>Internal readiness</h4><div class="note">Business team not trained on the product they support</div></div>
-        <div class="affinity-cluster"><h4>Usability friction</h4><div class="note">Simple interactions harder than they should be</div></div>
-      </div>
-      <p class="cs-p"><b>Pattern → Insight:</b> all three complaints point at the same root — the chatbot was evaluated on task completion, never on comprehension or confidence. Read against the internal team's own framing — "customers don't know what this bot can actually help with," said with the defensiveness of a team whose dashboard says the product works — the pattern held: nobody had ever measured comprehension or confidence, only completion.</p>
-      <div class="gap-note"><b>Evidence gap</b><p>This synthesis is built from internal business-team input and direct product evaluation, not customer-facing interviews. An audit of this scope doesn't produce a customer persona or a stage-by-stage journey map — it evaluates the product against defined criteria, not an individual's path through it. That's a legitimate difference in deliverable, not a step skipped.</p></div>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Synthesizing the Internal Signal</div>
+      <h3 class="ar-clause-h">Three complaints, one root pattern</h3>
+      <p><b>Pattern → Insight:</b> visibility, internal readiness, and usability friction all point at the same root — the chatbot was evaluated on task completion, never on comprehension or confidence. Read against the internal team's own framing — "customers don't know what this bot can actually help with," said with the defensiveness of a team whose dashboard says the product works — the pattern held: nobody had ever measured comprehension or confidence, only completion.</p>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> this synthesis is built from internal business-team input and direct product evaluation, not customer-facing interviews. An audit of this scope doesn't produce a customer persona or a stage-by-stage journey map — it evaluates the product against defined criteria, not an individual's path through it. That's a legitimate difference in deliverable, not a step skipped.</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Problem Definition</div>
-      <h3 class="substep-h3">From a defensible metric to an indefensible experience</h3>
-      <ul class="cs-list">
-        <li><b>Symptom:</b> business-team complaints despite a 65% success rate.</li>
-        <li><b>Problem:</b> the chatbot is evaluated on task completion, not on whether users understand what happened or what to do next.</li>
-        <li><b>Root cause:</b> no structured UX evaluation had ever been run against the product — only the completion metric existed.</li>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Problem Definition</div>
+      <h3 class="ar-clause-h">From a defensible metric to an indefensible experience</h3>
+      <ul class="ar-findings">
+        <li><span class="fn-mark">§1</span><span><b>Symptom.</b> Business-team complaints despite a 65% success rate.</span></li>
+        <li><span class="fn-mark">§2</span><span><b>Problem.</b> The chatbot is evaluated on task completion, not on whether users understand what happened or what to do next.</span></li>
+        <li><span class="fn-mark">§3</span><span><b>Root cause.</b> No structured UX evaluation had ever been run against the product — only the completion metric existed.</span></li>
       </ul>
-      <div class="pov-box"><span class="pov-label">Point of view</span><p>"A good user experience doesn't typically happen by accident. It's the result of careful planning, deep-dive research, analysis, investment of time and money, and continuous improvement."</p></div>
+      <div class="ar-quote"><span class="q-lbl">Point of view</span>"A good user experience doesn't typically happen by accident. It's the result of careful planning, deep-dive research, analysis, investment of time and money, and continuous improvement."</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">The Framework</div>
-      <h3 class="substep-h3">The direct answer: build the missing lens</h3>
-      <p class="cs-p">No structured evaluation existed → need a lens broader than task completion → opportunity: a named, criteria-based framework → solution: Direct, Orient &amp; Guide, Engage, Inform, Connect.</p>
-      <div class="figure">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">The Framework</div>
+      <h3 class="ar-clause-h">The direct answer: build the missing lens</h3>
+      <p>No structured evaluation existed → need a lens broader than task completion → opportunity: a named, criteria-based framework → solution: Direct, Orient &amp; Guide, Engage, Inform, Connect.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/review-framework.png" alt="The five-dimension review framework: Direct, Orient and Guide, Engage, Inform, Connect"/>
-        <div class="figure-cap">Fig 02 — Direct, Orient &amp; Guide, Engage, Inform, Connect — the framework built to evaluate before recommending anything</div>
+        <div class="ar-figcap">FIG. 02 — Direct, Orient &amp; Guide, Engage, Inform, Connect — the framework built to evaluate before recommending anything</div>
       </div>
-      <ul class="cs-list">
-        <li><b>Direct</b> — are users routed effectively to and within the right channel?</li>
-        <li><b>Orient &amp; Guide</b> — do the key pages orient and guide users effectively?</li>
-        <li><b>Engage</b> — are users effectively engaged to drive conversion?</li>
-        <li><b>Inform</b> — are users sufficiently informed to perform tasks?</li>
-        <li><b>Connect</b> — are users successfully able to accomplish tasks without challenges?</li>
+      <ul class="ar-findings">
+        <li><span class="fn-mark">§1</span><span><b>Direct</b> — are users routed effectively to and within the right channel?</span></li>
+        <li><span class="fn-mark">§2</span><span><b>Orient &amp; Guide</b> — do the key pages orient and guide users effectively?</span></li>
+        <li><span class="fn-mark">§3</span><span><b>Engage</b> — are users effectively engaged to drive conversion?</span></li>
+        <li><span class="fn-mark">§4</span><span><b>Inform</b> — are users sufficiently informed to perform tasks?</span></li>
+        <li><span class="fn-mark">§5</span><span><b>Connect</b> — are users successfully able to accomplish tasks without challenges?</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- STAGE 03 — IDEATE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 03</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
-    <span class="cs-section-label">Competitive Research</span>
-    <h2 class="cs-h2">Learning the category before recommending anything in it</h2>
+<section class="ar-section" id="sec-03">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 03 — Competitive Research</div>
+    <h2 class="ar-sec-title">Learning the category before recommending anything in it</h2>
 
-    <div class="substep">
-      <div class="substep-num">Category Research</div>
-      <h3 class="substep-h3">Mapping the solution space before naming a fix</h3>
-      <p class="cs-p">Before proposing what Verizon's chatbot should become, I mapped what a chatbot even is across the spectrum — rule-based versus conversational AI. A rule-based chatbot operates on predefined rules with static responses; conversational AI simulates genuine understanding via NLP, NLU, NLG, and deep learning. That distinction set the ceiling on what "Inform" and "Connect" could realistically achieve without a platform-level change, not just a UI one.</p>
-      <div class="figure">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Category Research</div>
+      <h3 class="ar-clause-h">Mapping the solution space before naming a fix</h3>
+      <p>Before proposing what Verizon's chatbot should become, I mapped what a chatbot even is across the spectrum — rule-based versus conversational AI. A rule-based chatbot operates on predefined rules with static responses; conversational AI simulates genuine understanding via NLP, NLU, NLG, and deep learning. That distinction set the ceiling on what "Inform" and "Connect" could realistically achieve without a platform-level change, not just a UI one.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/chatbot-mechanisms.png" alt="Rule-based versus conversational AI chatbot mechanisms"/>
-        <div class="figure-cap">Fig 03 — Rule-based versus conversational AI — the ceiling on what a redesign alone could fix</div>
+        <div class="ar-figcap">FIG. 03 — Rule-based versus conversational AI — the ceiling on what a redesign alone could fix</div>
       </div>
-      <p class="cs-p">Industry best practices were brought in as design principles, not decoration: omni-channel and cross-channel continuity, automatic fallback so a misunderstood query never dead-ends, a multimodal interface, and a deliberate greeting/mascot design.</p>
-      <div class="figure">
+      <p>Industry best practices were brought in as design principles, not decoration: omni-channel and cross-channel continuity, automatic fallback so a misunderstood query never dead-ends, a multimodal interface, and a deliberate greeting/mascot design.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/best-practices.png" alt="Best practices: omni-channel, cross-channel, automatic fallback, multimodal interface"/>
-        <div class="figure-cap">Fig 04 — The best practices used as design principles, not just inspiration</div>
+        <div class="ar-figcap">FIG. 04 — The best practices used as design principles, not just inspiration</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Competitive Benchmarking</div>
-      <h3 class="substep-h3">A sourced competitive gap analysis, in place of a formal matrix</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>No formal impact/effort matrix was produced for this audit. In its place, the competitive teardown below functioned as the de facto prioritization — capabilities every competitor had that Verizon's bot didn't.</p></div>
-      <p class="cs-p">Verizon's own VirtualAssistant was benchmarked directly against AT&T, T-Mobile, and Vodafone across eleven concrete capabilities — from contextual user history to predictive issue resolution to IoT device integration — sourced and cited rather than asserted from memory.</p>
-      <div class="figure">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Competitive Benchmarking</div>
+      <h3 class="ar-clause-h">A sourced competitive gap analysis, in place of a formal matrix</h3>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> no formal impact/effort matrix was produced for this audit. In its place, the competitive teardown below functioned as the de facto prioritization — capabilities every competitor had that Verizon's bot didn't.</div>
+      <p>Verizon's own VirtualAssistant was benchmarked directly against AT&amp;T, T-Mobile, and Vodafone across eleven concrete capabilities — from contextual user history to predictive issue resolution to IoT device integration — sourced and cited rather than asserted from memory.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/competitor-analysis.png" alt="Competitor analysis comparing Verizon, AT&T, T-Mobile, and Vodafone chatbot capabilities"/>
-        <div class="figure-cap">Fig 05 — Verizon against AT&T, T-Mobile, and Vodafone, feature by feature, sourced and cited</div>
+        <div class="ar-figcap">FIG. 05 — Verizon against AT&amp;T, T-Mobile, and Vodafone, feature by feature, sourced and cited</div>
       </div>
-      <div class="stage-reflect"><b>The takeaway</b>Every competitor had features Verizon's bot didn't. Knowing exactly which ones, and why they mattered, is what turns "we should be more like the competition" into a prioritized list.</div>
+      <div class="ar-note"><span class="n-lbl">Takeaway</span>Every competitor had features Verizon's bot didn't. Knowing exactly which ones, and why they mattered, is what turns "we should be more like the competition" into a prioritized list.</div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 04 — SCORED EVALUATION -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 04</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
-    <span class="cs-section-label">Scored Evaluation</span>
-    <h2 class="cs-h2">Testing the existing product against the framework, honestly</h2>
+<section class="ar-section" id="sec-04">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 04 — Scored Evaluation</div>
+    <h2 class="ar-sec-title">Testing the existing product against the framework, honestly</h2>
 
-    <div class="substep">
-      <div class="substep-num">Applying the Framework</div>
-      <h3 class="substep-h3">Not a user session — a scored evaluation against the framework</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>No moderated usability session with recruited participants was run. The evaluation here was applying the Direct/Orient &amp; Guide/Engage/Inform/Connect framework to the current chatbot directly — a structured expert evaluation, not a user test. I'm naming that distinction rather than letting the word "test" imply something it wasn't.</p></div>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Applying the Framework</div>
+      <h3 class="ar-clause-h">Not a user session — a scored evaluation against the framework</h3>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> no moderated usability session with recruited participants was run. The evaluation here was applying the Direct/Orient &amp; Guide/Engage/Inform/Connect framework to the current chatbot directly — a structured expert evaluation, not a user test. I'm naming that distinction rather than letting the word "test" imply something it wasn't.</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Findings</div>
-      <h3 class="substep-h3">The 65% reframed</h3>
-      <p class="cs-p">Scored against the framework, the 65% success rate stopped looking like a passing grade. It looked like a product that could technically resolve two out of three interactions while still leaving users unsure what it could do, unclear on next steps, and unable to self-serve with confidence — exactly the gap the business team had been describing anecdotally, now backed by a structured evaluation instead of a feeling.</p>
-      <div class="figure">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Findings</div>
+      <h3 class="ar-clause-h">The 65% reframed</h3>
+      <p>Scored against the framework, the 65% success rate stopped looking like a passing grade. It looked like a product that could technically resolve two out of three interactions while still leaving users unsure what it could do, unclear on next steps, and unable to self-serve with confidence — exactly the gap the business team had been describing anecdotally, now backed by a structured evaluation instead of a feeling.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/framework-dimensions-whatsnext.png" alt="Engage, Inform, and Connect framework details, plus what's next"/>
-        <div class="figure-cap">Fig 08 — The rest of the framework applied, and the real next steps handed back to the team</div>
+        <div class="ar-figcap">FIG. 08 — The rest of the framework applied, and the real next steps handed back to the team</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 05 — RECOMMENDATIONS -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 05</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
-    <span class="cs-section-label">Recommendations</span>
-    <h2 class="cs-h2">Making "Inform" and "Connect" concrete, not theoretical</h2>
+<section class="ar-section" id="sec-05">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 05 — Recommendations</div>
+    <h2 class="ar-sec-title">Making "Inform" and "Connect" concrete, not theoretical</h2>
 
-    <div class="substep">
-      <div class="substep-num">Recommended Entry Experience</div>
-      <h3 class="substep-h3">Popular topics first, not an empty prompt</h3>
-      <p class="cs-p">The entry point leads with a popular-topics grid — upgrade order, latest deals, check status, billing and payments, manage plan, manage account — instead of an empty text box asking the user to guess what the bot can help with. A visible settings panel and an upfront, honest disclosure that the user is talking to a digital assistant address the "Direct" and "Inform" gaps directly.</p>
-      <div class="figure">
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Recommended Entry Experience</div>
+      <h3 class="ar-clause-h">Popular topics first, not an empty prompt</h3>
+      <p>The entry point leads with a popular-topics grid — upgrade order, latest deals, check status, billing and payments, manage plan, manage account — instead of an empty text box asking the user to guess what the bot can help with. A visible settings panel and an upfront, honest disclosure that the user is talking to a digital assistant address the "Direct" and "Inform" gaps directly.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/mockups-entry-settings.png" alt="VZ Bot mockups: welcome greeting, privacy disclosure, settings, and popular topics"/>
-        <div class="figure-cap">Fig 06 — The VZ Bot entry experience: popular topics first, settings visible, no guessing what it can do</div>
+        <div class="ar-figcap">FIG. 06 — The VZ Bot entry experience: popular topics first, settings visible, no guessing what it can do</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Recommended Bill-Pay Flow</div>
-      <h3 class="substep-h3">Bill-pay, mapped step by step</h3>
-      <div class="flow-row">
-        <span class="flow-step">Select bill</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Review amount</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Choose/add payment method</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Confirm</span>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Recommended Bill-Pay Flow</div>
+      <h3 class="ar-clause-h">Bill-pay, mapped step by step</h3>
+      <div class="ar-flow">
+        <span class="step">Select bill</span><span class="arrow">→</span>
+        <span class="step">Review amount</span><span class="arrow">→</span>
+        <span class="step">Choose/add payment method</span><span class="arrow">→</span>
+        <span class="step">Confirm</span>
       </div>
-      <p class="cs-p">Billing and payments — one of the highest-stakes tasks — got mapped as a full conversational flow: select a bill from pending or overdue, see it broken out with amounts, choose a saved payment method or add a new one, and confirm. Every step keeps the user informed of exactly where they are, which is precisely what "Connect" was measuring for.</p>
-      <div class="figure">
+      <p>Billing and payments — one of the highest-stakes tasks — got mapped as a full conversational flow: select a bill from pending or overdue, see it broken out with amounts, choose a saved payment method or add a new one, and confirm. Every step keeps the user informed of exactly where they are, which is precisely what "Connect" was measuring for.</p>
+      <div class="ar-figure">
         <img src="case-studies/ai-chatbot/mockups-billpay-flow.png" alt="Bill pay conversational flow mockups"/>
-        <div class="figure-cap">Fig 07 — The bill-pay flow, mocked step by step: select, review, pay, confirm</div>
+        <div class="ar-figcap">FIG. 07 — The bill-pay flow, mocked step by step: select, review, pay, confirm</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Recommendation Mockups</div>
-      <h3 class="substep-h3">The recommendation artifacts handed back to the team</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>These mockups are the audit's recommendation artifacts, not a documented low-to-high fidelity exploration — the record available for this case study doesn't preserve intermediate design rounds between recommendation and shipped build.</p></div>
-      <div class="stage-reflect"><b>The takeaway</b>An audit finding like "users aren't sufficiently informed" is easy to nod along to and hard to act on. A mocked-up bill-pay flow makes it unambiguous what "informed" should actually look like on screen — and it's what the redesign in Stage 06 was built from.</div>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">Recommendation Mockups</div>
+      <h3 class="ar-clause-h">The recommendation artifacts handed back to the team</h3>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> these mockups are the audit's recommendation artifacts, not a documented low-to-high fidelity exploration — the record available for this case study doesn't preserve intermediate design rounds between recommendation and shipped build.</div>
+      <div class="ar-note"><span class="n-lbl">Takeaway</span>An audit finding like "users aren't sufficiently informed" is easy to nod along to and hard to act on. A mocked-up bill-pay flow makes it unambiguous what "informed" should actually look like on screen — and it's what the redesign in Section 06 was built from.</div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 06 — REDESIGN & LAUNCH -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 06</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M8 32 L20 8 L32 32 Z"/><path d="M20 8 L20 2"/><circle cx="20" cy="2" r="1.6" fill="#141414" stroke="none"/></svg></span>
-    <span class="cs-section-label">Redesign &amp; Launch</span>
-    <h2 class="cs-h2">The audit's findings became the brief — and the build</h2>
+<section class="ar-section" id="sec-06">
+  <div class="ar-wrap">
+    <div class="ar-sec-label">Section 06 — Redesign &amp; Launch</div>
+    <h2 class="ar-sec-title">The audit's findings became the brief — and the build</h2>
 
-    <div class="substep">
-      <div class="substep-num">From Recommendation to Build</div>
-      <h3 class="substep-h3">The recommendation mockups shipped, largely as designed</h3>
-      <p class="cs-p">The popular-topics entry point and the bill-pay conversational flow from Stage 05 went into visual design and were built into the live Business Support chatbot — closing the "Inform" and "Connect" gaps the audit identified, rather than leaving them as a report on a shelf.</p>
-      <div class="gap-note"><b>Evidence gap</b><p>The record available for this case study doesn't include a separate moderated usability round on the shipped redesign, or specific post-launch metrics — stated directly rather than filled in with placeholder numbers.</p></div>
+    <div class="ar-clause">
+      <div class="ar-clause-lbl">From Recommendation to Build</div>
+      <h3 class="ar-clause-h">The recommendation mockups shipped, largely as designed</h3>
+      <p>The popular-topics entry point and the bill-pay conversational flow from Section 05 went into visual design and were built into the live Business Support chatbot — closing the "Inform" and "Connect" gaps the audit identified, rather than leaving them as a report on a shelf.</p>
+      <div class="ar-redaction"><b>EVIDENCE GAP —</b> the record available for this case study doesn't include a separate moderated usability round on the shipped redesign, or specific post-launch metrics — stated directly rather than filled in with placeholder numbers.</div>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-  <h2 class="cs-h2" style="margin-top:12px">Outcome</h2>
-  <table class="metrics-table">
+<div class="ar-wrap ar-close">
+  <div class="ar-sec-label" style="margin-top:0">Outcome</div>
+  <table class="ar-table">
     <tr><th>Metric</th><th>Result</th></tr>
     <tr><td>Baseline success rate (existing product)</td><td>65%</td></tr>
     <tr><td>Competitor capability gaps identified</td><td>Sourced, cited comparison across 11 capabilities</td></tr>
     <tr><td>Redesign status</td><td>Designed and shipped to production</td></tr>
     <tr><td>Post-launch success rate / CSAT</td><td class="na">Shipped — specific post-launch metrics not tracked for this case study</td></tr>
   </table>
-  <p class="cs-p">I don't have a post-launch number to report here, and I'd rather say that plainly than invent one. What I can stand behind is the framework, the findings, and the fact that they're what the shipped redesign was actually built on — not a report that ended at recommendation.</p>
+  <p>I don't have a post-launch number to report here, and I'd rather say that plainly than invent one. What I can stand behind is the framework, the findings, and the fact that they're what the shipped redesign was actually built on — not a report that ended at recommendation.</p>
 
-  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
-  <ul class="cs-list">
+  <div class="ar-sec-label" style="margin-top:36px">Future Scope</div>
+  <ul class="ar-list">
     <li>Measure success rate and CSAT on the shipped redesign against the pre-audit 65% baseline — not tracked as part of the original hand-off.</li>
     <li>Run a moderated usability round on the live redesign, closing the gap this audit's evaluation stage was explicit about.</li>
     <li>Extend the Direct/Orient &amp; Guide/Engage/Inform/Connect framework to Verizon's other self-service products.</li>
   </ul>
 
-  <h2 class="cs-h2" style="margin-top:12px">Prototype</h2>
-  <p class="cs-p">The shipped redesign itself, in Figma — the popular-topics entry point and the full bill-pay conversational flow from Stages 05 and 06, at source resolution.</p>
-  <div class="figure">
+  <div class="ar-sec-label" style="margin-top:36px">Prototype</div>
+  <p>The shipped redesign itself, in Figma — the popular-topics entry point and the full bill-pay conversational flow from Sections 05 and 06, at source resolution.</p>
+  <div class="ar-figure">
     <img src="case-studies/ai-chatbot/prototype-vzbot-billpay.png" alt="VZ Bot's bill-pay conversational flow: bill selection, amount, payment method, and confirmation"/>
-    <div class="figure-cap">Fig 09 — The VZ Bot bill-pay flow, as designed and shipped</div>
+    <div class="ar-figcap">FIG. 09 — The VZ Bot bill-pay flow, as designed and shipped</div>
   </div>
-  <p class="cs-p"><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-61019" target="_blank">View the design file in Figma →</a></p>
+  <p><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-61019" target="_blank">View the design file in Figma →</a></p>
 
-  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
-  <div class="learning-grid">
-    <div class="learning">
-      <div class="learning-h">A healthy metric can hide an unhealthy experience</div>
-      <div class="learning-p">65% success rate and "users don't trust this" were both true at the same time. The framework is what reconciled them.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Define the rubric before forming the opinion</div>
-      <div class="learning-p">Five named dimensions turned subjective critique into findings someone else could independently verify.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Cite the competition, don't just gesture at it</div>
-      <div class="learning-p">A sourced, feature-by-feature comparison against AT&T, T-Mobile, and Vodafone carries weight that "competitors are better" never will.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">An audit's real deliverable is the next phase's brief</div>
-      <div class="learning-p">The framework and findings didn't just get filed — they became the direct input to a redesign that was built and shipped. An audit told honestly still ends somewhere real.</div>
-    </div>
-  </div>
-  <p class="cs-p" style="margin-top:8px">The through-line: the most useful thing I delivered wasn't a mockup. It was a framework rigorous enough that Verizon's team built from it directly — and one they can reuse on the next feature.</p>
+  <div class="ar-sec-label" style="margin-top:36px">Key Learnings</div>
+  <ul class="ar-learnings">
+    <li><div><div class="ar-kl-h">A healthy metric can hide an unhealthy experience</div><div class="ar-kl-p">65% success rate and "users don't trust this" were both true at the same time. The framework is what reconciled them.</div></div></li>
+    <li><div><div class="ar-kl-h">Define the rubric before forming the opinion</div><div class="ar-kl-p">Five named dimensions turned subjective critique into findings someone else could independently verify.</div></div></li>
+    <li><div><div class="ar-kl-h">Cite the competition, don't just gesture at it</div><div class="ar-kl-p">A sourced, feature-by-feature comparison against AT&amp;T, T-Mobile, and Vodafone carries weight that "competitors are better" never will.</div></div></li>
+    <li><div><div class="ar-kl-h">An audit's real deliverable is the next phase's brief</div><div class="ar-kl-p">The framework and findings didn't just get filed — they became the direct input to a redesign that was built and shipped. An audit told honestly still ends somewhere real.</div></div></li>
+  </ul>
+  <p>The through-line: the most useful thing I delivered wasn't a mockup. It was a framework rigorous enough that Verizon's team built from it directly — and one they can reuse on the next feature.</p>
 
-  <div class="cs-signoff">
-    <p>Verizon ChatBot: Audit to Redesign — a Case Study by Ayyappan Rajendiran</p>
-    <p><a href="index.html">← Back to Portfolio</a></p>
+  <div class="ar-signoff">
+    <span>Verizon ChatBot: Audit to Redesign — a Case Study by Ayyappan Rajendiran</span>
+    <a href="index.html">← Back to Portfolio</a>
   </div>
 </div>
 
