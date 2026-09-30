@@ -4,341 +4,377 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GO FASTag — Case Study</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
-<link rel="stylesheet" href="assets/case-study.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"/>
 <style>
-/* Limited accent — the orange-peel secondary named in GO FASTag's own brand palette, used sparingly */
-.cs-tag{border-color:#C2660A;color:#C2660A}
-.cs-section-label{color:#C2660A}
-.cs-quote{border-left-color:#C2660A}
-.cs-h2{border-left-color:#C2660A}
-.stage-def{border-left-color:#C2660A}
-.stage-icon-badge{background:#FBEDDF}
-.stage-icon-badge svg{stroke:#C2660A}
-.roadmap circle{fill:#C2660A !important}
-.cs-list li b{color:#C2660A}
-a{color:#C2660A}
-.cs-masthead{background:#FBEDDF}
-.stage{border-top-color:#C2660A}
-.stage-num{color:#C2660A;background:#FBEDDF}
-.metrics-table th{background:#FBEDDF}
-.ba-col.after{border-top-color:#C2660A}
+:root{
+  --paper:#F1EAD9; --ink:#2A2620; --sub:#6B5F4A; --line:#C7BB9C;
+  --accent:#B85C1A; --note-bg:#FBF6E9; --note-border:#DDD1AE;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Lora',Georgia,serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:var(--accent);}
+.gf-wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+.gf-nav{padding:22px 0 0;font-family:'Oswald',sans-serif;font-size:12.5px;letter-spacing:.04em;}
+.gf-nav a{color:var(--sub);text-decoration:none;}
+.gf-nav a:hover{color:var(--accent);}
+
+.gf-hero{padding:40px 0 8px;}
+.gf-eyebrow{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px;}
+.gf-h1{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(30px,5vw,44px);letter-spacing:-.005em;line-height:1.08;margin:0 0 18px;}
+.gf-dek{font-size:17px;font-style:italic;color:var(--sub);max-width:60ch;margin:0 0 22px;}
+.gf-tags{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.gf-tag{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.05em;border:1.5px solid var(--ink);padding:5px 12px;text-transform:uppercase;}
+.gf-byline{font-family:'Oswald',sans-serif;font-size:12.5px;color:var(--sub);letter-spacing:.02em;margin-bottom:28px;}
+.gf-byline b{color:var(--ink);}
+
+.gf-road{height:0;border-top:4px dashed var(--line);margin:0 0 32px;}
+
+.gf-hero-fig{margin:28px 0;}
+.gf-hero-fig img{border:1px solid var(--line);}
+.gf-figcap{font-family:'Oswald',sans-serif;font-size:11.5px;letter-spacing:.03em;color:var(--sub);margin-top:9px;text-transform:uppercase;}
+
+.gf-fieldgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 30px;margin-bottom:28px;}
+.gf-field-lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;font-weight:600;}
+.gf-field-val{font-size:15.5px;line-height:1.5;}
+
+.gf-route{display:flex;justify-content:space-between;margin:36px 0 40px;gap:14px;flex-wrap:wrap;}
+.gf-waypoint{flex:1;min-width:140px;position:relative;padding-top:22px;}
+.gf-waypoint::before{content:'';position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--paper);box-shadow:0 0 0 1.5px var(--accent);}
+.gf-waypoint .wp-km{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.06em;color:var(--accent);font-weight:600;}
+.gf-waypoint .wp-txt{font-size:14px;line-height:1.45;margin-top:5px;}
+
+.gf-section{padding:44px 0;border-top:1px solid var(--line);}
+.gf-sec-label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600;}
+.gf-sec-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(21px,3vw,27px);line-height:1.25;margin:0 0 26px;text-transform:uppercase;letter-spacing:-.005em;}
+
+.gf-clause{margin-bottom:26px;}
+.gf-clause:last-child{margin-bottom:0;}
+.gf-clause-lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin-bottom:7px;}
+.gf-clause-h{font-size:18.5px;font-weight:600;margin:0 0 9px;line-height:1.4;}
+.gf-clause p{margin:0 0 11px;}
+.gf-clause p:last-child{margin-bottom:0;}
+
+.gf-list{margin:0 0 14px;padding-left:20px;}
+.gf-list li{margin-bottom:7px;}
+
+.gf-note{
+  background:var(--note-bg);border:1px solid var(--note-border);padding:16px 20px;max-width:460px;
+  font-style:italic;font-size:15.5px;line-height:1.6;transform:rotate(-0.6deg);
+  box-shadow:2px 3px 0 var(--note-border);margin:18px 0;
+}
+
+.gf-fieldgap{
+  border:1.5px dashed var(--accent);padding:14px 18px;margin:16px 0;font-size:14.5px;line-height:1.6;color:var(--sub);
+}
+.gf-fieldgap b{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px;}
+
+.gf-badges{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;}
+.gf-badge{border:1.5px solid var(--ink);padding:8px 13px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.02em;background:var(--paper);}
+.gf-badge b{font-variant-numeric:tabular-nums;}
+
+.gf-figure{margin:20px 0;}
+.gf-figure img{border:1px solid var(--line);}
+
+.gf-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;font-family:'Oswald',sans-serif;font-size:12.5px;}
+.gf-flow .step{border:1px solid var(--ink);padding:6px 11px;background:var(--paper);}
+.gf-flow .arrow{color:var(--accent);}
+
+.gf-empathy{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0;}
+.gf-empathy-cell{background:var(--paper);padding:14px 16px;}
+.gf-empathy-cell h4{margin:0 0 7px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);}
+.gf-empathy-cell ul{margin:0;padding-left:16px;font-size:14px;}
+
+.gf-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
+.gf-table th{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);text-align:left;padding:9px 10px;border-bottom:2px solid var(--ink);}
+.gf-table td{padding:11px 10px;border-bottom:1px solid var(--line);}
+.gf-table td.na{color:var(--sub);font-style:italic;}
+
+.gf-learn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:20px 0;}
+.gf-learn h4{font-family:'Oswald',sans-serif;font-size:15.5px;text-transform:none;letter-spacing:0;margin:0 0 6px;}
+.gf-learn p{font-size:14.5px;color:var(--sub);margin:0;line-height:1.55;}
+
+.gf-close{padding:44px 0 80px;}
+.gf-signoff{
+  border-top:2px solid var(--ink);padding-top:16px;margin-top:22px;
+  font-family:'Oswald',sans-serif;font-size:12px;color:var(--sub);letter-spacing:.03em;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+.gf-signoff a{color:var(--sub);}
+
+@media(max-width:600px){
+  .gf-fieldgrid,.gf-empathy,.gf-learn-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
+<div class="gf-wrap gf-nav"><a href="index.html">← Back to Portfolio</a></div>
 
-  <div class="cs-masthead">
-<div class="cs-tags">
-    <span class="cs-tag">GovTech</span>
-    <span class="cs-tag">Mobile</span>
-    <span class="cs-tag">B2C</span>
-  </div>
+<div class="gf-wrap gf-hero">
+  <div class="gf-eyebrow">Kotak × M2P — Field Notes</div>
+  <h1 class="gf-h1">Designing GO FASTag</h1>
+  <p class="gf-dek">A time-boxed design assignment for Kotak — the full trace, including the usability test that was planned properly and never got run.</p>
+  <div class="gf-tags"><span class="gf-tag">GovTech</span><span class="gf-tag">Mobile</span><span class="gf-tag">B2C</span></div>
+  <div class="gf-byline"><b>Ayyappan Rajendiran</b> · UX Designer, M2P Fintech</div>
 
-  <h1 class="cs-title">Designing GO FASTag</h1>
-  <p class="cs-subtitle">A time-boxed design assignment for Kotak — the full trace, including the usability test that was planned properly and never got run.</p>
-  </div>
+  <div class="gf-road"></div>
 
-  <div class="cs-byline">
-    <b>Ayyappan Rajendiran</b>
-    <span class="dot"></span>
-    <span>UX Designer, M2P Fintech</span>
-  </div>
-</div>
-
-<div class="wrap">
-  <div class="cs-hero-figure">
+  <div class="gf-hero-fig">
     <img src="case-studies/fastag/cover-context.png" alt="Design brief and user-centered design process for the FASTag app"/>
-    <div class="figure-cap">Fig 01 — The actual brief: a basic app for buying and managing a personal FASTag</div>
+    <div class="gf-figcap">Fig. 01 — The actual brief: a basic app for buying and managing a personal FASTag</div>
   </div>
 
-  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">This was a design assignment M2P's team took on for Kotak — a specific, bounded brief: design a basic mobile app that lets someone buy and manage a FASTag for their vehicle.</p>
-  <div class="cs-grid">
-    <div class="cs-grid-item"><h4>Constraints</h4><p>No obligation to match Kotak's visual identity, personal FASTags only (not commercial), a fixed 360×640 viewport.</p></div>
-    <div class="cs-grid-item"><h4>Timeline</h4><p>A real, binding time constraint — confirmed by the project's own decision to skip planned usability testing rather than delay.</p></div>
-    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>NETC issues FASTags officially; users encounter them through banks, standalone apps, and payment wallets, each covering a slice.</p></div>
-    <div class="cs-grid-item"><h4>My role</h4><p>End-to-end design within M2P's team, on assignment for Kotak.</p></div>
+  <p>This was a design assignment M2P's team took on for Kotak — a specific, bounded brief: design a basic mobile app that lets someone buy and manage a FASTag for their vehicle.</p>
+
+  <div class="gf-fieldgrid">
+    <div><div class="gf-field-lbl">Constraints</div><div class="gf-field-val">No obligation to match Kotak's visual identity, personal FASTags only (not commercial), a fixed 360×640 viewport.</div></div>
+    <div><div class="gf-field-lbl">Timeline</div><div class="gf-field-val">A real, binding time constraint — confirmed by the project's own decision to skip planned usability testing rather than delay.</div></div>
+    <div><div class="gf-field-lbl">Existing ecosystem</div><div class="gf-field-val">NETC issues FASTags officially; users encounter them through banks, standalone apps, and payment wallets, each covering a slice.</div></div>
+    <div><div class="gf-field-lbl">My role</div><div class="gf-field-val">End-to-end design within M2P's team, on assignment for Kotak.</div></div>
   </div>
 
-  <div class="roadmap">
-    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Research and Discovery, Problem and Opportunity, Prioritization and Ideation, Design and Prototyping, Validation">
-      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
-      <g font-family="DM Sans, sans-serif">
-        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Research</text></g>
-        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Problem &amp; Opportunity</text></g>
-        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prioritization</text></g>
-        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Design</text></g>
-        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Validation</text></g>
-      </g>
-    </svg>
+  <div class="gf-route">
+    <div class="gf-waypoint"><div class="wp-km">KM 0</div><div class="wp-txt">Research &amp; Discovery — ecosystem mapped, 7 interviews</div></div>
+    <div class="gf-waypoint"><div class="wp-km">KM 40</div><div class="wp-txt">Problem &amp; Opportunity — reframed around the trip, not the tag</div></div>
+    <div class="gf-waypoint"><div class="wp-km">KM 90</div><div class="wp-txt">Prioritization — the Toll Estimator, one novel idea</div></div>
+    <div class="gf-waypoint"><div class="wp-km">KM 140</div><div class="wp-txt">Design — built around Sunilkumar's actual trip</div></div>
+    <div class="gf-waypoint"><div class="wp-km">KM 180</div><div class="wp-txt">Validation — the plan existed, the time didn't</div></div>
   </div>
 </div>
 
-<!-- STAGE 01 — EMPATHISE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 01</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
-    <span class="cs-section-label">Research &amp; Discovery</span>
-    <h2 class="cs-h2">Nobody owns the FASTag experience end to end</h2>
+<section class="gf-section">
+  <div class="gf-wrap">
+    <div class="gf-sec-label">01 — Research &amp; Discovery</div>
+    <h2 class="gf-sec-title">Nobody owns the FASTag experience end to end</h2>
 
-    <div class="substep">
-      <div class="substep-num">Problem Discovery</div>
-      <h3 class="substep-h3">Mapping the ecosystem before assuming the gap</h3>
-      <p class="cs-p">The assumption to check: that FASTag apps fail at features. Mapping the ecosystem first suggested otherwise — NETC issues the tag officially, but users encounter it through banks, standalone apps, and payment wallets, each covering a slice, none covering the whole trip.</p>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Problem Discovery</div>
+      <h3 class="gf-clause-h">Mapping the ecosystem before assuming the gap</h3>
+      <p>The assumption to check: that FASTag apps fail at features. Mapping the ecosystem first suggested otherwise — NETC issues the tag officially, but users encounter it through banks, standalone apps, and payment wallets, each covering a slice, none covering the whole trip.</p>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">User Research</div>
-      <h3 class="substep-h3">Competitor teardown plus seven real interviews</h3>
-      <p class="cs-p">Fragmentation showed up directly in the research: <i>"Many people tend to buy Fastag from banks or banking apps mainly to get rid of KYC."</i> <i>"There seems to be no app that comprehensively addresses all the needs — car and travel — of a highway traveller."</i> <i>"Users are still not aware of many things around Fastag."</i></p>
-      <ul class="cs-list">
-        <li><b>Paytm</b> (4.6★) — easy recharge for existing users, but cluttered, no support for tags bought elsewhere.</li>
-        <li><b>ICICI iMobile</b> (4.3★) — could manage multiple tags, but dated UI, no support path when something breaks.</li>
-        <li><b>Park+ FasTag</b> (4.5★) — covered more car-related needs in one place, but OTP delays and poor customer care.</li>
-      </ul>
-      <div class="figure">
-        <img src="case-studies/fastag/competition-research.png" alt="Competitive teardown of Paytm, ICICI iMobile, and Park+ FasTag, and user research method"/>
-        <div class="figure-cap">Fig 02 — What Paytm, iMobile, and Park+ already got right, and where each still failed users</div>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">User Research</div>
+      <h3 class="gf-clause-h">Competitor teardown plus seven real interviews</h3>
+      <div class="gf-note">"Many people tend to buy Fastag from banks or banking apps mainly to get rid of KYC."</div>
+      <p style="font-style:italic;color:var(--sub)">"There seems to be no app that comprehensively addresses all the needs — car and travel — of a highway traveller." · "Users are still not aware of many things around Fastag."</p>
+      <div class="gf-badges">
+        <div class="gf-badge">PAYTM <b>4.6★</b></div>
+        <div class="gf-badge">ICICI iMOBILE <b>4.3★</b></div>
+        <div class="gf-badge">PARK+ FASTAG <b>4.5★</b></div>
       </div>
-      <p class="cs-p">Seven participants, ages 28–40, frequent highway travellers from Tier 1 and Tier 2 cities: most weren't sure how much to recharge and just topped up a random amount, several were confused about why KYC couldn't be done through Aadhaar, and almost nobody could explain how they'd track a transaction after the fact.</p>
-      <div class="gap-note"><b>Evidence gap</b><p>The full interview guide wasn't preserved beyond the themes above; no quantitative survey ran alongside these interviews.</p></div>
+      <ul class="gf-list">
+        <li><b>Paytm</b> — easy recharge for existing users, but cluttered, no support for tags bought elsewhere.</li>
+        <li><b>ICICI iMobile</b> — could manage multiple tags, but dated UI, no support path when something breaks.</li>
+        <li><b>Park+ FasTag</b> — covered more car-related needs in one place, but OTP delays and poor customer care.</li>
+      </ul>
+      <div class="gf-figure">
+        <img src="case-studies/fastag/competition-research.png" alt="Competitive teardown of Paytm, ICICI iMobile, and Park+ FasTag, and user research method"/>
+        <div class="gf-figcap">Fig. 02 — What Paytm, iMobile, and Park+ already got right, and where each still failed users</div>
+      </div>
+      <p>Seven participants, ages 28–40, frequent highway travellers from Tier 1 and Tier 2 cities: most weren't sure how much to recharge and just topped up a random amount, several were confused about why KYC couldn't be done through Aadhaar, and almost nobody could explain how they'd track a transaction after the fact.</p>
+      <div class="gf-fieldgap"><b>Field gap</b>The full interview guide wasn't preserved beyond the themes above; no quantitative survey ran alongside these interviews.</div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 02 — DEFINE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 02</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
-    <span class="cs-section-label">Problem &amp; Opportunity</span>
-    <h2 class="cs-h2">Reframing "buy and manage a FASTag" around the actual trip</h2>
+<section class="gf-section">
+  <div class="gf-wrap">
+    <div class="gf-sec-label">02 — Problem &amp; Opportunity</div>
+    <h2 class="gf-sec-title">Reframing "buy and manage a FASTag" around the actual trip</h2>
 
-    <div class="substep">
-      <div class="substep-num">Affinity Mapping</div>
-      <h3 class="substep-h3">Clustering the confusion</h3>
-      <div class="affinity-board">
-        <div class="affinity-cluster"><h4>Recharge uncertainty</h4><div class="note">Most topped up a random amount</div></div>
-        <div class="affinity-cluster"><h4>KYC confusion</h4><div class="note">Unclear why Aadhaar doesn't cover it</div></div>
-        <div class="affinity-cluster"><h4>No trip context</h4><div class="note">No way to estimate tolls before a trip</div></div>
-        <div class="affinity-cluster"><h4>No transaction history</h4><div class="note">Can't check past charges by trip/date</div></div>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Affinity Mapping</div>
+      <h3 class="gf-clause-h">Clustering the confusion</h3>
+      <ul class="gf-list">
+        <li><b>Recharge uncertainty</b> — most topped up a random amount.</li>
+        <li><b>KYC confusion</b> — unclear why Aadhaar doesn't cover it.</li>
+        <li><b>No trip context</b> — no way to estimate tolls before a trip.</li>
+        <li><b>No transaction history</b> — can't check past charges by trip/date.</li>
+      </ul>
+    </div>
+
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Empathy Mapping</div>
+      <h3 class="gf-clause-h">Reconstructed from the documented research themes</h3>
+      <div class="gf-empathy">
+        <div class="gf-empathy-cell"><h4>Says (reconstructed)</h4><ul><li>"There's no app that addresses all my needs."</li><li>"I'm not aware of many things around Fastag."</li></ul></div>
+        <div class="gf-empathy-cell"><h4>Thinks</h4><ul><li>Assumes recharge amount doesn't matter much, so guesses.</li><li>Believes KYC should be simpler given Aadhaar already exists.</li></ul></div>
+        <div class="gf-empathy-cell"><h4>Does</h4><ul><li>Buys from a bank app specifically to skip KYC friction.</li><li>Tops up in round numbers without checking actual toll costs.</li></ul></div>
+        <div class="gf-empathy-cell"><h4>Feels</h4><ul><li>Mildly anxious before a long trip about running out of balance.</li><li>Indifferent to the app itself — it's a means to an end.</li></ul></div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Empathy Mapping</div>
-      <h3 class="substep-h3">Reconstructed from the documented research themes</h3>
-      <div class="empathy-grid">
-        <div class="empathy-cell"><h4>Says (reconstructed)</h4><ul><li>"There's no app that addresses all my needs."</li><li>"I'm not aware of many things around Fastag."</li></ul></div>
-        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Assumes recharge amount doesn't matter much, so guesses.</li><li>Believes KYC should be simpler given Aadhaar already exists.</li></ul></div>
-        <div class="empathy-cell"><h4>Does</h4><ul><li>Buys from a bank app specifically to skip KYC friction.</li><li>Tops up in round numbers without checking actual toll costs.</li></ul></div>
-        <div class="empathy-cell"><h4>Feels</h4><ul><li>Mildly anxious before a long trip about running out of balance.</li><li>Indifferent to the app itself — it's a means to an end.</li></ul></div>
-      </div>
-    </div>
-
-    <div class="substep">
-      <div class="substep-num">Persona</div>
-      <h3 class="substep-h3">Sunilkumar — grounded in the interviews</h3>
-      <p class="cs-p"><b>Sunilkumar</b>, a senior lead at a software company in Bangalore, married with two kids, plans road trips with his family and wants to prepare everything — including tolls — in advance rather than deal with surprises mid-trip.</p>
-      <div class="figure">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Persona &amp; Journey</div>
+      <h3 class="gf-clause-h">Sunilkumar — grounded in the interviews</h3>
+      <p><b>Sunilkumar</b>, a senior lead at a software company in Bangalore, married with two kids, plans road trips with his family and wants to prepare everything — including tolls — in advance rather than deal with surprises mid-trip.</p>
+      <div class="gf-figure">
         <img src="case-studies/fastag/persona-reframe.png" alt="Sunilkumar persona and the reframed problem statement"/>
-        <div class="figure-cap">Fig 03 — Sunilkumar, and the problem statement his research reshaped</div>
+        <div class="gf-figcap">Fig. 03 — Sunilkumar, and the problem statement his research reshaped</div>
       </div>
-    </div>
-
-    <div class="substep">
-      <div class="substep-num">Journey Mapping</div>
-      <h3 class="substep-h3">Sunilkumar's path, from install to advocacy</h3>
-      <div class="flow-row">
-        <span class="flow-step">Install / onboard</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Plan a trip</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Estimate tolls</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Recharge</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Check history after</span>
+      <div class="gf-flow">
+        <span class="step">Install / onboard</span><span class="arrow">→</span><span class="step">Plan a trip</span><span class="arrow">→</span><span class="step">Estimate tolls</span><span class="arrow">→</span><span class="step">Recharge</span><span class="arrow">→</span><span class="step">Check history after</span>
       </div>
-      <div class="figure">
+      <div class="gf-figure">
         <img src="case-studies/fastag/journey-ia.png" alt="Information architecture and Sunilkumar's user journey through awareness, consideration, conversion, and advocacy"/>
-        <div class="figure-cap">Fig 04 — Sunilkumar's journey, and the information architecture built to support it</div>
+        <div class="gf-figcap">Fig. 04 — Sunilkumar's journey, and the information architecture built to support it</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Problem Definition</div>
-      <h3 class="substep-h3">From transaction to trip</h3>
-      <ul class="cs-list">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Problem Definition</div>
+      <h3 class="gf-clause-h">From transaction to trip</h3>
+      <ul class="gf-list">
         <li><b>Symptom:</b> confusion about recharge amount, KYC, and past transactions.</li>
         <li><b>Problem:</b> FASTag apps treat the tag as the product, not the trip it's meant to support.</li>
         <li><b>Root cause:</b> every existing app was built around the transaction (buy, recharge) rather than the traveller's actual planning need.</li>
       </ul>
-      <div class="pov-box"><span class="pov-label">How might we</span><p>How might we help users make their trips frictionless and efficient, and help them stay informed of everything related to the trip and the vehicle?</p></div>
+      <div class="gf-note">How might we help users make their trips frictionless and efficient, and help them stay informed of everything related to the trip and the vehicle?</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Opportunity Mapping</div>
-      <h3 class="substep-h3">The reframe's direct consequence</h3>
-      <p class="cs-p">Recharge uncertainty → need to know costs ahead of time → opportunity: estimate tolls before recharging → solution: the Toll Estimator, detailed next.</p>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Opportunity Mapping</div>
+      <h3 class="gf-clause-h">The reframe's direct consequence</h3>
+      <p>Recharge uncertainty → need to know costs ahead of time → opportunity: estimate tolls before recharging → solution: the Toll Estimator, detailed next.</p>
     </div>
   </div>
 </section>
 
-<!-- STAGE 03 — IDEATE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 03</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
-    <span class="cs-section-label">Prioritization &amp; Ideation</span>
-    <h2 class="cs-h2">One feature answered a question no competitor asked</h2>
+<section class="gf-section">
+  <div class="gf-wrap">
+    <div class="gf-sec-label">03 — Prioritization &amp; Ideation</div>
+    <h2 class="gf-sec-title">One feature answered a question no competitor asked</h2>
 
-    <div class="substep">
-      <div class="substep-num">Ideation</div>
-      <h3 class="substep-h3">Five ideas, one genuinely novel</h3>
-      <ul class="cs-list">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Ideation</div>
+      <h3 class="gf-clause-h">Five ideas, one genuinely novel</h3>
+      <ul class="gf-list">
         <li><b>Toll Estimator</b> — estimate toll charges for an upcoming trip, answering a need none of the three competitors addressed.</li>
         <li><b>Reminders and alerts</b> — reduce memory load for balance and renewal.</li>
         <li><b>Simple onboarding</b> — frictionless first-time sign-up.</li>
         <li><b>Flexible, transparent payments</b> — deals surfaced upfront (UPI, 5% off), not buried.</li>
         <li><b>Context-sensitive help</b> — FAQ content placed where confusion actually happens.</li>
       </ul>
-      <p class="cs-p"><b>Alternative considered and rejected:</b> a generic rewards program mirroring Paytm's model. Rejected because the research pointed at planning anxiety, not reward-seeking behaviour — a rewards layer would have addressed a problem participants didn't actually have.</p>
+      <p><b>Alternative considered and rejected:</b> a generic rewards program mirroring Paytm's model. Rejected because the research pointed at planning anxiety, not reward-seeking behaviour — a rewards layer would have addressed a problem participants didn't actually have.</p>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Priority Matrix</div>
-      <h3 class="substep-h3">Value versus frequency, applied honestly</h3>
-      <p class="cs-p">Estimating tolls, recharging, viewing transactions, and speed-limit info ranked high-value and high-frequency — the core of the app. Buying a FASTag, insurance, and tracking ranked high-value but lower-frequency.</p>
-      <div class="figure">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Priority Matrix</div>
+      <h3 class="gf-clause-h">Value versus frequency, applied honestly</h3>
+      <p>Estimating tolls, recharging, viewing transactions, and speed-limit info ranked high-value and high-frequency — the core of the app. Buying a FASTag, insurance, and tracking ranked high-value but lower-frequency.</p>
+      <div class="gf-figure">
         <img src="case-studies/fastag/strategy-prioritization.png" alt="Strategy and UX principles, and the feature prioritization matrix"/>
-        <div class="figure-cap">Fig 05 — Strategy discussion points, and where each feature landed on value versus frequency</div>
+        <div class="gf-figcap">Fig. 05 — Strategy discussion points, and where each feature landed on value versus frequency</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 04 — PROTOTYPE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 04</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
-    <span class="cs-section-label">Design &amp; Prototyping</span>
-    <h2 class="cs-h2">Building GO FASTag around Sunilkumar's actual trip</h2>
+<section class="gf-section">
+  <div class="gf-wrap">
+    <div class="gf-sec-label">04 — Design &amp; Prototyping</div>
+    <h2 class="gf-sec-title">Building GO FASTag around Sunilkumar's actual trip</h2>
 
-    <div class="substep">
-      <div class="substep-num">Information Architecture</div>
-      <h3 class="substep-h3">Trip-first, not transaction-first navigation</h3>
-      <p class="cs-p">Top-level navigation surfaced the Toll Estimator, Recharge, and Transaction history — the highest-value, highest-frequency items — rather than defaulting to a generic account-first structure.</p>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Information Architecture</div>
+      <h3 class="gf-clause-h">Trip-first, not transaction-first navigation</h3>
+      <p>Top-level navigation surfaced the Toll Estimator, Recharge, and Transaction history — the highest-value, highest-frequency items — rather than defaulting to a generic account-first structure.</p>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">User Flows</div>
-      <h3 class="substep-h3">Buy flow, entry to confirmation</h3>
-      <div class="figure">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">User Flows</div>
+      <h3 class="gf-clause-h">Buy flow, entry to confirmation</h3>
+      <div class="gf-figure">
         <img src="case-studies/fastag/color-buy-flow.png" alt="Color palette reasoning and the buy-a-FASTag flow with real UI"/>
-        <div class="figure-cap">Fig 06 — GO FASTag's colour system, and the buy flow it was applied to</div>
+        <div class="gf-figcap">Fig. 06 — GO FASTag's colour system, and the buy flow it was applied to</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Wireframing</div>
-      <h3 class="substep-h3">What's preserved: final wireframes, not the exploration</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>Earlier low-fidelity exploration rounds weren't preserved separately from the final wireframe set shown in Stage 05.</p></div>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Wireframing</div>
+      <h3 class="gf-clause-h">What's preserved: final wireframes, not the exploration</h3>
+      <div class="gf-fieldgap"><b>Field gap</b>Earlier low-fidelity exploration rounds weren't preserved separately from the final wireframe set shown in Section 05.</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Interaction Design</div>
-      <h3 class="substep-h3">Colour chosen deliberately, freedom or not</h3>
-      <p class="cs-p">The brief explicitly freed the design from Kotak's visual identity, so colour was chosen deliberately: a blue-purple primary to signal trust and stability, and an orange-peel secondary to carry optimism, clarity, and cheerfulness — both noted honestly as subject to change based on user testing, not treated as final the moment they looked good.</p>
-      <p class="cs-p">Recharge and transaction history got the same direct treatment the research called for: recharge in as few steps as the payment method allows, and a transaction view organized so a trip's toll history is actually findable afterward.</p>
-      <div class="figure">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Interaction Design</div>
+      <h3 class="gf-clause-h">Colour chosen deliberately, freedom or not</h3>
+      <p>The brief explicitly freed the design from Kotak's visual identity, so colour was chosen deliberately: a blue-purple primary to signal trust and stability, and an orange-peel secondary to carry optimism, clarity, and cheerfulness — both noted honestly as subject to change based on user testing, not treated as final the moment they looked good.</p>
+      <p>Recharge and transaction history got the same direct treatment the research called for: recharge in as few steps as the payment method allows, and a transaction view organized so a trip's toll history is actually findable afterward.</p>
+      <div class="gf-figure">
         <img src="case-studies/fastag/recharge-transaction-flow.png" alt="Recharge and transaction history flows with real UI"/>
-        <div class="figure-cap">Fig 07 — The recharge flow and transaction history, built for exactly the confusion research surfaced</div>
+        <div class="gf-figcap">Fig. 07 — The recharge flow and transaction history, built for exactly the confusion research surfaced</div>
       </div>
-      <div class="stage-reflect"><b>The takeaway</b>Freedom from a brand guideline is still a design decision waiting to be made deliberately — "blue and orange" needed the same emotional reasoning "on-brand" would have forced anyway.</div>
+      <div class="gf-note">Freedom from a brand guideline is still a design decision waiting to be made deliberately — "blue and orange" needed the same emotional reasoning "on-brand" would have forced anyway.</div>
     </div>
   </div>
 </section>
 
-<!-- STAGE 05 — TEST -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 05</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
-    <span class="cs-section-label">Validation</span>
-    <h2 class="cs-h2">The test plan existed. The time to run it didn't.</h2>
+<section class="gf-section">
+  <div class="gf-wrap">
+    <div class="gf-sec-label">05 — Validation</div>
+    <h2 class="gf-sec-title">The test plan existed. The time to run it didn't.</h2>
 
-    <div class="substep">
-      <div class="substep-num">Usability Testing</div>
-      <h3 class="substep-h3">A real, unrun plan — stated plainly</h3>
-      <p class="cs-p"><b>Objectives:</b> ease of use, whether labels and features were understandable, whether users could and would complete key tasks, and how the app compared to what people already used. <b>Key tasks:</b> buying a new FASTag without prompting, recharging with clear expectations set up front, and reviewing a shared transaction with a friend to see how naturally someone could explain their own spending. A BERT (bipolar emotional response) test was planned to capture how the experience felt, not just whether it worked.</p>
-      <div class="figure">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Usability Testing</div>
+      <h3 class="gf-clause-h">A real, unrun plan — stated plainly</h3>
+      <p><b>Objectives:</b> ease of use, whether labels and features were understandable, whether users could and would complete key tasks, and how the app compared to what people already used. <b>Key tasks:</b> buying a new FASTag without prompting, recharging with clear expectations set up front, and reviewing a shared transaction with a friend to see how naturally someone could explain their own spending. A BERT (bipolar emotional response) test was planned to capture how the experience felt, not just whether it worked.</p>
+      <div class="gf-figure">
         <img src="case-studies/fastag/wireframes-test-note.png" alt="Wireframes and the honest note that testing was skipped due to time constraints"/>
-        <div class="figure-cap">Fig 08 — The wireframes, and the note included rather than hidden: testing was skipped due to time constraints</div>
+        <div class="gf-figcap">Fig. 08 — The wireframes, and the note included rather than hidden: testing was skipped due to time constraints</div>
       </div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Usability Test Findings</div>
-      <h3 class="substep-h3">None — by project constraint, not oversight</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>No usability session was run, so there are no findings to report. This is stated directly in the original project notes, not glossed over here.</p></div>
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Usability Test Findings</div>
+      <h3 class="gf-clause-h">None — by project constraint, not oversight</h3>
+      <div class="gf-fieldgap"><b>Field gap</b>No usability session was run, so there are no findings to report. This is stated directly in the original project notes, not glossed over here.</div>
     </div>
 
-    <div class="substep">
-      <div class="substep-num">Final Result</div>
-      <h3 class="substep-h3">What's real, and what's still a hypothesis</h3>
-      <table class="metrics-table">
+    <div class="gf-clause">
+      <div class="gf-clause-lbl">Final Result</div>
+      <h3 class="gf-clause-h">What's real, and what's still a hypothesis</h3>
+      <table class="gf-table">
         <tr><th>Metric</th><th>Result</th></tr>
         <tr><td>Task completion / time on task</td><td class="na">Not measured — test not run</td></tr>
         <tr><td>Colour palette validation</td><td class="na">Not validated with users</td></tr>
         <tr><td>Toll Estimator — competitor coverage</td><td>Confirmed: 0 of 3 competitors offer it</td></tr>
       </table>
-      <p class="cs-p"><b>What's real:</b> a fully reasoned design with a documented rationale at every decision point. <b>What's not:</b> any evidence it actually works for a user, because the one step that would prove that was the step time ran out on.</p>
+      <p><b>What's real:</b> a fully reasoned design with a documented rationale at every decision point. <b>What's not:</b> any evidence it actually works for a user, because the one step that would prove that was the step time ran out on.</p>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
-  <ul class="cs-list">
+<div class="gf-wrap gf-close">
+  <div class="gf-sec-label">Future Scope</div>
+  <ul class="gf-list">
     <li>Run the usability test plan that was already written — buy, recharge, and shared-transaction tasks — before treating any screen as final.</li>
     <li>Validate the colour palette against real users rather than emotional theory alone.</li>
     <li>Extend the Toll Estimator with real-time route data.</li>
   </ul>
 
-  <h2 class="cs-h2" style="margin-top:12px">Prototype</h2>
-  <p class="cs-p">The recharge screen, at source resolution — minimum recharge threshold, preset amounts, an Auto Top-Up toggle, and transaction history surfaced right below it, matching what the research called for.</p>
-  <div class="figure">
-    <img src="case-studies/fastag/prototype-recharge.png" alt="GO FASTag recharge screen with preset amounts, Auto Top-Up, and transaction history"/>
-    <div class="figure-cap">Fig 09 — The recharge screen, as designed in Figma</div>
+  <div class="gf-sec-label" style="margin-top:36px">Prototype</div>
+  <p>The recharge screen, at source resolution — minimum recharge threshold, preset amounts, an Auto Top-Up toggle, and transaction history surfaced right below it, matching what the research called for.</p>
+  <div class="gf-figure">
+    <img src="case-studies/fastag/prototype-recharge.png" alt="GO FASTag recharge screen with preset amounts, Auto Top-Up, and transaction history" style="max-width:320px;"/>
+    <div class="gf-figcap">Fig. 09 — The recharge screen, as designed in Figma</div>
   </div>
-  <p class="cs-p"><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-182156" target="_blank">View all screens in Figma →</a></p>
+  <p><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-182156" target="_blank">View all screens in Figma →</a></p>
 
-  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
-  <div class="learning-grid">
-    <div class="learning">
-      <div class="learning-h">A fragmented ecosystem is the actual competitor</div>
-      <div class="learning-p">Paytm, iMobile, and Park+ weren't bad products. None of them owned the whole trip, and that gap was the opportunity.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Reframe around the goal, not the object</div>
-      <div class="learning-p">"Manage a FASTag" and "stay informed about your trip" point to different apps, even though they cover the same screens.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Creative freedom still needs a rationale</div>
-      <div class="learning-p">No brand constraint meant more responsibility to justify colour, not less.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Say what you didn't get to test</div>
-      <div class="learning-p">A real project has real constraints. Naming the one that mattered here is more useful than pretending it didn't exist.</div>
-    </div>
+  <div class="gf-sec-label" style="margin-top:36px">Key Learnings</div>
+  <div class="gf-learn-grid">
+    <div class="gf-learn"><h4>A fragmented ecosystem is the actual competitor</h4><p>Paytm, iMobile, and Park+ weren't bad products. None of them owned the whole trip, and that gap was the opportunity.</p></div>
+    <div class="gf-learn"><h4>Reframe around the goal, not the object</h4><p>"Manage a FASTag" and "stay informed about your trip" point to different apps, even though they cover the same screens.</p></div>
+    <div class="gf-learn"><h4>Creative freedom still needs a rationale</h4><p>No brand constraint meant more responsibility to justify colour, not less.</p></div>
+    <div class="gf-learn"><h4>Say what you didn't get to test</h4><p>A real project has real constraints. Naming the one that mattered here is more useful than pretending it didn't exist.</p></div>
   </div>
-  <p class="cs-p" style="margin-top:8px">The through-line: the best idea in this project — the Toll Estimator — didn't come from studying FASTag apps. It came from asking what Sunilkumar actually needed on the morning of his trip.</p>
+  <p>The through-line: the best idea in this project — the Toll Estimator — didn't come from studying FASTag apps. It came from asking what Sunilkumar actually needed on the morning of his trip.</p>
 
-  <div class="cs-signoff">
-    <p>GO FASTag — a UX Case Study by Ayyappan Rajendiran</p>
-    <p><a href="index.html">← Back to Portfolio</a></p>
+  <div class="gf-signoff">
+    <span>GO FASTag — a UX Case Study by Ayyappan Rajendiran</span>
+    <a href="index.html">← Back to Portfolio</a>
   </div>
 </div>
 
