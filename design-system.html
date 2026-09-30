@@ -23,12 +23,15 @@ a{color:#0F766E}
 .stage-num{color:#0F766E;background:#E6F5F3}
 .metrics-table th{background:#E6F5F3}
 .ba-col.after{border-top-color:#0F766E}
-.proto-cta{
-  display:inline-flex;align-items:center;gap:9px;background:#0F766E;color:#fff;
+.proto-fab{
+  position:fixed;bottom:26px;right:26px;z-index:500;
+  display:inline-flex;align-items:center;gap:8px;background:#0F766E;color:#fff;
   font-family:'DM Sans',sans-serif;font-weight:600;font-size:14.5px;
-  padding:13px 24px;border-radius:8px;text-decoration:none;margin:8px 0 4px;
+  padding:14px 24px;border-radius:999px;text-decoration:none;
+  box-shadow:0 10px 28px -10px rgba(15,118,110,.6);
 }
-.proto-cta:hover{background:#0D5F58;color:#fff}
+.proto-fab:hover{background:#0D5F58;color:#fff}
+@media(max-width:640px){.proto-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
 </style>
 </head>
 <body>
@@ -443,13 +446,13 @@ a{color:#0F766E}
     </div>
   </div>
 
-  <a class="proto-cta" href="https://www.figma.com/design/zm7VV5zntCySRQGGa5nDzg/Portfolio?node-id=938-4733" target="_blank">View the Figma file →</a>
-
   <div class="cs-signoff">
     <p>M2P Design System — a UX Case Study by Ayyappan Rajendiran</p>
     <p><a href="index.html">← Back to Portfolio</a></p>
   </div>
 </div>
+
+<a class="proto-fab" href="https://www.figma.com/design/zm7VV5zntCySRQGGa5nDzg/Portfolio?node-id=938-4733" target="_blank" title="View the Figma file">View Figma →</a>
 
 </body>
 </html>

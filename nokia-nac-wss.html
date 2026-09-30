@@ -641,12 +641,14 @@ img{max-width:100%}
 }
 .case-footer p{font-size:13px;color:var(--t2)}
 .case-footer a{color:var(--blue)}
-.case-footer a.proto-cta{
-  display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff;
-  font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:8px;text-decoration:none;
-  margin-bottom:18px;
+a.proto-fab{
+  position:fixed;bottom:26px;right:26px;z-index:500;
+  display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;
+  font-weight:600;font-size:14.5px;padding:14px 24px;border-radius:999px;text-decoration:none;
+  box-shadow:0 10px 28px -10px rgba(0,90,255,.6);
 }
-.case-footer a.proto-cta:hover{filter:brightness(1.1);color:#fff;}
+a.proto-fab:hover{filter:brightness(1.1);color:#fff;}
+@media(max-width:640px){a.proto-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:800px){
@@ -1410,13 +1412,14 @@ img{max-width:100%}
     </section>
 
     <div class="case-footer">
-      <a class="proto-cta" href="https://www.figma.com/design/zRkZK0nOxpluzJva699jzF/Nokia-NAC---WSS---UI-Design?m=dev" target="_blank">View the Figma file →</a>
       <p>Nokia NAC · WSS — UX Case Study &nbsp;·&nbsp; Lead UX Designer: Ayyappan Rajendiran</p>
       <p style="margin-top:8px"><a href="/">← Back to Portfolio</a></p>
     </div>
 
   </main>
 </div>
+
+<a class="proto-fab" href="https://www.figma.com/design/zRkZK0nOxpluzJva699jzF/Nokia-NAC---WSS---UI-Design?m=dev" target="_blank" title="View the Figma file">View Figma →</a>
 
 <script>
 // Progress bar

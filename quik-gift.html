@@ -104,13 +104,15 @@ a{color:var(--accent);}
 .qg-learn h4{font-family:'Fraunces',Georgia,serif;font-size:16px;margin:0 0 7px;}
 .qg-learn p{font-size:14px;color:var(--sub);margin:0;line-height:1.55;}
 
-.qg-cta{
-  display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;
+.qg-fab{
+  position:fixed;bottom:26px;right:26px;z-index:500;
+  display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
   font-family:'Work Sans',sans-serif;font-weight:600;font-size:14.5px;
-  padding:13px 24px;border-radius:999px;text-decoration:none;margin:8px 0 4px;
-  box-shadow:0 6px 16px -8px rgba(194,24,91,.5);
+  padding:14px 24px;border-radius:999px;text-decoration:none;
+  box-shadow:0 10px 28px -10px rgba(194,24,91,.65);
 }
-.qg-cta:hover{filter:brightness(1.08);}
+.qg-fab:hover{filter:brightness(1.08);}
+@media(max-width:640px){.qg-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
 
 .qg-close{padding:48px 0 84px;}
 .qg-signoff{
@@ -363,7 +365,6 @@ a{color:var(--accent);}
     <img src="case-studies/quik-gift/prototype-teams-listing.png" alt="QuikGift's real Microsoft Teams app store listing, published by M2P Fintech"/>
     <div class="qg-figcap">Fig. 08 — QuikGift's Teams app store listing, as it actually shipped</div>
   </div>
-  <a class="qg-cta" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?m=dev" target="_blank">View the full Figma file →</a>
 
   <div class="qg-sec-label" style="margin-top:40px">Key Learnings</div>
   <div class="qg-learn-grid">
@@ -379,6 +380,8 @@ a{color:var(--accent);}
     <a href="index.html">← Back to Portfolio</a>
   </div>
 </div>
+
+<a class="qg-fab" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?m=dev" target="_blank" title="View the full Figma file">View Figma →</a>
 
 </body>
 </html>

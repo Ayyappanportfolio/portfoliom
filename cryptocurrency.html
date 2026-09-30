@@ -119,12 +119,15 @@ a{color:var(--accent);}
 .cf-learn h4{font-family:'Space Grotesk',sans-serif;font-size:16px;margin:0 0 6px;color:var(--ink);}
 .cf-learn p{font-size:14px;color:var(--sub);margin:0;line-height:1.55;}
 
-.cf-cta{
-  display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;
+.cf-fab{
+  position:fixed;bottom:26px;right:26px;z-index:500;
+  display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;
   font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;
-  padding:13px 24px;border-radius:10px;text-decoration:none;margin:8px 0 4px;
+  padding:14px 24px;border-radius:999px;text-decoration:none;
+  box-shadow:0 10px 28px -10px rgba(79,70,229,.65);
 }
-.cf-cta:hover{background:var(--accent);}
+.cf-fab:hover{background:var(--accent);}
+@media(max-width:640px){.cf-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
 
 .cf-close{padding:52px 0 84px;}
 .cf-signoff{
@@ -397,7 +400,6 @@ a{color:var(--accent);}
     <img src="case-studies/cryptocurrency/prototype-buy-screen.png" alt="CryptoFarm BTC/INR buy screen with live order book, limit order form, and fee disclosure"/>
     <div class="cf-figcap">FIG. 08 — The buy screen, as designed in Figma</div>
   </div>
-  <a class="cf-cta" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-185765" target="_blank">View all screens in Figma →</a>
 
   <div class="cf-sec-label" style="margin-top:40px">Key Learnings</div>
   <div class="cf-learnings">
@@ -413,6 +415,8 @@ a{color:var(--accent);}
     <a href="index.html">← Back to Portfolio</a>
   </div>
 </div>
+
+<a class="cf-fab" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-185765" target="_blank" title="View all screens in Figma">View Screens →</a>
 
 </body>
 </html>
