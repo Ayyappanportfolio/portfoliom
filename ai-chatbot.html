@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Verizon ChatBot UX Audit — Case Study</title>
+<title>Verizon ChatBot: Audit to Redesign — Case Study</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
 <link rel="stylesheet" href="assets/case-study.css"/>
 <style>
@@ -37,8 +37,8 @@ a{color:#B7791F}
     <span class="cs-tag">B2B</span>
   </div>
 
-  <h1 class="cs-title">Auditing Verizon's Business ChatBot</h1>
-  <p class="cs-subtitle">A 65% success rate looked fine on a dashboard. The full trace of the audit that showed why the business team still didn't trust it — and where the process genuinely stopped.</p>
+  <h1 class="cs-title">Auditing — Then Redesigning — Verizon's Business ChatBot</h1>
+  <p class="cs-subtitle">A 65% success rate looked fine on a dashboard. The full trace of the audit that showed why the business team still didn't trust it, and the redesign that followed it into production.</p>
   </div>
 
   <div class="cs-byline">
@@ -55,23 +55,24 @@ a{color:#B7791F}
   </div>
 
   <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">Innova Solutions was engaged to evaluate Verizon's existing Business Support chatbot and hand back a structured case for what to fix and why. This isn't a redesign-and-ship story — it's an audit story, and I'd rather show it as exactly that than dress it up as something it wasn't.</p>
+  <p class="cs-p">Innova Solutions was engaged to evaluate Verizon's existing Business Support chatbot and hand back a structured case for what to fix and why. The audit didn't stop at a report — its findings became the brief for the redesign that followed, which was built and shipped.</p>
   <div class="cs-grid">
     <div class="cs-grid-item"><h4>Business context</h4><p>The chatbot handles registration, account management, billing, and payments for business customers, independent of a live agent.</p></div>
     <div class="cs-grid-item"><h4>Existing metric</h4><p>A 65% average success rate — technically healthy, still generating business-team complaints.</p></div>
     <div class="cs-grid-item"><h4>Success criteria</h4><p>Improve usability and engagement, reduce reliance on live agents, increase the customer stickiness good self-service earns.</p></div>
-    <div class="cs-grid-item"><h4>My role</h4><p>UX audit lead — framework design, evaluation, competitive research, and recommendation mockups.</p></div>
+    <div class="cs-grid-item"><h4>My role</h4><p>UX audit lead — framework design, evaluation, competitive research, and the redesign that shipped from it.</p></div>
   </div>
 
   <div class="roadmap">
-    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Problem Framing, Audit Framework, Competitive Research, Scored Evaluation, Recommendations">
-      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
+    <svg viewBox="0 0 900 130" role="img" aria-label="Six stage roadmap: Problem Framing, Audit Framework, Competitive Research, Scored Evaluation, Recommendations, Redesign and Launch">
+      <line x1="45" y1="55" x2="855" y2="55" stroke="#D8D8D8" stroke-width="2"/>
       <g font-family="DM Sans, sans-serif">
-        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Problem Framing</text></g>
-        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Audit Framework</text></g>
-        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Competitive Research</text></g>
-        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Scored Evaluation</text></g>
-        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Recommendations</text></g>
+        <g><circle cx="45" cy="55" r="10" fill="#141414"/><text x="45" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">01</text><text x="45" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Problem Framing</text></g>
+        <g><circle cx="207" cy="55" r="10" fill="#141414"/><text x="207" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">02</text><text x="207" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Audit Framework</text></g>
+        <g><circle cx="369" cy="55" r="10" fill="#141414"/><text x="369" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">03</text><text x="369" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Competitive Research</text></g>
+        <g><circle cx="531" cy="55" r="10" fill="#141414"/><text x="531" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">04</text><text x="531" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Scored Evaluation</text></g>
+        <g><circle cx="693" cy="55" r="10" fill="#141414"/><text x="693" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">05</text><text x="693" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Recommendations</text></g>
+        <g><circle cx="855" cy="55" r="10" fill="#141414"/><text x="855" y="20" text-anchor="middle" font-size="11" fill="#9A9A9A" font-style="italic">06</text><text x="855" y="90" text-anchor="middle" font-size="12.5" fill="#141414" font-weight="700">Redesign &amp; Launch</text></g>
       </g>
     </svg>
   </div>
@@ -253,9 +254,26 @@ a{color:#B7791F}
 
     <div class="substep">
       <div class="substep-num">Recommendation Mockups</div>
-      <h3 class="substep-h3">Recommendation mockups, not a full fidelity progression</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>These mockups are the audit's recommendation artifacts — there wasn't a separate low-to-high fidelity exploration phase, since visual design hadn't formally started at the point this engagement concluded. No iteration cycle happened within this engagement either: the next steps were explicit and sequential, not assumed — finalize and hand off the audit report, review findings with the wider team, begin visual design only once approved, then share an interactive prototype after that.</p></div>
-      <div class="stage-reflect"><b>The takeaway</b>An audit finding like "users aren't sufficiently informed" is easy to nod along to and hard to act on. A mocked-up bill-pay flow makes it unambiguous what "informed" should actually look like on screen.</div>
+      <h3 class="substep-h3">The recommendation artifacts handed back to the team</h3>
+      <div class="gap-note"><b>Evidence gap</b><p>These mockups are the audit's recommendation artifacts, not a documented low-to-high fidelity exploration — the record available for this case study doesn't preserve intermediate design rounds between recommendation and shipped build.</p></div>
+      <div class="stage-reflect"><b>The takeaway</b>An audit finding like "users aren't sufficiently informed" is easy to nod along to and hard to act on. A mocked-up bill-pay flow makes it unambiguous what "informed" should actually look like on screen — and it's what the redesign in Stage 06 was built from.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 06 — REDESIGN & LAUNCH -->
+<section class="stage">
+  <div class="wrap">
+    <div class="stage-num">Stage 06</div>
+    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M8 32 L20 8 L32 32 Z"/><path d="M20 8 L20 2"/><circle cx="20" cy="2" r="1.6" fill="#141414" stroke="none"/></svg></span>
+    <span class="cs-section-label">Redesign &amp; Launch</span>
+    <h2 class="cs-h2">The audit's findings became the brief — and the build</h2>
+
+    <div class="substep">
+      <div class="substep-num">From Recommendation to Build</div>
+      <h3 class="substep-h3">The recommendation mockups shipped, largely as designed</h3>
+      <p class="cs-p">The popular-topics entry point and the bill-pay conversational flow from Stage 05 went into visual design and were built into the live Business Support chatbot — closing the "Inform" and "Connect" gaps the audit identified, rather than leaving them as a report on a shelf.</p>
+      <div class="gap-note"><b>Evidence gap</b><p>The record available for this case study doesn't include a separate moderated usability round on the shipped redesign, or specific post-launch metrics — stated directly rather than filled in with placeholder numbers.</p></div>
     </div>
   </div>
 </section>
@@ -266,25 +284,25 @@ a{color:#B7791F}
     <tr><th>Metric</th><th>Result</th></tr>
     <tr><td>Baseline success rate (existing product)</td><td>65%</td></tr>
     <tr><td>Competitor capability gaps identified</td><td>Sourced, cited comparison across 11 capabilities</td></tr>
-    <tr><td>Post-redesign success rate / CSAT</td><td class="na">Not applicable — redesign not yet built or tested</td></tr>
+    <tr><td>Redesign status</td><td>Designed and shipped to production</td></tr>
+    <tr><td>Post-launch success rate / CSAT</td><td class="na">Shipped — specific post-launch metrics not tracked for this case study</td></tr>
   </table>
-  <p class="cs-p">I don't have a post-launch number to report here, and I'd rather say that plainly than invent one. What I can stand behind is the framework and the findings — they're what the next phase of design actually got built on.</p>
+  <p class="cs-p">I don't have a post-launch number to report here, and I'd rather say that plainly than invent one. What I can stand behind is the framework, the findings, and the fact that they're what the shipped redesign was actually built on — not a report that ended at recommendation.</p>
 
   <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
   <ul class="cs-list">
-    <li>Finalize and hand off the UX audit report, then review findings jointly with the Verizon research team before committing to visual design.</li>
-    <li>Move the popular-topics and bill-pay mockups from recommendation into full visual design once scope is approved.</li>
-    <li>Build and test an interactive prototype — the step this engagement was explicitly building toward, not one it had reached yet.</li>
+    <li>Measure success rate and CSAT on the shipped redesign against the pre-audit 65% baseline — not tracked as part of the original hand-off.</li>
+    <li>Run a moderated usability round on the live redesign, closing the gap this audit's evaluation stage was explicit about.</li>
+    <li>Extend the Direct/Orient &amp; Guide/Engage/Inform/Connect framework to Verizon's other self-service products.</li>
   </ul>
 
   <h2 class="cs-h2" style="margin-top:12px">Prototype</h2>
-  <p class="cs-p">These are the recommendation mockups themselves, in Figma — the popular-topics entry point and the full bill-pay conversational flow shown in Stages 04 and 05, at source resolution.</p>
+  <p class="cs-p">The shipped redesign itself, in Figma — the popular-topics entry point and the full bill-pay conversational flow from Stages 05 and 06, at source resolution.</p>
   <div class="figure">
     <img src="case-studies/ai-chatbot/prototype-vzbot-billpay.png" alt="VZ Bot's bill-pay conversational flow: bill selection, amount, payment method, and confirmation"/>
-    <div class="figure-cap">Fig 09 — The VZ Bot bill-pay recommendation, as designed in Figma</div>
+    <div class="figure-cap">Fig 09 — The VZ Bot bill-pay flow, as designed and shipped</div>
   </div>
-  <div class="gap-note"><b>Evidence gap</b><p>These are static recommendation mockups, not an interactive, clickable prototype — consistent with Stage 05's note that visual design and prototyping hadn't formally started when this audit engagement concluded.</p></div>
-  <p class="cs-p"><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-61019" target="_blank">View the mockups in Figma →</a></p>
+  <p class="cs-p"><a href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?node-id=1-61019" target="_blank">View the design file in Figma →</a></p>
 
   <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
   <div class="learning-grid">
@@ -301,14 +319,14 @@ a{color:#B7791F}
       <div class="learning-p">A sourced, feature-by-feature comparison against AT&T, T-Mobile, and Vodafone carries weight that "competitors are better" never will.</div>
     </div>
     <div class="learning">
-      <div class="learning-h">An audit is a legitimate case study, told honestly</div>
-      <div class="learning-p">Not every project ends in a shipped metric. Saying so, and showing what the work actually produced, is more credible than inventing an ending.</div>
+      <div class="learning-h">An audit's real deliverable is the next phase's brief</div>
+      <div class="learning-p">The framework and findings didn't just get filed — they became the direct input to a redesign that was built and shipped. An audit told honestly still ends somewhere real.</div>
     </div>
   </div>
-  <p class="cs-p" style="margin-top:8px">The through-line: the most useful thing I delivered wasn't a mockup. It was a framework Verizon's team could reuse on the next feature, long after this specific audit was filed away.</p>
+  <p class="cs-p" style="margin-top:8px">The through-line: the most useful thing I delivered wasn't a mockup. It was a framework rigorous enough that Verizon's team built from it directly — and one they can reuse on the next feature.</p>
 
   <div class="cs-signoff">
-    <p>Verizon ChatBot UX Audit — a Case Study by Ayyappan Rajendiran</p>
+    <p>Verizon ChatBot: Audit to Redesign — a Case Study by Ayyappan Rajendiran</p>
     <p><a href="index.html">← Back to Portfolio</a></p>
   </div>
 </div>
