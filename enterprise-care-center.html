@@ -10,17 +10,21 @@
   --bg:#0D0D14; --ink:#ECEAF5; --sub:#A6A2C4; --accent:#9B7CF2;
   --line:#453F63; --panel:#332D4B; --ok:#34D399; --warn:#FBBF24; --crit:#F87171;
 }
-/* Per-stage accent + tinted section wash — distinguishes each of the 9 stages
-   from the black page background, rather than all sections looking identical. */
+/* Per-section accent + tinted wash — distinguishes each section from the black page background */
 .vc-section:nth-of-type(1){--sa:#9B7CF2;--sw:#1E1A33;}
 .vc-section:nth-of-type(2){--sa:#5EC8F2;--sw:#131F30;}
 .vc-section:nth-of-type(3){--sa:#F2B35E;--sw:#2E2415;}
 .vc-section:nth-of-type(4){--sa:#5EF2C8;--sw:#123328;}
 .vc-section:nth-of-type(5){--sa:#F25E9A;--sw:#2E1524;}
 .vc-section:nth-of-type(6){--sa:#A8E05E;--sw:#212C13;}
-.vc-section:nth-of-type(7){--sa:#F2905E;--sw:#2E2013;}
-.vc-section:nth-of-type(8){--sa:#5EDCF2;--sw:#123138;}
-.vc-section:nth-of-type(9){--sa:#C85EF2;--sw:#271331;}
+.vc-section:nth-of-type(7){--sa:#F87171;--sw:#301616;}
+.vc-section:nth-of-type(8){--sa:#5EC8F2;--sw:#131F30;}
+.vc-section:nth-of-type(9){--sa:#A8E05E;--sw:#212C13;}
+.vc-section:nth-of-type(10){--sa:#F87171;--sw:#301616;}
+.vc-section:nth-of-type(11){--sa:#F2905E;--sw:#2E2013;}
+.vc-section:nth-of-type(12){--sa:#9B7CF2;--sw:#1E1A33;}
+.vc-section:nth-of-type(13){--sa:#5EF2C8;--sw:#123328;}
+.vc-section:nth-of-type(14){--sa:#C85EF2;--sw:#271331;}
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
 img{max-width:100%;display:block;}
@@ -39,8 +43,10 @@ a{color:var(--accent);}
 .vc-statusbar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:7px;}
 
 .vc-hero{padding:44px 0 8px;}
+.vc-cover{font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:10px;}
 .vc-eyebrow{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;}
-.vc-h1{font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-.015em;margin:0 0 20px;text-wrap:balance;}
+.vc-h1{font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-.015em;margin:0 0 6px;text-wrap:balance;}
+.vc-h1-sub{font-family:'Roboto Mono',monospace;font-size:14px;color:var(--sub);letter-spacing:.03em;margin:0 0 20px;}
 .vc-dek{font-size:17px;color:var(--sub);max-width:62ch;margin:0 0 24px;}
 .vc-tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
 .vc-tag{font-family:'Roboto Mono',monospace;font-size:11px;border:1px solid var(--line);color:var(--sub);padding:5px 11px;border-radius:4px;letter-spacing:.02em;}
@@ -64,6 +70,8 @@ a{color:var(--accent);}
 }
 .vc-roadmap span{padding:11px 15px;white-space:nowrap;color:var(--sub);border-right:1px solid var(--line);}
 .vc-roadmap span b{color:var(--ink);}
+.vc-roadmap span.here{color:var(--accent);}
+.vc-roadmap span.here b{color:var(--accent);}
 
 .vc-section{padding:50px 0;border-top:1px solid var(--line);background:var(--sw);box-shadow:inset 4px 0 0 var(--sa);}
 .vc-sec-label{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sa);margin-bottom:6px;font-weight:700;}
@@ -150,8 +158,34 @@ a{color:var(--accent);}
 }
 .vc-signoff a{color:var(--sub);}
 
+/* Added for the UX-review-report structure */
+.vc-sevbar{display:flex;gap:8px;position:absolute;top:50px;right:28px;}
+.vc-sev{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-weight:700;font-size:12.5px;background:var(--panel);color:var(--sub);border:1px solid var(--line);}
+.vc-sev.active.h{background:var(--crit);color:#1A0806;border-color:var(--crit);}
+.vc-sev.active.m{background:var(--warn);color:#1A1406;border-color:var(--warn);}
+.vc-sev.active.l{background:var(--ok);color:#06140D;border-color:var(--ok);}
+.vc-section{position:relative;}
+@media(max-width:640px){.vc-sevbar{position:static;margin-bottom:16px;}}
+
+.vc-catnav{list-style:none;margin:18px 0 0;padding:0;counter-reset:cat;}
+.vc-catnav li{counter-increment:cat;font-family:'Roboto Mono',monospace;font-size:15px;color:var(--line);padding:7px 0;}
+.vc-catnav li::before{content:"0" counter(cat) ". ";}
+.vc-catnav li.active{color:var(--sa);font-weight:700;font-size:17px;}
+
+.vc-persona{display:grid;grid-template-columns:200px 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:18px 0;}
+.vc-persona-id{background:var(--panel);padding:22px 18px;}
+.vc-persona-role{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:10px;}
+.vc-persona-meta{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--sub);line-height:1.8;}
+.vc-persona-main{background:var(--panel);padding:22px 24px;}
+@media(max-width:640px){.vc-persona{grid-template-columns:1fr;}}
+
+.vc-pyramid{display:flex;flex-direction:column;gap:1px;margin:18px 0;max-width:420px;}
+.vc-pyramid div{background:var(--panel);border:1px solid var(--line);padding:10px 16px;font-family:'Roboto Mono',monospace;font-size:12px;color:var(--sub);text-align:center;}
+.vc-pyramid div b{color:var(--ink);}
+.vc-pyramid div.top{border-left:3px solid var(--sa);color:var(--sa);}
+
 @media(max-width:640px){
-  .vc-fieldgrid,.vc-empathy,.vc-matrix,.vc-ba-row{grid-template-columns:1fr;}
+  .vc-fieldgrid,.vc-empathy,.vc-matrix,.vc-ba-row,.vc-persona{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -164,37 +198,31 @@ a{color:var(--accent);}
   <span>729 <b>VOC items</b></span>
   <span>5 <b>pain points</b></span>
   <span>8 <b>modules</b></span>
-  <span>9 <b>stages documented</b></span>
+  <span>5 <b>categories audited</b></span>
 </div>
 
 <div class="vc-wrap vc-hero">
+  <div class="vc-cover">UX Review</div>
+  <h1 class="vc-h1">VEC</h1>
+  <div class="vc-h1-sub">Enterprise Self-Service Portal — Monarch 3.0</div>
   <div class="vc-eyebrow">Innova Solutions — for Verizon</div>
-  <h1 class="vc-h1">Redesigning VEC</h1>
   <p class="vc-dek">Verizon's enterprise self-service portal, rebuilt on Monarch 3.0 around one question: what if the AI workspace were the product, and the forms-and-tables UI were the fallback?</p>
   <div class="vc-tags"><span class="vc-tag">TELECOM</span><span class="vc-tag">ENTERPRISE SAAS</span><span class="vc-tag">CONVERSATIONAL AI</span></div>
   <div class="vc-byline"><b>Ayyappan Rajendiran</b> · Lead Experience Designer, Innova Solutions UX Modernization Team</div>
 
-  <p class="vc-p">VEC is a real, currently-in-flight engagement — a self-service portal where enterprise and SMB Wireline and Wireless customers manage orders, service inventory, repair tickets, billing, and their own users. It's paired with an internal Agent Console used by care, help-desk, and sales teams to act on a customer's behalf when self-service can't finish the job — the two share one design system because they enforce the same entitlement rules.</p>
-
-  <div class="vc-fieldgrid">
-    <div class="vc-field"><div class="vc-field-lbl">Product</div><div class="vc-field-val">VEC, built on Monarch 3.0 — 8 core modules, 50+ self-service actions, 3 primary user types.</div></div>
-    <div class="vc-field"><div class="vc-field-lbl">Client</div><div class="vc-field-val">Verizon, delivered through Innova Solutions.</div></div>
-    <div class="vc-field"><div class="vc-field-lbl">My role</div><div class="vc-field-val">Lead Experience Designer — discovery, synthesis, and the AI-first redesign direction.</div></div>
-    <div class="vc-field"><div class="vc-field-lbl">Scope</div><div class="vc-field-val">Business + user discovery, an 8-module UX audit, and a phased AI-first redesign roadmap.</div></div>
-  </div>
   <div class="vc-disclose"><b>Disclosure</b>The client and product names above are used with clearance and match the source documentation and Figma prototype. Exact dollar figures, ticket IDs, and the underlying high-fidelity screens remain generalized or recreated below, since those weren't cleared for reproduction.</div>
 
   <div class="vc-roadmap">
-    <span><b>01</b> Business</span><span><b>02</b> Users</span><span><b>03</b> Audit</span><span><b>04</b> Affinity</span><span><b>05</b> Empathy</span><span><b>06</b> Priority</span><span><b>07</b> User Flow</span><span><b>08</b> IA</span><span><b>09</b> Visual Design</span>
+    <span>Overview</span><span>Framework</span><span>Research</span><span>Persona</span><span>Key Tasks</span><span>Positives</span><span>Strategy</span><span>IA</span><span>Navigation</span><span>Interaction</span><span>Detailed Design</span><span>Other Issues</span><span class="here"><b>→ Recommendations</b></span><span>Process</span>
   </div>
 </div>
 
 <section class="vc-section">
   <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 01</div>
-    <div class="vc-sec-ref">REF// VEC-01-BUSINESS</div>
-    <h2 class="vc-sec-title">What the redesign had to be accountable for</h2>
-    <p class="vc-p">Before any screen work started, discovery ran across the roles that actually own this product's outcomes — the business analyst tracking completion metrics, the project manager owning the delivery roadmap, the tech lead who has to build whatever gets designed, and the associate director accountable for the P&amp;L this portal sits inside. That alignment converged on five goals the redesign is measured against.</p>
+    <div class="vc-sec-label">Overview</div>
+    <div class="vc-sec-ref">REF// VEC-OVERVIEW</div>
+    <h2 class="vc-sec-title">Why this review happened</h2>
+    <p class="vc-p">VEC is a real, currently-in-flight engagement — a self-service portal where enterprise and SMB Wireline and Wireless customers manage orders, service inventory, repair tickets, billing, and their own users. It's paired with an internal Agent Console used by care, help-desk, and sales teams to act on a customer's behalf when self-service can't finish the job — the two share one design system because they enforce the same entitlement rules. Before any screen work started, discovery ran across the roles that actually own this product's outcomes — the business analyst tracking completion metrics, the project manager owning the delivery roadmap, the tech lead who has to build whatever gets designed, and the associate director accountable for the P&amp;L this portal sits inside.</p>
     <ul class="vc-list">
       <li><b>Raise self-service completion</b> — more tasks finished in the portal without an agent, measured per journey rather than per visit.</li>
       <li><b>Deflect assisted volume</b> — fewer calls, chats, and Agent Console transactions for tasks the portal already supports.</li>
@@ -202,6 +230,12 @@ a{color:var(--accent);}
       <li><b>Grow digital revenue</b> — catalog, quotes, and upgrade paths become discoverable inside the workspace, not only through sales.</li>
       <li><b>Lower cost to change</b> — one design system across every module and both portals cuts duplicated build and QA effort.</li>
     </ul>
+    <div class="vc-fieldgrid">
+      <div class="vc-field"><div class="vc-field-lbl">Product</div><div class="vc-field-val">VEC, built on Monarch 3.0 — 8 core modules, 50+ self-service actions, 3 primary user types.</div></div>
+      <div class="vc-field"><div class="vc-field-lbl">Client</div><div class="vc-field-val">Verizon, delivered through Innova Solutions.</div></div>
+      <div class="vc-field"><div class="vc-field-lbl">My role</div><div class="vc-field-val">Lead Experience Designer — discovery, synthesis, and the AI-first redesign direction.</div></div>
+      <div class="vc-field"><div class="vc-field-lbl">Scope</div><div class="vc-field-val">Business + user discovery, a 5-category UX audit, and a phased AI-first redesign roadmap.</div></div>
+    </div>
     <div class="vc-quote">Numeric targets were deliberately left open at this stage — the team needed the client's current baselines for completion rate, assisted volume, and order cycle time before committing to specific numbers.<span>CONSTRAINT, STATED UP FRONT</span></div>
     <div class="vc-disclose"><b>Evidence gap</b>These five goals are the real, documented output of stakeholder alignment. The specific interview transcripts and who-said-what quotes from the BA, PM, tech lead, and associate director aren't part of the material I have — so rather than invent quotes to dramatize this stage, I'm reporting the synthesized goals those conversations actually produced.</div>
   </div>
@@ -209,8 +243,28 @@ a{color:var(--accent);}
 
 <section class="vc-section">
   <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 02</div>
-    <div class="vc-sec-ref">REF// VEC-02-USERS</div>
+    <div class="vc-sec-label">Audit Framework</div>
+    <div class="vc-sec-ref">REF// VEC-FRAMEWORK</div>
+    <h2 class="vc-sec-title">Two questions, asked of every screen</h2>
+    <p class="vc-p">VOC volume said where to look; the audit said why it was happening. Every pain point was walked screen-by-screen against the same two questions, before any redesign direction was proposed:</p>
+    <div class="vc-ba-row">
+      <div class="vc-ba-col"><span class="vc-ba-label">Question 1</span><p>What's actually causing this — not the symptom a customer reports, but the underlying mechanism?</p></div>
+      <div class="vc-ba-col after"><span class="vc-ba-label">Question 2</span><p>What's the smallest fix that resolves the cause, rather than papering over the symptom?</p></div>
+    </div>
+    <p class="vc-p">Running all five pain points through that lens surfaced three failure modes that repeated across the product, not just within one module:</p>
+    <div class="vc-cardgrid">
+      <div class="vc-card"><h4>State gets lost</h4><p>Sessions, in-progress forms, and ticket sync all drop information the user already gave the system.</p></div>
+      <div class="vc-card"><h4>Errors go unexplained</h4><p>Payments and tickets fail or close silently, with no reason surfaced to the customer.</p></div>
+      <div class="vc-card"><h4>One record at a time</h4><p>The interface assumes a single line or invoice, in a product built for enterprise-scale, multi-line accounts.</p></div>
+    </div>
+    <div class="vc-disclose"><b>Evidence gap</b>The audit itself was documented as a large annotated screen-by-screen review — the source file runs to dozens of individual annotated screens. Rather than reproduce those, this section and the findings below synthesize the real cause-and-fix pairing the audit produced.</div>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">Research Insights</div>
+    <div class="vc-sec-ref">REF// VEC-RESEARCH</div>
     <h2 class="vc-sec-title">729 pieces of real customer feedback, across two segments</h2>
     <p class="vc-p">Discovery pulled directly from customer voice channels and product analytics for both Wireline and Wireless enterprise customers — not a sample, the full logged set. It clustered into five pain points by volume:</p>
     <table class="vc-table">
@@ -229,59 +283,155 @@ a{color:var(--accent);}
 
 <section class="vc-section">
   <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 03</div>
-    <div class="vc-sec-ref">REF// VEC-03-AUDIT</div>
-    <h2 class="vc-sec-title">Turning five pain points into five audited root causes</h2>
-    <p class="vc-p">VOC volume said where to look; the audit said why it was happening. Every pain point was walked screen-by-screen against the same two questions — what's actually causing this, and what's the smallest fix that resolves the cause rather than the symptom — before any redesign direction was proposed.</p>
-    <div class="vc-cardgrid">
-      <div class="vc-card"><h4>Session &amp; Login</h4><p><b>Audited cause:</b> a ≤30-min inactivity timeout purges in-progress forms, and 2FA email delivery lags long enough to break the login attempt.</p><p><b>Fix direction:</b> extend session duration, add local state caching, cut 2FA delivery to under 5 seconds.</p></div>
-      <div class="vc-card"><h4>Payment &amp; Invoice</h4><p><b>Audited cause:</b> invoices post 8+ days late, arriving only via an async email link; the guest payment tool crashes on multi-invoice sessions with no explanatory error.</p><p><b>Fix direction:</b> instant in-portal PDF download, a refactored multi-bill payment handler, specific error messages on failure.</p></div>
-      <div class="vc-card"><h4>Support Tickets</h4><p><b>Audited cause:</b> the fault-selection dropdown freezes the ticket wizard, tickets don't sync to the dashboard in real time, and agents can close a ticket with no customer confirmation.</p><p><b>Fix direction:</b> fix the dropdown state bug, real-time API sync, a mandatory customer sign-off before resolution.</p></div>
-      <div class="vc-card"><h4>Inventory Search</h4><p><b>Audited cause:</b> search fields don't support wildcards, and Wireline and Wireless assets are managed in isolated views forcing repeated account switching.</p><p><b>Fix direction:</b> wildcard search across every inventory table, plus a unified toggle header.</p></div>
-      <div class="vc-card"><h4>Manual Disconnect</h4><p><b>Audited cause:</b> disconnecting multiple lines requires 27 repeated manual steps per line, with no bulk upload path.</p><p><b>Fix direction:</b> a bulk CSV/Excel disconnect tool, "copy to all lines" form controls, updated validation logic.</p></div>
-      <div class="vc-card"><h4>Across all five</h4><p>The same three failure modes repeat: <b>state gets lost</b> (sessions, forms, sync), <b>errors go unexplained</b> (payments, tickets), and <b>the interface assumes one record at a time</b> in a product built for enterprise-scale, multi-line accounts.</p></div>
-    </div>
-    <div class="vc-disclose"><b>Evidence gap</b>The audit itself was documented as a large annotated screen-by-screen review — the source file runs to dozens of individual annotated screens. Rather than reproduce those, this section synthesizes the real cause-and-fix pairing the audit produced for each pain point.</div>
-  </div>
-</section>
-
-<section class="vc-section">
-  <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 04</div>
-    <div class="vc-sec-ref">REF// VEC-04-AFFINITY</div>
-    <h2 class="vc-sec-title">729 raw notes, five real clusters</h2>
-    <p class="vc-p">The five pain points above are the actual output of affinity clustering on the raw feedback set — not a category scheme designed after the fact. Grouping surfaced that "login" and "navigation between Wireline and Wireless" kept appearing together, which is why session handling and account-switching became one design problem rather than two.</p>
-    <div class="vc-affinity">
-      <div class="vc-affinity-cell"><h4>Access &amp; Identity</h4><div class="note">Constant login issues</div><div class="note">2FA email delivery is extremely slow</div><div class="note">Confusing navigation between Business &amp; Wireless</div><div class="support">178 ITEMS</div></div>
-      <div class="vc-affinity-cell"><h4>Money Movement</h4><div class="note">Payments fail with no reason given</div><div class="note">Invoice PDF only arrives by email, days late</div><div class="note">Paid without logging in, out of frustration</div><div class="support">263 ITEMS</div></div>
-      <div class="vc-affinity-cell"><h4>Support Follow-Through</h4><div class="note">Ticket wizard freezes on fault selection</div><div class="note">Tickets closed without customer confirmation</div><div class="support">85 ITEMS</div></div>
-      <div class="vc-affinity-cell"><h4>Finding Things</h4><div class="note">Search has no wildcard support</div><div class="note">Wireline and Wireless assets live in separate views</div><div class="support">43 ITEMS</div></div>
-      <div class="vc-affinity-cell"><h4>Bulk Operations</h4><div class="note">27 repetitive steps to disconnect one line</div><div class="note">No CSV/Excel bulk upload option</div><div class="support">160 ITEMS</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="vc-section">
-  <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 05</div>
-    <div class="vc-sec-ref">REF// VEC-05-EMPATHY</div>
+    <div class="vc-sec-label">Persona</div>
+    <div class="vc-sec-ref">REF// VEC-PERSONA</div>
     <h2 class="vc-sec-title">The enterprise admin behind the tickets</h2>
-    <p class="vc-p">Synthesized from the same real feedback and behavior evidence above — a composite of the enterprise Wireline/Wireless admin who files these tickets, not a fictional persona invented separately from the data.</p>
-    <div class="vc-empathy">
-      <div class="vc-empathy-cell"><h4>Says</h4><ul><li>"The system should provide a reason for failure."</li><li>"Without our confirmation ticket is closed."</li></ul></div>
-      <div class="vc-empathy-cell"><h4>Thinks</h4><ul><li>Is my payment actually going to post, or do I need to call and check?</li><li>Why does this look different depending on whether I'm in Wireline or Wireless?</li></ul></div>
-      <div class="vc-empathy-cell"><h4>Does</h4><ul><li>Re-enters the same data 27 times to disconnect multiple lines.</li><li>Pays without logging in when authentication fails, just to get the task done.</li></ul></div>
-      <div class="vc-empathy-cell"><h4>Feels</h4><ul><li>Distrustful of silent failures — errors with no explanation.</li><li>Penalized for doing bulk, enterprise-scale work in a single-record interface.</li></ul></div>
+    <p class="vc-p">Synthesized from the same real feedback and behavior evidence above — a composite of the enterprise Wireline/Wireless account admin who files these tickets, not a fictional persona invented separately from the data.</p>
+    <div class="vc-persona">
+      <div class="vc-persona-id">
+        <div class="vc-persona-role">Enterprise account admin</div>
+        <div class="vc-persona-meta">Manages:<br/>Orders · Billing<br/>Tickets · Inventory<br/><br/>Segments:<br/>Wireline &amp; Wireless<br/><br/>Channel:<br/>Self-service portal<br/>+ phone/chat fallback</div>
+      </div>
+      <div class="vc-persona-main">
+        <div class="vc-quote" style="margin-top:0">The system should provide a reason for failure.<span>DOCUMENTED CUSTOMER QUOTE</span></div>
+        <div class="vc-empathy" style="margin-top:14px">
+          <div class="vc-empathy-cell"><h4>Thinks</h4><ul><li>Is my payment actually going to post, or do I need to call and check?</li><li>Why does this look different depending on whether I'm in Wireline or Wireless?</li></ul></div>
+          <div class="vc-empathy-cell"><h4>Does</h4><ul><li>Re-enters the same data 27 times to disconnect multiple lines.</li><li>Pays without logging in when authentication fails, just to get the task done.</li></ul></div>
+          <div class="vc-empathy-cell"><h4>Feels</h4><ul><li>Distrustful of silent failures — errors with no explanation.</li><li>Penalized for doing bulk, enterprise-scale work in a single-record interface.</li></ul></div>
+          <div class="vc-empathy-cell"><h4>Needs</h4><ul><li>A reason when something fails, not just a failure.</li><li>Bulk controls that match how an enterprise account actually operates.</li></ul></div>
+        </div>
+      </div>
+    </div>
+    <div class="vc-disclose"><b>Evidence gap</b>No photo, name, age, or individual biography exists for this persona — it's a composite built only from documented VOC evidence and behavior, not an interviewed individual. Demographic detail is deliberately omitted rather than invented.</div>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">Key Tasks</div>
+    <div class="vc-sec-ref">REF// VEC-TASKS</div>
+    <h2 class="vc-sec-title">Eight real flows, mapped screen-by-screen</h2>
+    <p class="vc-p">The interactive prototype spells out exactly which flows moved where. Eight BAU flows were mapped screen-by-screen before any redesign direction was proposed:</p>
+    <div class="vc-flow">
+      <span class="step">Dashboard</span><span class="step">Order Creation</span><span class="step">Bill Payment (logged-in &amp; guest)</span><span class="step">Service Change Request</span><span class="step">Session Issue</span><span class="step">Support Ticket Closure</span><span class="step">Manual Disconnect</span>
+    </div>
+    <p class="vc-p">The Conversational AI track covers the five highest-value flows first — Dashboard, Order Creation, Upgrade/Change/Order Status, Product Tools, and Bill Payments — deliberately narrower than BAU's eight, since the AI-first surface ships in phases rather than replacing everything on day one.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">Review Findings — Positives</div>
+    <div class="vc-sec-ref">REF// VEC-POSITIVES</div>
+    <h2 class="vc-sec-title">The existing experience already does some things right</h2>
+    <ul class="vc-list">
+      <li><b>Simple cases already get deflected.</b> The existing assistant asks which module an issue belongs to and resolves straightforward cases with FAQ content before they ever reach an agent.</li>
+      <li><b>Entitlement rules are already unified.</b> The customer-facing portal and the internal Agent Console already enforce the same entitlement logic — a real structural foundation to build the redesign on, not a from-scratch problem.</li>
+    </ul>
+    <div class="vc-disclose"><b>But…</b>729 logged VOC items across five pain points say the portal doesn't yet complete enterprise-scale tasks on its own. It routes and deflects — it doesn't consistently act.</div>
+  </div>
+</section>
+
+<div class="vc-wrap" style="padding:50px 0 0;">
+  <div class="vc-sec-label" style="color:var(--accent)">Review Findings — Shortcomings</div>
+  <ul class="vc-catnav">
+    <li class="active">Strategy</li>
+    <li>Information Architecture</li>
+    <li>Navigation</li>
+    <li>Interaction</li>
+    <li>Detailed Design or Presentation</li>
+  </ul>
+  <p class="vc-p" style="margin-top:18px">Each category below carries the one finding from the 729-item VOC set that fits it most clearly, severity-ranked by how much of that volume it represents.</p>
+</div>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sevbar"><span class="vc-sev active h">H</span><span class="vc-sev">M</span><span class="vc-sev">L</span></div>
+    <div class="vc-sec-label">Strategy</div>
+    <div class="vc-sec-ref">REF// VEC-STRATEGY · 85 of 729 VOC items</div>
+    <h2 class="vc-sec-title">Silent closures break the one promise self-service makes</h2>
+    <p class="vc-p"><b>Audited cause:</b> the support-ticket fault-selection dropdown freezes the ticket wizard, tickets don't sync to the dashboard in real time, and agents can close a ticket with no customer confirmation. A portal whose value proposition is "handle this yourself" loses that proposition the moment it resolves something without telling the person who filed it.</p>
+    <p class="vc-p"><b>Fix direction:</b> fix the dropdown state bug, add real-time API sync between the ticket wizard and dashboard, and require a mandatory customer sign-off before any ticket is marked resolved.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sevbar"><span class="vc-sev active h">H</span><span class="vc-sev">M</span><span class="vc-sev">L</span></div>
+    <div class="vc-sec-label">Information Architecture</div>
+    <div class="vc-sec-ref">REF// VEC-IA · 263 of 729 VOC items</div>
+    <h2 class="vc-sec-title">The invoice lives in an email, not in the product</h2>
+    <p class="vc-p"><b>Audited cause:</b> invoices post 8+ days late, and arrive only via an async email link rather than living inside the portal itself. The guest payment tool then crashes on multi-invoice sessions with no explanatory error. The core information a billing module exists to surface isn't architected to live where the user already is.</p>
+    <p class="vc-p"><b>Fix direction:</b> instant in-portal PDF access the moment an invoice posts, a refactored multi-bill payment handler, and specific error messages on failure instead of a silent crash.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sevbar"><span class="vc-sev">H</span><span class="vc-sev">M</span><span class="vc-sev active l">L</span></div>
+    <div class="vc-sec-label">Navigation</div>
+    <div class="vc-sec-ref">REF// VEC-NAVIGATION · 43 of 729 VOC items</div>
+    <h2 class="vc-sec-title">Finding something means knowing which world it's in first</h2>
+    <p class="vc-p"><b>Audited cause:</b> search fields don't support wildcards, and Wireline and Wireless assets are managed in isolated views, forcing an admin to repeatedly switch account context just to look for one thing. Affinity mapping on the raw feedback set surfaced that this clustered with the login/session issues above — "which world am I in" is a navigation problem as much as it is an access one.</p>
+    <p class="vc-p"><b>Fix direction:</b> wildcard search across every inventory table, plus a unified toggle header so switching between Wireline and Wireless doesn't mean leaving and re-entering a different view.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sevbar"><span class="vc-sev active h">H</span><span class="vc-sev">M</span><span class="vc-sev">L</span></div>
+    <div class="vc-sec-label">Interaction</div>
+    <div class="vc-sec-ref">REF// VEC-INTERACTION · 178 of 729 VOC items</div>
+    <h2 class="vc-sec-title">The interface loses state without telling you</h2>
+    <p class="vc-p"><b>Audited cause:</b> a ≤30-minute inactivity timeout purges in-progress forms with no warning, and 2FA email delivery lags long enough to break the login attempt itself. One real customer routed around this entirely — paying without logging in, out of frustration.</p>
+    <p class="vc-p"><b>Fix direction:</b> extend session duration, add local state caching so a timeout doesn't erase unsaved work, and cut 2FA delivery to under 5 seconds.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sevbar"><span class="vc-sev active h">H</span><span class="vc-sev">M</span><span class="vc-sev">L</span></div>
+    <div class="vc-sec-label">Detailed Design or Presentation</div>
+    <div class="vc-sec-ref">REF// VEC-DETAILED · 160 of 729 VOC items</div>
+    <h2 class="vc-sec-title">Built for one record at a time, used for enterprise scale</h2>
+    <p class="vc-p"><b>Audited cause:</b> disconnecting multiple lines requires 27 repeated manual steps per line, with no bulk upload path and no control that copies entered data across lines. The form itself is correctly designed for a single-line consumer account — it was never adapted for the enterprise-scale, multi-line accounts VEC actually serves.</p>
+    <p class="vc-p"><b>Fix direction:</b> a bulk CSV/Excel disconnect tool, "copy to all lines" form controls, and updated validation logic that handles a batch rather than one record.</p>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">Other Known Issues</div>
+    <div class="vc-sec-ref">REF// VEC-OTHER</div>
+    <h2 class="vc-sec-title">Issues that didn't fit one category cleanly</h2>
+    <ul class="vc-list">
+      <li><b>Module drift.</b> Each of the eight modules had drifted into its own visual language, its own navigation pattern, and in places its own separate mobile treatment — a structural issue underneath every category above, not specific to any one of them.</li>
+      <li><b>"Login" and "navigation" don't separate cleanly.</b> Affinity mapping on the raw feedback repeatedly grouped session/login complaints together with confusion navigating between Wireline and Wireless — evidence that these are one design problem seen from two angles, not two independent bugs.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">UX Goal</div>
+    <div class="vc-sec-ref">REF// VEC-GOAL</div>
+    <h2 class="vc-sec-title">What if the AI workspace were the product?</h2>
+    <p class="vc-p">The redesign direction converges on one thesis: what if the AI workspace were the product, and the forms-and-tables UI were the fallback — not the other way around? Today, a scripted bot asks which module an issue belongs to, deflects simple cases, and routes everything else to a queue. It routes conversations; it doesn't complete tasks.</p>
+    <div class="vc-pyramid">
+      <div class="top"><b>Acts</b> — the assistant completes the task, not just routes it</div>
+      <div><b>Explains</b> — every answer cites the record it came from</div>
+      <div><b>Hands off with context</b> — an agent never makes the customer repeat themselves</div>
+      <div><b>Stays within guardrails</b> — same entitlement rules as the structured UI, confirmation before anything commits</div>
     </div>
   </div>
 </section>
 
 <section class="vc-section">
   <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 06</div>
-    <div class="vc-sec-ref">REF// VEC-06-PRIORITY</div>
-    <h2 class="vc-sec-title">Four technical directions, scored on the same axes</h2>
-    <p class="vc-p">The redesign could have gone four different technical routes to fix the "consistent experience" problem. Each was scored on effort to ship versus how strategically it set up the AI-first direction — not picked by preference.</p>
+    <div class="vc-sec-label">Recommendations</div>
+    <div class="vc-sec-ref">REF// VEC-RECOMMENDATIONS</div>
+    <h2 class="vc-sec-title">Functional and useful today — not yet persuasive at enterprise scale</h2>
+    <p class="vc-p">The redesign could have gone four different technical routes to fix the module-consistency problem underneath these findings. Each was scored on effort to ship versus how strategically it set up the AI-first direction — not picked by preference.</p>
     <div class="vc-matrix">
       <div class="vc-matrix-cell"><h5>Low effort / Low strategic value</h5><ul><li>Embedded Wrapper — iframe container, zero changes needed from tool teams</li></ul></div>
       <div class="vc-matrix-cell"><h5>High effort / Low strategic value</h5><ul><li>No candidate scored here — every option had a strategic angle</li></ul></div>
@@ -289,48 +439,9 @@ a{color:var(--accent);}
       <div class="vc-matrix-cell"><h5>High effort / High strategic value</h5><ul><li>AI Abstraction Layer — AI queries tool APIs directly, no UI inconsistency possible</li><li>Micro-Frontend Shell — full Module Federation rebuild, fully consistent UX and shared state</li></ul></div>
     </div>
     <p class="vc-p">The chosen path takes the low-effort, high-value option first (the shared design system) while keeping the two higher-effort, higher-value options — the AI abstraction layer and the micro-frontend shell — as the Phase 2–3 direction once the foundation is in place. The broader rollout uses the same logic at portfolio scale: a five-phase plan (Unify → Optimize → Modernize → AI-Enable → Future-Ready) that opens with a formal complexity/priority assessment across every application before committing engineering effort.</p>
-  </div>
-</section>
-
-<section class="vc-section">
-  <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 07</div>
-    <div class="vc-sec-ref">REF// VEC-07-USERFLOW</div>
-    <h2 class="vc-sec-title">From a routing bot to a workspace that acts</h2>
-    <p class="vc-p">The clearest before/after in the whole redesign is how a support conversation actually resolves.</p>
-    <div class="vc-ba-row">
-      <div class="vc-ba-col"><span class="vc-ba-label">Today (BAU)</span><p>A scripted bot asks which module the issue belongs to, deflects simple cases with FAQ content, and routes everything else to a queue. It routes conversations — it does not complete tasks, and it appears twice on the same screen.</p></div>
-      <div class="vc-ba-col after"><span class="vc-ba-label">Proposed (Conversational AI)</span><p>The AI workspace becomes the primary surface, with the structured portal UI kept as a full fallback and a live context panel alongside it. The assistant acts, not just routes.</p></div>
-    </div>
     <div class="vc-flow">
       <span class="step">Ask in plain language</span><span class="arrow">→</span><span class="step">Act, with guardrails</span><span class="arrow">→</span><span class="step">Explain and cite</span><span class="arrow">→</span><span class="step">Hand off with context</span>
     </div>
-    <p class="vc-p">Each step is a real constraint from the redesign: requests like "why is this circuit down?" or "pay the overdue invoice" replace learning eight module menus; every action stays inside the same entitlement rules as the structured UI, with confirmation before it commits; every answer links back to the record it came from — invoice, ticket, order — so trust is verifiable, not assumed; and when a case does need a human agent, the Agent Console receives the full transcript and state, so the customer never repeats themselves.</p>
-    <p class="vc-p">The interactive prototype spells out exactly which flows moved where. Eight BAU flows were mapped screen-by-screen — Dashboard, Order Creation, Bill Payment (both logged-in and guest), Service Change Request, a dedicated flow for the do-not-move exception case, the Session Issue flow, Support Ticket Closure (including the sub-flow for a carrier-closed ticket and a customer request for more information), and the manual disconnect flow. The Conversational AI track covers the five highest-value flows first — Dashboard, Order Creation, Upgrade/Change/Order Status, Product Tools, and Bill Payments — deliberately narrower than BAU's eight, since the AI-first surface ships in phases rather than replacing everything on day one.</p>
-  </div>
-</section>
-
-<section class="vc-section">
-  <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 08</div>
-    <div class="vc-sec-ref">REF// VEC-08-IA</div>
-    <h2 class="vc-sec-title">One shell, eight modules, one shared design system</h2>
-    <p class="vc-p">The IA problem wasn't module count — eight modules is reasonable for what this product does. It was that each module had drifted into its own visual language, its own navigation pattern, and in places its own separate mobile treatment. The architecture direction rebuilds the portal as a Module Federation host: a shared shell (navigation, entitlement, the AI assistant) with each module registering into it as an independent, isolated unit sharing one design system.</p>
-    <ul class="vc-list">
-      <li><b>Shared shell</b> — top nav, breadcrumb, entitlement context, and the AI assistant stay visible above every module.</li>
-      <li><b>Eight modules as federated units</b> — Dashboard, Orders, Services, Repairs, Product Tools, Billing, Users, and Support, each built and shipped independently.</li>
-      <li><b>One token library</b> — a shared design-system package maps components and primitives so every module — and the internal Agent Console — renders from the same source of truth.</li>
-      <li><b>Two portals, one architecture</b> — the customer-facing VEC and the internal Agent Console differ only in entitlement scope, not in structure.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="vc-section">
-  <div class="vc-wrap">
-    <div class="vc-sec-label">Stage 09</div>
-    <div class="vc-sec-ref">REF// VEC-09-VISUAL</div>
-    <h2 class="vc-sec-title">Three panels, one screen</h2>
-    <p class="vc-p">The target layout puts three things on screen at once, in a fixed hierarchy: the AI workspace as the primary conversational surface, the structured UI (forms, tables, maps) as a fallback that never disappears, and a live context panel of ambient metrics — so a customer working with the assistant never loses the option to drop into a table and verify it themselves.</p>
     <div class="vc-figure">
       <svg viewBox="0 0 900 460" role="img" aria-label="Illustrative recreation of the three-panel layout: AI workspace, structured UI fallback, and live context panel">
         <rect width="900" height="460" fill="#0D0D14" rx="10"/>
@@ -364,6 +475,19 @@ a{color:var(--accent);}
       <div class="vc-figcap">FIG. 01 — Illustrative recreation of the target layout and real interaction pattern. Not a captured screenshot — exact dollar figures and ticket IDs shown are placeholders.</div>
     </div>
     <div class="vc-disclose"><b>Evidence gap</b>The real Figma file contains actual high-fidelity screens for this layout. They aren't reproduced here since exact screens weren't cleared for reproduction — this figure recreates the real, documented layout structure and interaction pattern with placeholder data, not the actual interface.</div>
+  </div>
+</section>
+
+<section class="vc-section">
+  <div class="vc-wrap">
+    <div class="vc-sec-label">Design Process</div>
+    <div class="vc-sec-ref">REF// VEC-PROCESS</div>
+    <h2 class="vc-sec-title">Where this engagement actually is right now</h2>
+    <p class="vc-p">The real sequence this review followed, start to current status:</p>
+    <div class="vc-roadmap" style="margin-top:18px">
+      <span><b>01</b> Business</span><span><b>02</b> Users</span><span><b>03</b> Audit</span><span><b>04</b> Affinity</span><span><b>05</b> Empathy</span><span class="here"><b>06 → Priority &amp; Phasing — we are here</b></span><span><b>07</b> User Flow</span><span><b>08</b> IA</span><span><b>09</b> Visual Design</span>
+    </div>
+    <p class="vc-p" style="margin-top:18px">Phase 1 — the shared Design System SDK — is the committed next build. The AI abstraction layer and full micro-frontend rebuild are the scored, higher-effort options staged for Phase 2–3 once that foundation ships.</p>
   </div>
 </section>
 
