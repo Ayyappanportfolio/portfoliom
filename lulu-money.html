@@ -3,331 +3,1039 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LuLu Money — Case Study</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
-<link rel="stylesheet" href="assets/case-study.css"/>
+<title>Rebuilding LuLu Money — Case Study</title>
+<meta name="description" content="A UX lead's case study: rebuilding a live remittance app for migrant workers across six markets, with the evidence, the decisions and the gaps shown honestly."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap"/>
 <style>
-/* Limited accent — LuLu Group's own brand green, used sparingly */
-.cs-tag{border-color:#0F9D58;color:#0F9D58}
-.cs-section-label{color:#0F9D58}
-.cs-quote{border-left-color:#0F9D58}
-.cs-h2{border-left-color:#0F9D58}
-.stage-def{border-left-color:#0F9D58}
-.stage-icon-badge{background:#E7F6ED}
-.stage-icon-badge svg{stroke:#0F9D58}
-.roadmap circle{fill:#0F9D58 !important}
-.cs-list li b{color:#0F9D58}
-a{color:#0F9D58}
-.cs-masthead{background:#E7F6ED}
-.stage{border-top-color:#0F9D58}
-.stage-num{color:#0F9D58;background:#E7F6ED}
-.metrics-table th{background:#E7F6ED}
-.ba-col.after{border-top-color:#0F9D58}
+:root{
+  --bg:#FFFFFF; --surface:#F5F8F6; --surface-2:#ECF3EF; --ink:#0E1512; --sub:#43524A; --muted:#6D7C74;
+  --line:#E1E8E4; --green:#0B8A4B; --green-ink:#06693A; --green-deep:#073D24; --mint:#E4F4EB;
+  --amber:#B45309; --amber-bg:#FFF4E0; --slate-bg:#EEF1F0;
+  --radius:18px; --shadow:0 1px 2px rgba(14,21,18,.05),0 12px 32px -14px rgba(14,21,18,.18);
+  --display:'Bricolage Grotesque','Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans','Noto Sans Arabic',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:var(--green-ink)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:1000;transition:top .2s}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;gap:14px;max-width:1280px;margin:0 auto;padding:12px 24px;min-height:60px}
+.bar a.back{text-decoration:none;color:var(--sub);font-size:14px;font-weight:600;white-space:nowrap}
+.bar a.back:hover{color:var(--green-ink)}
+.bar-title{font-family:var(--display);font-weight:700;font-size:15px;margin-inline-start:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-toggle{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px 7px 8px;font-size:13px;font-weight:600;min-height:40px}
+.ev-toggle .sw{width:30px;height:18px;border-radius:999px;background:#CBD5D0;position:relative;transition:background .2s;flex:none}
+.ev-toggle .sw::after{content:"";position:absolute;top:2px;inset-inline-start:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:inset-inline-start .2s}
+.ev-toggle[aria-pressed="true"] .sw{background:var(--green)}
+.ev-toggle[aria-pressed="true"] .sw::after{inset-inline-start:14px}
+.progress{height:3px;background:transparent}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),#2BC47A)}
+.chips{display:none;overflow-x:auto;gap:8px;padding:8px 24px 10px;border-top:1px solid var(--line);scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;font-size:13px;font-weight:600;color:var(--sub);padding:7px 13px;border-radius:999px;background:var(--surface);min-height:36px;display:inline-flex;align-items:center}
+.chips a.on{background:var(--green);color:#fff}
+@media(max-width:1099px){.chips{display:flex}}
+@media(max-width:560px){.bar-title{display:none}.ev-toggle{margin-inline-start:auto}}
+
+/* layout */
+.shell{max-width:1280px;margin:0 auto;display:block}
+@media(min-width:1100px){.shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;padding:0 24px}}
+.rail{display:none}
+@media(min-width:1100px){.rail{display:block;position:sticky;top:96px;align-self:start;padding:36px 0}}
+.rail ol{list-style:none;margin:0;padding:0;border-inline-start:2px solid var(--line)}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 0 7px 16px;margin-inline-start:-2px;border-inline-start:2px solid transparent;text-decoration:none;color:var(--muted);font-size:14px;font-weight:600;line-height:1.3}
+.rail a b{font-family:var(--display);font-size:12px;color:var(--muted);min-width:18px}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--green-ink);border-inline-start-color:var(--green)}
+.rail a.on b{color:var(--green)}
+.rail-note{margin-top:22px;font-size:12.5px;color:var(--muted);line-height:1.5;padding-inline-start:18px}
+main{min-width:0}
+
+.col{max-width:760px;margin:0 auto;padding:0 24px}
+.wide{max-width:1040px;margin:0 auto;padding:0 24px}
+@media(min-width:1100px){.col,.wide{padding:0}.col{margin:0}}
+.sec{padding:84px 0 20px;border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-ink);margin-bottom:14px}
+.kicker b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mint);font-size:12px;letter-spacing:0}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0}
+h2{font-size:clamp(28px,4.2vw,44px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin-bottom:22px;text-wrap:balance}
+h3{font-size:clamp(19px,2.3vw,23px);line-height:1.25;letter-spacing:-.01em;margin:34px 0 10px;font-weight:700}
+p{margin:0 0 16px;color:var(--sub);text-wrap:pretty}
+p b,li b{color:var(--ink)}
+.lede{font-size:clamp(18px,2.1vw,21px);color:var(--ink);line-height:1.55}
+ul.pl{margin:0 0 16px;padding-inline-start:20px;color:var(--sub)}
+ul.pl li{margin-bottom:8px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+/* hero */
+.hero{padding:56px 0 32px}
+.hero h1{font-size:clamp(42px,8vw,92px);line-height:.98;letter-spacing:-.035em;font-weight:800;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero .lede{max-width:44ch;margin:22px 0 28px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tag{font-size:12.5px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--sub);background:#fff}
+.byline{font-size:14.5px;color:var(--sub)}
+.byline b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:34px 0 0}
+@media(min-width:760px){.stats{grid-template-columns:repeat(5,1fr)}.stat .n{font-size:clamp(26px,3vw,34px)}}
+.stat{background:var(--surface);border-radius:var(--radius);padding:18px 18px 16px}
+.stat .n{font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,40px);letter-spacing:-.03em;color:var(--green-deep);line-height:1}
+.stat .l{font-size:13.5px;color:var(--sub);margin-top:8px;line-height:1.35}
+.corridor{margin:34px 0 0;background:linear-gradient(180deg,var(--mint),#fff 90%);border-radius:28px;padding:10px;overflow:hidden}
+.corridor svg{width:100%;height:auto;display:block}
+.corridor .flow{stroke-dasharray:6 8;animation:dash 2.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-56}}
+.cap{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.45}
+
+/* cards & grids */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--surface);border-radius:var(--radius);padding:22px}
+.card h4{margin:0 0 8px;font-family:var(--display);font-size:16.5px;color:var(--ink)}
+.card p{font-size:15.5px;margin:0}
+.card.white{background:#fff;border:1px solid var(--line)}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-ink);margin-bottom:6px;display:block}
+.quote{border-inline-start:3px solid var(--green);padding:6px 0 6px 20px;margin:22px 0;font-family:var(--display);font-size:clamp(20px,2.6vw,26px);line-height:1.3;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.quote small{display:block;font-family:var(--body);font-weight:500;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:0}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:0}
+.rev q{display:block;color:var(--ink);font-size:16px;line-height:1.5;quotes:none}
+.rev q::before{content:"“"}.rev q::after{content:"”"}
+.rev span{display:block;font-size:12.5px;color:var(--muted);margin-top:8px}
+
+.gap{border:1px dashed #E0B26B;background:var(--amber-bg);border-radius:14px;padding:16px 20px;margin:22px 0}
+.gap b{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.gap p{margin:0;font-size:15px;color:#6B4412}
+
+.fig{margin:26px 0}
+.fig button{display:block;width:100%;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden;cursor:zoom-in}
+.fig img{width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.45}
+.zoom-hint{font-size:12px;color:var(--muted)}
+
+/* tabs / affinity */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14.5px;min-height:44px}
+.tab[aria-selected="true"]{background:var(--green-deep);color:#fff;border-color:var(--green-deep)}
+.panel{background:var(--surface);border-radius:22px;padding:26px}
+.chain{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:c}
+.step{background:#fff;border-radius:16px;padding:16px 18px;position:relative;border:1px solid var(--line)}
+.step .lbl{margin-bottom:4px}
+.step p{font-size:15px;margin:0;color:var(--ink)}
+.step.imp{background:var(--green-deep);border-color:var(--green-deep)}
+.step.imp .lbl{color:#7EE0AC}
+.step.imp p{color:#fff}
+@media(min-width:900px){.chain .step:not(:last-child)::after{content:"→";position:absolute;inset-inline-end:-14px;top:50%;transform:translateY(-50%);color:var(--green);font-weight:700;z-index:2;background:var(--surface);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:13px}}
+[dir="rtl"] .chain .step::after{transform:translateY(-50%) scaleX(-1)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pill{font-size:12.5px;font-weight:600;border-radius:999px;padding:5px 12px;background:#fff;border:1px solid var(--line);color:var(--sub)}
+.pill.doc{background:var(--mint);border-color:#BFE3CE;color:var(--green-ink)}
+.pill.rec{background:var(--amber-bg);border-color:#EBCB95;color:var(--amber)}
+
+/* empathy */
+.empathy{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:22px;overflow:hidden;margin:22px 0}
+.empathy>div{background:#fff;padding:22px}
+.empathy h4{margin:0 0 10px;font-family:var(--display);font-size:15px;color:var(--green-ink);display:flex;justify-content:space-between;gap:8px}
+.empathy h4 span{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+.empathy ul{margin:0;padding-inline-start:18px;color:var(--sub);font-size:15.5px}
+@media(max-width:640px){.empathy{grid-template-columns:1fr}}
+
+/* problem */
+.neq{display:grid;gap:12px;grid-template-columns:1fr;margin:22px 0}
+@media(min-width:760px){.neq{grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch}.neq .op{display:grid;place-items:center;font-family:var(--display);font-size:26px;color:var(--green)}}
+.neq .op{display:none}
+@media(min-width:760px){.neq .op{display:grid}}
+.pov{background:var(--green-deep);color:#fff;border-radius:26px;padding:30px;margin:24px 0}
+.pov .lbl{color:#7EE0AC}
+.pov p{color:#fff;font-family:var(--display);font-size:clamp(20px,2.7vw,28px);line-height:1.3;margin:0;font-weight:600;letter-spacing:-.01em}
+
+/* priority board */
+.board{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:22px 0}
+.lane{background:var(--surface);border-radius:20px;padding:16px}
+.lane h4{margin:2px 4px 12px;font-family:var(--display);font-size:15px;display:flex;align-items:center;gap:8px}
+.lane h4 i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.lane.c h4 i{background:#DC2626}.lane.i h4 i{background:#D97706}.lane.n h4 i{background:#94A3B8}
+.item{display:block;width:100%;text-align:start;background:#fff;border:1.5px solid transparent;border-radius:14px;padding:12px 14px;margin-bottom:8px;font-size:14.5px;font-weight:600;line-height:1.35;box-shadow:0 1px 2px rgba(14,21,18,.06);min-height:44px}
+.item:hover{border-color:#BFE3CE}
+.item[aria-pressed="true"]{border-color:var(--green);background:var(--mint)}
+.detail{background:#fff;border:1.5px solid var(--green);border-radius:20px;padding:22px 24px;margin-top:6px}
+.detail h4{margin:0 0 8px;font-family:var(--display);font-size:18px}
+.detail p{margin:0 0 8px;font-size:15.5px}
+
+/* phone */
+.demo{display:grid;gap:34px;align-items:center;margin:26px 0;background:linear-gradient(160deg,var(--mint),var(--surface-2));border-radius:30px;padding:30px}
+@media(min-width:860px){.demo{grid-template-columns:minmax(0,1fr) 320px;padding:40px 44px}}
+.phone{width:300px;max-width:100%;margin:0 auto;background:#0E1512;border-radius:42px;padding:11px;box-shadow:0 30px 60px -24px rgba(7,61,36,.55)}
+.screen{background:#fff;border-radius:32px;overflow:hidden;min-height:540px;display:flex;flex-direction:column;font-size:14px}
+.screen.rtl{font-family:'Noto Sans Arabic',var(--body)}
+.s-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px}
+.s-head b{font-family:var(--display);font-size:16px}
+.s-lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.s-lang button{border:0;background:#fff;padding:6px 10px;font-size:12px;font-weight:700;min-height:32px}
+.s-lang button[aria-pressed="true"]{background:var(--green);color:#fff}
+.sample{margin:0 18px 8px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.s-body{padding:6px 18px 18px;flex:1;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.s-title{font-family:var(--display);font-weight:700;font-size:20px;margin:6px 0 14px;letter-spacing:-.01em}
+.row{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:14px;margin-bottom:9px;background:#fff}
+.row .av{width:34px;height:34px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-weight:700;color:var(--green-ink);font-size:13px;flex:none}
+.row small{display:block;color:var(--muted);font-size:12px}
+.row.add{border-style:dashed;color:var(--green-ink);font-weight:700}
+.amt{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.amt:last-of-type{border-bottom:0}
+.amt.tot{font-weight:800;font-size:16px;font-family:var(--display)}
+.hl{background:var(--mint);border-radius:14px;padding:4px 14px;margin:6px 0 12px;outline:2px solid var(--green)}
+.note{font-size:12px;color:var(--green-ink);font-weight:700;margin:4px 0 12px}
+.cta{display:block;width:100%;border:0;background:var(--green);color:#fff;font-weight:700;border-radius:14px;padding:14px;margin-top:auto;font-size:15px;min-height:48px}
+.tl{list-style:none;margin:6px 0 0;padding:0}
+.tl li{display:flex;gap:12px;align-items:flex-start;padding:0 0 18px;position:relative}
+.tl li::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--green);flex:none;margin-top:3px;box-shadow:0 0 0 4px var(--mint)}
+.tl li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:6px;top:20px;bottom:2px;width:2px;background:var(--mint)}
+.tl li.todo::before{background:#CBD5D0;box-shadow:none}
+.dots{display:flex;gap:6px;justify-content:center;padding:10px 0 4px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#CBD5D0}
+.dots i.on{background:var(--green);width:20px;border-radius:99px}
+.ctrl{display:flex;gap:10px;margin:18px 0 6px;flex-wrap:wrap}
+.btn{border:1.5px solid var(--green-deep);background:#fff;color:var(--green-deep);font-weight:700;border-radius:999px;padding:11px 20px;min-height:46px}
+.btn.pri{background:var(--green-deep);color:#fff}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.why{background:#fff;border-radius:18px;padding:20px 22px}
+.why h4{margin:0 0 6px;font-family:var(--display);font-size:18px}
+.why p{margin:0;font-size:15.5px}
+.steps-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.steps-nav button{border:1px solid rgba(7,61,36,.18);background:rgba(255,255,255,.7);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;min-height:40px}
+.steps-nav button[aria-current="step"]{background:var(--green-deep);color:#fff;border-color:var(--green-deep)}
+
+/* ledger */
+.ledger{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}
+.ledger th{text-align:start;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:2px solid var(--line)}
+.ledger td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--sub)}
+.ledger td:first-child{color:var(--ink);font-weight:600}
+.st{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 11px;white-space:nowrap}
+.st.ok{background:var(--mint);color:var(--green-ink)}.st.no{background:var(--slate-bg);color:#475569}.st.part{background:var(--amber-bg);color:var(--amber)}
+.scroll-x{overflow-x:auto}
+.task{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.task .no{font-family:var(--display);font-weight:800;color:var(--green);font-size:18px}
+.task p{margin:0;font-size:15.5px}.task p b{display:block}
+
+/* learn */
+.learn{counter-reset:l}
+.learn .card{position:relative;padding-top:54px}
+.learn .card::before{counter-increment:l;content:"0" counter(l);position:absolute;top:18px;inset-inline-start:22px;font-family:var(--display);font-weight:800;color:var(--green);font-size:15px}
+.sign{margin:70px 0 0;padding:26px 0 90px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--muted)}
+
+/* evidence mode */
+[data-ev]{position:relative}
+body.ev-on [data-ev]{outline:2px dashed rgba(11,138,75,.35);outline-offset:6px;border-radius:12px}
+body.ev-on [data-ev]::before{content:attr(data-ev-label);position:absolute;top:-13px;inset-inline-end:10px;font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:99px;background:var(--green);color:#fff;z-index:3}
+body.ev-on [data-ev="rec"]::before{background:var(--amber)}
+body.ev-on [data-ev="gap"]::before{background:#475569}
+body.ev-on [data-ev="prop"]::before{background:#6D28D9}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1200px);width:100%}
+dialog.lb::backdrop{background:rgba(7,20,13,.82);backdrop-filter:blur(4px)}
+.lb-in{position:relative;background:#fff;border-radius:20px;padding:12px;max-height:92vh;overflow:auto}
+.lb-in img{width:100%;height:auto;border-radius:12px}
+.lb-in p{font-size:13.5px;margin:10px 6px 4px}
+.lb-x{position:sticky;top:0;float:right;z-index:2;border:0;background:var(--ink);color:#fff;border-radius:999px;padding:9px 16px;font-weight:700;min-height:44px}
+
+
+/* ===== Framer-style motion layer ===== */
+body{background-color:var(--page,#fff);transition:background-color .9s ease}
+body[data-tone="mint"]{--page:#F0F8F3}
+.sec{position:relative;overflow-x:clip}
+.ghost{position:absolute;top:30px;inset-inline-end:-10px;font-family:var(--display);font-weight:800;font-size:clamp(140px,22vw,300px);line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(11,138,75,.16);pointer-events:none;user-select:none;will-change:transform;z-index:0}
+.sec>*{position:relative;z-index:1}
+.sec>.ghost{position:absolute;z-index:0}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 40px}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(14,21,18,.11) 1px,transparent 1.2px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 25%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 30% 25%,#000,transparent 75%);pointer-events:none}
+.spot{position:absolute;width:640px;height:640px;left:0;top:0;margin:-320px 0 0 -320px;border-radius:50%;background:radial-gradient(circle,rgba(43,196,122,.28),rgba(43,196,122,0) 62%);pointer-events:none;will-change:transform;opacity:.9}
+.hero .col{position:relative}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.split .w>i{display:inline-block;font-style:normal;transform:translateY(112%) rotate(4deg);transform-origin:0 100%;transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i)*70ms + 120ms)}
+.ready .split .w>i{transform:none}
+.hero h1 em .w>i{color:var(--green)}
+.hero-top{will-change:transform,opacity}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d,0)*1ms + 500ms)}
+.ready .fade-up{opacity:1;transform:none}
+.corridor{position:relative;cursor:crosshair}
+.corridor .node{cursor:default}
+.corridor .node rect{transition:fill .25s,stroke .25s}
+.corridor .node:hover rect{fill:#E4F4EB;stroke:#0B8A4B}
+.node-tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;opacity:0;transform:translate(-50%,-8px) scale(.9);transition:opacity .2s,transform .25s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;z-index:3}
+.node-tip.on{opacity:1;transform:translate(-50%,-14px) scale(1)}
+
+/* marquee */
+.marquee{position:relative;overflow:hidden;border-block:1px solid var(--line);background:#fff;padding:18px 0;margin:20px 0 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;gap:14px;width:max-content;animation:mq 48s linear infinite}
+.marquee:hover .mq-track,.marquee:focus-within .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:999px;padding:12px 22px;font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink);white-space:nowrap}
+.mq-item small{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-ink)}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;padding:0 24px}.mq-track [aria-hidden="true"]{display:none}.marquee{-webkit-mask-image:none;mask-image:none}}
+
+/* scrub manifesto */
+.manifesto{padding:110px 0 70px}
+.scrub{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.4vw,50px);line-height:1.14;letter-spacing:-.025em;color:var(--ink);margin:0;text-wrap:balance}
+.scrub .sw{opacity:.16;transition:opacity .35s ease,color .35s ease}
+.scrub .sw.lit{opacity:1}
+.scrub .sw.g.lit{color:var(--green)}
+
+/* pinned horizontal chain */
+.hscroll{position:relative;margin-top:10px}
+.hs-pin{padding:34px 0 40px}
+.hs-head{max-width:760px;padding:0 24px 22px}
+@media(min-width:1100px){.hs-head{padding-inline:0}}
+.hs-track{display:flex;gap:18px;padding:6px 24px 14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.hs-card{flex:none;width:min(300px,78vw);scroll-snap-align:start;background:var(--surface);border-radius:26px;padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;min-height:290px;text-decoration:none;color:inherit;border:1px solid transparent;transition:background .3s,border-color .3s,transform .4s cubic-bezier(.34,1.56,.64,1)}
+.hs-card:hover{background:#fff;border-color:var(--green)}
+.hs-card .n{font-family:var(--display);font-weight:800;font-size:54px;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--green)}
+.hs-card h4{margin:0;font-family:var(--display);font-size:21px;letter-spacing:-.01em}
+.hs-card p{margin:0;font-size:15.5px;color:var(--sub)}
+.hs-card .go{margin-top:auto;font-weight:700;font-size:13.5px;color:var(--green-ink)}
+.hs-card.gapc{background:var(--amber-bg);border:1px dashed #E0B26B}
+.hs-card.gapc .n{-webkit-text-stroke-color:var(--amber)}
+.hs-bar{height:3px;background:var(--line);border-radius:3px;margin:8px 24px 0;overflow:hidden;display:none}
+.hs-bar i{display:block;height:100%;background:var(--green);transform:scaleX(0);transform-origin:0 50%}
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+  .hscroll.pinned .hs-pin{position:sticky;top:61px;height:calc(100vh - 61px);overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0}
+  .hscroll.pinned .hs-track{overflow:visible;scroll-snap-type:none;will-change:transform}
+  .hscroll.pinned .hs-bar{display:block}
+}
+
+/* tilt + magnetic */
+.tilt{position:relative;transform-style:preserve-3d;will-change:transform}
+.tilt::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.7),transparent 62%);opacity:0;transition:opacity .3s;mix-blend-mode:soft-light}
+.tilt:hover::after{opacity:1}
+.tilt.in{transition:opacity .7s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+.mag{will-change:transform;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+
+/* cursor follower */
+.cur{position:fixed;left:0;top:0;pointer-events:none;z-index:2000;display:none}
+@media(pointer:fine) and (prefers-reduced-motion:no-preference){.cur{display:block}}
+.cur b{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--green)}
+.cur i{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:1.5px solid rgba(11,138,75,.55);transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s,opacity .25s;display:grid;place-items:center;font:700 10px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.cur.hot i{transform:scale(1.55);background:rgba(11,138,75,.12)}
+.cur.zoom i{transform:scale(2);background:var(--green)}
+.cur.zoom i::after{content:"View"}
+.cur.txt i{transform:scale(.4);opacity:.5}
+
+/* tabs spring indicator */
+.tabs{position:relative}
+.tab{position:relative;z-index:1;transition:color .25s,border-color .25s}
+.tab[aria-selected="true"]{background:transparent;border-color:transparent}
+.tab-ind{position:absolute;left:0;top:0;z-index:0;border-radius:999px;background:var(--green-deep);transition:transform .55s cubic-bezier(.34,1.45,.5,1),width .5s cubic-bezier(.34,1.45,.5,1),height .3s;pointer-events:none}
+@keyframes rise{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.chain .step{animation:rise .6s cubic-bezier(.16,1,.3,1) both}
+.chain .step:nth-child(2){animation-delay:.09s}.chain .step:nth-child(3){animation-delay:.18s}.chain .step:nth-child(4){animation-delay:.27s}
+.pills{animation:rise .6s .35s cubic-bezier(.16,1,.3,1) both}
+@keyframes pop{0%{transform:scale(.96);opacity:.4}60%{transform:scale(1.015)}100%{transform:none;opacity:1}}
+.detail.pop{animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
+.item{transition:transform .3s cubic-bezier(.34,1.56,.64,1),border-color .2s,background .2s}
+.item:hover{transform:translateX(4px)}
+.item[aria-pressed="true"]{transform:translateX(8px)}
+
+/* phone */
+.phone-wrap{animation:float 7s ease-in-out infinite;perspective:900px}
+@keyframes float{50%{transform:translateY(-10px)}}
+.s-body{animation:slide .45s cubic-bezier(.16,1,.3,1)}
+@keyframes slide{from{opacity:0;transform:translateX(var(--dx,24px))}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.phone-wrap{animation:none}.ghost,.spot{display:none}.split .w>i,.fade-up{transform:none;opacity:1;transition:none}}
+
+@media print{.bar,.rail,.chips,.ev-toggle{display:none}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="cur" id="cur" aria-hidden="true"><i></i><b></b></div>
 
-<div class="wrap">
-  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
-
-  <div class="cs-masthead">
-<div class="cs-tags">
-    <span class="cs-tag">Fintech</span>
-    <span class="cs-tag">Remittance</span>
-    <span class="cs-tag">B2C</span>
+<header class="bar">
+  <div class="bar-in">
+    <a class="back" href="index.html">← Portfolio</a>
+    <span class="bar-title">Rebuilding LuLu Money</span>
+    <button class="ev-toggle" id="evBtn" type="button" aria-pressed="false" title="Highlights each claim as documented, reconstructed, a gap or a proposal"><span class="sw" aria-hidden="true"></span>Show evidence</button>
   </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <nav class="chips" id="chips" aria-label="Sections"></nav>
+</header>
 
-  <h1 class="cs-title">Rebuilding LuLu Money</h1>
-  <p class="cs-subtitle">Turning a 2018 remittance app for migrant workers into the foundation of a digital bank — the full trace, including where formal usability testing never happened.</p>
+<div class="shell">
+<aside class="rail" aria-label="Case study sections">
+  <ol id="rail"></ol>
+  <p class="rail-note">Tip: switch on <b>Show evidence</b> to see which claims are documented, reconstructed, gaps, or proposals.</p>
+</aside>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="col">
+    <div class="hero-top" id="heroTop">
+    <div class="meta fade-up" style="--d:0"><span class="tag">Fintech</span><span class="tag">Remittance</span><span class="tag">6 markets</span><span class="tag">Multilingual</span><span class="tag">Live product</span></div>
+    <h1 class="split" id="h1">Rebuilding <em>LuLu&nbsp;Money</em></h1>
+    <p class="lede fade-up" style="--d:250">Turning a 2018 remittance app for migrant workers into the foundation of a digital bank — without breaking the trust people already placed in it to get money home.</p>
+    <div class="byline fade-up" style="--d:380"><b>Ayyappan Rajendiran</b> · UX Designer, LuLu Financial · research, definition, ideation and the redesigned flows</div>
+    </div>
+    <div class="stats" role="list">
+      <div class="stat rv tilt" data-par="0.05" role="listitem"><div class="n" data-count="200" data-suffix="+">200+</div><div class="l">LuLu Exchange branches worldwide</div></div>
+      <div class="stat rv tilt" data-par="-0.04" role="listitem"><div class="n" data-count="170" data-suffix="+">170+</div><div class="l">countries money can be sent to</div></div>
+      <div class="stat rv tilt" data-par="0.06" role="listitem"><div class="n" data-count="6">6</div><div class="l">markets shipped at once, each with its own rules</div></div>
+      <div class="stat rv tilt" data-par="-0.05" role="listitem"><div class="n" data-count="321">321</div><div class="l">real store reviews mined</div></div>
+      <div class="stat rv tilt" data-par="0.04" role="listitem"><div class="n" data-count="8" data-suffix=" hrs">≈8 hrs</div><div class="l">stakeholder research over 3 sessions</div></div>
+    </div>
+    <div class="corridor rv" id="corridor">
+      <svg id="corr" viewBox="0 0 800 300" role="img" aria-label="Schematic of six markets connected to the rebuilt LuLu Money app: UAE, Kuwait, Oman, Qatar, Bahrain and APAC. Not a geographic map. Move your pointer to pull the markets closer."></svg>
+      <div class="node-tip" id="tip">Own regulations and language expectations</div>
+    </div>
+    <p class="cap fade-up" style="--d:700">Schematic, not a map — move your pointer over it. Six regulatory markets, one rebuilt product.</p>
   </div>
+</section>
 
-  <div class="cs-byline">
-    <b>Ayyappan Rajendiran</b>
-    <span class="dot"></span>
-    <span>UX Designer, LuLu Financial</span>
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Voices from the research">
+  <div class="mq-track">
+    <span class="mq-item"><small>Stakeholder</small>“It's not customer centric — only account transfer.”</span>
+    <span class="mq-item"><small>Review</small>“Why is this app not support the Arabic language.”</span>
+    <span class="mq-item"><small>Review</small>“…its showing a white screen the entire time.”</span>
+    <span class="mq-item"><small>Review</small>“…still not able to send me OTP.”</span>
+    <span class="mq-item" aria-hidden="true"><small>Stakeholder</small>“It's not customer centric — only account transfer.”</span>
+    <span class="mq-item" aria-hidden="true"><small>Review</small>“Why is this app not support the Arabic language.”</span>
+    <span class="mq-item" aria-hidden="true"><small>Review</small>“…its showing a white screen the entire time.”</span>
+    <span class="mq-item" aria-hidden="true"><small>Review</small>“…still not able to send me OTP.”</span>
   </div>
 </div>
 
-<div class="wrap">
-  <div class="cs-hero-figure">
-    <img src="case-studies/lulu-money/cover-old-app.png" alt="The old LuLu Money app interface"/>
-    <div class="figure-cap">Fig 01 — What I inherited: a remittance app that worked, built in 2018, showing every year of it</div>
-  </div>
+<!-- MANIFESTO -->
+<section class="manifesto" aria-label="Approach">
+  <div class="col"><p class="scrub" id="scrub">A rebuild this size fails first at the <span class="g">business-alignment layer</span>, not the interface layer. So I started with stakeholders across six markets — then let 321 customers' own words confirm or challenge them.</p></div>
+</section>
 
-  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">LuLu Money is powered by LuLu Exchange — a real financial services company with over 200 branches worldwide, moving money to more than 170 countries. This wasn't a concept redesign. It was a live product, with real customers depending on it to get money to their families, that had to keep working while I rebuilt it underneath them.</p>
-  <div class="cs-grid">
-    <div class="cs-grid-item"><h4>Business context</h4><p>The 2018 hybrid app covered one product — account-to-account transfer. The business goal was a digital bank: forex, bill payments, wallets, wallet transfers.</p></div>
-    <div class="cs-grid-item"><h4>Constraints</h4><p>Six countries at once (UAE, Kuwait, Oman, Qatar, Bahrain, APAC), each with its own regulations and language expectations.</p></div>
-    <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>Users ranged from blue-collar workers on shared Android devices to white-collar professionals managing investments — one app, very different comfort levels.</p></div>
-    <div class="cs-grid-item"><h4>My role</h4><p>UX Designer driving research, definition, ideation, and the redesigned flows across the rebuild.</p></div>
+<!-- TRACEABILITY CHAIN (pinned horizontal scroll) -->
+<section class="hscroll" id="chain" aria-label="The case in nine steps">
+  <div class="hs-pin">
+    <div class="hs-head"><div class="kicker"><b>↔</b>The whole case, traced</div><h2 style="margin-bottom:6px">Nine steps, each earned by the last</h2><p style="margin:0">Keep scrolling — every step links to the evidence behind it.</p></div>
+    <div class="hs-track" id="hsTrack">
+      <a class="hs-card" href="#research"><span class="n">01</span><h4>Research</h4><p>About 8 hours with stakeholders across six markets, plus 321 store reviews.</p><span class="go">See the evidence →</span></a>
+      <a class="hs-card" href="#affinity"><span class="n">02</span><h4>Insight</h4><p>The business had outgrown a single-product app.</p><span class="go">Explore the patterns →</span></a>
+      <a class="hs-card" href="#problem"><span class="n">03</span><h4>Problem</h4><p>A 2018 app never re-architected for a digital-bank ambition.</p><span class="go">Symptom ≠ problem →</span></a>
+      <a class="hs-card" href="#priority"><span class="n">04</span><h4>Opportunity</h4><p>Breadth, status, beneficiaries and language, each paired with an answer.</p><span class="go">Pair them up →</span></a>
+      <a class="hs-card" href="#priority"><span class="n">05</span><h4>Priority</h4><p>Crucial, important, not really — sorted before anything was built.</p><span class="go">Open the board →</span></a>
+      <a class="hs-card" href="#flow"><span class="n">06</span><h4>Architecture</h4><p>Send money, tracking and beneficiaries became top-level entries.</p><span class="go">Walk the flow →</span></a>
+      <a class="hs-card" href="#flow"><span class="n">07</span><h4>Flow</h4><p>Fee and exchange rate shown before the confirm step, not after.</p><span class="go">Try it in English or Arabic →</span></a>
+      <a class="hs-card" href="#design"><span class="n">08</span><h4>Design</h4><p>One flow for a construction worker and an office professional.</p><span class="go">See wireframes to hi-fi →</span></a>
+      <a class="hs-card gapc" href="#validation"><span class="n">09</span><h4>Validation</h4><p>Shipped to six markets. A moderated usability round is still owed — stated plainly.</p><span class="go">Read the gap →</span></a>
+    </div>
+    <div class="hs-bar" aria-hidden="true"><i id="hsBar"></i></div>
   </div>
+</section>
 
-  <div class="roadmap">
-    <svg viewBox="0 0 900 130" role="img" aria-label="Five stage roadmap: Empathise, Define, Ideate, Prototype, Test">
-      <line x1="70" y1="55" x2="830" y2="55" stroke="#D8D8D8" stroke-width="2"/>
-      <g font-family="DM Sans, sans-serif">
-        <g><circle cx="70" cy="55" r="11" fill="#141414"/><text x="70" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">01</text><text x="70" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Empathise</text></g>
-        <g><circle cx="260" cy="55" r="11" fill="#141414"/><text x="260" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">02</text><text x="260" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Define</text></g>
-        <g><circle cx="450" cy="55" r="11" fill="#141414"/><text x="450" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">03</text><text x="450" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Ideate</text></g>
-        <g><circle cx="640" cy="55" r="11" fill="#141414"/><text x="640" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">04</text><text x="640" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Prototype</text></g>
-        <g><circle cx="830" cy="55" r="11" fill="#141414"/><text x="830" y="20" text-anchor="middle" font-size="12" fill="#9A9A9A" font-style="italic">05</text><text x="830" y="90" text-anchor="middle" font-size="14" fill="#141414" font-weight="700">Test</text></g>
-      </g>
-    </svg>
+<!-- 01 CONTEXT -->
+<section class="sec" id="context" data-title="Context">
+  <div class="col">
+    <div class="kicker rv"><b>01</b>Project context</div>
+    <h2 class="rv">A live product, with people depending on it</h2>
+    <p class="lede rv" data-ev="doc">LuLu Money is powered by LuLu Exchange — a real financial services company with over 200 branches worldwide, moving money to more than 170 countries. This wasn't a concept redesign. Real customers depended on it to get money to their families, and it had to keep working while I rebuilt it underneath them.</p>
   </div>
+  <div class="wide">
+    <div class="grid g2">
+      <div class="card rv" data-ev="doc"><span class="lbl">Business context</span><p>The 2018 hybrid app covered one product — account-to-account transfer. The business goal was a digital bank: forex, bill payments, wallets, wallet transfers.</p></div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Constraints</span><p>Six markets at once — UAE, Kuwait, Oman, Qatar, Bahrain and APAC — each with its own regulations and language expectations.</p></div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Who uses it</span><p>Blue-collar workers, often on shared Android devices, to white-collar professionals managing investments — one app, very different comfort levels.</p></div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Delivery</span><p>Four sprints — discover, define, ideate, design — with development and testing running alongside the later sprints.</p></div>
+    </div>
+  </div>
+  <div class="col">
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/cover-old-app.png" data-alt="The old LuLu Money app interface" data-cap="What I inherited: a remittance app that worked, built in 2018, showing every year of it"><img loading="lazy" src="case-studies/lulu-money/cover-old-app.png" alt="The old LuLu Money app interface"/></button><figcaption>What I inherited: a remittance app that worked, built in 2018, showing every year of it. <span class="zoom-hint">Tap to enlarge.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 02 DISCOVERY -->
+<section class="sec" id="discovery" data-title="Discovery">
+  <div class="col">
+    <div class="kicker rv"><b>02</b>Problem discovery</div>
+    <h2 class="rv">I refused to start with "the UI needs modernizing"</h2>
+    <p class="lede rv">A rebuild this size fails first at the business-alignment layer, not the interface layer. So the research plan opened with stakeholders across six markets before a single end-user session.</p>
+    <div class="grid g2">
+      <div class="card white rv" data-ev="rec"><span class="lbl">Assumption I rejected</span><p>"The interface looks old, so modernizing it will fix the app."</p></div>
+      <div class="card white rv" data-ev="doc"><span class="lbl">What was already known</span><p>A single-product 2018 app, a business ambition to become a digital bank, and six live markets.</p></div>
+    </div>
+    <h3>Research plan</h3>
+    <ul class="pl rv">
+      <li><b>Stakeholders first</b> — UAE, Kuwait, Oman, Qatar, Bahrain and the wider APAC business, to find the strategic constraint.</li>
+      <li><b>Personas next</b> — to pin down who actually sends money, and how comfortable they are with digital tools.</li>
+      <li><b>321 store reviews</b> — so customers' own words could confirm or challenge what stakeholders believed.</li>
+      <li><b>Competitor teardown</b> — Wise and Al Ansari Exchange, to see where they were strong and where they fell short.</li>
+    </ul>
+    <div class="gap rv" data-ev="gap"><b>Evidence gap</b><p>Formal hypotheses and participant recruitment criteria for the end-user research weren't documented, so none are shown here rather than reconstructed after the fact.</p></div>
+  </div>
+</section>
+
+<!-- 03 RESEARCH -->
+<section class="sec" id="research" data-title="Research">
+  <div class="col">
+    <div class="kicker rv"><b>03</b>User research</div>
+    <h2 class="rv">What stakeholders, personas and 321 reviews said</h2>
+    <p class="rv" data-ev="doc">Roughly eight hours across three sessions with stakeholders surfaced the real constraint immediately:</p>
+    <blockquote class="quote rv" data-ev="doc">“It's not customer centric — only account transfer, no western-money-like services. There's demand for more products.”<small>Stakeholder interview</small></blockquote>
+    <p class="rv" data-ev="doc">Stakeholders were also clear on who uses the app: migrant workers, blue and white collar, sending money home regularly to support families, education and investments — many on Android with limited technical proficiency, most comfortable in WhatsApp, Facebook and YouTube rather than banking apps.</p>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/stakeholder-research.png" data-alt="Sprint timeline and stakeholder interview findings" data-cap="The sprint plan and what stakeholders told me before I spoke to a single end user"><img loading="lazy" src="case-studies/lulu-money/stakeholder-research.png" alt="Sprint timeline and stakeholder interview findings"/></button><figcaption>The sprint plan and what stakeholders told me before I spoke to a single end user.</figcaption></figure>
+
+    <h3>In customers' own words</h3>
+    <div class="grid">
+      <figure class="rev rv" data-ev="doc"><q>Why is this app not support the Arabic language.</q><span>App store review · language</span></figure>
+      <figure class="rev rv" data-ev="doc"><q>The worst app ever... im not even able to open this... its showing a white screen the entire time.</q><span>App store review · reliability</span></figure>
+      <figure class="rev rv" data-ev="doc"><q>I am putting my phone number in Qatar but is taking ages and still not able to send me OTP.</q><span>App store review · sign-in</span></figure>
+    </div>
+    <p class="rv" data-ev="doc">Against Wise and Al Ansari Exchange the pattern held: competitors had useful features but buried them in confusing hierarchies, or shipped sign-up flows that broke on login.</p>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/feedback-competitors.png" data-alt="Real app store reviews and competitive teardown of Wise and Al Ansari Exchange" data-cap="What customers actually said, and where Wise and Al Ansari Exchange were also falling short"><img loading="lazy" src="case-studies/lulu-money/feedback-competitors.png" alt="Real app store reviews and competitive teardown of Wise and Al Ansari Exchange"/></button><figcaption>What customers actually said, and where the competitors were also falling short.</figcaption></figure>
+    <div class="gap rv" data-ev="gap"><b>Research limitations</b><p>The original stakeholder interview guide and full session transcripts weren't preserved beyond these themes. No quantitative survey ran alongside the interviews and review mining, and reviews skew toward people motivated to complain.</p></div>
+  </div>
+</section>
+
+<!-- 04 AFFINITY -->
+<section class="sec" data-tone="mint" id="affinity" data-title="Affinity">
+  <div class="wide">
+    <div class="kicker rv"><b>04</b>Affinity mapping</div>
+    <h2 class="rv">From noise to four patterns — explore each</h2>
+    <p class="lede rv" style="max-width:62ch">Stakeholder input, persona pain points and review complaints clustered into four themes. Pick one to follow it from observation to design implication.</p>
+    <div class="tabs" role="tablist" aria-label="Affinity clusters" id="affTabs"></div>
+    <div class="panel rv" id="affPanel" role="tabpanel" aria-live="polite"></div>
+    <div class="gap rv" data-ev="gap"><b>Evidence gap</b><p>How many reviews or interviewees supported each cluster wasn't recorded, so no counts are shown. Reliability and accessibility rest on direct review evidence; product breadth and trust come from stakeholder and persona input.</p></div>
+  </div>
+</section>
+
+<!-- 05 EMPATHY -->
+<section class="sec" id="empathy" data-title="Empathy">
+  <div class="col">
+    <div class="kicker rv"><b>05</b>Empathy mapping</div>
+    <h2 class="rv">Reconstructed from stakeholder themes and review language</h2>
+    <p class="rv">This map is a synthesis, not direct observation of one interviewed person. Quotes come from reviews; "Thinks" and "Feels" are inferred hypotheses to check with users.</p>
+    <div class="empathy rv" data-ev="rec">
+      <div><h4>Says <span>from reviews</span></h4><ul><li>“Why is this app not support the Arabic language.”</li><li>“Still not able to send me OTP.”</li></ul></div>
+      <div><h4>Thinks <span>inferred</span></h4><ul><li>The app wasn't built with me in mind.</li><li>Will the money I send actually arrive?</li></ul></div>
+      <div><h4>Does <span>reported</span></h4><ul><li>Switches to Liv or Western Union after repeated friction.</li><li>Re-attempts failed actions rather than trusting a first try.</li></ul></div>
+      <div><h4>Feels <span>inferred</span></h4><ul><li>Frustrated by language and reliability barriers.</li><li>Anxious sending money that supports their family.</li></ul></div>
+    </div>
+    <h3>What the map changed</h3>
+    <div class="grid g3">
+      <div class="card rv"><span class="lbl">Need</span><p>To understand every screen, in their own language.</p></div>
+      <div class="card rv"><span class="lbl">Pain point</span><p>Not knowing whether a transfer worked.</p></div>
+      <div class="card rv"><span class="lbl">Opportunity</span><p>Make status, fees and language visible before a decision, not after.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PERSONAS -->
+<section class="sec" id="personas" data-title="People">
+  <div class="col">
+    <div class="kicker rv"><b>06</b>Personas and segments</div>
+    <h2 class="rv">Two people, three segments — and no one-size user</h2>
+    <div class="grid g2">
+      <div class="card white rv" data-ev="doc"><span class="lbl">Primary</span><h4>Md Shahid Alam</h4><p>A construction worker sending cash home on a tight schedule, with low tolerance for friction.</p></div>
+      <div class="card white rv" data-ev="doc"><span class="lbl">Secondary</span><h4>Amit Sharma</h4><p>A white-collar professional, more comfortable with digital tools but just as unforgiving of a broken experience.</p></div>
+    </div>
+    <p class="rv" data-ev="doc">Beyond the two personas I grouped the customer base honestly, because a rebuild aimed at everyone serves no one:</p>
+    <div class="grid g3">
+      <div class="card rv"><span class="lbl">The lapsed</span><p>See LuLu Money as old-fashioned and moved to Liv or Western Union.</p></div>
+      <div class="card rv"><span class="lbl">The current</span><p>Loyal and passively engaged customers using it today.</p></div>
+      <div class="card rv"><span class="lbl">The future</span><p>People who would consider LuLu Money when the need arises.</p></div>
+    </div>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/personas.png" data-alt="Md Shahid Alam and Amit Sharma personas" data-cap="Two personas, two very different relationships with the same app"><img loading="lazy" src="case-studies/lulu-money/personas.png" alt="Md Shahid Alam and Amit Sharma personas"/></button><figcaption>Two personas, two very different relationships with the same app.</figcaption></figure>
+    <div class="gap rv" data-ev="gap"><b>Journey mapping not produced</b><p>A stage-by-stage journey map with tracked emotions wasn't made for this rebuild. The send-money flow in section 09 is where the critical moments were identified and designed for directly.</p></div>
+  </div>
+</section>
+
+<!-- 07 PROBLEM -->
+<section class="sec" id="problem" data-title="Problem">
+  <div class="col">
+    <div class="kicker rv"><b>07</b>Problem definition</div>
+    <h2 class="rv">“Not customer centric” is a headline, not a problem</h2>
+    <p class="rv">Keeping symptom, problem and root cause apart stopped the team treating bad reviews as a visual-polish task.</p>
+  </div>
+  <div class="wide">
+    <div class="neq">
+      <div class="card rv" data-ev="doc"><span class="lbl">Symptom</span><p>Negative reviews citing crashes, missing Arabic support and a broken OTP flow.</p></div><div class="op" aria-hidden="true">≠</div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Problem</span><p>A single-product 2018 app serving a multi-product, multi-market, multi-literacy user base.</p></div><div class="op" aria-hidden="true">≠</div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Root cause</span><p>The app was never re-architected as the business grew from remittance-only to a digital-bank ambition.</p></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="pov rv" data-ev="doc"><span class="lbl">How might we</span><p>How might we rebuild LuLu Money into a digital-bank foundation without breaking the trust migrant workers already place in it to get money home reliably?</p></div>
+  </div>
+</section>
+
+<!-- 08 PRIORITY -->
+<section class="sec" data-tone="mint" id="priority" data-title="Priorities">
+  <div class="wide">
+    <div class="kicker rv"><b>08</b>Opportunities and priorities</div>
+    <h2 class="rv">Crucial, important, not really — tap any problem</h2>
+    <p class="lede rv" style="max-width:62ch">Every flagged problem was sorted into three tiers rather than treated as urgent. Select one to see where it landed and what it became.</p>
+    <div class="board" id="board"></div>
+    <div class="detail rv" id="detail" aria-live="polite"></div>
+    <figure class="fig rv" style="max-width:760px"><button type="button" data-zoom="case-studies/lulu-money/problem-valuation.png" data-alt="Problem valuation: crucial, important and not-really buckets" data-cap="Sorting every flagged problem into crucial, important and not really"><img loading="lazy" src="case-studies/lulu-money/problem-valuation.png" alt="Problem valuation: crucial, important and not-really buckets"/></button><figcaption>The original working artifact: every flagged problem sorted into crucial, important and not really.</figcaption></figure>
+    <div class="gap rv" data-ev="gap" style="max-width:760px"><b>Evidence gap</b><p>The three tiers are documented; a numeric impact-versus-effort score for each item is not, so no scores are invented. The strategic idea that ran through every solution was to use LuLu's actual advantage over digital-only rivals — its agent network — bridging online payment with offline cash pickup. Divergent brainstorming and rejected concepts weren't documented separately.</p></div>
+  </div>
+</section>
+
+<!-- 09 FLOW -->
+<section class="sec" id="flow" data-title="Flow">
+  <div class="wide">
+    <div class="kicker rv"><b>09</b>Information architecture and flow</div>
+    <h2 class="rv">Send money, in the order trust needs it</h2>
+    <p class="lede rv" style="max-width:62ch">Navigation made send-money, transaction tracking and beneficiary management top-level entries — a structural answer to what the priority pass ranked as crucial. Walk the flow below.</p>
+    <div class="demo rv">
+      <div>
+        <div class="steps-nav" id="stepsNav" role="group" aria-label="Flow steps"></div>
+        <div class="why" id="why" aria-live="polite"></div>
+        <div class="ctrl">
+          <button class="btn mag" id="prev" type="button">← Back</button>
+          <button class="btn pri mag" id="next" type="button">Next →</button>
+        </div>
+        <p class="cap" style="margin-top:12px" data-ev="rec">Illustrative recreation of the documented flow. All names and amounts are sample data, not real rates, and the Arabic labels demonstrate the right-to-left layout principle.</p>
+      </div>
+      <div class="phone-wrap"><div class="phone"><div class="screen" id="screen"></div></div></div>
+    </div>
+    <div class="col" style="padding:0;margin:0 auto">
+      <p class="rv" data-ev="doc">Fee and exchange-rate breakdowns were surfaced <b>before</b> the confirmation step, not after — directly answering the trust gap the reviews kept pointing at.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 DESIGN -->
+<section class="sec" id="design" data-title="Design">
+  <div class="col">
+    <div class="kicker rv"><b>10</b>Wireframes to final design</div>
+    <h2 class="rv">One flow for a construction worker and an office professional</h2>
+    <p class="rv">Designing one flow for two personas didn't mean averaging them. It meant finding the one moment — fee transparency — that mattered to both, for the same reason. Wireframes were plain first and argued about before visual polish arrived.</p>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/solution-flows.png" data-alt="Problem-to-solution mapping and the resulting information architecture and user flows" data-cap="Every crucial problem paired with the specific flow it became"><img loading="lazy" src="case-studies/lulu-money/solution-flows.png" alt="Problem-to-solution mapping and the resulting information architecture and user flows"/></button><figcaption>Every crucial problem paired with the specific flow it became.</figcaption></figure>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/wireframes.png" data-alt="Early wireframes for send money, currency selection and recipient management" data-cap="Early wireframes for send money, currency selection and recipient management"><img loading="lazy" src="case-studies/lulu-money/wireframes.png" alt="Early wireframes for send money, currency selection and recipient management"/></button><figcaption>Low fidelity: send money, currency selection and recipient management.</figcaption></figure>
+    <figure class="fig rv"><button type="button" data-zoom="case-studies/lulu-money/hifi-designs.png" data-alt="High fidelity send money, country selection and confirmation screens" data-cap="The rebuilt send-money flow, country selection and confirmation screens"><img loading="lazy" src="case-studies/lulu-money/hifi-designs.png" alt="High fidelity send money, country selection and confirmation screens"/></button><figcaption>High fidelity: the rebuilt send-money flow, country selection and confirmation screens.</figcaption></figure>
+    <h3>Designing for six markets at once</h3>
+    <div class="grid g2">
+      <div class="card rv" data-ev="doc"><span class="lbl">Language</span><p>Language selection surfaced at onboarding and in settings, directly answering the Arabic-language complaint.</p></div>
+      <div class="card rv" data-ev="doc"><span class="lbl">Regulation</span><p>Compliance and localization treated as core requirements from sprint one, not edge cases to patch later.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 VALIDATION -->
+<section class="sec" data-tone="mint" id="validation" data-title="Validation">
+  <div class="col">
+    <div class="kicker rv"><b>11</b>Validation</div>
+    <h2 class="rv">The real test was six markets, not a usability lab</h2>
+    <p class="lede rv" data-ev="doc">No moderated usability round was run for this rebuild. The design shipped into six live regulatory markets at once — a harsher but less controlled validation than a lab session. This case study doesn't conflate the two.</p>
+  </div>
+  <div class="wide">
+    <div class="scroll-x rv"><table class="ledger" data-ev="doc">
+      <thead><tr><th>Signal</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Reliability complaints in reviews</td><td>Crashes and white screens cited</td><td>Not re-audited</td><td><span class="st no">Not measured</span></td></tr>
+        <tr><td>Language coverage</td><td>Arabic missing, cited directly</td><td>Multilingual support added</td><td><span class="st part">By design, not re-verified</span></td></tr>
+        <tr><td>Task completion, time on task, SUS</td><td>—</td><td>—</td><td><span class="st no">Not measured</span></td></tr>
+        <tr><td>Market rollout</td><td>—</td><td>Six markets live</td><td><span class="st ok">Delivered</span></td></tr>
+      </tbody></table></div>
+  </div>
+  <div class="col">
+    <h3>Proposed next: the moderated round this shipped without</h3>
+    <p class="rv" data-ev="prop">Proposed, not run. Recruit each persona and segment in each market, and record completion, errors, time, confidence and any language switch.</p>
+    <div class="rv" data-ev="prop">
+      <div class="task"><span class="no">T1</span><p><b>Send money and say the total aloud before confirming.</b>Tests whether fee and rate shown before confirmation are actually understood.</p></div>
+      <div class="task"><span class="no">T2</span><p><b>Find the status of a recent transfer without signing in.</b>Tests the track-transaction entry for non-login users.</p></div>
+      <div class="task"><span class="no">T3</span><p><b>Add a new beneficiary, then send to them.</b>Tests the dedicated recipient-management entry.</p></div>
+      <div class="task"><span class="no">T4</span><p><b>Switch the app to Arabic and complete a transfer.</b>Tests language selection and right-to-left layout end to end.</p></div>
+    </div>
+    <p class="rv" style="margin-top:14px">Success thresholds are to be agreed with stakeholders before testing — none are asserted here.</p>
+  </div>
+</section>
+
+<!-- 12 OUTCOME -->
+<section class="sec" id="outcome" data-title="Outcome">
+  <div class="col">
+    <div class="kicker rv"><b>12</b>Outcome and learnings</div>
+    <h2 class="rv">What I'd tell the next lead</h2>
+    <p class="rv"><b>What improved:</b> product breadth, transaction visibility and language coverage were addressed by design. <b>What remains unresolved:</b> no formal usability round confirmed these changes reduced the complaints seen in reviews. <b>What's next:</b> a real post-launch review audit, the moderated round above, then forex booking, bill payments and the wallet experience as first-class products.</p>
+  </div>
+  <div class="wide">
+    <div class="grid g2 learn">
+      <div class="card rv"><h4>Start with stakeholders when the risk is strategic</h4><p>User interviews would have found UI problems. Stakeholder interviews found a business-model problem hiding behind them.</p></div>
+      <div class="card rv"><h4>Segment before you personalize</h4><p>The lapsed, the current and the future customer needed different things from the same redesign.</p></div>
+      <div class="card rv"><h4>A market rollout isn't a usability test</h4><p>Six markets proved the product worked. They didn't prove the design decisions were right — that gap is worth naming.</p></div>
+      <div class="card rv"><h4>Regulation and language are UX constraints</h4><p>Designing for six markets at once meant treating compliance and localization as core requirements from sprint one.</p></div>
+    </div>
+  </div>
+  <div class="col">
+    <p class="rv">The through-line: rebuilding a live financial product isn't about designing the ideal version from scratch. It's knowing which parts of the legacy experience were trust, not just friction, and protecting those while you fix everything else.</p>
+    <div class="sign"><span>LuLu Money — a UX case study by Ayyappan Rajendiran</span><a href="index.html">← Back to Portfolio</a></div>
+  </div>
+</section>
+
+</main>
 </div>
 
-<!-- STAGE 01 — EMPATHISE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 01</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
-    <span class="cs-section-label">Empathise</span>
-    <h2 class="cs-h2">Starting with stakeholders, not users — deliberately</h2>
+<dialog class="lb" id="lb" aria-label="Enlarged image"><div class="lb-in"><button class="lb-x" type="button" id="lbx">Close ✕</button><img id="lbi" alt=""/><p id="lbc"></p></div></dialog>
 
-    <div class="substep">
-      <div class="substep-num">Problem Discovery</div>
-      <h3 class="substep-h3">Business-alignment risk comes before interface risk</h3>
-      <p class="cs-p">The assumption I refused to start with was "the UI needs modernizing." A rebuild this size fails first at the business-alignment layer, so the research plan opened with stakeholders across six markets before a single end-user session.</p>
-    </div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 
-    <div class="substep">
-      <div class="substep-num">User Research</div>
-      <h3 class="substep-h3">Stakeholders, personas, and 321 real reviews</h3>
-      <p class="cs-p">Roughly eight hours across three sessions with stakeholders in UAE, Kuwait, Oman, Qatar, Bahrain, and the wider APAC business surfaced the real constraint immediately: <b>"It's not customer centric — only account transfer, no western-money-like services. There's demand for more products."</b> Stakeholders were also clear on who actually uses this app: migrant workers, blue and white collar, sending money home regularly to support families, education, and investments — many of them Android users with limited technical proficiency, most comfortable in WhatsApp, Facebook, and YouTube rather than banking apps.</p>
-      <div class="figure">
-        <img src="case-studies/lulu-money/stakeholder-research.png" alt="Sprint timeline and stakeholder interview findings"/>
-        <div class="figure-cap">Fig 02 — The sprint plan and what stakeholders told me before I spoke to a single end user</div>
-      </div>
-      <p class="cs-p">Two personas carried the rest of the research: <b>Md Shahid Alam</b>, a construction worker sending cash home on a tight schedule with low tolerance for friction, and <b>Amit Sharma</b>, a white-collar professional more comfortable with digital tools but just as unforgiving of a broken experience.</p>
-      <div class="figure">
-        <img src="case-studies/lulu-money/personas.png" alt="Md Shahid Alam and Amit Sharma personas"/>
-        <div class="figure-cap">Fig 03 — Two personas, two very different relationships with the same app</div>
-      </div>
-      <p class="cs-p">Then the reviews — 321 of them, from the App Store and Play Store — let the actual complaints speak for themselves: <i>"Why is this app not support the Arabic language."</i> <i>"The worst app ever... im not even able to open this... its showing a white screen the entire time."</i> <i>"I am putting my phone number in Qatar but is taking ages and still not able to send me OTP."</i> Against Wise and Al Ansari Exchange, the pattern held: competitors had useful features but buried them in confusing hierarchies, or shipped sign-up flows that broke on login.</p>
-      <div class="figure">
-        <img src="case-studies/lulu-money/feedback-competitors.png" alt="Real app store reviews and competitive teardown of Wise and Al Ansari Exchange"/>
-        <div class="figure-cap">Fig 04 — What customers actually said, and where Wise and Al Ansari Exchange were also falling short</div>
-      </div>
-      <div class="gap-note"><b>Evidence gap</b><p>The original stakeholder interview guide and full session transcripts weren't preserved beyond the themes above. No formal quantitative survey was run alongside the qualitative interviews and review mining.</p></div>
-    </div>
-  </div>
-</section>
+  /* nav from sections */
+  var secs = $$('main .sec');
+  var rail = $('#rail'), chips = $('#chips');
+  secs.forEach(function(s,i){
+    var n = ('0'+(i+1)).slice(-2), t = s.getAttribute('data-title');
+    var li = document.createElement('li'); li.innerHTML = '<a href="#'+s.id+'" data-id="'+s.id+'"><b>'+n+'</b>'+t+'</a>'; rail.appendChild(li);
+    var a = document.createElement('a'); a.href = '#'+s.id; a.setAttribute('data-id', s.id); a.textContent = n+' '+t; chips.appendChild(a);
+  });
+  function setOn(id){
+    $$('[data-id]').forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-id')===id); if(a.classList.contains('on')&&a.parentNode===chips){ chips.scrollTo({left:a.offsetLeft-24,behavior:reduce?'auto':'smooth'}); } });
+  }
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) setOn(e.target.id); }); },{rootMargin:'-35% 0px -60% 0px'});
+    secs.forEach(function(s){spy.observe(s)});
+  }
 
-<!-- STAGE 02 — DEFINE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 02</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"/></svg></span>
-    <span class="cs-section-label">Define</span>
-    <h2 class="cs-h2">Sorting real problems from loud ones</h2>
+  /* progress */
+  var prog = $('#prog');
+  function onScroll(){ var h = document.documentElement; var p = h.scrollTop/(h.scrollHeight-h.clientHeight); prog.style.width = Math.max(0,Math.min(1,p))*100+'%'; }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-    <div class="substep">
-      <div class="substep-num">Affinity Mapping</div>
-      <h3 class="substep-h3">Clustering stakeholder input, persona pain points, and review complaints</h3>
-      <div class="affinity-board">
-        <div class="affinity-cluster"><h4>Product breadth</h4><div class="note">Only account transfer, no western-money-like services</div></div>
-        <div class="affinity-cluster"><h4>Trust &amp; transparency</h4><div class="note">No visible transaction status; unclear special rates</div></div>
-        <div class="affinity-cluster"><h4>Accessibility</h4><div class="note">Missing Arabic language; broken OTP flow</div><div class="support">Direct review evidence</div></div>
-        <div class="affinity-cluster"><h4>Reliability</h4><div class="note">App crashes / white screen</div><div class="support">Direct review evidence</div></div>
-      </div>
-    </div>
+  /* reveal */
+  var rvs = $$('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(r){io.observe(r)});
+  } else { rvs.forEach(function(r){r.classList.add('in')}); }
 
-    <div class="substep">
-      <div class="substep-num">Empathy Mapping</div>
-      <h3 class="substep-h3">Reconstructed from stakeholder themes and review language</h3>
-      <div class="empathy-grid">
-        <div class="empathy-cell"><h4>Says (from reviews, reconstructed)</h4><ul><li>"Why is this app not support the Arabic language."</li><li>"Still not able to send me OTP."</li></ul></div>
-        <div class="empathy-cell"><h4>Thinks</h4><ul><li>Assumes the app wasn't built with them specifically in mind.</li><li>Doubts money sent will arrive reliably.</li></ul></div>
-        <div class="empathy-cell"><h4>Does</h4><ul><li>Switches to Liv or Western Union after repeated friction.</li><li>Re-attempts failed actions rather than trusting a first try.</li></ul></div>
-        <div class="empathy-cell"><h4>Feels</h4><ul><li>Frustrated by language and reliability barriers.</li><li>Anxious sending money that supports their family.</li></ul></div>
-      </div>
-    </div>
+  /* count up */
+  $$('[data-count]').forEach(function(el){
+    var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix')||'', pre = el.textContent.trim().charAt(0)==='≈' ? '≈' : '';
+    if(reduce || !('IntersectionObserver' in window)){ el.textContent = pre+end+suf; return; }
+    var done=false, co = new IntersectionObserver(function(es){ if(es[0].isIntersecting && !done){ done=true; var t0=performance.now(), d=1100;
+      (function tick(t){ var k=Math.min(1,(t-t0)/d), v=Math.round(end*(1-Math.pow(1-k,3))); el.textContent=pre+v+suf; if(k<1) requestAnimationFrame(tick); })(t0);
+      co.disconnect(); } },{threshold:.6}); co.observe(el);
+  });
 
-    <div class="substep">
-      <div class="substep-num">Personas / Segments</div>
-      <h3 class="substep-h3">Two named personas, plus three customer segments</h3>
-      <p class="cs-p">I grouped the customer base honestly, because a rebuild aimed at everyone serves no one: <b>the lapsed</b> (people who now see LuLu Money as old-fashioned and moved to Liv or Western Union), <b>the current</b> (loyal and passively-engaged customers using it today), and <b>the future</b> (people who'd consider LuLu Money when the need arises).</p>
-    </div>
+  /* evidence mode */
+  var labels = {doc:'Documented',rec:'Reconstructed',gap:'Gap',prop:'Proposed'};
+  $$('[data-ev]').forEach(function(el){ el.setAttribute('data-ev-label', labels[el.getAttribute('data-ev')]||''); });
+  var evBtn = $('#evBtn');
+  evBtn.addEventListener('click',function(){ var on = evBtn.getAttribute('aria-pressed')!=='true'; evBtn.setAttribute('aria-pressed',on); document.body.classList.toggle('ev-on',on); });
 
-    <div class="substep">
-      <div class="substep-num">Journey Mapping</div>
-      <h3 class="substep-h3">Not documented as a formal journey map</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>A stage-by-stage journey map with tracked emotions wasn't produced for this rebuild. The send-money flow (Stage 04) is where the equivalent critical moments were identified and designed for directly.</p></div>
-    </div>
+  /* affinity */
+  var AFF = [
+    {k:'Product breadth', obs:'“It’s not customer centric — only account transfer, no western-money-like services. There’s demand for more products.”', src:'Stakeholder interview', t:'doc', pat:'The business ambition had outgrown a single-product app.', ins:'Modernizing the interface would not have fixed this — the scope itself was the problem.', imp:'Cash payout, mobile wallet and bill payments become first-class flows, not add-ons.'},
+    {k:'Trust & transparency', obs:'No visible transaction status; unclear special rates.', src:'Persona and stakeholder input', t:'doc', pat:'People could not see what was happening to money they had sent.', ins:'For someone supporting a family, status and fees are emotional, not just informational.', imp:'A track-transaction entry for non-login users, a live activity view when signed in, and fees and rates shown before confirmation.'},
+    {k:'Accessibility', obs:'“Why is this app not support the Arabic language.” · “Still not able to send me OTP.”', src:'App store reviews', t:'doc', pat:'Language and sign-in barriers stopped people before the product could help them.', ins:'Language is a precondition for using the app at all, not a nice-to-have.', imp:'Language selection at onboarding and in settings. A specific OTP redesign is not documented.'},
+    {k:'Reliability', obs:'“…its showing a white screen the entire time.”', src:'App store reviews', t:'doc', pat:'Crashes and white screens recurred across reviews.', ins:'The app was never re-architected as the business expanded — reliability was structural.', imp:'Rebuild on a new foundation rather than patch the 2018 hybrid app.'}
+  ];
+  var tabs = $('#affTabs'), panel = $('#affPanel');
+  function affShow(i){
+    $$('.tab',tabs).forEach(function(b,j){ b.setAttribute('aria-selected', j===i); b.tabIndex = j===i?0:-1; });
+    var a = AFF[i];
+    panel.setAttribute('aria-labelledby','aff'+i);
+    panel.innerHTML = '<div class="chain"><div class="step"><span class="lbl">Observation</span><p>'+a.obs+'</p></div><div class="step"><span class="lbl">Pattern</span><p>'+a.pat+'</p></div><div class="step"><span class="lbl">Insight</span><p>'+a.ins+'</p></div><div class="step imp"><span class="lbl">Design implication</span><p>'+a.imp+'</p></div></div><div class="pills"><span class="pill doc">Source: '+a.src+'</span><span class="pill rec">Users supporting: not recorded</span></div>';
+  }
+  AFF.forEach(function(a,i){
+    var b = document.createElement('button'); b.className='tab'; b.type='button'; b.id='aff'+i; b.setAttribute('role','tab'); b.textContent=a.k;
+    b.addEventListener('click',function(){affShow(i)});
+    b.addEventListener('keydown',function(e){ var n = e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:null; if(n===null) return; n=(n+AFF.length)%AFF.length; affShow(n); $$('.tab',tabs)[n].focus(); e.preventDefault(); });
+    tabs.appendChild(b);
+  });
+  affShow(0);
 
-    <div class="substep">
-      <div class="substep-num">Problem Definition</div>
-      <h3 class="substep-h3">"Not customer centric" is a headline, not a problem statement</h3>
-      <ul class="cs-list">
-        <li><b>Symptom:</b> negative reviews citing crashes, missing Arabic support, broken OTP.</li>
-        <li><b>Problem:</b> a single-product 2018 app trying to serve a multi-product, multi-market, multi-literacy user base.</li>
-        <li><b>Root cause:</b> the app was never re-architected as the business expanded from remittance-only to a broader digital-bank ambition.</li>
-      </ul>
-      <div class="pov-box"><span class="pov-label">How might we</span><p>How might we rebuild LuLu Money into a digital-bank foundation without breaking the trust migrant workers already place in it to get money home reliably?</p></div>
-    </div>
+  /* priority board */
+  var PR = [
+    {id:'p1',lane:'c',t:'Only account transfer — no product breadth',a:'Introduce cash payout, mobile wallet and bill payments as first-class flows.'},
+    {id:'p2',lane:'c',t:'Unclear special rates',a:'Fee and exchange-rate breakdown shown before the confirmation step.'},
+    {id:'p3',lane:'c',t:'No way to manage beneficiaries',a:'A dedicated navigation entry to add and manage recipients.'},
+    {id:'p4',lane:'i',t:'No onboarding tutorial',a:'Deferred: important, but not urgent. No solution is documented for this rebuild.'},
+    {id:'p5',lane:'i',t:'No multi-channel sign-in',a:'Deferred: important, but not urgent. No solution is documented for this rebuild.'},
+    {id:'p6',lane:'n',t:'No referral option',a:'Deferred: a nice-to-have that could wait.'},
+    {id:'p7',lane:'n',t:'No in-house push notifications',a:'Deferred: a nice-to-have that could wait.'}
+  ];
+  var LN = {c:['Crucial','Blocks the business goal or customer trust'],i:['Important','Matters, but not urgent'],n:['Not really','Could wait']};
+  var board = $('#board'), detail = $('#detail');
+  ['c','i','n'].forEach(function(l){
+    var d = document.createElement('div'); d.className='lane '+l; d.innerHTML='<h4><i></i>'+LN[l][0]+'</h4>';
+    PR.filter(function(p){return p.lane===l}).forEach(function(p){
+      var b = document.createElement('button'); b.type='button'; b.className='item'; b.id=p.id; b.setAttribute('aria-pressed','false'); b.textContent=p.t;
+      b.addEventListener('click',function(){ prShow(p.id); }); d.appendChild(b);
+    }); board.appendChild(d);
+  });
+  function prShow(id){
+    var p = PR.filter(function(x){return x.id===id})[0];
+    $$('.item',board).forEach(function(b){ b.setAttribute('aria-pressed', b.id===id); });
+    detail.classList.add('in'); detail.classList.remove('pop'); void detail.offsetWidth; detail.classList.add('pop');
+    detail.innerHTML = '<span class="lbl">'+LN[p.lane][0]+' · '+LN[p.lane][1]+'</span><h4>'+p.t+'</h4><p><b>What it became:</b> '+p.a+'</p>';
+  }
+  prShow('p2');
 
-    <div class="substep">
-      <div class="substep-num">Opportunity Mapping</div>
-      <h3 class="substep-h3">Every crucial problem paired with one clear answer</h3>
-      <ul class="cs-list">
-        <li><b>No product breadth beyond account transfer</b> → introduce cash payout, mobile wallet, and bill payments as first-class flows, not add-ons.</li>
-        <li><b>Transaction status missing</b> → a track-transaction feature for non-login users, plus an activity view with live status for logged-in users.</li>
-        <li><b>No way to manage beneficiaries</b> → a dedicated navigation entry to add and manage recipients.</li>
-        <li><b>Multilingual support missing</b> → language selection surfaced at onboarding and in settings, directly answering the Arabic-language complaints.</li>
-      </ul>
-      <div class="figure">
-        <img src="case-studies/lulu-money/solution-flows.png" alt="Problem-to-solution mapping and the resulting information architecture and user flows"/>
-        <div class="figure-cap">Fig 05 — Every crucial problem paired with the specific flow it became</div>
-      </div>
-    </div>
-  </div>
-</section>
+  /* phone flow */
+  var T = {
+    en:{dir:'ltr',sample:'Sample data',steps:['Recipient','Method','Fee & rate','Confirm','Track'],
+      titles:['Choose recipient','Payment method','Fee and exchange rate','Confirm transfer','Track transfer'],
+      rec:['Saved beneficiaries','Add beneficiary'],meth:['Bank account','Cash pickup','Mobile wallet'],
+      send:'You send',get:'Recipient gets',fee:'Fee',rate:'Exchange rate',total:'Total',before:'Shown before you confirm',confirm:'Confirm and send',
+      st:['Received','Processing','Paid out'],back:'Back',next:'Next'},
+    ar:{dir:'rtl',sample:'بيانات تجريبية',steps:['المستفيد','الطريقة','الرسوم والسعر','التأكيد','التتبع'],
+      titles:['اختر المستفيد','طريقة الدفع','الرسوم وسعر الصرف','تأكيد الحوالة','تتبع الحوالة'],
+      rec:['المستفيدون المحفوظون','إضافة مستفيد'],meth:['حساب مصرفي','استلام نقدي','محفظة إلكترونية'],
+      send:'ترسل',get:'يستلم المستفيد',fee:'الرسوم',rate:'سعر الصرف',total:'الإجمالي',before:'تظهر قبل التأكيد',confirm:'تأكيد وإرسال',
+      st:['تم الاستلام','قيد المعالجة','تم الدفع'],back:'رجوع',next:'التالي'}
+  };
+  var WHY = [
+    ['Start with who, not how much','Beneficiary management is a top-level entry, so recipients are saved once and reused. This answers the "no way to manage beneficiaries" problem ranked crucial.'],
+    ['Choose how the money arrives','Cash pickup and mobile wallet sit beside bank transfer as equals, bridging online payment with LuLu’s offline agent network.'],
+    ['Show the cost before the commitment','Fee and exchange rate appear here, before confirmation, so the person can decide. This is the one moment that mattered to both personas.'],
+    ['Confirm with nothing hidden','The summary repeats the same numbers just shown. Nothing new appears at the last step.'],
+    ['Never leave them wondering','A live status view answers the question the reviews kept raising: did my money arrive?']
+  ];
+  var step = 0, lang = 'en', dirn = 1;
+  var screen = $('#screen'), why = $('#why'), nav = $('#stepsNav'), prev = $('#prev'), next = $('#next');
+  var fmt = function(n){ return new Intl.NumberFormat(lang==='ar'?'ar-AE-u-nu-latn':'en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n); };
+  function render(){
+    var t = T[lang]; screen.className='screen'+(lang==='ar'?' rtl':''); screen.setAttribute('dir',t.dir); screen.setAttribute('lang',lang);
+    var body='';
+    if(step===0) body = '<div class="row"><span class="av">S</span><div>'+(lang==='ar'?'مستفيد تجريبي (أ)':'Sample recipient A')+'<small>'+t.rec[0]+'</small></div></div><div class="row"><span class="av">R</span><div>'+(lang==='ar'?'مستفيد تجريبي (ب)':'Sample recipient B')+'<small>'+t.rec[0]+'</small></div></div><div class="row add"><span class="av">+</span>'+t.rec[1]+'</div>';
+    if(step===1) body = t.meth.map(function(m,i){return '<div class="row"><span class="av">'+['B','C','W'][i]+'</span><div>'+m+'</div></div>'}).join('');
+    if(step===2||step===3){ var hl = step===2;
+      body = '<div class="'+(hl?'hl':'')+'"><div class="amt"><span>'+t.send+'</span><b>'+fmt(1000)+'</b></div><div class="amt"><span>'+t.fee+'</span><b>'+fmt(5)+'</b></div><div class="amt"><span>'+t.rate+'</span><b>'+fmt(22.5)+'</b></div></div>'+(hl?'<div class="note">✓ '+t.before+'</div>':'')+'<div class="amt"><span>'+t.get+'</span><b>'+fmt(22387.5)+'</b></div><div class="amt tot"><span>'+t.total+'</span><b>'+fmt(1005)+'</b></div>'+(step===3?'<button class="cta" type="button" tabindex="-1">'+t.confirm+'</button>':''); }
+    if(step===4) body = '<ul class="tl"><li><div><b>'+t.st[0]+'</b></div></li><li><div><b>'+t.st[1]+'</b></div></li><li class="todo"><div>'+t.st[2]+'</div></li></ul>';
+    screen.innerHTML = '<div class="s-head"><b>LuLu Money</b><div class="s-lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="'+(lang==='en')+'">EN</button><button type="button" data-l="ar" aria-pressed="'+(lang==='ar')+'" lang="ar">عربي</button></div></div><div class="sample">'+t.sample+'</div><div class="s-body" style="--dx:'+(dirn*(lang==='ar'?-1:1)*26)+'px"><div class="s-title">'+t.titles[step]+'</div>'+body+'</div><div class="dots">'+[0,1,2,3,4].map(function(i){return '<i class="'+(i===step?'on':'')+'"></i>'}).join('')+'</div>';
+    $$('.s-lang button',screen).forEach(function(b){ b.addEventListener('click',function(){ lang=b.getAttribute('data-l'); render(); }); });
+    why.innerHTML = '<h4>'+WHY[step][0]+'</h4><p>'+WHY[step][1]+'</p>';
+    nav.innerHTML=''; T.en.steps.forEach(function(s,i){ var b=document.createElement('button'); b.type='button'; b.textContent=(i+1)+'. '+s; if(i===step) b.setAttribute('aria-current','step'); b.addEventListener('click',function(){dirn=i>=step?1:-1;step=i;render();}); nav.appendChild(b); });
+    prev.disabled = step===0; next.disabled = step===4;
+  }
+  prev.addEventListener('click',function(){ if(step>0){dirn=-1;step--;render();} });
+  next.addEventListener('click',function(){ if(step<4){dirn=1;step++;render();} });
+  render();
 
-<!-- STAGE 03 — IDEATE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 03</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-6.5 0-11 5-11 10.5 0 4 2 6.5 4 8.5 1.5 1.5 2 2.5 2 4.5h10c0-2 .5-3 2-4.5 2-2 4-4.5 4-8.5C31 9 26.5 4 20 4z"/><line x1="16.5" y1="32" x2="23.5" y2="32"/><line x1="17.5" y1="35.5" x2="22.5" y2="35.5"/></svg></span>
-    <span class="cs-section-label">Ideate</span>
-    <h2 class="cs-h2">Crucial, important, and not-really — the real priority pass</h2>
+  /* lightbox */
+  var lb = $('#lb'), lbi = $('#lbi'), lbc = $('#lbc'), lastBtn=null;
+  $$('[data-zoom]').forEach(function(b){ b.addEventListener('click',function(){ lastBtn=b; lbi.src=b.getAttribute('data-zoom'); lbi.alt=b.getAttribute('data-alt'); lbc.textContent=b.getAttribute('data-cap'); if(lb.showModal) lb.showModal(); else lb.setAttribute('open',''); }); });
+  function closeLb(){ if(lb.close) lb.close(); else lb.removeAttribute('open'); if(lastBtn) lastBtn.focus(); }
+  $('#lbx').addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){ if(e.target===lb) closeLb(); });
+})();
+</script>
 
-    <div class="substep">
-      <div class="substep-num">Priority Matrix</div>
-      <h3 class="substep-h3">A genuine three-tier prioritization, not everything treated as urgent</h3>
-      <div class="figure">
-        <img src="case-studies/lulu-money/problem-valuation.png" alt="Problem valuation: crucial, important, and not-really buckets"/>
-        <div class="figure-cap">Fig 06 — Sorting every flagged problem into crucial, important, and not really</div>
-      </div>
-      <p class="cs-p">Missing product breadth, unclear special rates, and no way to manage beneficiaries landed as crucial. A missing onboarding tutorial and no multi-channel sign-in landed as important but not urgent. A missing referral option and in-house push notifications landed as nice-to-haves that could wait.</p>
-    </div>
+<script>
+/* Framer-style motion layer — progressive enhancement, fully disabled for reduced-motion users */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var clamp = function(v,a,b){return Math.max(a,Math.min(b,v))};
+  var lerp = function(a,b,t){return a+(b-a)*t};
 
-    <div class="substep">
-      <div class="substep-num">Ideation</div>
-      <h3 class="substep-h3">Direct problem-to-solution mapping, not open brainstorming</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>A divergent brainstorming session with alternative concepts and rejected ideas wasn't documented separately — the process went directly from prioritized problem to a single scoped solution per item, shown in Stage 02's opportunity map. That's a real discipline choice (see Key Learnings), not an omission I'm hiding.</p></div>
-      <p class="cs-p">The one strategic idea that ran through every solution: leverage LuLu's actual advantage over purely digital competitors — its massive agent network — bridging online payment initiation with offline cash pickup, rather than pretending to be a digital-only challenger.</p>
-    </div>
-  </div>
-</section>
+  /* split headline into masked words */
+  var h1 = $('#h1');
+  if(h1){
+    var label = h1.textContent.replace(/\s+/g,' ').trim(), n = 0;
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(ch){
+        if(ch.nodeType===3){
+          var frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(function(t){
+            if(!t) return;
+            if(!t.trim()){ frag.appendChild(document.createTextNode(' ')); return; }
+            var w = document.createElement('span'); w.className='w'; w.setAttribute('aria-hidden','true');
+            var i = document.createElement('i'); i.textContent=t; i.style.setProperty('--i',n++); w.appendChild(i); frag.appendChild(w);
+          });
+          ch.parentNode.replaceChild(frag,ch);
+        } else if(ch.nodeType===1){ walk(ch); }
+      });
+    })(h1);
+    h1.setAttribute('aria-label',label);
+  }
+  var go = function(){ document.body.classList.add('ready'); document.documentElement.classList.add('ready'); };
+  (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(function(r){setTimeout(r,900)})]) : Promise.resolve()).then(function(){ requestAnimationFrame(function(){ requestAnimationFrame(go); }); });
+  if(reduce) go();
 
-<!-- STAGE 04 — PROTOTYPE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 04</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
-    <span class="cs-section-label">Prototype</span>
-    <h2 class="cs-h2">Designing for a construction worker and an office professional, in the same flow</h2>
+  /* ghost section numbers */
+  $$('main .sec').forEach(function(s,i){
+    var g = document.createElement('div'); g.className='ghost'; g.setAttribute('aria-hidden','true'); g.textContent=('0'+(i+1)).slice(-2);
+    g.setAttribute('data-par','-0.12'); s.insertBefore(g,s.firstChild);
+  });
 
-    <div class="substep">
-      <div class="substep-num">Information Architecture</div>
-      <h3 class="substep-h3">Built directly from the solution map</h3>
-      <p class="cs-p">Navigation surfaced send-money, transaction tracking, and beneficiary management as top-level entries — a direct structural answer to what the priority matrix ranked as crucial.</p>
-    </div>
+  /* background tone follows section */
+  if('IntersectionObserver' in window){
+    var tio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ document.body.setAttribute('data-tone', e.target.getAttribute('data-tone')||''); } }); },{rootMargin:'-45% 0px -45% 0px'});
+    $$('main .sec').forEach(function(s){tio.observe(s)});
+  }
 
-    <div class="substep">
-      <div class="substep-num">User Flows</div>
-      <h3 class="substep-h3">Send-money as the flow every segment actually meets</h3>
-      <div class="flow-row">
-        <span class="flow-step">Choose recipient</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Choose payment method</span><span class="flow-arrow">→</span>
-        <span class="flow-step">See fee + rate</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Confirm</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Track status</span>
-      </div>
-      <p class="cs-p">Fee and exchange-rate breakdowns were surfaced before the confirmation step, not after, directly answering the trust gap the reviews kept pointing at.</p>
-    </div>
+  /* scrub manifesto: words light up with scroll */
+  var scrub = $('#scrub'), words = [];
+  if(scrub){
+    (function(){
+      var out = document.createDocumentFragment();
+      Array.prototype.slice.call(scrub.childNodes).forEach(function(ch){
+        var green = ch.nodeType===1 && ch.classList.contains('g');
+        var text = ch.textContent;
+        text.split(/(\s+)/).forEach(function(t){
+          if(!t) return;
+          if(!t.trim()){ out.appendChild(document.createTextNode(' ')); return; }
+          var s = document.createElement('span'); s.className='sw'+(green?' g':''); s.textContent=t; out.appendChild(s); words.push(s);
+        });
+      });
+      scrub.textContent=''; scrub.appendChild(out);
+    })();
+    if(reduce){ words.forEach(function(w){w.classList.add('lit')}); }
+  }
 
-    <div class="substep">
-      <div class="substep-num">Wireframing</div>
-      <h3 class="substep-h3">Plain first, argued about before visual polish arrived</h3>
-      <div class="figure">
-        <img src="case-studies/lulu-money/wireframes.png" alt="Early wireframes for send money, currency selection, and recipient management"/>
-        <div class="figure-cap">Fig 07 — Early wireframes for send money, currency selection, and recipient management</div>
-      </div>
-    </div>
+  /* pinned horizontal chain */
+  var hs = $('#chain'), track = $('#hsTrack'), bar = $('#hsBar'), pinned = false, dist = 0;
+  var mqPin = window.matchMedia('(min-width: 900px)');
+  function hsSetup(){
+    if(!hs) return;
+    pinned = mqPin.matches && !reduce;
+    hs.classList.toggle('pinned',pinned);
+    if(pinned){
+      var pin = $('.hs-pin',hs);
+      dist = Math.max(0, track.scrollWidth - pin.clientWidth + 40);
+      hs.style.height = (window.innerHeight - 61 + dist) + 'px';
+    } else { hs.style.height=''; track.style.transform=''; }
+  }
+  hsSetup(); window.addEventListener('resize',hsSetup); window.addEventListener('load',hsSetup);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(hsSetup);
 
-    <div class="substep">
-      <div class="substep-num">Interaction Design</div>
-      <h3 class="substep-h3">Fee transparency as the one interaction decision that mattered to everyone</h3>
-      <div class="figure">
-        <img src="case-studies/lulu-money/hifi-designs.png" alt="High fidelity send money, country selection, and confirmation screens"/>
-        <div class="figure-cap">Fig 08 — The rebuilt send-money flow, country selection, and confirmation screens</div>
-      </div>
-      <div class="stage-reflect"><b>The takeaway</b>Designing one flow for two very different personas doesn't mean averaging them — it means finding the one moment (fee transparency) that mattered to both, for the same reason.</div>
-    </div>
-  </div>
-</section>
+  /* corridor: springy interactive network */
+  var corr = $('#corr'), cwrap = $('#corridor'), tip = $('#tip'), cNodes = [], cActive = false, cmx = 400, cmy = 150, hov = -1;
+  var NS = 'http://www.w3.org/2000/svg';
+  if(corr){
+    var defs = [['UAE',120,70],['Kuwait',100,150],['Oman',120,230],['Qatar',680,70],['Bahrain',700,150],['APAC',680,230]];
+    var gl = document.createElementNS(NS,'g'); gl.setAttribute('fill','none'); gl.setAttribute('stroke','#0B8A4B'); gl.setAttribute('stroke-width','2'); gl.setAttribute('opacity','.55');
+    var gn = document.createElementNS(NS,'g'); gn.setAttribute('font-family','Figtree,system-ui,sans-serif'); gn.setAttribute('font-weight','700'); gn.setAttribute('font-size','15'); gn.setAttribute('text-anchor','middle');
+    corr.appendChild(gl); corr.appendChild(gn);
+    defs.forEach(function(df,i){
+      var path = document.createElementNS(NS,'path'); path.setAttribute('class','flow'); path.style.strokeDasharray='6 8'; path.style.animation = reduce?'none':'dash 2.4s linear infinite'; gl.appendChild(path);
+      var g = document.createElementNS(NS,'g'); g.setAttribute('class','node'); g.setAttribute('tabindex','0'); g.setAttribute('role','img'); g.setAttribute('aria-label',df[0]);
+      var r = document.createElementNS(NS,'rect'); r.setAttribute('width','140'); r.setAttribute('height','44'); r.setAttribute('rx','22'); r.setAttribute('fill','#fff'); r.setAttribute('stroke','#BFE3CE');
+      var t = document.createElementNS(NS,'text'); t.setAttribute('x','70'); t.setAttribute('y','28'); t.setAttribute('fill','#073D24'); t.textContent=df[0];
+      g.appendChild(r); g.appendChild(t); gn.appendChild(g);
+      var o = {x:df[1],y:df[2],bx:df[1],by:df[2],vx:0,vy:0,g:g,p:path,i:i};
+      g.addEventListener('pointerenter',function(){hov=i; showTip(o);}); g.addEventListener('pointerleave',function(){hov=-1; tip.classList.remove('on');});
+      g.addEventListener('focus',function(){showTip(o)}); g.addEventListener('blur',function(){tip.classList.remove('on')});
+      cNodes.push(o);
+    });
+    var c = document.createElementNS(NS,'g'); c.setAttribute('font-family','Figtree,system-ui,sans-serif'); c.setAttribute('font-weight','700'); c.setAttribute('font-size','16'); c.setAttribute('text-anchor','middle');
+    c.innerHTML = '<circle id="hub" cx="400" cy="150" r="62" fill="#0B8A4B"/><text x="400" y="145" fill="#fff">LuLu</text><text x="400" y="166" fill="#fff">Money</text>';
+    corr.appendChild(c);
+    var hub = c.firstChild;
+    function showTip(o){ var sb = corr.getBoundingClientRect(), wb = cwrap.getBoundingClientRect(); var k = sb.width/800; tip.style.left = (sb.left - wb.left + o.x*k)+'px'; tip.style.top = (sb.top - wb.top + (o.y-22)*k)+'px'; tip.classList.add('on'); }
+    var vis = new IntersectionObserver(function(es){ cActive = es[0].isIntersecting; if(cActive) requestAnimationFrame(tickC); },{threshold:.05}); vis.observe(cwrap);
+    cwrap.addEventListener('pointermove',function(e){ var b = corr.getBoundingClientRect(); cmx = (e.clientX-b.left)/b.width*800; cmy = (e.clientY-b.top)/b.height*300; });
+    cwrap.addEventListener('pointerleave',function(){ cmx = 400; cmy = 150; });
+    var tc = 0;
+    function drawC(){
+      cNodes.forEach(function(o){
+        var left = o.bx < 400;
+        var cx = 400, cy = 150 + Math.sin(tc/900)*3;
+        var sx = left ? o.x+70 : o.x-70, sy = o.y;
+        var mx = (sx+cx)/2;
+        o.p.setAttribute('d','M'+cx+' '+cy+' C'+mx+' '+cy+' '+mx+' '+sy+' '+sx+' '+sy);
+        o.g.setAttribute('transform','translate('+(o.x-70).toFixed(1)+' '+(o.y-22).toFixed(1)+') translate(70 22) scale('+(hov===o.i?1.08:1)+') translate(-70 -22)');
+      });
+      hub.setAttribute('cy',150 + Math.sin(tc/900)*3);
+    }
+    function tickC(t){
+      if(!cActive) return; tc = t;
+      cNodes.forEach(function(o){
+        var tx = o.bx, ty = o.by;
+        var dx = cmx - o.bx, dy = cmy - o.by, dist2 = Math.sqrt(dx*dx+dy*dy);
+        var pull = clamp(1 - dist2/380, 0, 1) * 26;
+        if(dist2>0.1){ tx += dx/dist2*pull; ty += dy/dist2*pull; }
+        o.vx += (tx - o.x)*0.12; o.vy += (ty - o.y)*0.12; o.vx *= 0.78; o.vy *= 0.78; o.x += o.vx; o.y += o.vy;
+      });
+      drawC(); requestAnimationFrame(tickC);
+    }
+    drawC();
+    if(reduce){ cActive=false; }
+  }
 
-<!-- STAGE 05 — TEST -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 05</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
-    <span class="cs-section-label">Test</span>
-    <h2 class="cs-h2">The real test was six markets, not a usability lab</h2>
+  /* spotlight, parallax, scroll-linked */
+  var spot = $('#spot'), hero = $('#top'), heroTop = $('#heroTop'), sx = 300, sy = 200, tsx = 300, tsy = 200;
+  if(hero && fine && !reduce){ hero.addEventListener('pointermove',function(e){ var b = hero.getBoundingClientRect(); tsx = e.clientX-b.left; tsy = e.clientY-b.top; }); }
+  var pars = $$('[data-par]');
+  var ticking = false;
+  function frame(){
+    ticking = false;
+    var vh = window.innerHeight;
+    if(!reduce){
+      sx = lerp(sx,tsx,.12); sy = lerp(sy,tsy,.12);
+      if(spot) spot.style.transform = 'translate3d('+sx.toFixed(1)+'px,'+sy.toFixed(1)+'px,0)';
+      if(hero && heroTop){ var hr = hero.getBoundingClientRect(); var p = clamp(-hr.top/(hr.height*.6),0,1); heroTop.style.transform = 'translate3d(0,'+(p*70).toFixed(1)+'px,0)'; heroTop.style.opacity = (1-p*.9).toFixed(3); }
+      pars.forEach(function(el){ var r = el.getBoundingClientRect(); if(r.bottom<-200||r.top>vh+200) return; var off = (r.top + r.height/2 - vh/2)*parseFloat(el.getAttribute('data-par')); el.style.transform = 'translate3d(0,'+(-off).toFixed(1)+'px,0)'; });
+    }
+    if(scrub && !reduce){ var r = scrub.getBoundingClientRect(); var p2 = clamp((vh*.82 - r.top)/(r.height + vh*.35),0,1); var lit = Math.round(p2*words.length); words.forEach(function(w,i){ w.classList.toggle('lit', i<lit); }); }
+    if(pinned){ var rr = hs.getBoundingClientRect(); var span = hs.offsetHeight - (window.innerHeight-61); var pp = clamp(-(rr.top-61)/span,0,1); track.style.transform = 'translate3d('+(-pp*dist).toFixed(1)+'px,0,0)'; if(bar) bar.style.transform = 'scaleX('+pp.toFixed(3)+')'; }
+    if(!reduce) requestAnimationFrame(function(){ if(Math.abs(sx-tsx)>.5||Math.abs(sy-tsy)>.5) req(); });
+  }
+  function req(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req); window.addEventListener('pointermove',function(){ if(!reduce) req(); },{passive:true});
+  req();
 
-    <div class="substep">
-      <div class="substep-num">Usability Testing</div>
-      <h3 class="substep-h3">No formal usability-testing round was run</h3>
-      <div class="gap-note"><b>Evidence gap</b><p>There was no moderated usability-testing framework — recruited participants, task scenarios, SUS scoring — for this rebuild. Stating that directly rather than presenting the market rollout as if it were a lab test.</p></div>
-      <p class="cs-p">What actually happened instead: the design shipped across four sprints — discover, define, ideate, design — with development and testing running continuously alongside the later sprints, into six live regulatory markets at once. That's a harsher, less controlled validation than a lab session, but it isn't the same thing, and this case study doesn't conflate the two.</p>
-    </div>
+  /* tilt + glare, magnetic, cursor — fine pointers only */
+  if(fine && !reduce){
+    $$('.card,.stat,.rev,.phone,.detail,.hs-card,.lane').forEach(function(el){
+      el.classList.add('tilt');
+      var base = null;
+      el.addEventListener('pointermove',function(e){
+        var b = el.getBoundingClientRect(), x = (e.clientX-b.left)/b.width, y = (e.clientY-b.top)/b.height;
+        var max = el.classList.contains('phone') ? 7 : 5;
+        el.style.setProperty('--mx',(x*100)+'%'); el.style.setProperty('--my',(y*100)+'%');
+        el.style.transform = 'perspective(900px) rotateX('+((.5-y)*max).toFixed(2)+'deg) rotateY('+((x-.5)*max*1.2).toFixed(2)+'deg) translateZ(0)';
+      });
+      el.addEventListener('pointerleave',function(){ el.style.transform=''; });
+    });
+    $$('.mag,.ev-toggle,.tab,.s-lang button').forEach(function(el){
+      el.classList.add('mag');
+      el.addEventListener('pointermove',function(e){ var b = el.getBoundingClientRect(); var dx = e.clientX-(b.left+b.width/2), dy = e.clientY-(b.top+b.height/2); el.style.transform = 'translate('+(dx*.22).toFixed(1)+'px,'+(dy*.28).toFixed(1)+'px)'; });
+      el.addEventListener('pointerleave',function(){ el.style.transform=''; });
+    });
+    var cur = $('#cur'), ring = $('i',cur), dot = $('b',cur), mx = -100, my = -100, rx = -100, ry = -100;
+    window.addEventListener('pointermove',function(e){ mx = e.clientX; my = e.clientY; });
+    document.addEventListener('pointerover',function(e){
+      var t = e.target.closest ? e.target : null; if(!t) return;
+      var z = t.closest('[data-zoom]'); var h = t.closest('a,button,[role="tab"],.item,.node');
+      cur.classList.toggle('zoom',!!z); cur.classList.toggle('hot',!!h && !z);
+    });
+    (function loop(){ rx = lerp(rx,mx,.18); ry = lerp(ry,my,.18); cur.style.transform='translate3d(0,0,0)'; ring.style.left = rx+'px'; ring.style.top = ry+'px'; dot.style.left = mx+'px'; dot.style.top = my+'px'; requestAnimationFrame(loop); })();
+  }
 
-    <div class="substep">
-      <div class="substep-num">Findings &amp; Iteration</div>
-      <h3 class="substep-h3">Feedback arrived continuously, not in a single round</h3>
-      <p class="cs-p">The project's own framing going into rollout was the most honest thing to carry into this case study: design is never really done. From the first sprint onward, feedback kept arriving, and the product kept adapting to different languages and regulations across markets that don't share the same rules.</p>
-    </div>
-
-    <div class="substep">
-      <div class="substep-num">Final Result</div>
-      <h3 class="substep-h3">Stated at the level it was actually measured</h3>
-      <table class="metrics-table">
-        <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
-        <tr><td>App reliability complaints (reviews)</td><td>Present — crashes, white screen</td><td class="na">Not re-measured</td><td class="na">No post-launch review audit conducted</td></tr>
-        <tr><td>Language coverage</td><td>Missing Arabic, cited directly</td><td>Multilingual support added</td><td>Addressed by design, not re-verified with users</td></tr>
-        <tr><td>Task completion / SUS</td><td class="na">Not measured</td><td class="na">Not measured</td><td class="na">No formal test run</td></tr>
-      </table>
-      <p class="cs-p"><b>What improved:</b> product breadth, transaction visibility, and language coverage were addressed by design. <b>What remains unresolved:</b> no formal usability round confirmed these changes actually reduced the complaints seen in reviews. <b>What's next:</b> a real post-launch review audit and, ideally, the moderated usability round this rebuild shipped without.</p>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <h2 class="cs-h2" style="margin-top:12px">Future Scope</h2>
-  <ul class="cs-list">
-    <li>Extend beyond money transfer into forex booking and bill payments as first-class products.</li>
-    <li>Build out the wallet and mobile wallet transfer experience the original goal called for.</li>
-    <li>Run the moderated usability round this rebuild shipped without, now that the core flows are live.</li>
-  </ul>
-
-  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
-  <div class="learning-grid">
-    <div class="learning">
-      <div class="learning-h">Start with stakeholders when the risk is strategic</div>
-      <div class="learning-p">User interviews would have found UI problems. Stakeholder interviews found a business-model problem hiding behind them.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Segment before you personalize</div>
-      <div class="learning-p">The lapsed, the current, and the future customer needed different things from the same redesign.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">A shipped market rollout isn't a usability test</div>
-      <div class="learning-p">Six regulatory markets validated that the product worked. It didn't validate whether the design decisions themselves were the right ones — that gap is real and worth naming.</div>
-    </div>
-    <div class="learning">
-      <div class="learning-h">Regulation and language are UX constraints, not edge cases</div>
-      <div class="learning-p">Designing for six markets at once meant treating compliance and localization as core requirements from sprint one.</div>
-    </div>
-  </div>
-  <p class="cs-p" style="margin-top:8px">The through-line: rebuilding a live financial product isn't about designing the ideal version from scratch. It's about knowing exactly which parts of the legacy experience were trust, not just friction, and protecting those while you fix everything else.</p>
-
-  <div class="cs-signoff">
-    <p>LuLu Money — a UX Case Study by Ayyappan Rajendiran</p>
-    <p><a href="index.html">← Back to Portfolio</a></p>
-  </div>
-</div>
-
+  /* spring tab indicator for affinity */
+  var tabs = $('#affTabs');
+  if(tabs){
+    var ind = document.createElement('span'); ind.className='tab-ind'; ind.setAttribute('aria-hidden','true'); tabs.insertBefore(ind,tabs.firstChild);
+    var place = function(){ var s = $('.tab[aria-selected="true"]',tabs); if(!s) return; ind.style.width = s.offsetWidth+'px'; ind.style.height = s.offsetHeight+'px'; ind.style.transform = 'translate('+s.offsetLeft+'px,'+s.offsetTop+'px)'; };
+    var mo = new MutationObserver(place); $$('.tab',tabs).forEach(function(t){ mo.observe(t,{attributes:true,attributeFilter:['aria-selected']}); });
+    place(); window.addEventListener('resize',place); window.addEventListener('load',place); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
+  }
+})();
+</script>
 </body>
 </html>
