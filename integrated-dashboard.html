@@ -4,120 +4,60 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Integrated Dashboard — Case Study</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"/>
-<link rel="stylesheet" href="assets/case-study.css"/>
+<meta name="description" content=""The Integrated Products Dashboard consolidates financial metrics and KPIs for M2P's internal teams and external partners. Its purpose is to make business "/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap"/>
+<link rel="stylesheet" href="assets/story.css"/>
 <style>
-/* Limited accent — a steel blue distinct to this dashboard, used sparingly */
-.cs-tag{border-color:#0369A1;color:#0369A1}
-.cs-section-label{color:#0369A1}
-.cs-quote{border-left-color:#0369A1}
-.cs-h2{border-left-color:#0369A1}
-.stage-def{border-left-color:#0369A1}
-.stage-icon-badge{background:#E5F1F8}
-.stage-icon-badge svg{stroke:#0369A1}
-.roadmap circle{fill:#0369A1 !important}
-.cs-list li b{color:#0369A1}
-a{color:#0369A1}
-.cs-masthead{background:#E5F1F8}
-.stage{border-top-color:#0369A1}
-.stage-num{color:#0369A1;background:#E5F1F8}
-.metrics-table th{background:#E5F1F8}
-.ba-col.after{border-top-color:#0369A1}
-.proto-fab{
-  position:fixed;bottom:26px;right:26px;z-index:500;
-  display:inline-flex;align-items:center;gap:8px;background:#0369A1;color:#fff;
-  font-family:'DM Sans',sans-serif;font-weight:600;font-size:14.5px;
-  padding:14px 24px;border-radius:999px;text-decoration:none;
-  box-shadow:0 10px 28px -10px rgba(3,105,161,.6);
-}
-.proto-fab:hover{background:#024D79;color:#fff}
-@media(max-width:640px){.proto-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
-
-/* Added for the Figma-mirrored section structure */
-.chip-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
-.chip{border:1px solid #D8D8D8;border-radius:8px;padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:13.5px;background:#fff}
-.matrix-2x2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#D8D8D8;border:1px solid #D8D8D8;margin:16px 0}
-.matrix-2x2 .quad{background:#fff;padding:16px}
-.matrix-2x2 .quad h5{margin:0 0 8px;font-family:'DM Sans',sans-serif;font-size:12.5px;color:#0369A1;text-transform:uppercase;letter-spacing:.04em}
-.matrix-2x2 .quad ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.55}
-.task-row{border:1px solid #D8D8D8;border-radius:10px;padding:14px 18px;margin-bottom:10px}
-.task-row b{color:#0369A1}
-.task-row .task-meta{font-size:12px;color:#8A8A8A;margin-top:4px}
-.iter-table{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#D8D8D8;border:1px solid #D8D8D8;margin:16px 0;font-size:13px}
-.iter-table div{background:#F7F7F5;padding:12px}
-.iter-table .hd{background:#141414;color:#fff;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
-.ecosystem-note{background:#F7F7F5;border-radius:10px;padding:14px 18px;font-size:13.5px;line-height:1.6;margin:14px 0}
-@media(max-width:640px){.matrix-2x2{grid-template-columns:1fr}.iter-table{grid-template-columns:1fr}}
+:root{--acc:#0369A1;--acc-ink:#0369A1;--acc-deep:#01273D;--acc-soft:#E5F1F8;--acc-glow:3,105,161}
 </style>
 </head>
 <body>
-
-<div class="wrap">
-  <div class="cs-nav"><a href="index.html">← Back to Portfolio</a></div>
-
-  <div class="cs-masthead">
-<div class="cs-tags">
-    <span class="cs-tag">Analytics</span>
-    <span class="cs-tag">Enterprise</span>
-    <span class="cs-tag">B2B</span>
+<a class="skip" href="#main">Skip to content</a>
+<div class="cur" id="cur" aria-hidden="true"><i></i><b></b></div>
+<header class="bar">
+  <div class="bar-in">
+    <a class="back" href="index.html">← Portfolio</a>
+    <span class="bar-title">Integrated Products Dashboard — Making M2P's Partner Ecosyst</span>
+    <button class="ev-toggle" id="evBtn" type="button" aria-pressed="false" title="Highlights every place where evidence is missing or only proposed"><span class="sw" aria-hidden="true"></span>Show evidence gaps</button>
   </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <nav class="chips" id="chips" aria-label="Sections"></nav>
+</header>
+<div class="shell">
+<aside class="rail" aria-label="Case study sections">
+  <ol id="rail"></ol>
+  <p class="rail-note">Tip: switch on <b>Show evidence gaps</b> to see exactly what wasn't measured or documented.</p>
+</aside>
+<main id="main">
+<section class="hero" id="top">
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="col">
+    <div id="heroTop">
+      <div class="meta fade-up" style="--d:0"><span class="tag">Analytics</span><span class="tag">Enterprise</span><span class="tag">B2B</span></div>
+      <h1 class="split" id="h1">Integrated Products Dashboard — Making M2P's Partner Ecosystem Legible</h1>
+      <p class="lede fade-up" style="--d:250">"The Integrated Products Dashboard consolidates financial metrics and KPIs for M2P's internal teams and external partners. Its purpose is to make business performance easier to assess, investigate and communicate" — the brief, as documented. This page follows the real design file's own section sequence, not a generic template.</p>
+      <div class="byline fade-up" style="--d:380"><b>Ayyappan Rajendiran</b> · UX Designer, M2P Fintech</div>
+    </div>
 
-  <h1 class="cs-title">Integrated Products Dashboard — Making M2P's Partner Ecosystem Legible</h1>
-  <p class="cs-subtitle">"The Integrated Products Dashboard consolidates financial metrics and KPIs for M2P's internal teams and external partners. Its purpose is to make business performance easier to assess, investigate and communicate" — the brief, as documented. This page follows the real design file's own section sequence, not a generic template.</p>
   </div>
-
-  <div class="cs-byline">
-    <b>Ayyappan Rajendiran</b>
-    <span class="dot"></span>
-    <span>UX Designer, M2P Fintech</span>
-  </div>
-</div>
-
-<div class="wrap">
-  <div class="cs-hero-figure">
-    <img src="case-studies/integrated-dashboard/overview-process.png" alt="Integrated Products Dashboard overview and design process"/>
+</section>
+<section class="sec" id="overview" data-title="Overview"><div class="col"><div class="kicker"><b>01</b>Overview</div><h2>Project Context</h2>
+<div class="cs-hero-figure">
+    <img src="case-studies/integrated-dashboard/overview-process.png" alt="Integrated Products Dashboard overview and design process">
     <div class="figure-cap">Fig 01 — Cover Page Section, as documented in the source design file</div>
   </div>
-
-  <h2 class="cs-h2" style="margin-top:8px">Project Context</h2>
-  <p class="cs-p">M2P runs core banking infrastructure for banks and fintechs, who in turn serve corporates, who in turn serve end customers — a chain four layers deep. As M2P rolled out more future-ready, customer-relevant banking services, the gaps got harder to ignore: reduced visibility, delayed issue identification, limited transparency, and real difficulty tracking whether a partner's program was healthy.</p>
-  <div class="cs-grid">
+<p class="cs-p">M2P runs core banking infrastructure for banks and fintechs, who in turn serve corporates, who in turn serve end customers — a chain four layers deep. As M2P rolled out more future-ready, customer-relevant banking services, the gaps got harder to ignore: reduced visibility, delayed issue identification, limited transparency, and real difficulty tracking whether a partner's program was healthy.</p>
+<div class="cs-grid">
     <div class="cs-grid-item"><h4>Stakeholders</h4><p>M2P's Business Development, Product, Client Engagement &amp; Delivery, Operations, and API Analyst functions — plus external partner interviews with Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit.</p></div>
     <div class="cs-grid-item"><h4>Live tenants</h4><p>The product's own tenant selector lists real partners on the platform, including TcSwipe, Early Salary, Muvin, and Walrus.</p></div>
     <div class="cs-grid-item"><h4>Existing ecosystem</h4><p>Partners compiled MIS manually and routed requests over email; M2P's own teams tracked client health the same way, through report generation and manual analysis.</p></div>
     <div class="cs-grid-item"><h4>My role</h4><p>UX Designer — research across internal and external stakeholders, synthesis, IA, and the shipped design.</p></div>
   </div>
-
-  <div class="roadmap">
-    <svg viewBox="0 0 1000 150" role="img" aria-label="Twelve stage roadmap following the source design file's own section sequence">
-      <line x1="45" y1="60" x2="955" y2="60" stroke="#D8D8D8" stroke-width="2"/>
-      <g font-family="DM Sans, sans-serif">
-        <g><circle cx="45" cy="60" r="9" fill="#141414"/><text x="45" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">01</text><text x="45" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 45 85)">Problem</text></g>
-        <g><circle cx="128" cy="60" r="9" fill="#141414"/><text x="128" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">02</text><text x="128" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 128 85)">Process</text></g>
-        <g><circle cx="211" cy="60" r="9" fill="#141414"/><text x="211" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">03</text><text x="211" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 211 85)">Users &amp; Business</text></g>
-        <g><circle cx="294" cy="60" r="9" fill="#141414"/><text x="294" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">04</text><text x="294" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 294 85)">Synthesis</text></g>
-        <g><circle cx="377" cy="60" r="9" fill="#141414"/><text x="377" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">05</text><text x="377" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 377 85)">User Journey</text></g>
-        <g><circle cx="460" cy="60" r="9" fill="#141414"/><text x="460" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">06</text><text x="460" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 460 85)">Prioritisation</text></g>
-        <g><circle cx="543" cy="60" r="9" fill="#141414"/><text x="543" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">07</text><text x="543" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 543 85)">User Flow</text></g>
-        <g><circle cx="626" cy="60" r="9" fill="#141414"/><text x="626" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">08</text><text x="626" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 626 85)">Card Sorting</text></g>
-        <g><circle cx="709" cy="60" r="9" fill="#141414"/><text x="709" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">09</text><text x="709" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 709 85)">IA</text></g>
-        <g><circle cx="792" cy="60" r="9" fill="#141414"/><text x="792" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">10</text><text x="792" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 792 85)">Wireframe</text></g>
-        <g><circle cx="875" cy="60" r="9" fill="#141414"/><text x="875" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">11</text><text x="875" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 875 85)">Visual Design</text></g>
-        <g><circle cx="955" cy="60" r="9" fill="#141414"/><text x="955" y="30" text-anchor="middle" font-size="10.5" fill="#9A9A9A" font-style="italic">12</text><text x="955" y="85" text-anchor="end" font-size="11.5" fill="#141414" font-weight="700" transform="rotate(-38 955 85)">User Testing</text></g>
-      </g>
-    </svg>
-  </div>
-</div>
-
-<!-- STAGE 01 — PROBLEM STATEMENT -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 01</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="20" cy="20" r="14"/><line x1="20" y1="13" x2="20" y2="22" stroke-linecap="round"/><circle cx="20" cy="27.5" r="1.4" fill="#141414" stroke="none"/></svg></span>
-    <span class="cs-section-label">Problem Statement</span>
-    <h2 class="cs-h2">Visibility that depended on someone else generating a report</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="problem-statement" data-title="Problem Statement"><div class="col"><div class="kicker"><b>02</b>Problem Statement</div><h2>Visibility that depended on someone else generating a report</h2>
+<div class="substep">
       <h3 class="substep-h3">As documented in the source file</h3>
       <p class="cs-p">"Reduced visibility and limited transparency made key metrics difficult to track. Issues could be identified late, while understanding product performance depended on report generation and manual analysis."</p>
       <div class="cs-grid">
@@ -127,18 +67,9 @@ a{color:#0369A1}
       </div>
       <div class="pov-box"><span class="pov-label">The design challenge</span><p>How might we turn scattered financial information into an accessible explanation? Make the right scope visible, expose meaningful signals beyond totals, and connect monitoring with deeper diagnosis and reporting.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 02 — DESIGN PROCESS -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 02</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round"><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="8" r="3.5"/><circle cx="20" cy="32" r="3.5"/><circle cx="32" cy="20" r="3.5"/><line x1="11" y1="20" x2="29" y2="20"/><line x1="20" y1="11.5" x2="20" y2="28.5"/></svg></span>
-    <span class="cs-section-label">Design Process</span>
-    <h2 class="cs-h2">The real sequence this case study follows</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="design-process" data-title="Design Process"><div class="col"><div class="kicker"><b>03</b>Design Process</div><h2>The real sequence this case study follows</h2>
+<div class="substep">
       <p class="cs-p">"The original process follows Empathy → Define → Ideate → Design → Test. Each stage has a purpose: carry evidence into an insight, an insight into a decision, and a decision into evaluation." The stages below are that same sequence, relabeled to match what was actually produced at each one — not the generic method names.</p>
       <div class="cs-grid">
         <div class="cs-grid-item"><h4>Empathy</h4><p>Understand business needs &amp; goals. Understand users' needs and goals.</p></div>
@@ -147,18 +78,9 @@ a{color:#0369A1}
         <div class="cs-grid-item"><h4>Design</h4><p>Wireframes. Visual design.</p></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 03 — UNDERSTANDING USERS & BUSINESS -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 03</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><circle cx="15" cy="20" r="10.5"/><circle cx="25" cy="20" r="10.5"/></svg></span>
-    <span class="cs-section-label">Understanding Consumer &amp; Business</span>
-    <h2 class="cs-h2">Three groups, each entering the same data from a different direction</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="understanding-consumer-business" data-title="Understanding Consumer &amp; Business"><div class="col"><div class="kicker"><b>04</b>Understanding Consumer &amp; Business</div><h2>Three groups, each entering the same data from a different direction</h2>
+<div class="substep">
       <div class="substep-num">User Groups</div>
       <h3 class="substep-h3">Who the research actually covers</h3>
       <p class="cs-p">"Research centres on dashboard users and partner stakeholders: M2P BD &amp; Product, M2P Operations and external partners. Individual payment users are part of the ecosystem, but no direct end-customer research is documented."</p>
@@ -168,14 +90,13 @@ a{color:#0369A1}
         <div class="cs-grid-item"><h4>External partners</h4><p>Understand whole or individual business performance.</p></div>
       </div>
     </div>
-
-    <div class="substep">
+<div class="substep">
       <div class="substep-num">Understanding Business</div>
       <h3 class="substep-h3">A shared platform, different goals</h3>
       <p class="cs-p">The real hierarchy: M2P → Tenants, banks and fintechs such as RBL Bank and Zenpay → Corporates such as ABC Exports and XYZ Enterprises → End customer, spanning both B2B and B2C. Stakeholder interviews covered Business Development, Products, Client Engagement &amp; Delivery, Operations, and API Analyst functions.</p>
       <blockquote class="cs-quote">Information is Wealth. Biggest challenge today is I don't have information on what my client is doing.<span class="cs-quote-attr">— M2P stakeholder interview</span></blockquote>
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/stakeholder-challenges.png" alt="M2P stakeholder challenges and business goals"/>
+        <img src="case-studies/integrated-dashboard/stakeholder-challenges.png" alt="M2P stakeholder challenges and business goals">
         <div class="figure-cap">Fig 02 — Business goals: tailored intelligence, commercial clarity, program oversight, partner's goals</div>
       </div>
       <ul class="cs-list">
@@ -185,13 +106,12 @@ a{color:#0369A1}
         <li>Doing analytics manually needs a lot of effort and time, limited to the user's own knowledge.</li>
       </ul>
     </div>
-
-    <div class="substep">
+<div class="substep">
       <div class="substep-num">Understanding Partners</div>
       <h3 class="substep-h3">A daily need for relevant information</h3>
       <p class="cs-p">"We conducted user interviews with people from M2P partner entities such as Transcorp, Walrus, Muvin, YBL, Equitas, TVS Credit."</p>
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/partner-research.png" alt="Partner interview findings from Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit"/>
+        <img src="case-studies/integrated-dashboard/partner-research.png" alt="Partner interview findings from Transcorp, Walrus, Muvin, YBL, Equitas, and TVS Credit">
         <div class="figure-cap">Fig 03 — What M2P's own partners were struggling with, in their own words</div>
       </div>
       <ul class="cs-list">
@@ -204,18 +124,9 @@ a{color:#0369A1}
       <p class="cs-p">What partners actually needed: a complete understanding of product performance via averages, ratios, and percentages on a daily basis; data at both the tenant and corporate level; and the ability to monitor clients' progress, guide them, and alert them.</p>
       <div class="gap-note"><b>Evidence gap</b><p>Exact interview counts and a formal interview guide weren't preserved beyond the themes documented above. No survey instrument was run alongside these interviews.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 04 — RESEARCH SYNTHESIS & EMPATHY MAPPING -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 04</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="6" y="6" width="11" height="11" rx="1.5"/><rect x="23" y="6" width="11" height="11" rx="1.5"/><rect x="6" y="23" width="11" height="11" rx="1.5"/><rect x="23" y="23" width="11" height="11" rx="1.5"/></svg></span>
-    <span class="cs-section-label">Research Synthesis &amp; Empathy Mapping</span>
-    <h2 class="cs-h2">Different roles. One need for context.</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="research-synthesis-empathy-mapping" data-title="Research Synthesis &amp; Empathy Mapping"><div class="col"><div class="kicker"><b>05</b>Research Synthesis &amp; Empathy Mapping</div><h2>Different roles. One need for context.</h2>
+<div class="substep">
       <div class="substep-num">Research Synthesis</div>
       <h3 class="substep-h3">Four clusters, each tied to a design opportunity</h3>
       <blockquote class="cs-quote">People are getting lost on email threads on the process of getting the required data.<span class="cs-quote-attr">— Unattributed documented quote</span></blockquote>
@@ -228,8 +139,7 @@ a{color:#0369A1}
       <p class="cs-p">BD &amp; Product need an explanation to communicate; Operations needs a diagnosis to act on; partners need a scoped view to monitor and guide clients. These are role-based needs describing work, not fictional biographical personas.</p>
       <div class="gap-note"><b>Evidence gap</b><p>The clusters above are reconstructed from the documented findings, not claimed as a contemporaneous workshop artifact.</p></div>
     </div>
-
-    <div class="substep">
+<div class="substep">
       <div class="substep-num">Empathy Mapping</div>
       <h3 class="substep-h3">A cross-role reporting and diagnosis lens</h3>
       <p class="cs-p">Built from documented findings — not direct observation, and not an empathy map of one interviewed individual. Thinks and Feels below are inferred hypotheses to test, not measured results.</p>
@@ -242,18 +152,9 @@ a{color:#0369A1}
       <div class="ecosystem-note"><b>Center need:</b> "Data to be projected at both tenant and corporate level. Should be able to see the data of the entire business or an individual business over a preferred time period." — labeled Reporting &amp; diagnosis.</div>
       <div class="gap-note"><b>Evidence gap</b><p>The emotional response here is a question for evaluation, not a finding — "Make context persistent, make interpretation possible" is the design direction it points toward.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 05 — USER JOURNEY -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 05</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 h28 M22 10 l12 10 -12 10"/></svg></span>
-    <span class="cs-section-label">User Journey</span>
-    <h2 class="cs-h2">The ecosystem and process context, not a satisfaction score</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="user-journey" data-title="User Journey"><div class="col"><div class="kicker"><b>06</b>User Journey</div><h2>The ecosystem and process context, not a satisfaction score</h2>
+<div class="substep">
       <h3 class="substep-h3">Current vs. intended process</h3>
       <p class="cs-p">"The original visual labelled 'User Journey' maps relationships and information channels" between corporates, banks/fintech partners, M2P's Operations and BD teams, M2P's own reports and dashboard portals, and external data-visualization tools like Power BI and Tableau — distinguishing current process (solid), proposed (dotted green), and optional (dotted grey) channels.</p>
       <div class="flow-row">
@@ -266,18 +167,9 @@ a{color:#0369A1}
       <p class="cs-p">Each stage carries documented current actions, touchpoints, pain/risk, intended actions, and an opportunity ID (R01–R04, carried forward into the Card Sorting and User Testing stages below). The inferred emotional arc — concern, uncertainty, frustration, caution, then qualified confidence — is explicitly qualitative, not measured.</p>
       <div class="gap-note"><b>Evidence gap</b><p>The current journey is a reporting-dependent reconstruction. The intended journey is proposed dashboard support, not a demonstrated implementation or observed improvement. Emotional labels are interpretations to check with users, not satisfaction scores. Evaluating the handoffs — where a user changes scope, seeks extra evidence, requests help, or shares an uncertain explanation — is the recommended next step.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 06 — PRIORITISATION MATRIX -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 06</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="5" width="30" height="30" rx="2"/><line x1="20" y1="5" x2="20" y2="35"/><line x1="5" y1="20" x2="35" y2="20"/></svg></span>
-    <span class="cs-section-label">Prioritisation Matrix</span>
-    <h2 class="cs-h2">The same transaction data, ranked differently by who's asking</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="prioritisation-matrix" data-title="Prioritisation Matrix"><div class="col"><div class="kicker"><b>07</b>Prioritisation Matrix</div><h2>The same transaction data, ranked differently by who's asking</h2>
+<div class="substep">
       <p class="cs-p">"The original matrices compare user value with frequency of use, separately for partners and M2P users. They are not feasibility scores or a confirmed historical MVP boundary." Original matrices, preserved at reading scale — exact numerical scoring and feasibility assessments aren't supplied.</p>
       <div class="matrix-2x2">
         <div class="quad"><h5>Partners — High value / High frequency</h5><ul><li>Total load value &amp; count, total used value &amp; count</li><li>Transaction status success / failures</li><li>Top reasons for declines</li><li>Merchants with more success / declines</li><li>Balance available, income &amp; expenses</li><li>Transactions by channel / network</li><li>Disputes and settlements</li><li>Ratio between volumes made by corporates</li></ul></div>
@@ -285,18 +177,9 @@ a{color:#0369A1}
       </div>
       <p class="cs-p">For partners, the matrix centers on business visibility — what proves a program is healthy. For M2P's own users, it centers on explanation and oversight — what lets them intervene before a partner escalates. Proposed scope recommendation: start with scoped monitoring, success/decline diagnosis, and contextual reporting; confirm feasibility and release boundaries with stakeholders before committing the scope.</p>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 07 — USER FLOW -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 07</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="M8 12 v6 M8 18 h12 M20 18 v6 M20 24 h8"/><circle cx="32" cy="24" r="4"/></svg></span>
-    <span class="cs-section-label">User Flow</span>
-    <h2 class="cs-h2">Scope, monitor, diagnose, share — with branches for when data isn't there</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="user-flow" data-title="User Flow"><div class="col"><div class="kicker"><b>08</b>User Flow</div><h2>Scope, monitor, diagnose, share — with branches for when data isn't there</h2>
+<div class="substep">
       <p class="cs-p">"Proposed from the original design intention. The main path connects scope, monitoring, diagnosis and sharing. Access, unavailable-data and unresolved-cause branches are recommendations, not implemented or validated claims."</p>
       <div class="flow-row">
         <span class="flow-step">Open dashboard</span><span class="flow-arrow">→</span>
@@ -318,18 +201,9 @@ a{color:#0369A1}
         <li><b>Cause not resolved:</b> retain evidence and escalate the unknown cause, rather than forcing a false explanation.</li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 08 — CARD SORTING -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 08</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="9" width="13" height="18" rx="2"/><rect x="22" y="9" width="13" height="18" rx="2"/></svg></span>
-    <span class="cs-section-label">Card Sorting</span>
-    <h2 class="cs-h2">A standalone proposed open-sort study</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="card-sorting" data-title="Card Sorting"><div class="col"><div class="kicker"><b>09</b>Card Sorting</div><h2>A standalone proposed open-sort study</h2>
+<div class="substep">
       <p class="cs-p">"Dashboard users group shuffled domain labels in ways that make sense to them, then name their own groups." Proposed to include internal BD/Product, Operations, and partner stakeholders — asking each to group the shuffled labels, create group names, and explain ambiguous placements, without exposing the designer's hierarchy first.</p>
       <div class="chip-row">
         <span class="chip">Reversals</span><span class="chip">KYC</span><span class="chip">Income</span><span class="chip">Active cards</span><span class="chip">Decline reasons</span><span class="chip">Customers</span><span class="chip">Card expiry</span><span class="chip">Transaction count</span><span class="chip">Reports</span><span class="chip">Network</span><span class="chip">Merchant categories</span><span class="chip">Unallotted cards</span><span class="chip">Success</span><span class="chip">Corporate volume</span><span class="chip">Expenses</span>
@@ -338,18 +212,9 @@ a{color:#0369A1}
       <p class="cs-p"><b>Designer hypothesis (illustrative grouping):</b> Transactions → success, decline reasons, reversals, network, merchant categories. Customers → activity and KYC. Cards → allotted/unallotted, activity, and expiry. Reports → generate/share. Income/expenses → financial overview.</p>
       <div class="gap-note"><b>What this does not claim</b><p>No completed sorting or tree testing is evidenced. There are no participant groups, agreement rates, or results here — this is a proposed validation study, intended to challenge the hypothesis above before refining the architecture, including a proposed tree test for "find a decline reason," "check KYC," "locate expiring cards," and "generate a scoped report."</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 09 — INFORMATION ARCHITECTURE -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 09</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linecap="round"><circle cx="20" cy="8" r="3.5"/><circle cx="8" cy="30" r="3.5"/><circle cx="20" cy="30" r="3.5"/><circle cx="32" cy="30" r="3.5"/><line x1="20" y1="11.5" x2="20" y2="20"/><line x1="8" y1="26.5" x2="18" y2="20"/><line x1="20" y1="20" x2="20" y2="26.5"/><line x1="32" y1="26.5" x2="22" y2="20"/></svg></span>
-    <span class="cs-section-label">Information Architecture</span>
-    <h2 class="cs-h2">From overview into transactions, customers, cards, and reporting</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="information-architecture" data-title="Information Architecture"><div class="col"><div class="kicker"><b>10</b>Information Architecture</div><h2>From overview into transactions, customers, cards, and reporting</h2>
+<div class="substep">
       <p class="cs-p">"The architecture moves from an overview into transactions, customers/KYC, cards and reporting. Tenant/corporate scope, period and network/business filters give the detail a consistent context; sharing and export support handoff."</p>
       <div class="cs-grid">
         <div class="cs-grid-item"><h4>Transactions</h4><p>Success · Declines · Reversals, each broken down by channel, network, and business.</p></div>
@@ -360,21 +225,12 @@ a{color:#0369A1}
       <p class="cs-p">Within Transactions, Success and Decline each break further into volume, channel, merchant, and reason — then split again by view-by-corporate and view-by-MCC, since a partner and an M2P operator read the same breakdown from opposite directions. Customers and Cards follow the same shape: a shared top-level filter set, then a network view and a business view of the identical dataset.</p>
       <div class="gap-note"><b>Proposed validation — keep the hidden detail discoverable</b><p>Check whether users find "Others" and know what the top-five view excludes. Validate keyboard and touch alternatives to hover, as well as domain terminology and paths, with task-based tree testing.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 10 — WIREFRAME -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 10</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none"><rect x="5" y="7" width="30" height="26" rx="2"/><line x1="5" y1="14" x2="35" y2="14"/><line x1="12" y1="7" x2="12" y2="14"/></svg></span>
-    <span class="cs-section-label">Wireframe</span>
-    <h2 class="cs-h2">Overview, domains, contributors — organized around documented monitoring needs</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="wireframe" data-title="Wireframe"><div class="col"><div class="kicker"><b>11</b>Wireframe</div><h2>Overview, domains, contributors — organized around documented monitoring needs</h2>
+<div class="substep">
       <p class="cs-p">"The original 'Wireframe' artifact is already visually styled. It is presented as the historical composition, not replaced with a newly drawn low-fidelity screen."</p>
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/wireframes.png" alt="Low-fidelity wireframes for the dashboard's data views"/>
+        <img src="case-studies/integrated-dashboard/wireframes.png" alt="Low-fidelity wireframes for the dashboard's data views">
         <div class="figure-cap">Fig 05 — Original primary screen detail. Its metrics and sample data are unchanged.</div>
       </div>
       <div class="cs-grid">
@@ -384,54 +240,36 @@ a{color:#0369A1}
       </div>
       <p class="cs-p">The file also preserves three montage variants exploring line, bar, pie, and inventory representations within the same structure — design artifacts, not evidence of which chart users preferred.</p>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 11 — VISUAL DESIGN -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 11</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round"><path d="M20 4 L34 11.5 V27 L20 34.5 L6 27 V11.5 Z"/><path d="M6 11.5 L20 19 L34 11.5"/><line x1="20" y1="19" x2="20" y2="34.5"/></svg></span>
-    <span class="cs-section-label">Visual Design</span>
-    <h2 class="cs-h2">The original final dashboard, published exactly as designed</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="visual-design" data-title="Visual Design"><div class="col"><div class="kicker"><b>12</b>Visual Design</div><h2>The original final dashboard, published exactly as designed</h2>
+<div class="substep">
       <p class="cs-p">The finished dashboard leans on three ideas traceable directly to research: a hierarchical structure with filters visible at every level, infographics that let people stay at their preferred zoom level (trend line or raw number), and segmentation that lets the same dataset be read by network, business, or customer range. The four screens below are the original final dashboard, not a recreation.</p>
 
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/visual-01-business-overview.png" alt="Dashboard business overview: tenant/corporate/BIN filters, used and load value, transactions by success/decline, customer registration"/>
+        <img src="case-studies/integrated-dashboard/visual-01-business-overview.png" alt="Dashboard business overview: tenant/corporate/BIN filters, used and load value, transactions by success/decline, customer registration">
         <div class="figure-cap">Fig 06 — 01 / Choose the lens. Tenant, corporate, and product controls precede interpretation — the summary brings used/load value and count, income, refunds, and expenses into a shared business view. Original final dashboard; existing measures and sample values remain unchanged.</div>
       </div>
 
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/visual-02-cards-revenue.png" alt="Cards inventory, revenue, and corporate transaction volume ranking tables"/>
+        <img src="case-studies/integrated-dashboard/visual-02-cards-revenue.png" alt="Cards inventory, revenue, and corporate transaction volume ranking tables">
         <div class="figure-cap">Fig 07 — 02 / Go beyond the total. Card inventory and revenue provide domain context; corporate and MCC contributor views link financial performance to specific businesses, helping BD prepare a more grounded explanation. Shown as capabilities, not quantified outcomes.</div>
       </div>
 
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/visual-03-customer-analysis.png" alt="Customer activity donut chart by network and a week-over-week revenue trend chart"/>
+        <img src="case-studies/integrated-dashboard/visual-03-customer-analysis.png" alt="Customer activity donut chart by network and a week-over-week revenue trend chart">
         <div class="figure-cap">Fig 08 — 03 / Make a change visible. The original analysis screen exposes customer activity by network alongside a week-based revenue signal — success/decline controls and transaction segments provide a route into diagnosis, without claiming a confirmed root cause. Original analysis screen, shown as a reading detail; no replacement or dark-mode version is introduced.</div>
       </div>
 
       <div class="figure">
-        <img src="case-studies/integrated-dashboard/visual-04-report-generation.png" alt="Report generation screen with transaction type, categories, schedule, recipients, and a mail-automation status table"/>
+        <img src="case-studies/integrated-dashboard/visual-04-report-generation.png" alt="Report generation screen with transaction type, categories, schedule, recipients, and a mail-automation status table">
         <div class="figure-cap">Fig 09 — 04 / Carry the context into the report. Report type, transaction category, duration, and corporate/product/network scope travel into the generated report; status in the automation table supports a handoff beyond the dashboard. The design does not establish zero manual effort or measured time savings.</div>
       </div>
 
       <div class="stage-reflect"><b>The takeaway</b>A four-layer hierarchy doesn't have to feel like navigating four layers, as long as every filter is visible from wherever you currently are.</div>
     </div>
-  </div>
-</section>
-
-<!-- STAGE 12 — USER TESTING -->
-<section class="stage">
-  <div class="wrap">
-    <div class="stage-num">Stage 12</div>
-    <span class="stage-icon-badge"><svg viewBox="0 0 40 40" stroke="#141414" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="6" width="22" height="30" rx="2.5"/><rect x="15" y="3.5" width="10" height="5" rx="1.5" fill="#F2F1ED"/><path d="M14 21 L18.5 25.5 L27 15" stroke-width="2"/></svg></span>
-    <span class="cs-section-label">User Testing</span>
-    <h2 class="cs-h2">An instrument is not a score chart</h2>
-
-    <div class="substep">
+</div></section>
+<section class="sec" id="user-testing" data-title="User Testing"><div class="col"><div class="kicker"><b>13</b>User Testing</div><h2>An instrument is not a score chart</h2>
+<div class="substep">
       <div class="substep-num">Documented study</div>
       <h3 class="substep-h3">22 potential internal and partner users</h3>
       <p class="cs-p">"The documented study provides aggregate usability signals. A clearer task-level protocol is proposed here to evaluate R01–R04 — and expose the historical gaps rather than filling them with invented outcomes." Observation concerned ease, understanding, learnability, efficiency, discoverability, and perception, using a 1–5 Likert instrument covering navigation, graphs, colours, terminology, and finding information:</p>
@@ -439,21 +277,20 @@ a{color:#0369A1}
         <span class="chip">Ease of Use</span><span class="chip">Easy to understand</span><span class="chip">Easy to Navigate</span><span class="chip">Meaningful Use of Graphs</span><span class="chip">Meaningful use of Colours</span><span class="chip">I can easily find what I want</span><span class="chip">Terminology is Relatable</span>
       </div>
       <p class="cs-p">Actual 1–5 ratings, per-role/per-task records, time, errors, negative feedback, and revisions are unavailable — the instrument above is preserved as the instrument, not as measured results.</p>
-      <table class="metrics-table">
+      <div class="tscroll"><table class="metrics-table">
         <tr><th>Outcome band</th><th>Result</th></tr>
         <tr><td>Completed with ease</td><td>60%</td></tr>
         <tr><td>Completed, needed a little help</td><td>25%</td></tr>
         <tr><td>More difficult, even after explanation</td><td>15%</td></tr>
         <tr><td>Failed outright</td><td>0%</td></tr>
       </table>
-      <div class="figure">
-        <img src="case-studies/integrated-dashboard/testing-results-roadmap.png" alt="User testing task performance breakdown and product roadmap"/>
+      </div><div class="figure">
+        <img src="case-studies/integrated-dashboard/testing-results-roadmap.png" alt="User testing task performance breakdown and product roadmap">
         <div class="figure-cap">Fig 10 — Documented / original evaluation instrument and reported aggregates</div>
       </div>
       <div class="gap-note"><b>Evidence gap</b><p>These are reported aggregates, not recalculated counts — the denominator and rounding relative to the 22 people are unknown. "Little difficulty" was defined in the source as independent completion with missed metrics, which conflicts with the results wording "little help." The rubric and raw records would need recovery before treating this as precise task success. These are usability signals, not launch impact.</p></div>
     </div>
-
-    <div class="substep">
+<div class="substep">
       <div class="substep-num">Proposed validation — task protocol and evidence sheet</div>
       <h3 class="substep-h3">Evaluate the investigation, not just the interface</h3>
       <p class="cs-p">Use a controlled scenario with a known tenant/corporate, period, expected data, and allowed recipients. Observe an unassisted attempt first; log every prompt separately; include wrong scope, unavailable data, and unresolved-cause as planned recovery conditions.</p>
@@ -468,19 +305,15 @@ a{color:#0369A1}
       </div>
       <div class="gap-note"><b>Evidence gap</b><p>No iteration loop is historically available — candidate hypotheses to evaluate are scope persistence (R01), metric clarity (R02), discoverable detail (R03), and report-state recovery (R04). No fabricated before/after screens or retest outcomes are shown here.</p></div>
     </div>
-
-    <div class="substep">
+<div class="substep">
       <div class="substep-num">Reflection + next steps</div>
       <h3 class="substep-h3">A clearer path from business context to defensible decisions</h3>
       <p class="cs-p">The strongest story is a traceable task, not an unsupported savings claim. The honest next step is to recover ownership and study records, establish a baseline, validate scope/permissions, and run the task protocol above — then revise requirements, design, and retest. Numeric targets, post-launch adoption, time/cost, and financial results are unavailable.</p>
       <div class="gap-note"><b>Future roadmap — possibilities only</b><p>Real-time refresh, advanced modelling, AI/ML, mobile, and SharePoint integration are optional future directions documented in the source file — not delivered capabilities or evidence of impact.</p></div>
     </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <h2 class="cs-h2" style="margin-top:12px">Key Learnings</h2>
-  <div class="learning-grid">
+</div></section>
+<section class="sec" id="takeaways" data-title="Key Learnings"><div class="col"><div class="kicker"><b>14</b>Takeaways</div><h2>Key Learnings</h2>
+<div class="learning-grid">
     <div class="learning">
       <div class="learning-h">Interview both ends of the relationship</div>
       <div class="learning-p">M2P's internal teams and its external partners named the same gap independently — that's what confirmed it was structural, not a one-off complaint.</div>
@@ -498,15 +331,12 @@ a{color:#0369A1}
       <div class="learning-p">The 60/25/15/0 split is a real, documented signal — but recovering the rubric and raw per-task records matters more than repeating the headline number.</div>
     </div>
   </div>
-  <p class="cs-p" style="margin-top:8px">The through-line: a dashboard serving an entire ecosystem isn't one product with one user. It's several products wearing the same interface, entered from different directions — consumer research, business research, and partner research each surfaced a different half of the same gap.</p>
-
-  <div class="cs-signoff">
-    <p>Integrated Dashboard — a UX Case Study by Ayyappan Rajendiran</p>
-    <p><a href="index.html">← Back to Portfolio</a></p>
-  </div>
+<p class="cs-p" style="margin-top:8px">The through-line: a dashboard serving an entire ecosystem isn't one product with one user. It's several products wearing the same interface, entered from different directions — consumer research, business research, and partner research each surfaced a different half of the same gap.</p>
+<div class="sign"><span>Integrated Dashboard — a UX Case Study by Ayyappan Rajendiran</span><a href="index.html">← Back to Portfolio</a></div></div></section>
+</main>
 </div>
-
-<a class="proto-fab" href="https://www.figma.com/design/B3op5pPywTIbvw01NLKVzN/Untitled?node-id=17-479&m=dev" target="_blank" title="View the Figma file">View Figma →</a>
-
+<a class="proto-fab" href="https://www.figma.com/design/B3op5pPywTIbvw01NLKVzN/Untitled?node-id=17-479&amp;m=dev" target="_blank" title="View the Figma file">View Figma →</a>
+<dialog class="lb" id="lb" aria-label="Enlarged image"><div class="lb-in"><button class="lb-x" type="button" id="lbx">Close ✕</button><img id="lbi" alt=""/><p id="lbc"></p></div></dialog>
+<script src="assets/story.js" defer></script>
 </body>
 </html>

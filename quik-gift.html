@@ -4,384 +4,233 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Designing QuikGift — Case Study</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600;700&display=swap"/>
+<meta name="description" content="A peer-to-peer recognition platform built to live inside Microsoft Teams — the full trace, including exactly where the process stopped before a formal user"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap"/>
+<link rel="stylesheet" href="assets/story.css"/>
 <style>
-:root{
-  --paper:#FFF4F3; --ink:#3A2230; --sub:#7A5A67; --accent:#C2185B;
-  --card:#FFFFFF; --line:#F1D3DC;
-}
-*{box-sizing:border-box;}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Work Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
-img{max-width:100%;display:block;}
-a{color:var(--accent);}
-.qg-wrap{max-width:800px;margin:0 auto;padding:0 28px;}
-.qg-nav{padding:22px 0 0;font-family:'Work Sans',sans-serif;font-size:13px;}
-.qg-nav a{color:var(--sub);text-decoration:none;}
-.qg-nav a:hover{color:var(--accent);}
-
-.qg-hero{padding:44px 0 8px;}
-.qg-eyebrow{font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:16px;}
-.qg-h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance;}
-.qg-dek{font-size:17px;color:var(--sub);max-width:60ch;margin:0 0 24px;line-height:1.6;}
-.qg-tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-.qg-tag{font-family:'Work Sans',sans-serif;font-size:11.5px;border:1px solid var(--line);color:var(--accent);padding:6px 13px;border-radius:999px;background:var(--card);}
-.qg-byline{font-family:'Work Sans',sans-serif;font-size:13px;color:var(--sub);margin-bottom:32px;}
-.qg-byline b{color:var(--ink);}
-
-.qg-hero-fig{margin:30px 0;background:var(--card);border-radius:16px;padding:14px;box-shadow:0 8px 24px -16px rgba(58,34,48,.4);}
-.qg-hero-fig img{border-radius:10px;}
-.qg-figcap{font-family:'Work Sans',sans-serif;font-size:12px;color:var(--sub);margin-top:10px;}
-
-.qg-fieldgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:26px;}
-.qg-field{background:var(--card);padding:18px 20px;}
-.qg-field-lbl{font-family:'Work Sans',sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;}
-.qg-field-val{font-size:14.5px;line-height:1.5;}
-
-.qg-steps{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 44px;}
-.qg-step{font-family:'Work Sans',sans-serif;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--sub);}
-.qg-step b{color:var(--accent);}
-
-.qg-section{padding:48px 0;border-top:1px solid var(--line);}
-.qg-sec-label{font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600;}
-.qg-sec-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(23px,3.2vw,30px);font-weight:600;line-height:1.28;margin:0 0 28px;letter-spacing:-.005em;text-wrap:balance;}
-
-.qg-clause{margin-bottom:26px;}
-.qg-clause:last-child{margin-bottom:0;}
-.qg-clause-lbl{font-family:'Work Sans',sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);margin-bottom:7px;}
-.qg-clause-h{font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;margin:0 0 10px;line-height:1.35;}
-.qg-clause p{margin:0 0 11px;color:#5A3D48;}
-.qg-clause p:last-child{margin-bottom:0;}
-.qg-clause b{color:var(--ink);}
-
-.qg-list{margin:0 0 14px;padding-left:20px;color:#5A3D48;}
-.qg-list li{margin-bottom:7px;}
-.qg-list li b{color:var(--ink);}
-
-.qg-note{
-  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
-  padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;font-size:14.5px;color:var(--sub);line-height:1.6;
-}
-.qg-note b{color:var(--accent);font-family:'Work Sans',sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:6px;}
-
-.qg-affinity{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0;}
-.qg-affinity-cell{background:var(--card);padding:16px;}
-.qg-affinity-cell h4{margin:0 0 6px;font-family:'Fraunces',Georgia,serif;font-size:15px;color:var(--accent);}
-.qg-affinity-cell div{font-size:13.5px;color:var(--sub);line-height:1.5;}
-
-.qg-tags-row{display:flex;gap:32px;margin:20px 0;flex-wrap:wrap;}
-.qg-persona{
-  flex:1;min-width:240px;background:var(--card);border-radius:16px;padding:22px 22px 20px;position:relative;
-  box-shadow:0 1px 0 var(--line),0 8px 20px -16px rgba(58,34,48,.35);
-}
-.qg-persona::before{content:'';position:absolute;top:14px;right:16px;width:9px;height:9px;border-radius:50%;border:1.5px solid #D9A9B8;background:var(--paper);}
-.qg-persona .p-name{font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;margin-bottom:3px;}
-.qg-persona .p-role{font-size:12.5px;color:var(--accent);letter-spacing:.02em;margin-bottom:12px;}
-.qg-persona .p-need{font-size:14px;line-height:1.55;color:#5A3D48;}
-.qg-scrawl{font-family:'Caveat',cursive;font-size:19px;color:var(--accent);margin-top:12px;}
-
-.qg-figure{margin:20px 0;background:var(--card);border-radius:14px;padding:14px;box-shadow:0 8px 20px -14px rgba(58,34,48,.35);}
-.qg-figure img{border-radius:8px;border:none;}
-
-.qg-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;font-family:'Work Sans',sans-serif;font-size:13px;}
-.qg-flow .step{border:1px solid var(--line);border-radius:8px;padding:7px 13px;background:var(--card);}
-.qg-flow .arrow{color:var(--accent);}
-
-.qg-empathy{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0;}
-.qg-empathy-cell{background:var(--card);padding:16px;}
-.qg-empathy-cell h4{margin:0 0 7px;font-family:'Work Sans',sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);}
-.qg-empathy-cell ul{margin:0;padding-left:16px;font-size:13.5px;color:var(--sub);}
-
-.qg-compare{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
-.qg-chip{font-family:'Work Sans',sans-serif;font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--sub);background:var(--card);}
-
-.qg-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;}
-.qg-table th{font-family:'Work Sans',sans-serif;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);text-align:left;padding:10px 12px;background:var(--card);}
-.qg-table td{padding:11px 12px;border-bottom:1px solid var(--line);}
-.qg-table td.na{color:var(--sub);font-style:italic;}
-
-.qg-learn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:22px 0;}
-.qg-learn{background:var(--card);padding:22px;}
-.qg-learn h4{font-family:'Fraunces',Georgia,serif;font-size:16px;margin:0 0 7px;}
-.qg-learn p{font-size:14px;color:var(--sub);margin:0;line-height:1.55;}
-
-.qg-fab{
-  position:fixed;bottom:26px;right:26px;z-index:500;
-  display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
-  font-family:'Work Sans',sans-serif;font-weight:600;font-size:14.5px;
-  padding:14px 24px;border-radius:999px;text-decoration:none;
-  box-shadow:0 10px 28px -10px rgba(194,24,91,.65);
-}
-.qg-fab:hover{filter:brightness(1.08);}
-@media(max-width:640px){.qg-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}}
-
-.qg-close{padding:48px 0 84px;}
-.qg-signoff{
-  border-top:1px solid var(--line);padding-top:18px;margin-top:10px;
-  font-family:'Work Sans',sans-serif;font-size:12.5px;color:var(--sub);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-}
-.qg-signoff a{color:var(--sub);}
-
-@media(max-width:640px){
-  .qg-fieldgrid,.qg-empathy,.qg-learn-grid{grid-template-columns:1fr;}
-  .qg-tags-row{flex-direction:column;}
-}
+:root{--acc:#C2185B;--acc-ink:#C2185B;--acc-deep:#490922;--acc-soft:#FFE9F1;--acc-glow:194,24,91}
 </style>
 </head>
 <body>
-
-<div class="qg-wrap qg-nav"><a href="index.html">← Back to Portfolio</a></div>
-
-<div class="qg-wrap qg-hero">
-  <div class="qg-eyebrow">Peer recognition, inside Microsoft Teams</div>
-  <h1 class="qg-h1">Designing QuikGift</h1>
-  <p class="qg-dek">A peer-to-peer recognition platform built to live inside Microsoft Teams — the full trace, including exactly where the process stopped before a formal user test.</p>
-  <div class="qg-tags"><span class="qg-tag">Enterprise</span><span class="qg-tag">HR Tech</span><span class="qg-tag">B2B</span></div>
-  <div class="qg-byline"><b>Ayyappan Rajendiran</b> · UX Designer</div>
-
-  <div class="qg-hero-fig">
-    <img src="case-studies/quik-gift/cover-about.png" alt="QuikGift dashboard and product overview"/>
-    <div class="qg-figcap">Fig. 01 — QuikGift: a Microsoft Azure-based B2C corporate rewards application</div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="cur" id="cur" aria-hidden="true"><i></i><b></b></div>
+<header class="bar">
+  <div class="bar-in">
+    <a class="back" href="index.html">← Portfolio</a>
+    <span class="bar-title">QuikGift</span>
+    <button class="ev-toggle" id="evBtn" type="button" aria-pressed="false" title="Highlights every place where evidence is missing or only proposed"><span class="sw" aria-hidden="true"></span>Show evidence gaps</button>
   </div>
-
-  <p style="color:#5A3D48">QuikGift is a corporate rewards platform for sending and receiving recognition between colleagues — integrated directly into Microsoft Teams so it lives inside the tool people already use all day, rather than becoming one more app nobody opens.</p>
-
-  <div class="qg-fieldgrid">
-    <div class="qg-field"><div class="qg-field-lbl">Business context</div><div class="qg-field-val">Employee recognition fails quietly when it happens outside daily workflow — especially in remote/hybrid teams. That absence compounds into lower motivation and productivity.</div></div>
-    <div class="qg-field"><div class="qg-field-lbl">Existing ecosystem</div><div class="qg-field-val">No unified recognition tool — appreciation happened ad hoc, outside any system that could track or reinforce it.</div></div>
-    <div class="qg-field"><div class="qg-field-lbl">Constraints</div><div class="qg-field-val">Had to work as a Microsoft Teams-embedded experience, not a standalone app competing for attention.</div></div>
-    <div class="qg-field"><div class="qg-field-lbl">My role</div><div class="qg-field-val">UX Designer — stakeholder research, persona development, competitive analysis, and the shipped design.</div></div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <nav class="chips" id="chips" aria-label="Sections"></nav>
+</header>
+<div class="shell">
+<aside class="rail" aria-label="Case study sections">
+  <ol id="rail"></ol>
+  <p class="rail-note">Tip: switch on <b>Show evidence gaps</b> to see exactly what wasn't measured or documented.</p>
+</aside>
+<main id="main">
+<section class="hero" id="top">
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="col">
+    <div id="heroTop">
+      <div class="meta fade-up" style="--d:0"><span class="tag" style="background:var(--acc-soft);border-color:transparent;color:var(--acc-ink)">Peer recognition, inside Microsoft Teams</span><span class="tag">Enterprise</span><span class="tag">HR Tech</span><span class="tag">B2B</span></div>
+      <h1 class="split" id="h1">Designing QuikGift</h1>
+      <p class="lede fade-up" style="--d:250">A peer-to-peer recognition platform built to live inside Microsoft Teams — the full trace, including exactly where the process stopped before a formal user test.</p>
+      <div class="byline fade-up" style="--d:380"><b>Ayyappan Rajendiran</b> · UX Designer</div>
+    </div>
+    <div class="hero-extra">
+<div class="x-hero-fig">
+    <img src="case-studies/quik-gift/cover-about.png" alt="QuikGift dashboard and product overview">
+    <div class="x-figcap">Fig. 01 — QuikGift: a Microsoft Azure-based B2C corporate rewards application</div>
   </div>
-
-  <div class="qg-steps">
-    <span class="qg-step"><b>01</b> Research</span>
-    <span class="qg-step"><b>02</b> Problem &amp; Opportunity</span>
-    <span class="qg-step"><b>03</b> Prioritization</span>
-    <span class="qg-step"><b>04</b> Design</span>
-    <span class="qg-step"><b>05</b> Validation</span>
+<p>QuikGift is a corporate rewards platform for sending and receiving recognition between colleagues — integrated directly into Microsoft Teams so it lives inside the tool people already use all day, rather than becoming one more app nobody opens.</p>
+<div class="x-fieldgrid">
+    <div class="x-field"><div class="x-field-lbl">Business context</div><div class="x-field-val">Employee recognition fails quietly when it happens outside daily workflow — especially in remote/hybrid teams. That absence compounds into lower motivation and productivity.</div></div>
+    <div class="x-field"><div class="x-field-lbl">Existing ecosystem</div><div class="x-field-val">No unified recognition tool — appreciation happened ad hoc, outside any system that could track or reinforce it.</div></div>
+    <div class="x-field"><div class="x-field-lbl">Constraints</div><div class="x-field-val">Had to work as a Microsoft Teams-embedded experience, not a standalone app competing for attention.</div></div>
+    <div class="x-field"><div class="x-field-lbl">My role</div><div class="x-field-val">UX Designer — stakeholder research, persona development, competitive analysis, and the shipped design.</div></div>
   </div>
-</div>
-
-<section class="qg-section">
-  <div class="qg-wrap">
-    <div class="qg-sec-label">01 — Research &amp; Discovery</div>
-    <h2 class="qg-sec-title">Four business goals that all point at the same friction</h2>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Problem Discovery</div>
-      <h3 class="qg-clause-h">Testing whether "add a rewards app" was even the right frame</h3>
+    </div>
+  </div>
+</section>
+<section class="sec" id="research-discovery" data-title="Research &amp; Discovery"><div class="col"><div class="kicker"><b>01</b>Research &amp; Discovery</div><h2>Four business goals that all point at the same friction</h2>
+<div class="x-clause">
+      <div class="x-clause-lbl">Problem Discovery</div>
+      <h3 class="x-clause-h">Testing whether "add a rewards app" was even the right frame</h3>
       <p>The assumption to check: that recognition was failing for lack of a good enough rewards app. Stakeholder input suggested something narrower and more specific — recognition was failing because it required leaving the tools people already worked in.</p>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">User Research</div>
-      <h3 class="qg-clause-h">Four goals, three real constraints, three user groups</h3>
-      <ul class="qg-list">
+<div class="x-clause">
+      <div class="x-clause-lbl">User Research</div>
+      <h3 class="x-clause-h">Four goals, three real constraints, three user groups</h3>
+      <ul class="x-list">
         <li><b>Workplace Engagement Catalyst</b> — foster a culture of appreciation, empowering colleagues to recognize each other seamlessly.</li>
         <li><b>Integrated Recognition Hub</b> — a fully embedded solution within Microsoft Teams, frictionless without leaving daily workflow.</li>
         <li><b>Holistic Rewards Ecosystem</b> — peer-to-peer recognition plus real analytics and reporting for HR and management.</li>
         <li><b>Recognition Experience Expert</b> — tailored, personalized reward options that understand workplace dynamics.</li>
       </ul>
       <p>Three real challenges sat underneath those goals: a workplace culture that doesn't already prioritize recognition is hard to shift by adding software alone; employee data and reward distribution raise real compliance and privacy questions; and a reliable payment processing system means genuine technical complexity.</p>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/challenges-usergroups.png" alt="Business challenges and the three user groups for QuikGift"/>
-        <div class="qg-figcap">Fig. 02 — The real constraints: culture, compliance, and technical complexity</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/challenges-usergroups.png" alt="Business challenges and the three user groups for QuikGift">
+        <div class="x-figcap">Fig. 02 — The real constraints: culture, compliance, and technical complexity</div>
       </div>
       <p>Three distinct groups needed this to work for different reasons: <b>employees</b> sending and receiving recognition day to day, <b>managers</b> recognizing their teams and tracking engagement, and <b>HR</b> overseeing the program and needing to prove it was working.</p>
-      <div class="qg-note"><b>Evidence gap</b>The original stakeholder interview guide and count of participants weren't preserved beyond the goals and challenges documented above.</div>
+      <div class="x-note"><b>Evidence gap</b>The original stakeholder interview guide and count of participants weren't preserved beyond the goals and challenges documented above.</div>
     </div>
-  </div>
-</section>
-
-<section class="qg-section">
-  <div class="qg-wrap">
-    <div class="qg-sec-label">02 — Problem &amp; Opportunity</div>
-    <h2 class="qg-sec-title">A manager and an HR lead want the same feature for different reasons</h2>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Affinity Mapping</div>
-      <h3 class="qg-clause-h">Clustering the goals and challenges</h3>
-      <div class="qg-affinity">
-        <div class="qg-affinity-cell"><h4>Friction to recognize</h4><div>Recognition requires leaving daily workflow</div></div>
-        <div class="qg-affinity-cell"><h4>Proof of impact</h4><div>No way to measure whether recognition works</div></div>
-        <div class="qg-affinity-cell"><h4>Trust &amp; compliance</h4><div>Employee data and reward distribution raise privacy questions</div></div>
+</div></section>
+<section class="sec" id="problem-opportunity" data-title="Problem &amp; Opportunity"><div class="col"><div class="kicker"><b>02</b>Problem &amp; Opportunity</div><h2>A manager and an HR lead want the same feature for different reasons</h2>
+<div class="x-clause">
+      <div class="x-clause-lbl">Affinity Mapping</div>
+      <h3 class="x-clause-h">Clustering the goals and challenges</h3>
+      <div class="x-affinity">
+        <div class="x-affinity-cell"><h4>Friction to recognize</h4><div>Recognition requires leaving daily workflow</div></div>
+        <div class="x-affinity-cell"><h4>Proof of impact</h4><div>No way to measure whether recognition works</div></div>
+        <div class="x-affinity-cell"><h4>Trust &amp; compliance</h4><div>Employee data and reward distribution raise privacy questions</div></div>
       </div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Empathy Mapping &amp; Personas</div>
-      <h3 class="qg-clause-h">Jenita Mary and Ram Prasath — real, documented, not invented</h3>
-      <div class="qg-tags-row">
-        <div class="qg-persona">
+<div class="x-clause">
+      <div class="x-clause-lbl">Empathy Mapping &amp; Personas</div>
+      <h3 class="x-clause-h">Jenita Mary and Ram Prasath — real, documented, not invented</h3>
+      <div class="x-tags-row">
+        <div class="x-persona">
           <div class="p-name">Jenita Mary</div>
           <div class="p-role">Manager · Chennai · team of 10</div>
           <div class="p-need">Wants to recognize achievements regularly but struggles to find time for personalized recognition amid a busy schedule, with no clear way to see whether it's actually landing.</div>
-          <div class="qg-scrawl">— "I want to recognize my team more."</div>
+          <div class="x-scrawl">— "I want to recognize my team more."</div>
         </div>
-        <div class="qg-persona">
+        <div class="x-persona">
           <div class="p-name">Ram Prasath</div>
           <div class="p-role">Lead HR · Bangalore</div>
           <div class="p-need">Owns the program at a different altitude — managing volumes of recognition data with no clear way to analyze trends, struggling to quantify ROI to leadership.</div>
-          <div class="qg-scrawl">— "I can't prove this program is working."</div>
+          <div class="x-scrawl">— "I can't prove this program is working."</div>
         </div>
       </div>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/persona-jenita.png" alt="Jenita Mary persona, manager in Chennai"/>
-        <div class="qg-figcap">Fig. 03 — Jenita needs recognition to be fast enough to actually fit into her day</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/persona-jenita.png" alt="Jenita Mary persona, manager in Chennai">
+        <div class="x-figcap">Fig. 03 — Jenita needs recognition to be fast enough to actually fit into her day</div>
       </div>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/persona-ram-competitors.png" alt="Ram Prasath persona, Lead HR in Bangalore"/>
-        <div class="qg-figcap">Fig. 04 — Ram needs the same data Jenita generates, but rolled up and defensible to leadership</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/persona-ram-competitors.png" alt="Ram Prasath persona, Lead HR in Bangalore">
+        <div class="x-figcap">Fig. 04 — Ram needs the same data Jenita generates, but rolled up and defensible to leadership</div>
       </div>
-      <div class="qg-note"><b>Evidence gap</b>Individual journey maps for Jenita and Ram weren't produced. Their needs are captured as goals/pain points above rather than a stage-by-stage emotional path.</div>
+      <div class="x-note"><b>Evidence gap</b>Individual journey maps for Jenita and Ram weren't produced. Their needs are captured as goals/pain points above rather than a stage-by-stage emotional path.</div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Problem Definition</div>
-      <h3 class="qg-clause-h">"Better visibility" is two different features</h3>
-      <ul class="qg-list">
+<div class="x-clause">
+      <div class="x-clause-lbl">Problem Definition</div>
+      <h3 class="x-clause-h">"Better visibility" is two different features</h3>
+      <ul class="x-list">
         <li><b>Symptom:</b> both a manager and an HR lead ask for "better visibility" into recognition.</li>
         <li><b>Problem:</b> that phrase means a fast personal view for one and a defensible analytics rollup for the other.</li>
         <li><b>Root cause:</b> no existing tool served both altitudes from the same underlying data.</li>
       </ul>
-      <div class="qg-note"><b>How might we</b>How might we make recognition fast enough for a manager's daily habit, while giving HR the aggregated proof they need to defend the program?</div>
+      <div class="x-note"><b>How might we</b>How might we make recognition fast enough for a manager's daily habit, while giving HR the aggregated proof they need to defend the program?</div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Opportunity Mapping</div>
-      <h3 class="qg-clause-h">One data model, named as the opportunity early</h3>
+<div class="x-clause">
+      <div class="x-clause-lbl">Opportunity Mapping</div>
+      <h3 class="x-clause-h">One data model, named as the opportunity early</h3>
       <p>"Visibility" meaning two different things → need for both a fast personal view and a rolled-up analytical one → opportunity: one shared data model → solution: a personal recognition hub and a separate HR dashboard, detailed in Section 04.</p>
     </div>
-  </div>
-</section>
-
-<section class="qg-section">
-  <div class="qg-wrap">
-    <div class="qg-sec-label">03 — Prioritization &amp; Ideation</div>
-    <h2 class="qg-sec-title">None of the closest competitors were actually competitors</h2>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Priority Matrix</div>
-      <h3 class="qg-clause-h">Three real strengths, none of them complete</h3>
+</div></section>
+<section class="sec" id="prioritization-ideation" data-title="Prioritization &amp; Ideation"><div class="col"><div class="kicker"><b>03</b>Prioritization &amp; Ideation</div><h2>None of the closest competitors were actually competitors</h2>
+<div class="x-clause">
+      <div class="x-clause-lbl">Priority Matrix</div>
+      <h3 class="x-clause-h">Three real strengths, none of them complete</h3>
       <p>Peer Fives does social recognition well but offers little beyond it. Viva Insights (Microsoft's own product) has strong data insight but isn't engaging day to day. Starbucks has neither social recognition nor productivity insight, but nobody does gamification and repeat engagement better.</p>
-      <div class="qg-compare">
-        <span class="qg-chip">vs. Peer Fives</span>
-        <span class="qg-chip">vs. Viva Insights</span>
-        <span class="qg-chip">vs. Starbucks</span>
+      <div class="x-compare">
+        <span class="x-chip">vs. Peer Fives</span>
+        <span class="x-chip">vs. Viva Insights</span>
+        <span class="x-chip">vs. Starbucks</span>
       </div>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/competitor-comparison-table.png" alt="Feature comparison table: Peer Fives, Viva Insights, and Starbucks"/>
-        <div class="qg-figcap">Fig. 05 — No single competitor covered social recognition, data insight, and gamification at once</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/competitor-comparison-table.png" alt="Feature comparison table: Peer Fives, Viva Insights, and Starbucks">
+        <div class="x-figcap">Fig. 05 — No single competitor covered social recognition, data insight, and gamification at once</div>
       </div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Ideation</div>
-      <h3 class="qg-clause-h">Borrowing deliberately from outside the category</h3>
+<div class="x-clause">
+      <div class="x-clause-lbl">Ideation</div>
+      <h3 class="x-clause-h">Borrowing deliberately from outside the category</h3>
       <p>That comparison directly shaped the brief: build the social recognition layer Peer Fives does well, back it with the analytics rigor Viva Insights users expect from Microsoft's own ecosystem, and borrow enough of Starbucks' gamification instinct to make recognition something people want to keep doing.</p>
       <p><b>Alternative considered and rejected:</b> building only the HR analytics layer first, treating the personal recognition experience as a later phase. Rejected because the research showed recognition dies without a fast, frictionless entry point — building the dashboard first would have had nothing to report on.</p>
-      <div class="qg-note"><b>Takeaway</b>The right competitive set isn't always your direct competitors. Starbucks taught this project more about repeat engagement than any HR tech product did.</div>
+      <div class="x-note"><b>Takeaway</b>The right competitive set isn't always your direct competitors. Starbucks taught this project more about repeat engagement than any HR tech product did.</div>
     </div>
-  </div>
-</section>
-
-<section class="qg-section">
-  <div class="qg-wrap">
-    <div class="qg-sec-label">04 — Design &amp; Prototyping</div>
-    <h2 class="qg-sec-title">A dashboard for Ram, a landing page for Jenita — one product</h2>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Information Architecture</div>
-      <h3 class="qg-clause-h">Split by altitude, not by feature</h3>
+</div></section>
+<section class="sec" id="design-prototyping" data-title="Design &amp; Prototyping"><div class="col"><div class="kicker"><b>04</b>Design &amp; Prototyping</div><h2>A dashboard for Ram, a landing page for Jenita — one product</h2>
+<div class="x-clause">
+      <div class="x-clause-lbl">Information Architecture</div>
+      <h3 class="x-clause-h">Split by altitude, not by feature</h3>
       <p>One underlying data model, two entry points: a personal hub for fast, individual recognition, and an HR dashboard for the aggregated, exportable view.</p>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">User Flows</div>
-      <h3 class="qg-clause-h">Send recognition, and pull a report</h3>
-      <div class="qg-flow">
+<div class="x-clause">
+      <div class="x-clause-lbl">User Flows</div>
+      <h3 class="x-clause-h">Send recognition, and pull a report</h3>
+      <div class="x-flow">
         <span class="step">Open Teams hub</span><span class="arrow">→</span><span class="step">Pick colleague + reward</span><span class="arrow">→</span><span class="step">Send</span><span class="arrow">→</span><span class="step">HR views rollup on dashboard</span>
       </div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Wireframing</div>
-      <h3 class="qg-clause-h">Low-fidelity first, to test the split before styling it</h3>
+<div class="x-clause">
+      <div class="x-clause-lbl">Wireframing</div>
+      <h3 class="x-clause-h">Low-fidelity first, to test the split before styling it</h3>
       <p>Wireframes stayed low-fidelity first specifically to test whether one information architecture could genuinely serve both the fast, personal act of sending recognition and the aggregated, analytical view HR needed.</p>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/swot-wireframes.png" alt="Competitor SWOT analysis and early wireframes"/>
-        <div class="qg-figcap">Fig. 06 — SWOT analysis on the competitive set, and the wireframes it informed</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/swot-wireframes.png" alt="Competitor SWOT analysis and early wireframes">
+        <div class="x-figcap">Fig. 06 — SWOT analysis on the competitive set, and the wireframes it informed</div>
       </div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Interaction Design</div>
-      <h3 class="qg-clause-h">Two interfaces, one visual system</h3>
+<div class="x-clause">
+      <div class="x-clause-lbl">Interaction Design</div>
+      <h3 class="x-clause-h">Two interfaces, one visual system</h3>
       <p>The shipped design split cleanly: a personal app landing page — "The Peer-to-Peer Gifting Hub" — as the fast, human entry point, and a separate analytics dashboard giving HR and managers the aggregated, exportable view Ram Prasath needed to defend the program's ROI.</p>
-      <div class="qg-figure">
-        <img src="case-studies/quik-gift/visual-design-final.png" alt="Final visual design: personal landing page, dashboard, and sending gift flow"/>
-        <div class="qg-figcap">Fig. 07 — The personal landing page and the HR dashboard, sharing one visual system</div>
+      <div class="x-figure">
+        <img src="case-studies/quik-gift/visual-design-final.png" alt="Final visual design: personal landing page, dashboard, and sending gift flow">
+        <div class="x-figcap">Fig. 07 — The personal landing page and the HR dashboard, sharing one visual system</div>
       </div>
-      <div class="qg-note"><b>Takeaway</b>Serving two very different jobs-to-be-done didn't mean building two products — it meant designing two entry points into the same underlying data.</div>
+      <div class="x-note"><b>Takeaway</b>Serving two very different jobs-to-be-done didn't mean building two products — it meant designing two entry points into the same underlying data.</div>
     </div>
-  </div>
-</section>
-
-<section class="qg-section">
-  <div class="qg-wrap">
-    <div class="qg-sec-label">05 — Validation</div>
-    <h2 class="qg-sec-title">User testing was scoped into the process — the honest scorecard</h2>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Usability Testing</div>
-      <h3 class="qg-clause-h">Named as the final stage — not run within this documented scope</h3>
-      <div class="qg-note"><b>Evidence gap</b>The design process for QuikGift explicitly named user testing as its final stage, alongside empathy, define, ideate, and design. No session — participants, tasks, scores — was documented within the material available for this case study, and I'm not backfilling results I can't verify.</div>
+</div></section>
+<section class="sec" id="validation" data-title="Validation"><div class="col"><div class="kicker"><b>05</b>Validation</div><h2>User testing was scoped into the process — the honest scorecard</h2>
+<div class="x-clause">
+      <div class="x-clause-lbl">Usability Testing</div>
+      <h3 class="x-clause-h">Named as the final stage — not run within this documented scope</h3>
+      <div class="x-note"><b>Evidence gap</b>The design process for QuikGift explicitly named user testing as its final stage, alongside empathy, define, ideate, and design. No session — participants, tasks, scores — was documented within the material available for this case study, and I'm not backfilling results I can't verify.</div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">What Would Make Testing Meaningful</div>
-      <h3 class="qg-clause-h">The structure that was actually built for it</h3>
+<div class="x-clause">
+      <div class="x-clause-lbl">What Would Make Testing Meaningful</div>
+      <h3 class="x-clause-h">The structure that was actually built for it</h3>
       <p>Two personas with genuinely different success criteria, a competitive analysis that named specific, testable feature gaps, and two distinct interfaces — the personal hub and the HR dashboard — that could each be evaluated against the persona they were built for. That's the scaffolding a real test would have been run against.</p>
-      <div class="qg-note"><b>Takeaway</b>A test is only as good as the personas and criteria it's run against. Getting Jenita's and Ram's actual needs right up front is what would have made that final testing stage worth running.</div>
+      <div class="x-note"><b>Takeaway</b>A test is only as good as the personas and criteria it's run against. Getting Jenita's and Ram's actual needs right up front is what would have made that final testing stage worth running.</div>
     </div>
-
-    <div class="qg-clause">
-      <div class="qg-clause-lbl">Final Result</div>
-      <h3 class="qg-clause-h">Stated at the level it was actually reached</h3>
-      <table class="qg-table">
+<div class="x-clause">
+      <div class="x-clause-lbl">Final Result</div>
+      <h3 class="x-clause-h">Stated at the level it was actually reached</h3>
+      <div class="tscroll"><table class="x-table">
         <tr><th>Metric</th><th>Result</th></tr>
         <tr><td>Personas with distinct success criteria</td><td>2 (Jenita, Ram)</td></tr>
         <tr><td>Competitor capability gaps identified</td><td>3 (Peer Fives, Viva Insights, Starbucks)</td></tr>
         <tr><td>Task completion / satisfaction score</td><td class="na">Not measured — usability round not documented as run</td></tr>
       </table>
-    </div>
+    </div></div>
+</div></section>
+<section class="sec" id="outcome" data-title="Outcome"><div class="col"><div class="kicker"><b>06</b>Outcome</div><h2>Prototype · Key Learnings</h2>
+<h3>Prototype</h3>
+<p>QuikGift shipped as a real Microsoft Teams app — listed and installable inside the Teams app store, not just mocked up as a standalone screen.</p>
+<div class="x-figure">
+    <img src="case-studies/quik-gift/prototype-teams-listing.png" alt="QuikGift's real Microsoft Teams app store listing, published by M2P Fintech">
+    <div class="x-figcap">Fig. 08 — QuikGift's Teams app store listing, as it actually shipped</div>
   </div>
-</section>
-
-<div class="qg-wrap qg-close">
-  <div class="qg-sec-label">Prototype</div>
-  <p style="color:#5A3D48">QuikGift shipped as a real Microsoft Teams app — listed and installable inside the Teams app store, not just mocked up as a standalone screen.</p>
-  <div class="qg-figure">
-    <img src="case-studies/quik-gift/prototype-teams-listing.png" alt="QuikGift's real Microsoft Teams app store listing, published by M2P Fintech"/>
-    <div class="qg-figcap">Fig. 08 — QuikGift's Teams app store listing, as it actually shipped</div>
+<h3>Key Learnings</h3>
+<div class="x-learn-grid">
+    <div class="x-learn"><h4>Recognition fails at the point of friction, not intent</h4><p>Nobody in this research lacked the desire to recognize colleagues. They lacked a fast enough way to do it inside their actual workflow.</p></div>
+    <div class="x-learn"><h4>The same word can hide two different features</h4><p>"Visibility" meant a quick personal view for Jenita and a defensible analytics rollup for Ram — conflating them would have underserved both.</p></div>
+    <div class="x-learn"><h4>Borrow from outside your category on purpose</h4><p>Starbucks isn't an HR platform, but its rewards program is a masterclass in repeat engagement.</p></div>
+    <div class="x-learn"><h4>Naming a test stage isn't the same as running one</h4><p>The process document said "test." This case study only claims what that stage actually produced.</p></div>
   </div>
-
-  <div class="qg-sec-label" style="margin-top:40px">Key Learnings</div>
-  <div class="qg-learn-grid">
-    <div class="qg-learn"><h4>Recognition fails at the point of friction, not intent</h4><p>Nobody in this research lacked the desire to recognize colleagues. They lacked a fast enough way to do it inside their actual workflow.</p></div>
-    <div class="qg-learn"><h4>The same word can hide two different features</h4><p>"Visibility" meant a quick personal view for Jenita and a defensible analytics rollup for Ram — conflating them would have underserved both.</p></div>
-    <div class="qg-learn"><h4>Borrow from outside your category on purpose</h4><p>Starbucks isn't an HR platform, but its rewards program is a masterclass in repeat engagement.</p></div>
-    <div class="qg-learn"><h4>Naming a test stage isn't the same as running one</h4><p>The process document said "test." This case study only claims what that stage actually produced.</p></div>
-  </div>
-  <p style="color:#5A3D48">The through-line: QuikGift's real competition was never another rewards app. It was the extra ten seconds of effort that decides whether recognition happens at all.</p>
-
-  <div class="qg-signoff">
-    <span>QuikGift — a UX Case Study by Ayyappan Rajendiran</span>
-    <a href="index.html">← Back to Portfolio</a>
-  </div>
+<p>The through-line: QuikGift's real competition was never another rewards app. It was the extra ten seconds of effort that decides whether recognition happens at all.</p>
+<div class="sign"><span>QuikGift — a UX Case Study by Ayyappan Rajendiran</span><a href="index.html">← Back to Portfolio</a></div></div></section>
+</main>
 </div>
-
-<a class="qg-fab" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?m=dev" target="_blank" title="View the full Figma file">View Figma →</a>
-
+<a class="x-fab" href="https://www.figma.com/design/CC0GYqdcKIajA8xzUG0Ss0/All?m=dev" target="_blank" title="View the full Figma file">View Figma →</a>
+<dialog class="lb" id="lb" aria-label="Enlarged image"><div class="lb-in"><button class="lb-x" type="button" id="lbx">Close ✕</button><img id="lbi" alt=""/><p id="lbc"></p></div></dialog>
+<script src="assets/story.js" defer></script>
 </body>
 </html>
