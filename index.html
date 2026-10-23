@@ -92,22 +92,28 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 @media(max-width:980px){.scrollcue{display:none}}
 
-/* hero card stack */
-.stack{position:relative;height:calc(620px*var(--k,1));perspective:1100px}
-.stack-in{position:relative;width:560px;height:620px;transform-origin:0 0;transform:scale(var(--k,1))}
-.sc{position:absolute;left:var(--x);top:var(--y);width:var(--w);animation:float 7s ease-in-out infinite;animation-delay:var(--dl);z-index:var(--z)}
-@keyframes float{50%{transform:translateY(-14px)}}
-.sc-in{position:relative;display:block;border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(14,16,20,.08);box-shadow:0 30px 60px -28px rgba(14,16,20,.45),0 6px 16px -8px rgba(14,16,20,.15);transform:rotate(var(--r));transition:box-shadow .4s,transform .5s var(--ease);will-change:transform}
-.sc-in img{width:100%;height:var(--h);object-fit:cover;object-position:top}
-.sc:hover{z-index:20}
-.sc:hover .sc-in{box-shadow:0 44px 80px -30px rgba(53,56,205,.55)}
-.sc-tag{position:absolute;left:10px;bottom:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);font-size:12px;font-weight:700;color:var(--ink)}
+/* hero card stack — two aligned, staggered columns */
+.stack{position:relative;height:var(--sh,600px);perspective:1100px}
+.stack-in{width:560px;display:grid;grid-template-columns:1fr 1fr;gap:24px;transform-origin:0 0;transform:scale(var(--k,1));align-items:start}
+.scol{display:flex;flex-direction:column;gap:24px;will-change:transform}
+.scol.b{margin-top:72px}
+.sc{display:block;animation:float 8s ease-in-out infinite;animation-delay:var(--dl)}
+@keyframes float{50%{transform:translateY(-8px)}}
+.sc-in{display:block;border-radius:24px;overflow:hidden;background:#fff;border:1px solid rgba(14,16,20,.08);box-shadow:0 30px 60px -32px rgba(14,16,20,.4),0 4px 12px -6px rgba(14,16,20,.12);transition:box-shadow .4s,transform .5s var(--ease);will-change:transform}
+.sc-in img{width:100%;height:var(--h);object-fit:cover;object-position:top;background:var(--surface)}
+.sc-cap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border-top:1px solid var(--line);font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink);background:#fff}
+.sc-cap small{font-family:var(--body);font-weight:600;font-size:12px;color:var(--muted);letter-spacing:0;display:block;margin-top:1px}
+.sc-cap .go{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);flex:none;transition:background .3s,color .3s,transform .4s var(--spring)}
+.sc:hover .sc-in{box-shadow:0 44px 80px -34px rgba(53,56,205,.5)}
+.sc:hover .sc-cap .go{background:var(--acc);color:#fff;transform:rotate(45deg)}
 @media(max-width:980px){
   .stack{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 24px;perspective:none;margin-top:10px}
-  .stack-in{display:flex;gap:16px;width:max-content;height:auto;transform:none}
-  .sc{position:relative;left:auto;top:auto;flex:none;width:min(260px,72vw)!important;scroll-snap-align:start;animation:none}
+  .stack-in{display:flex;gap:16px;width:max-content;transform:none}
+  .scol{display:contents}
+  .scol.b{margin-top:0}
+  .sc{flex:none;width:min(260px,72vw);scroll-snap-align:start;animation:none}
   .sc-in{transform:none!important}
-  .sc-in img{height:300px}
+  .sc-in img{height:280px}
 }
 
 /* marquee */
@@ -312,11 +318,14 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
       </div>
 
       <div class="stack" id="stack" aria-label="Featured case studies"><div class="stack-in" id="stackIn">
-        <a class="sc" style="--x:150px;--y:0px;--w:230px;--h:350px;--r:-4deg;--dl:0s;--z:3" href="integrated-dashboard.html" data-depth="14" data-cursor="Open"><span class="sc-in"><img src="case-studies/integrated-dashboard/hifi-dashboard.png" alt="Integrated Dashboard — M2P Fintech" style="--h:350px" width="900" height="1383" loading="eager"/><span class="sc-tag">Integrated Dashboard</span></span></a>
-        <a class="sc" style="--x:350px;--y:110px;--w:200px;--h:310px;--r:5deg;--dl:-2s;--z:2" href="fastag.html" data-depth="-10" data-cursor="Open"><span class="sc-in"><img src="case-studies/fastag/cover-context.png" alt="FasTag — Kotak" style="--h:310px" width="900" height="1487" loading="eager"/><span class="sc-tag">FasTag</span></span></a>
-        <a class="sc" style="--x:0px;--y:330px;--w:320px;--h:160px;--r:-2deg;--dl:-4s;--z:4" href="pockets.html" data-depth="18" data-cursor="Open"><span class="sc-in"><img src="case-studies/pockets/dashboard.png" alt="Redesigning Pockets — ICICI Bank" style="--h:160px" width="1200" height="581" loading="eager"/><span class="sc-tag">Pockets · ICICI</span></span></a>
-        <a class="sc" style="--x:290px;--y:450px;--w:250px;--h:140px;--r:3deg;--dl:-1s;--z:5" href="sensy.html" data-depth="-16" data-cursor="Open"><span class="sc-in"><img src="case-studies/sensy/cover.png" alt="Sensy — concept" style="--h:140px" width="720" height="405" loading="eager"/><span class="sc-tag">Sensy</span></span></a>
-        <a class="sc" style="--x:30px;--y:110px;--w:190px;--h:130px;--r:-7deg;--dl:-3s;--z:1" href="design-system.html" data-depth="8" data-cursor="Open"><span class="sc-in"><img src="case-studies/design-system/cover.png" alt="M2P Design System" style="--h:130px" loading="eager"/><span class="sc-tag">Design System</span></span></a>
+        <div class="scol a" data-depth="1">
+          <a class="sc" href="integrated-dashboard.html" data-cursor="Open" style="--dl:0s"><span class="sc-in"><img src="case-studies/integrated-dashboard/hifi-dashboard.png" alt="Integrated Dashboard — M2P Fintech" style="--h:300px" width="900" loading="eager"/><span class="sc-cap"><span>Integrated Dashboard<small>M2P Fintech</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
+          <a class="sc" href="pockets.html" data-cursor="Open" style="--dl:-3s"><span class="sc-in"><img src="case-studies/pockets/dashboard.png" alt="Redesigning Pockets — ICICI Bank" style="--h:150px" width="1200" loading="eager"/><span class="sc-cap"><span>Pockets<small>ICICI Bank</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
+        </div>
+        <div class="scol b" data-depth="-1">
+          <a class="sc" href="design-system.html" data-cursor="Open" style="--dl:-2s"><span class="sc-in"><img src="case-studies/design-system/cover.png" alt="M2P Design System" style="--h:150px" width="2048" loading="eager"/><span class="sc-cap"><span>Design System<small>M2P Fintech</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
+          <a class="sc" href="fastag.html" data-cursor="Open" style="--dl:-5s"><span class="sc-in"><img src="case-studies/fastag/cover-context.png" alt="FasTag — Kotak" style="--h:300px" width="900" loading="eager"/><span class="sc-cap"><span>FasTag<small>M2P Fintech, for Kotak</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
+        </div>
       </div></div>
     </div>
   </div>
@@ -725,19 +734,26 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
   if(!reduce) requestAnimationFrame(mqLoop);
 
   /* ---------- hero: fit the card stack to its column ---------- */
-  var stackEl = $('#stack');
-  function fitStack(){ if(window.innerWidth<=980){ stackEl.style.removeProperty('--k'); return; } var k = Math.min(1, stackEl.clientWidth/560); stackEl.style.setProperty('--k',k.toFixed(3)); }
-  fitStack(); window.addEventListener('resize',fitStack);
+  var stackEl = $('#stack'), stackIn = $('#stackIn');
+  function fitStack(){
+    if(window.innerWidth<=980){ stackEl.style.removeProperty('--k'); stackEl.style.removeProperty('--sh'); return; }
+    var k = Math.min(1, stackEl.clientWidth/560);
+    stackEl.style.setProperty('--k',k.toFixed(3));
+    stackEl.style.setProperty('--sh',Math.ceil(stackIn.offsetHeight*k)+'px');
+  }
+  fitStack(); window.addEventListener('resize',fitStack); window.addEventListener('load',fitStack);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitStack);
+  $$('#stack img').forEach(function(i){ i.addEventListener('load',fitStack); });
 
-  /* ---------- hero: blobs + card stack parallax ---------- */
-  var hero = $('#top'), blobs = $$('.blob'), cards = $$('#stack .sc'), mxp = 0, myp = 0, tx = 0, ty = 0;
+  /* ---------- hero: blobs + column parallax ---------- */
+  var hero = $('#top'), blobs = $$('.blob'), cols = $$('#stack .scol'), mxp = 0, myp = 0, tx = 0, ty = 0;
   if(fine && !reduce){
     hero.addEventListener('pointermove',function(e){ var b = hero.getBoundingClientRect(); tx = (e.clientX-b.left)/b.width-.5; ty = (e.clientY-b.top)/b.height-.5; });
     hero.addEventListener('pointerleave',function(){ tx=0; ty=0; });
     (function heroLoop(){
       mxp = lerp(mxp,tx,.07); myp = lerp(myp,ty,.07);
       blobs.forEach(function(b){ if(!b.closest('.hero')) return; var d = parseFloat(b.dataset.depth||0); b.style.transform='translate3d('+(mxp*d*160)+'px,'+(myp*d*160)+'px,0)'; });
-      cards.forEach(function(c){ var d = parseFloat(c.dataset.depth||0); var inn = c.firstElementChild; inn.style.transform='translate3d('+(mxp*d*-2.2)+'px,'+(myp*d*-2.2)+'px,0) rotate('+getComputedStyle(c).getPropertyValue('--r')+') rotateX('+(myp*-6)+'deg) rotateY('+(mxp*8)+'deg)'; });
+      cols.forEach(function(c){ var d = parseFloat(c.dataset.depth||0); c.style.transform='translate3d(0,'+(myp*d*-22)+'px,0)'; });
       requestAnimationFrame(heroLoop);
     })();
   }
