@@ -92,28 +92,48 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 @media(max-width:980px){.scrollcue{display:none}}
 
-/* hero card stack — two aligned, staggered columns */
-.stack{position:relative;height:var(--sh,600px);perspective:1100px}
-.stack-in{width:560px;display:grid;grid-template-columns:1fr 1fr;gap:24px;transform-origin:0 0;transform:scale(var(--k,1));align-items:start}
-.scol{display:flex;flex-direction:column;gap:24px;will-change:transform}
-.scol.b{margin-top:72px}
-.sc{display:block;animation:float 8s ease-in-out infinite;animation-delay:var(--dl)}
-@keyframes float{50%{transform:translateY(-8px)}}
-.sc-in{display:block;border-radius:24px;overflow:hidden;background:#fff;border:1px solid rgba(14,16,20,.08);box-shadow:0 30px 60px -32px rgba(14,16,20,.4),0 4px 12px -6px rgba(14,16,20,.12);transition:box-shadow .4s,transform .5s var(--ease);will-change:transform}
-.sc-in img{width:100%;height:var(--h);object-fit:cover;object-position:top;background:var(--surface)}
-.sc-cap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border-top:1px solid var(--line);font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink);background:#fff}
-.sc-cap small{font-family:var(--body);font-weight:600;font-size:12px;color:var(--muted);letter-spacing:0;display:block;margin-top:1px}
-.sc-cap .go{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);flex:none;transition:background .3s,color .3s,transform .4s var(--spring)}
-.sc:hover .sc-in{box-shadow:0 44px 80px -34px rgba(53,56,205,.5)}
-.sc:hover .sc-cap .go{background:var(--acc);color:#fff;transform:rotate(45deg)}
+/* hero wall — every case study, three columns moving at different speeds and directions */
+.stack{position:relative;height:var(--sh,620px)}
+.wall{position:relative;width:560px;height:620px;overflow:hidden;transform-origin:0 0;transform:scale(var(--k,1));-webkit-mask-image:linear-gradient(transparent,#000 11%,#000 89%,transparent);mask-image:linear-gradient(transparent,#000 11%,#000 89%,transparent)}
+.wall-in{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;height:100%}
+.wcol{position:relative;overflow:visible;will-change:transform}
+.wtrack{display:flex;flex-direction:column;gap:14px;will-change:transform}
+.wc{display:block;animation:var(--v) .9s var(--ease) both;animation-delay:calc(var(--n)*70ms + 500ms);animation-play-state:paused}
+.ready .wc{animation-play-state:running}
+.wc-in{position:relative;display:block;border-radius:20px;overflow:hidden;background:#fff;border:1px solid rgba(14,16,20,.08);box-shadow:0 24px 44px -28px rgba(14,16,20,.4),0 3px 10px -6px rgba(14,16,20,.12);transition:transform .5s var(--spring),box-shadow .4s}
+.wc-in::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+.wc:hover .wc-in{transform:translateY(-6px) scale(1.04);box-shadow:0 36px 60px -30px rgba(53,56,205,.55)}
+.wc:hover .wc-in::after{transform:translateX(120%);transition:transform .9s var(--ease)}
+.wc-img{display:block;height:var(--h);background:var(--surface);overflow:hidden}
+.wc-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s var(--ease)}
+.wc:hover .wc-img img{transform:scale(1.08)}
+.wc-fb{display:grid;place-items:center;height:100%;padding:0 14px;text-align:center;font-family:var(--display);font-weight:800;font-size:22px;line-height:1.05;letter-spacing:-.03em;color:#fff;background-size:200% 200%;animation:grad 7s ease infinite}
+.wc-cap{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px;border-top:1px solid var(--line);font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.01em;line-height:1.2;color:var(--ink);background:#fff}
+.wc-cap small{display:block;margin-top:2px;font-family:var(--body);font-weight:600;font-size:11.5px;color:var(--muted);letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:108px}
+.wc-cap .go{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--surface);flex:none;font-size:13px;transition:background .3s,color .3s,transform .4s var(--spring)}
+.wc:hover .wc-cap .go{background:var(--acc);color:#fff;transform:rotate(45deg)}
+/* six different entrance motions, cycled across the cards */
+@keyframes v1{from{opacity:0;transform:translateY(60px)}}
+@keyframes v2{from{opacity:0;transform:perspective(600px) rotateX(-70deg);transform-origin:50% 0}}
+@keyframes v3{from{opacity:0;transform:scale(.4)}}
+@keyframes v4{from{opacity:0;filter:blur(14px);transform:scale(1.15)}}
+@keyframes v5{from{opacity:0;transform:translateX(-70px) rotate(-6deg)}}
+@keyframes v6{from{opacity:0;transform:perspective(600px) rotateY(80deg);transform-origin:0 50%}}
 @media(max-width:980px){
-  .stack{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 24px;perspective:none;margin-top:10px}
-  .stack-in{display:flex;gap:16px;width:max-content;transform:none}
-  .scol{display:contents}
-  .scol.b{margin-top:0}
-  .sc{flex:none;width:min(260px,72vw);scroll-snap-align:start;animation:none}
-  .sc-in{transform:none!important}
-  .sc-in img{height:280px}
+  .stack{height:auto}
+  .wall{width:100%;height:auto;transform:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);margin-top:10px}
+  .wall-in{display:flex;flex-direction:column;gap:12px;height:auto}
+  .wcol{overflow:hidden}
+  .wtrack{flex-direction:row;width:max-content;gap:12px}
+  .wc{width:150px}
+  .wc-img{height:120px}
+  .wc-cap{padding:9px 11px;font-size:13px}
+  .wc-fb{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  .wc{animation:none}
+  .wall{overflow-y:auto;-webkit-mask-image:none;mask-image:none}
+  .wtrack [aria-hidden="true"]{display:none}
 }
 
 /* marquee */
@@ -317,16 +337,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
         </div>
       </div>
 
-      <div class="stack" id="stack" aria-label="Featured case studies"><div class="stack-in" id="stackIn">
-        <div class="scol a" data-depth="1">
-          <a class="sc" href="integrated-dashboard.html" data-cursor="Open" style="--dl:0s"><span class="sc-in"><img src="case-studies/integrated-dashboard/hifi-dashboard.png" alt="Integrated Dashboard — M2P Fintech" style="--h:300px" width="900" loading="eager"/><span class="sc-cap"><span>Integrated Dashboard<small>M2P Fintech</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
-          <a class="sc" href="pockets.html" data-cursor="Open" style="--dl:-3s"><span class="sc-in"><img src="case-studies/pockets/dashboard.png" alt="Redesigning Pockets — ICICI Bank" style="--h:150px" width="1200" loading="eager"/><span class="sc-cap"><span>Pockets<small>ICICI Bank</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
-        </div>
-        <div class="scol b" data-depth="-1">
-          <a class="sc" href="design-system.html" data-cursor="Open" style="--dl:-2s"><span class="sc-in"><img src="case-studies/design-system/cover.png" alt="M2P Design System" style="--h:150px" width="2048" loading="eager"/><span class="sc-cap"><span>Design System<small>M2P Fintech</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
-          <a class="sc" href="fastag.html" data-cursor="Open" style="--dl:-5s"><span class="sc-in"><img src="case-studies/fastag/cover-context.png" alt="FasTag — Kotak" style="--h:300px" width="900" loading="eager"/><span class="sc-cap"><span>FasTag<small>M2P Fintech, for Kotak</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>
-        </div>
-      </div></div>
+      <div class="stack" id="stack" aria-label="All case studies"><div class="wall" id="wall"><div class="wall-in" id="wallIn"></div></div></div>
     </div>
   </div>
   <div class="scrollcue" aria-hidden="true"><span>Scroll</span><i></i></div>
@@ -733,28 +744,83 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
   }
   if(!reduce) requestAnimationFrame(mqLoop);
 
-  /* ---------- hero: fit the card stack to its column ---------- */
-  var stackEl = $('#stack'), stackIn = $('#stackIn');
-  function fitStack(){
-    if(window.innerWidth<=980){ stackEl.style.removeProperty('--k'); stackEl.style.removeProperty('--sh'); return; }
-    var k = Math.min(1, stackEl.clientWidth/560);
-    stackEl.style.setProperty('--k',k.toFixed(3));
-    stackEl.style.setProperty('--sh',Math.ceil(stackIn.offsetHeight*k)+'px');
+  /* ---------- hero wall: all case studies ---------- */
+  var PROJECTS = [
+    [0,'enterprise-care-center.html','VEC','Verizon',null,'#6D4AE0','#C084FC',150],
+    [0,'integrated-dashboard.html','Integrated Dashboard','M2P Fintech','case-studies/integrated-dashboard/hifi-dashboard.png',0,0,230],
+    [0,'pockets.html','Redesigning Pockets','ICICI Bank','case-studies/pockets/dashboard.png',0,0,130],
+    [0,'name-hunting-research.html','Name Hunting Research','LivQuik','case-studies/name-hunting-research/cover-about-plan.png',0,0,200],
+    [0,'sensy.html','Sensy','Self-directed','case-studies/sensy/cover.png',0,0,140],
+    [1,'design-system.html','Design System','M2P Fintech','case-studies/design-system/cover.png',0,0,170],
+    [1,'ai-chatbot.html','AI ChatBot','Verizon','case-studies/ai-chatbot/mockups-billpay-flow.png',0,0,240],
+    [1,'sdlc.html','Agentic AI SDLC','Acceleron',null,'#334155','#6366F1',140],
+    [1,'quik-gift.html','Quik Gift','Microsoft','case-studies/quik-gift/cover-about.png',0,0,190],
+    [1,'nokia-nac-wss.html','Nokia NAC · WSS','Nokia',null,'#0E7490','#22D3EE',140],
+    [2,'fastag.html','FasTag','M2P Fintech, for Kotak','case-studies/fastag/cover-context.png',0,0,250],
+    [2,'lulu-money.html','LuLu Money','LuLu Financial','case-studies/lulu-money/hifi-designs.png',0,0,190],
+    [2,'hr-portal.html','HR Self-Service Portal','Illustrative case study',null,'#EA580C','#F59E0B',150],
+    [2,'cryptocurrency.html','Cryptocurrency','Self-directed','case-studies/cryptocurrency/prototype-buy-screen.png',0,0,200],
+    [2,'product-strategy.html','Product Strategy','M2P Fintech','case-studies/product-strategy/cover-canvas.png',0,0,160]
+  ];
+  var hero = $('#top'), wallEl = $('#wall'), wallIn = $('#wallIn'), stackEl = $('#stack'), tracks = [], cols = [];
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function cardHTML(p,n,dup){
+    var vis = p[4] ? '<img src="'+p[4]+'" alt="'+(dup?'':esc(p[2]))+'" loading="'+(n<6?'eager':'lazy')+'" decoding="async"/>'
+                   : '<span class="wc-fb" style="background-image:linear-gradient(135deg,'+p[5]+','+p[6]+')">'+esc(p[2])+'</span>';
+    return '<a class="wc" href="'+p[1]+'" style="--n:'+n+';--v:v'+((n%6)+1)+';--h:'+p[7]+'px" data-cursor="Open"'+(dup?' aria-hidden="true" tabindex="-1"':'')+'><span class="wc-in"><span class="wc-img">'+vis+'</span><span class="wc-cap"><span>'+esc(p[2])+'<small>'+esc(p[3])+'</small></span><span class="go" aria-hidden="true">↗</span></span></span></a>';
   }
-  fitStack(); window.addEventListener('resize',fitStack); window.addEventListener('load',fitStack);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitStack);
-  $$('#stack img').forEach(function(i){ i.addEventListener('load',fitStack); });
+  [0,1,2].forEach(function(ci){
+    var list = PROJECTS.filter(function(p){return p[0]===ci});
+    var html = list.map(function(p,i){ return cardHTML(p,ci*5+i,false); }).join('') + list.map(function(p,i){ return cardHTML(p,ci*5+i,true); }).join('');
+    var col = document.createElement('div'); col.className='wcol'; col.innerHTML='<div class="wtrack">'+html+'</div>';
+    wallIn.appendChild(col); cols.push(col); tracks.push(col.firstChild);
+  });
+  var horiz = function(){ return window.innerWidth<=980; };
+  function fitWall(){
+    if(horiz()){ stackEl.style.removeProperty('--k'); stackEl.style.removeProperty('--sh'); return; }
+    var k = Math.min(1, stackEl.clientWidth/560);
+    stackEl.style.setProperty('--k',k.toFixed(3)); stackEl.style.setProperty('--sh',Math.ceil(620*k)+'px');
+  }
+  fitWall(); window.addEventListener('resize',fitWall);
 
-  /* ---------- hero: blobs + column parallax ---------- */
-  var hero = $('#top'), blobs = $$('.blob'), cols = $$('#stack .scol'), mxp = 0, myp = 0, tx = 0, ty = 0;
+  /* three lanes: different speed and direction; scroll velocity boosts them; hover calms them */
+  var lanes = [{s:26},{s:-34},{s:42}], pos = [0,0,0], hovering = false, boost = 1, lastT = performance.now(), prevScroll = window.scrollY, calm = 1, wallVisible = true;
+  wallEl.addEventListener('pointerenter',function(){ hovering = true; }); wallEl.addEventListener('pointerleave',function(){ hovering = false; });
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ wallVisible = es[0].isIntersecting; },{threshold:0}).observe(wallEl); }
+  var mxw = 0, txw = 0;
+  if(fine) hero.addEventListener('pointermove',function(e){ var b = hero.getBoundingClientRect(); txw = (e.clientX-b.left)/b.width-.5; });
+  function lanesLoop(t){
+    var dt = Math.min(.05,(t-lastT)/1000); lastT = t;
+    var dv = window.scrollY - prevScroll; prevScroll = window.scrollY;
+    boost = lerp(boost, 1 + clamp(Math.abs(dv)*.12,0,4), .1);
+    calm = lerp(calm, hovering ? .08 : 1, .08);
+    mxw = lerp(mxw,txw,.06);
+    if(wallVisible){
+      var h = horiz();
+      tracks.forEach(function(tr,i){
+        var half = (h ? tr.scrollWidth : tr.scrollHeight)/2; if(!half) return;
+        var dir = lanes[i].s; pos[i] += dir*dt*calm*boost;
+        if(pos[i] >= half) pos[i] -= half; if(pos[i] < 0) pos[i] += half;
+        tr.style.transform = h ? 'translate3d('+(-pos[i])+'px,0,0)' : 'translate3d(0,'+(-pos[i])+'px,0)';
+        if(!h && fine) cols[i].style.transform = 'translate3d('+(mxw*(i-1)*14)+'px,0,0)'; else cols[i].style.transform='';
+      });
+    }
+    requestAnimationFrame(lanesLoop);
+  }
+  var blobs = $$('.blob');
+  // start lanes at staggered offsets so the wall never looks aligned to a grid
+  setTimeout(function(){ tracks.forEach(function(tr,i){ var half=(horiz()?tr.scrollWidth:tr.scrollHeight)/2; pos[i] = half*[0.0,0.5,0.25][i]; }); },0);
+  if(!reduce) requestAnimationFrame(lanesLoop);
+
+  /* ---------- hero: blobs follow the pointer ---------- */
+  var bx = 0, by = 0, tbx = 0, tby = 0;
   if(fine && !reduce){
-    hero.addEventListener('pointermove',function(e){ var b = hero.getBoundingClientRect(); tx = (e.clientX-b.left)/b.width-.5; ty = (e.clientY-b.top)/b.height-.5; });
-    hero.addEventListener('pointerleave',function(){ tx=0; ty=0; });
-    (function heroLoop(){
-      mxp = lerp(mxp,tx,.07); myp = lerp(myp,ty,.07);
-      blobs.forEach(function(b){ if(!b.closest('.hero')) return; var d = parseFloat(b.dataset.depth||0); b.style.transform='translate3d('+(mxp*d*160)+'px,'+(myp*d*160)+'px,0)'; });
-      cols.forEach(function(c){ var d = parseFloat(c.dataset.depth||0); c.style.transform='translate3d(0,'+(myp*d*-22)+'px,0)'; });
-      requestAnimationFrame(heroLoop);
+    hero.addEventListener('pointermove',function(e){ var b = hero.getBoundingClientRect(); tbx = (e.clientX-b.left)/b.width-.5; tby = (e.clientY-b.top)/b.height-.5; });
+    hero.addEventListener('pointerleave',function(){ tbx=0; tby=0; });
+    (function blobLoop(){
+      bx = lerp(bx,tbx,.07); by = lerp(by,tby,.07);
+      blobs.forEach(function(b){ if(!b.closest('.hero')) return; var dd = parseFloat(b.dataset.depth||0); b.style.transform='translate3d('+(bx*dd*160)+'px,'+(by*dd*160)+'px,0)'; });
+      requestAnimationFrame(blobLoop);
     })();
   }
 
